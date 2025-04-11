@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{math_template}
+
+\title{A Solution to OC722}
+\author{Jonathan Kasongo}
+
+\begin{document}
+\maketitle
+
+\noindent
+\textit{
+Problem statement: Let $p$ and $q$ be distinct prime numbers. Given an infinite decreasing
+arithmetic sequence in which each of the numbers $p^{23}, p^{24}, q^{23}$ and $q^{24}$ occurs,
+prove that the numbers $p$ and $q$ are sure to occur in this sequence.\\
+}
+\vspace{0.2cm}
+
+\noindent
+WLOG assume that $p > q$. Let the common difference of consecutive terms in the sequence be $d$. \\
+
+\noindent
+{\sffamily Claim: $d \leq q-1$} \\
+
+\noindent
+For some $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{Z}$,
+
+\begin{align*}
+p^{24} - p^{23} &= \lambda_1 d \\
+q^{24} - q^{23} &= \lambda_2 d \\
+p^{24} - q^{24} &= \lambda_3 d
+\end{align*}
+
+\noindent
+We claim that $d$ has to be coprime to both $p$ and $q$. Assume that $d$ divides $p$. Then reducing the third equation modulo $p$ would imply that $q^{24} \equiv 0 \ (\text{mod} \ p)$ which is
+impossible since $p$ and $q$ are distinct prime numbers. By using the symmetry of the first 2 equations this also proves that $d$ is coprime to $q$. \\
+
+\noindent
+Now consider $q^{24} - q^{23} = q^{23}(q-1) = \lambda_2 d$. Since $d$ is coprime with $q$, we must have $d \mid (q-1)$. So $q-1 \geq d \ \blacksquare$. \\
+
+\noindent
+Now to prove that $p$ and $q$ are in the sequence it suffices to prove that there exists some $k_1, k_2 \in \mathbb{Z}$ so that,
+
+\begin{align*}
+p^{24} - p &= k_1 d \\
+q^{24} - q &= k_2 d \\
+\end{align*}
+
+\noindent
+Equivalently we will be done if we can show that,
+
+\begin{align*}
+p^{24} &\equiv p \ (\text{mod} \ d) \\
+q^{24} &\equiv q \ (\text{mod} \ d) \\
+\end{align*}
+
+\noindent
+It then suffices to prove that $p^{23} \equiv q^{23} \equiv 1 \ (\text{mod} \ d)$.
+
+\noindent
+However we know that
+
+\begin{align*}
+p^{24} - p^{23} &= \lambda_1 d \\
+q^{24} - q^{23} &= \lambda_2 d \\
+\end{align*}
+
+\noindent
+Once we reduce modulo $d$ on both of these equations and rearrange we end up seeing that $p \equiv q \equiv 1 \ (\text{mod} \ d)$ from which the target result follows immediately.
+
+\end{document}

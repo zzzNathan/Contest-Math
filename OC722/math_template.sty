@@ -1,0 +1,63 @@
+\ProvidesPackage{math_template}
+
+% MUST GO FIRST
+\usepackage{tocloft}
+\usepackage{amsmath}  % Add this for align environment
+\usepackage{amssymb}
+\usepackage{fancyhdr}  % Add this for header customization
+\usepackage[
+    margin=1in,
+    includehead,
+    includefoot
+]{geometry}
+
+% Adjust TOC spacing
+\setlength{\cftbeforesecskip}{0.5ex}
+\setlength{\cftbeforesubsecskip}{0.5ex}
+\setlength{\cftbeforesubsubsecskip}{0.3ex}
+
+% Rest of the packages
+\usepackage{tabularray, xcolor, xurl, minted}
+\usepackage[backend=biber]{biblatex}
+
+% Colours
+\definecolor{lightgray}{gray}{0.963}
+
+% Headers and formatting
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{\sffamily\normalsize\bfseries}{\theparagraph}{1em}{}
+
+% TOC customization
+\renewcommand{\contentsname}{\sffamily\bfseries Contents}
+\renewcommand{\cftsecfont}{\sffamily\bfseries}
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries}
+
+% Header setup
+\pagestyle{fancy}
+\fancyhead[L]{\sffamily Harris Academy Purley}
+\fancyhead[C]{\thepage}
+\fancyhead[R]{\sffamily Jonathan Kasongo}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks = true,
+  urlcolor   = blue,
+  linkcolor  = blue,
+}
+
+% Title formatting
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        {\sffamily\bfseries\LARGE \@title} \\[1em]
+        {\sffamily\large \@author} \\[1em]
+        {\sffamily\large \@date} \\[1em]
+    \end{center}
+    \vspace{1em}
+}
+\makeatother

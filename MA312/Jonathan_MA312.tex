@@ -1,0 +1,121 @@
+% Refer to https://web.evanchen.cc/faq-latex.html
+\documentclass[11pt]{article}
+
+% MUST GO FIRST
+\usepackage{tocloft}
+% 1. Adjust the gap between subitems in the Table of Contents
+\setlength{\cftbeforesecskip}{0.5ex}  % Spacing before sections
+\setlength{\cftbeforesubsecskip}{0.5ex}  % Spacing before subsections
+\setlength{\cftbeforesubsubsecskip}{0.3ex}  % Spacing before subsubsections
+
+% Rest of the packages
+\usepackage{tabularray, xcolor, xurl, minted, evan}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Ref.bib}
+
+% Colours
+\definecolor{lightgray}{gray}{0.963}
+
+
+% 2. Apply \sffamily font to top-level sections in the Table of Contents
+\usepackage{hyperref}  % Optional for clickable links
+\usepackage{titlesec}   % For section title customization
+
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+
+% Customizing the Table of Contents
+\renewcommand{\contentsname}{\sffamily\bfseries Contents}
+\renewcommand{\cftsecfont}{\sffamily\bfseries}  % Apply \sffamily to sections in TOC
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries}  % Apply \sffamily to section page numbers in TOC
+
+\fancyhead[L]{\sffamily Harris Academy Purley}  % Custom text on the left of the header
+\fancyhead[C]{\thepage} % Current page no
+\fancyhead[R]{\sffamily Jonathan Kasongo}  % Custom text in the center of the header
+
+\hypersetup{
+  colorlinks = true,
+  urlcolor   = blue,
+  linkcolor  = blue,
+}
+
+% Make all headings sans-serif
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{\sffamily\normalsize\bfseries}{\theparagraph}{1em}{}
+
+% Make title sans-serif
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        {\sffamily\bfseries\LARGE \@title} \\[1em]
+        {\sffamily\large \@author} \\[1em]
+        {\sffamily\large \thedate} \\[1em]
+    \end{center}
+    \vspace{1em}
+}
+\makeatother
+
+\title{A Solution to MA312}
+\author{Jonathan Kasongo}
+
+\begin{document}
+\maketitle
+
+\textit{Problem statement: Determine all pairs of integers $(x,y)$ that satisfy $1+x+x^2+x^3+x^4 = y^4$} \vspace{0.2cm}
+
+\noindent
+{\sffamily \textbf{Claim:} The only solutions are $(0, -1), (0, 1), (-1, 1)$ and $(-1, -1)$.}
+
+\noindent
+Notice that if $y$ satisfies the equation then so does $-y$ since $y^4 = (-y)^4$. Reduce modulo 2 to show that
+
+$$
+4x + 1 \equiv 1 \equiv y \ (\text{mod} \ 2)
+$$
+
+\noindent
+So $y$ must be odd. Put $y = 2m + 1$ for some integer $m$. Then,
+
+$$
+1+x+x^2+x^3+x^4 = 16m^4 + 32m^3 + 24m^2 + 8m + 1
+$$
+
+\noindent
+After some routine algebra we get,
+
+$$
+x(1+x+x^2+x^3) = m(16m^3 + 32m^2 + 24m + 8)
+$$
+
+\noindent
+Now since $m \mid x$ and $x \mid m$, we can conclude that $x = \pm m$.
+
+\noindent
+If $x=m$, then substituting and rearranging gives us,
+
+$$
+x(15x^3 + 31x^2 + 23x+ 7) = 0
+$$
+
+\noindent
+Clearly $x=0$ is a solution with $y = \pm 1$. Then we want to know if that cubic has anymore integer solutions. It is a consequence of Vieta's formulae, that if a polynomial has integer roots they
+must divide the constant term. After checking we find that $x=-1$ with $y=\pm 1$ is the only other solution here.
+
+\noindent
+Now if $x=-m$, we end up with,
+
+$$
+x(15x^3 -33x^2 + 23x - 9) = 0
+$$
+
+\noindent
+We now use the same strategy to find that the only integer root here is $x=0$.
+
+\vspace{0.5cm}
+
+\noindent
+So finally we conclude that the only solutions are indeed $(x, y) = (0, \pm 1), (-1, \pm 1)$.
+
+\end{document}
