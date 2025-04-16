@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{STEP 2 2017/4 --- A lesson in motivation}
+
+\begin{document}
+\maketitle
+
+The Schwarz inequality is
+$$
+\left(\int_a^b \mathrm{f}(x) \mathrm{g}(x) \ \mathrm{d} x\right)^2 \leqslant\left(\int_a^b(\mathrm{f}(x))^2 \ \mathrm{d} x\right)\left(\int_a^b(\mathrm{g}(x))^2 \ \mathrm{d} x\right)
+$$
+
+(i) By setting $\mathrm{f}(x)=1$ in the inequality above, and choosing $\mathrm{g}(x), a$ and $b$ suitably, show that for $t>0$,
+$$
+\frac{\mathrm{e}^t-1}{\mathrm{e}^t+1} \leqslant \frac{t}{2}
+$$
+
+{\color{gray} \hrule}
+\vspace{0.4cm}
+
+{\sffamily Comments:}
+
+This is a nicely crafted question on the integral form of the \textit{Cauchy-Schwarz inequality}. If you look at the solution right away you may think that the problem isn't too
+challenging, but behind the short statement lies an unforgiving trap. \\
+
+My first instinct was to notice the similarity of the left hand side to the formula for $\tanh(x)$, and perhaps use this or some variation of the hyperbolic tan as my
+$\mathrm{g}(x)$. \\
+
+However if you try to work out the details of this approach yourself, you too will see that the hyperbolic tangent leads to nothing but a dead end. Perhaps the inequality was
+written that way on purpose. \\
+
+After falling for the $\tanh(x)$ trap and wasting around an hour and a half I found the elegant intended (probably) solution. \\
+
+{\color{gray} \hrule}
+\vspace{0.4cm}
+
+{\sffamily Solution:}
+
+It suffices to show that,
+
+\begin{align*}
+2(e^t - 1) &\leq t(e^t + 1) \\
+e^t - 1 &\leq \frac{t}{2}(e^t + 1) \\
+(e^t - 1)^2 &\leq \frac{t}{2}(e^{2t} - 1) \\
+\end{align*}
+
+Now pick $a=0$, $b=t/2$ and $\mathrm{g}(x)=e^{2x}$. The Cauchy-Schwarz inequality then tells us that
+
+$$
+\left(\int^{t/2}_{0} e^{2x} \ \text{d}x \right)^2 \leq \frac{t}{2} \int^{t/2}_{0} e^{4x} \ \text{d}x
+$$
+
+giving $(e^t - 1)^2 \leq \frac{t}{2}(e^{2t} - 1)$ as desired. $\blacksquare$
+
+\end{document}
