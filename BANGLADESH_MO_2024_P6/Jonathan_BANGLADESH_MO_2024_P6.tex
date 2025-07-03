@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Bangladesh Math Olympiad Higher Secondary 2024 --- P6/10 }
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Bangladesh Math Olympiad Higher Secondary 2024 --- P6/10 }
+Find all polynomials $P(x)$ for which there exists a sequence
+$a_1, a_2, a_3, ...$ of real numbers such that
+
+$$
+a_m + a_n = P(mn)
+$$
+
+for any positive integers $m,n$.
+\end{problem}
+
+\begin{solution}{Solution}
+Set $P(x) := \sum_{r=1}^N b_r x^r$ for some $b_r \in \mathbb{C}$. Put
+$m=n=1$ to see that $P(1) = \sum_{r=1}^N b_r = 2a_1$. \\
+
+Now put $n=1$ to see
+that $a_m = P(m) - a_1 = \left( \sum_{r=1}^N b_r m^r \right) - a_1 = \sum_{r=1}^N b_r (m^r - 1/2)$. \\
+
+So now we can re-write the equation given in the problem statement as
+
+\[
+\begin{aligned}
+P(m) + P(n) - 2a_1 &= P(mn)\\
+\frac{1}{2}( P(m) + P(n) - P(mn) ) &= a_1\\
+\end{aligned}
+\]
+
+So now we can re-write $a_m$,
+
+\[
+\begin{aligned}
+a_m &= P(m) - \frac{1}{2} \left[ P(mn) - P(m) - P(n) \right]\\
+a_m &= \frac{3}{2} P(m) + \frac{1}{2} P(n) - \frac{1}{2} P(mn)\\
+\end{aligned}
+\]
+
+Now substitute this new definition into the equation given in the problem
+statement,
+
+\[
+\begin{aligned}
+P(mn) &= \frac{3}{2} \left[ P(m) + P(n) \right] +
+\frac{1}{2} \left[ P(n) + P(m) \right] - P(mn)\\
+2P(mn) &= 2\left[ P(m) + P(n) \right]
+\end{aligned}
+\]
+
+So the polynomial $P$ obeys the equation $P(mn) = P(m)+P(n)$ for
+$m,n \in \mathbb{N}$. For $m=n$ that is $P\left(m^2\right) = 2P(m)$.
+But now recall that $\deg P(x) = N$ so we must have $2N = N$, but that
+forces $N=0$. Hence $P(x) = c$ for some constant $c$. We note that
+$c \in \mathbb{R}$ because $P(mn) = c = a_m + a_n \in \mathbb{R}$. \\
+
+Finally we conclude that any $c$ works because there exists a sequence
+$\frac{1}{2}c = a_1 = a_2 = \cdots$ such that the desired condition is
+always fulfilled $\frac{1}{2}c + \frac{1}{2}c = P(mn) = c \; \blacksquare$.
+\end{solution}
+\newpage
+
+Well that was my solution, but I then came across this much nicer solution,
+\begin{solution}{Alternative solution}
+Put $m=n$ to find that $2a_m = P\left(m^2\right)$. So now we can write
+
+$$
+a_m + a_n = \frac{1}{2} \left( P(m^2) + P(n^2) \right) = P(mn)
+$$
+
+Let $N := \deg P(x)$ and the equation we have above forces $2N = N$, so
+$N=0$. You can then check that all constants $c\in\mathbb{R}$ work like in the
+other solution.
+\end{solution}
+\end{document}

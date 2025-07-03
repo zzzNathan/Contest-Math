@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{POTD 1842}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{POTD 1842}
+Consider complex polynomials $P(x)=x^n+a_1 x^{n-1}+\cdots+a_n$ with zeroes
+$x_1, \ldots, x_n$, and $Q(x)=x^n+b_1 x^{n-1}+\cdots+b_n$ with zeroes
+$x_1^2, \ldots, x_n^2$. Prove that if $a_1+a_3+a_5+\ldots$ and
+$a_2+a_4+a_6+\ldots$ are real numbers, then $b_1+b_2+\cdots+b_n$ is also
+real.
+\end{problem}
+
+\begin{solution}{Solution}
+We write down $P(x)$ and $Q(x)$.
+
+$$
+P(x) = \prod_{r=1}^n (x-x_r) \; \; \; \; \; \; \;
+Q(x) = \prod_{r=1}^n (x-x_r^2)
+$$
+
+Now if we consider $Q(x^2)$ we can use difference of 2 squares to relate
+$Q(x)$ and $P(x)$ namely,
+
+$$
+Q(x^2) = \prod_{r=1}^n (x^2 - x_r^2) = \prod_{r=1}^n (x-x_r)(x+x_r) = P(x)P(-x)
+$$
+
+Now we can deduce a relationship between the sequence $(b_i)_{i=1}^n$ and
+$(a_i)_{i=1}^n$. Precisely we find, using
+$P(x) = x^n+a_1 x^{n-1}+\cdots+a_n$ and
+$Q(x)=x^n+b_1 x^{n-1}+\cdots+b_n$
+
+$$
+Q(1) - 1 = \sum_{r=1}^n b_r = \left[ 1 + \sum_{r=1}^n a_r \right]
+\left[ (-1)^n + \sum_{r=1}^n (-1)^{n-r} a_r \right] -1
+$$
+
+That is,
+
+$$
+\sum_{r=1}^n b_r = (-1)^n + \sum_{r=1}^n (-1)^{n-r} a_r +
+(-1)^n \sum_{r=1}^n a_r + \left[ \sum_{r=1}^n a_r \right]
+\left[ \sum_{j=1}^{n} (-1)^{n-j} a_j \right] -1
+$$
+
+We finish the problem by analysing the 2 cases: \\
+
+1. When $n$ is even,
+
+\[
+\begin{aligned}
+\sum_{r=1}^n b_r &= \sum_{r=1}^n (-1)^r a_r + \sum_{r=1}^n a_r +
+\left[ \sum_{r=1}^n a_r \right]
+\left[ \sum_{j=1}^{n} (-1)^{j} a_j \right]\\
+&= 2(a_2 + a_4 + \cdots + a_n) + (a_1 + a_2 + \cdots + a_n)(-a_1 + a_2 - \cdots + a_n)
+\end{aligned}
+\]
+
+Now since the sum of the even and the sum of the odd indexed terms are
+both real, and the set of real numbers is closed under addition we
+conclude that $\sum_{r=1}^n b_r$ must be real.\\
+
+2. When $n$ is odd,
+
+\[
+\begin{aligned}
+\sum_{r=1}^n b_r &= -2 - \sum_{r=1}^n (-1)^r a_r - \sum_{r=1}^n a_r -
+\left[ \sum_{r=1}^n a_r \right] \left[ \sum_{j=1}^n (-1)^j a_j \right]\\
+&= -2 - 2(a_2 + a_4 + \cdots + a_{n-1}) -
+(a_1 + a_2 + \cdots + a_n)(-a_1 + a_2 - \cdots - a_n)
+\end{aligned}
+\]
+
+which shows that $\sum_{r=1}^n b_r$ must be real, for the same reason.\\
+
+\end{solution}
+
+\end{document}

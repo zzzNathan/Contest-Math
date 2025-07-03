@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\title{Canadian Math Olymipad 2015 --- P1/5}
+\author{Jonathan Kasongo}
+
+\begin{document}
+\maketitle
+\begin{problem}{Canadian Math Olymipad 2015 --- P1/5}
+Find all functions $f : \mathbb{N} \rightarrow \mathbb{N}$ such that for  all $n \in \mathbb{N}$.
+
+$$
+(n-1)^2 < f(n)f(f(n)) < n^2 + n
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+With $(n-1)^2 < f(n)f(f(n)) < n(n+1)$, we must have
+
+$$
+\max \{ f(n), f(f(n)) \} > n-1
+$$
+
+This is because if we didn't have this condition then, we would
+have $f(n), f(f(n)) \leq n-1$ and $f(n)f(f(n)) \leq (n-1)^2$
+which gives a contradiction. However that means that,
+
+$$
+\min \{ f(n), f(f(n)) \} < n+1
+$$
+
+because we have already established that one of those factors
+is at least $n$ and we must have their product be $< n(n+1)$.
+\\
+
+We can re-write our condition as
+
+$$
+(n-1)^2 < \min \{ f(n), f(f(n)) \} \cdot \max \{ f(n), f(f(n)) \} < n(n+1)
+$$
+
+and we can deduce both
+
+$$
+\frac{(n-1)^2}{\max \{ f(n), f(f(n)) \}} < \frac{(n-1)^2}{n-1} = n-1 < \min \{ f(n), f(f(n)) \} < n+1
+$$
+
+and (using $\min \{ f(n), f(f(n)) \} \leq n$)
+
+$$
+n-1 < \max \{ f(n), f(f(n)) \} < \frac{n(n+1)}{\min \{ f(n), f(f(n)) \}} \leq \frac{n(n+1)}{n} = n+1
+$$
+
+But this forces both $f(n), f(f(n)) = n$. So the only function
+that works is $f(n) = n,\text{for} \; n \in \mathbb{N} \; \blacksquare$
+
+\end{solution}
+
+\end{document}

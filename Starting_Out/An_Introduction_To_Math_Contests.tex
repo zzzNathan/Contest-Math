@@ -1,0 +1,451 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{An introduction to Math Contests}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+\textit{Who is this for, and what is this document?} ---
+If you are reading this document then you clearly have an interest in math
+and someone saw that you have potential to study mathematics at university.
+This document is aimed towards talented maths students at HAPU who are
+interested in improving their problem solving skills. It contains advice and
+a selection of exemplar problems, complete with hints and explained solutions.
+If you have happened to qualify for BMO1 in the past then you dont need to
+bother reading any of this, the advice will all be stuff you already know.
+\vspace{0.2cm}
+
+I remember when I was first made aware of the landscape of math contests,
+at this point I was 16 and in the start of year 12. I had some experience
+problem solving before particularly on \url{https://codeforces.com} but
+after sitting the UKMT Senior Maths Challenge I realised that I could
+definitely improve a ton. I was then made aware of the reason why we sit
+these UKMT Challenges, the system is different for each country, but for
+the UK,
+
+\begin{enumerate}
+\item $\sim$100,000 sit the Senior Maths Challenge
+\item The top $\sim$1,000 qualify to sit the British Mathematical Olympiad, Round 1
+\item The top $\sim$100 qualify to sit the British Mathematical Olympiad, Round 2
+\item The top $\sim$24 are invited to the International Mathematical Olympiad training camp at Trinity College, Cambridge
+\item These students sit a team selection test after their training camp and the top 6 are selected to represent the UK at the International Mathematics Olympiad
+\end{enumerate}
+
+If you make it to one of the last 2 stages you are almost guaranteed a place at a top 5 university (MIT, Cambridge, Oxford,...).
+If you make it to stage 2 or 3 then you have a significant advantage over others in getting into a top 15 university. However I
+must warn you it is \textbf{very} difficult to even make the jump from step 1 to step 2, and each subsequent jump is harder than the
+last. If you are someone who gives up easily, then you may as well stop reading now. Even if you are the best in your maths class you
+are likely nowhere even close to the skill of the students that get to stages
+2,3 and onwards, (\textit{I am speaking from experience}).\\
+
+The idea of a world championship of mathematics (the International Math Olympiad) is particularly motivating for a student training their problem solving, however the
+reality is that you most likely won't get there, so instead I encourage you to enjoy problem solving not for the sake of a competition or for prestige but because you
+find it fun.
+
+\newpage
+
+\section{Advice}
+
+The first thing to note is that Contest math $\neq$ School math. The 2 aren't even comparable. School math is more about showing
+that you know how to apply the relevant mathematical techniques to a given context, Contest math is about noticing the underlying structure of a problem and then using
+that insight to prove a result. In general Contest math is much harder than School math and requires a lot more creativity. \vspace{0.2cm}
+
+To excel in Contest math, you need a few character traits,
+
+\begin{enumerate}
+\item You have to enjoy solving problems
+\item You have to be dedicated enough to spend large amounts of time thinking
+\item You have to be stubborn, you dont move on until you've \textit{really} understood how to solve a problem
+\end{enumerate}
+
+It might be weird to adjust at first because in school math you are encouraged to not spend over 10 minutes per problem you encounter, whilst in contest math you want to
+typically want to spend an hour $\pm$ 30 minutes per problem on average. However you shouldn't concern yourself with time management if you are a beginner to math
+olympiads, rather you'd want to focus purely on understanding and solving the problems. Moreover it is tempting for a beginner to try and look for a set algorithm that
+allows them to solve a certain kind of problem (For example solving $x^2 - x - 1$). In contest maths learning any set techniques that you think will allow you to solve
+problems of type $A$ is useless. Each problem is designed to be unlike anything you've ever seen before, so you should try to rely not on your ability to apply a
+practised set of steps but rather on your creativity and your ability to correctly formalise the ideas you have. \vspace{0.2cm}
+
+One great oppurtunity for math enrichment is to apply to the Winchester Maths Summer School program, it typically runs during the HAPU Work experience week, and is open to Year 12s.
+I attended in 2024 and I can say it was a great experience, you can register here \url{https://www.winchestercollege.org/community/educational-partnerships/enrichment-opportunities/winchester-maths-summer-school}
+\vspace{0.2cm}
+
+Im not going to bore you with the classical advice (Check small cases, experiment with the problem, ...) you can find this online anywhere, for example \url{http://markan.net/mathcontests.html} instead I'll provide a list of resources so that you can study
+in a way that works for you. However at the end I will mention one specific resource that I \textit{personally} think is the absolute best for improving your math.
+
+Im not a huge fan of recommending books to read because I'll usually give up reading it after a few days. However the 2 books that were an exception for me were,
+
+\begin{enumerate}
+\item "Calculus, Early Transcendentals" by James Stewart (Try get the $6^{\text{th}}$ edition or a newer revision if it exists)
+\item "Inequalities Theorems, Techniques and Selected Problems" by Zdravko Cvetkovski
+\end{enumerate}
+
+\noindent
+You can get these books for free if you know where to look (\url{https://kmr.annas-archive.org/}). Now, here's that list of resources
+
+\begin{itemize}
+\item UKMT Contests \url{https://ukmt.org.uk/}
+\item Art of Problem Solving (AOPS) \url{https://artofproblemsolving.com/}
+\item Math Stack Exchange (MSE) \url{https://math.stackexchange.com/}
+\item Crux Mathematicorum \url{https://cms.math.ca/publications/crux/}
+\item Mathematical Excalibur \url{https://www.math.hkust.edu.hk/excalibur/}
+\item Michael Penn \url{https://www.youtube.com/@MichaelPennMath}
+\item Princeton University Mathematics Competition \url{https://pumac.princeton.edu/}
+\item Harvard-MIT Math tournament \url{https://www.hmmt.org/}
+\end{itemize}
+
+Finally the one resource that I found to help me improve the fastest was the Math Olympiads Discords server (MODS). You can join it here \url{https://discord.com/invite/94UnnAG}. Go to the \texttt{\#potd-grinders} channel and you can use their bot to find problems around you skill level,
+for example the command \texttt{-search 1 2 a} will give you a random algebra problem from difficulty 1-2. (\texttt{a}=Algebra, \texttt{c}=Combinatorics,
+\texttt{n}=Number Theory, \texttt{g}=Geometry). Here's a more detailed guide \url{https://drive.google.com/file/d/1madL1IZWJLJl4XXUblo0_kWOwrpdUjq8/view}.
+If you don't understand how to solve a problem or are just completely stuck then you can ask ChatGPT with the thinking
+mode on (It still makes mistakes from time to time though so be careful). Here's what
+those difficulty numbers correspond to
+
+\begin{center}
+\begin{tblr}{
+  colspec={|c|c|},
+  hlines,
+  vlines,
+  colsep=8pt,
+  rowsep=4pt,
+  cell{1}{1} = {c=2}{c}, % Merge header cells
+}
+{\sffamily \textbf{DIFFICULTY (approximate)}} \\
+{\sffamily \textbf{Range}} & {\sffamily \textbf{Contest Level}} \\
+1–4 & BMO1 \\
+2–6 & AMO (Australia) \\
+3–7 & BMO2 \\
+4–8 & EGMO \\
+4–10 & APMO \\
+6–11 & USAMO \\
+5–7 & IMO 1/4 \\
+7–9 & IMO 2/5 \\
+9–11 & IMO 3/6 \\
+\end{tblr}
+\end{center}
+
+\newpage
+
+\section{Exemplar problems}
+
+I have provided hints and full solutions for each problem, and I found each of these problems on that discord I mentioned before. The solutions that I provided aren't
+the \textit{only} way to solve each problem, you may very well find a different method that leads to the same answer. Each problem is to be solved without
+the use of a calculator.
+
+These problems are far more difficult than the questions you will normally get in a GCSE or A-Level math class. Try your best to try each problem for at least 1 hour
+before looking at hints, and at least 1 hour 30 minutes before looking at the solution!
+
+\begin{problem}{(Problem 1) \textit{Contest} --- 1996 British Mathematical Olympiad Round 1, P2 of 5}
+A function $f$ is defined over the set of all positive integers and satisfies
+$$
+f(1)=1996
+$$
+and
+$$
+f(1)+f(2)+\cdots+f(n)=n^2 f(n) \quad \text { for all } n>1
+$$
+
+Calculate the exact value of $f(1996)$.
+\vspace{0.5cm}
+\end{problem}
+
+\vspace{-0.5cm}
+\begin{problem}{(Problem 2) \textit{Exam} --- 2006 Kyoto University Entrance Exam}
+\begin{center}
+Show that $\tan(1^{\circ})$ is irrational.
+\end{center}
+\vspace{0.5cm}
+\end{problem}
+
+\vspace{-0.5cm}
+\begin{problem}{(Problem 3) \textit{Contest} --- 2023 Indian Olympiad Qualifier in Mathematics, P4 of 30}
+Let $x$, $y$ be positive integers such that
+
+$$
+x^4 = (x - 1)(y^3 - 23) - 1
+$$
+
+Find the maximum possible value of $x+y$.
+\vspace{0.5cm}
+\end{problem}
+
+\vspace{-0.5cm}
+\begin{problem}{(Problem 4) \textit{Contest} --- 2023 British Mathematical Olympiad Round 1, P1 of 6}
+An unreliable typist can guarantee that when they try to type a word with
+different letters, every letter of the word will appear exactly once in what
+they type, and each letter will occur at most one letter late (though it may
+occur more than one letter early).
+
+Thus, when trying to type MATHS, the
+typist may type MATHS, MTAHS or TMASH, but not ATMSH. \\
+
+Determine, with proof, the number of possible spellings of OLYMPIADS
+that might be typed.
+\vspace{0.5cm}
+\end{problem}
+
+\vspace{-0.5cm}
+\begin{problem}{(Problem 5) \textit{Contest} --- 2017 European Mathematical Cup Senior Round, P1 of 4}
+Find all functions $f : \mathbb{N} \rightarrow \mathbb{N}$ such that the inequality
+
+$$
+f(x) + yf(f(x)) \leq x(1 + f(y))
+$$
+
+holds for all positive integers $x, y$.
+\end{problem}
+
+\newpage
+
+\section{Hints to exemplar problems}
+
+\begin{hint}{Hint to problem (1)}
+ Relate the $n$ and $n+1$ cases.
+\end{hint}
+
+\begin{hint}{Hint to problem (2)}
+There are many ways to solve this problem, but one solution involves using the $\tan$ double angle formulae.
+\end{hint}
+
+\begin{hint}{Hint to problem (3)}
+You should make yourself aware of the identity $x^n - 1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$.
+\end{hint}
+
+\begin{hint}{Hint to problem (4)}
+Try and actually explicitly compute the number of possible spellings for a smaller word, as you do this list out the set of positions each character can move to and
+cross out the positions that have already been used. You should see a common pattern reveal itself.
+\end{hint}
+
+\begin{hint}{Hint to problem (5)}
+What happens when $x=1$, what about when we set one variable to be $f(\text{the other variable})$?
+\end{hint}
+\newpage
+
+\section{Solutions to exemplar problems}
+
+\begin{solution}{Problem 1 Solution}
+A common trick with these sequence relation problems is to
+observe a relationship between the $n$ and $n+1$ case. As one gets more
+experience solving common patterns tend to reveal themselves and you will
+be able to solve these kinds of problems quicker. \vspace{0.2cm}
+
+Observe the following,
+
+\[
+\begin{aligned}
+\underbrace{f(1) + f(2) + \cdots + f(n)}_{\text{This part is exactly } n^2 f(n)\text{.}} + f(n+1) &= (n+1)^2 f(n+1) \\
+n^2 f(n) + f(n+1) &= (n+1)^2 f(n+1) \\
+n^2 f(n) &= [(n+1)^2 - 1] f(n+1) \\
+n f(n) &= (n+2) f(n+1) \\
+\end{aligned}
+\]
+
+We have found a direct relationship between $f(n+1)$ and $f(n)$. Namely
+
+$$
+f(n+1) = \frac{n}{n+2} f(n)
+$$
+
+Now, its pretty easy to follow the pattern,
+
+\[
+\begin{aligned}
+f(n+1) &= \frac{n}{n+2} f(n) \\
+       &= \frac{n}{n+2} \cdot \frac{n-1}{n+1} f(n-1) \\
+       &= \frac{n}{n+2} \cdot \frac{n-1}{n+1} \cdot \frac{n-2}{n} f(n-2) \\
+       &\;\, \vdots \\
+       &= \frac{\cancel{n}}{n+2} \cdot \frac{\cancel{n-1}}{n+1} \cdot \frac{\cancel{n-2}}{\cancel{n}} \cdots \frac{\cancel{3}}{\cancel{5}} \cdot \frac{2}{\cancel{4}} \cdot \frac{1}{\cancel{3}} f(1) \\
+       &= \frac{2}{(n+1)(n+2)} \cdot 1996 \\
+\end{aligned}
+\]
+
+So $f(1996) = \frac{2}{1996 \cdot 1997} \cdot 1996 = \boxed{\frac{2}{1997}} \ \blacksquare$
+\end{solution}
+
+\vspace{0.7cm}
+
+\begin{solution}{Problem 2 Solution}
+Like mentioned in the hint, there are many ways to show that $\tan(1^{\circ})$ is irrational. Here we present perhaps the "nicest" solution, I found this solution on
+the Math Stack Exchange. \vspace{0.2cm}
+
+Let \( t_k = \tan(k^\circ) \) for positive integer \( k \).
+
+\vspace{1em}
+
+Please note that for \( k < 45 \), \( 0 < t_k < 1 \implies 1 - t_k^2 \neq 0 \).
+
+\vspace{1em}
+
+Consider what happens if \( t_1 \) is rational. By repeated application of the double-angle formula for tangent, we have:
+
+\[
+t_1 \in \mathbb{Q} \implies
+t_2 = \frac{2t_1}{1 - t_1^2} \in \mathbb{Q} \implies
+t_4 = \frac{2t_2}{1 - t_2^2} \in \mathbb{Q}
+\]
+\[
+\implies t_8 = \frac{2t_4}{1 - t_4^2} \in \mathbb{Q} \implies
+t_{16} = \frac{2t_8}{1 - t_8^2} \in \mathbb{Q} \implies
+t_{32} = \frac{2t_{16}}{1 - t_{16}^2} \in \mathbb{Q}
+\]
+
+\vspace{1em}
+
+Recall
+\[
+\tan(\theta - \phi) = \frac{\tan \theta - \tan \phi}{1 + \tan \theta \tan \phi}
+\]
+This implies
+\[
+t_{30} = \frac{t_{32} - t_2}{1 + t_{32} t_2} \in \mathbb{Q}
+\]
+Since \( t_{30} = \tan(30^\circ) = \frac{1}{\sqrt{3}} \) is irrational, this is impossible.
+
+\vspace{1em}
+
+As a result, \( \tan(1^\circ) = t_1 \) is irrational.
+$\blacksquare$
+\end{solution}
+
+\vspace{0.7cm}
+
+\begin{solution}{Solution to problem 3}
+You should make yourself aware of the identity $x^n - 1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$.
+The problem is practically begging you to minus 1 of both sides then factor out $(x-1)$.
+\vspace{0.2cm}
+
+We first prove a key fact: $x^n - 1 = (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1)$ for positive integers $n$.
+You can use polynomial division to see that this is true for explicit values of $n$. Lets look more closely at the expression
+
+\[
+\begin{aligned}
+&= (x-1)(x^{n-1} + x^{n-2} + \cdots + x + 1) \\
+&= (x^n + x^{n-1} + \cdots + x^2 + x) - (x^{n-1} + x^{n-2} + \cdots + x - 1) \\
+&= (x^n + \cancel{x^{n-1}} + \cdots + \cancel{x^2} + \cancel{x}) - (\cancel{x^{n-1}} + \cancel{x^{n-2}} + \cdots + \cancel{x} - 1) \\
+&= x^n - 1\\
+\end{aligned}
+\]
+
+as desired. \vspace{0.2cm}
+
+Now take away 1 from both sides in the problem statement. We have
+
+\[
+\begin{aligned}
+x^4-1 &= (x-1)(y^3 - 23) - 2\\
+(x-1)(x^3 + x^2 + x + 1) &= (x-1)(y^3 - 23) - 2\\
+(x-1)(x^3 + x^2 + x + 1 - y^3 + 23) &= -2\\
+(1-x)(x^3 + x^2 + x + 24 - y^3) &= 2\\
+\end{aligned}
+\]
+
+We have 2 integer quantities that multiply to be 2. That means the
+terms in the brackets must be one of $(\pm 2, \pm1)$ or $(\pm 1, \pm 2)$.
+After checking each individual case you can conclude that $1-x = -2 \iff x=3$
+is the only case where both $x,y$ are positive integers. More precisely if
+$x=3$ then $y^3 = 64 \iff y = 4$, so $\boxed{x+y = 7}$  $\blacksquare$
+\end{solution}
+
+\vspace{0.7cm}
+\newpage
+\begin{solution}{Problem 4 Solution}
+Once you actually work out a smaller case the pattern that is the key to unlocking this problem becomes obvious.
+\vspace{0.2cm}
+
+Lets look at the problem when we have, say 5 characters.
+
+\Large
+\[
+\begin{array}{ccccc}
+\texttt{A} & \texttt{B} & \texttt{C} & \texttt{D} & \texttt{E} \\
+1^{\text{st}} &  2^{\text{nd}} & 3^{\text{rd}} & 4^{\text{th}} & 5^{\text{th}}\\
+\end{array}
+\]
+
+\normalsize
+
+Now observe the following table,
+\vspace{0.1cm}
+
+{
+\sffamily
+\begin{tblr}{
+  colspec={lX},
+}
+Character & Where can it move to? \\
+\texttt{A} & $\{1, 2\}$ \\
+\texttt{B} & $\{1, 2, 3\}$ \\
+\texttt{C} & $\{1, 2, 3, 4\}$ \\
+\texttt{D} & $\{1, 2, 3, 4, 5\}$ \\
+\texttt{E} & $\{1, 2, 3, 4, 5\}$ \\
+\end{tblr}
+}
+
+\vspace{0.2cm}
+For the \texttt{A} we have 2 choices of where it can move to $\{1, 2\}$. Let's say it moves to position 2. \\
+
+For the \texttt{B} we have 2 choices of where it can move to $\{1, 3\}$. Let's say it moves to position 3. \\
+
+For the \texttt{C} we have 2 choices of where it can move to $\{1, 4\}$. Let's say it moves to position 1. \\
+
+For the \texttt{D} we have 2 choices of where it can move to $\{4, 5\}$. Let's say it moves to position 4. \\
+
+For the \texttt{E} we have 1 choices of where it can move to $\{5\}$. It must move to position 5. \\
+
+\textit{Do you see the pattern now?} Each time there are 2 choices for the position of the character except for the last character which only has 1 choice.
+So for the 5 character case our answer is $2\times 2\times 2\times 2 \times 1 = 2^4$.
+It seems pretty natural to guess that for $n$ characters the number of spellings the typist can produce is $2^{n-1}$. Let's prove our guess.\\
+
+Call the $n$ characters
+$c_1, c_2, ..., c_n$ respectively. The character $c_i$ can move from position 1 through to position $i+1$, where $1\leq i<n$. There are $i+1$ choices for where
+the $i^\text{th}$ character can go.
+There were $i-1$ characters before $c_i$, and we know that each of these $i-1$ characters would have used a position from the set $P_i = \{1,2,...,i\}$.\\
+
+Let $P_i^{'}$ be the set of available positions from $P_i$ that haven't been used by any of the $i-1$ previous characters. Then $\left| P_i^{'} \right| = i - (i-1) = 1$,
+where $\left|A\right|$ denotes the size of a set $A$. Then by defintion the character $c_i$ can go move to a character in the set $P_i^{'} \cup \{i+1\}$. There are 2
+elements in this set. \\
+
+So we have shown that for all $1 \leq i < n$ the character $c_i$ has 2 possible positions it can move to. We note that the character $c_n$ can move to any location in
+the word by definition, so once the $n-1$ characters $c_1, c_2, ..., c_{n-1}$ have been moved to a position there is one free slot for $c_n$ to move into. Thus the number
+of possible spellings from the unreliable typist is $2^{n-1}$ where $n$ is the length of the word, and all characters in the word are pairwise distinct.
+So for the word "OLYMPIADS" there are $2^8 = \boxed{256}$ possible spellings. $\blacksquare$
+\end{solution}
+\vspace{0.7cm}
+
+\begin{solution}{Problem 5 Solution}
+If you just plug in different special cases the solution eventually pops out. \vspace{0.2cm}
+
+Set $x=1$ and let $f(1) = \alpha$ the inequality will become,
+
+\[
+\begin{aligned}
+\alpha + yf(\alpha) &\leq 1 + f(y)\\
+yf(\alpha) + (\alpha - 1) &\leq f(y)\\
+\end{aligned}
+\]
+
+But since $f : \mathbb{N} \rightarrow \mathbb{N}$ we know that $f$ is always greater than or equal to 1, so $f(1) = \alpha \geq 1$ and $f(\alpha) \geq 1$. That means
+
+$$
+f(y) \geq yf(\alpha) + (\alpha - 1) \geq y
+$$
+
+Set $y = f(x)$. The inequality becomes,
+
+\[
+\begin{aligned}
+f(x) + f(x)f(f(x)) &\leq x + xf(f(x))\\
+f(x)[1 + f(f(x))] &\leq x[1 + f(f(x))]\\
+f(x) &\leq x\\
+\end{aligned}
+\]
+
+So we have $f(x) \leq x$ and $f(x) \geq x$. The only way both these inequalities can be satisfied simultaneously is by having $\boxed{f(x) = x}$ $\blacksquare$
+
+\end{solution}
+
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Cyprus IMO Team Selection Test 2018 --- P1/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Cyprus IMO Team Selection Test 2018 --- P1/5}
+Determine all integers $n \geq 2$ for which the number 11111 in base $n$
+is a perfect square.
+\end{problem}
+
+\begin{solution}{Solution}
+Recalling the definition of base-$n$ numbers the problem is asking us to
+find solutions to
+
+$$
+(11111)_n = n^4 + n^3 + n^2 + n + 1 = m^2
+$$
+
+for some integer $m$. Reducing that equation modulo $n$ yields
+$m^2 \equiv 1 \; (\text{mod} \;  n)$. But by Euler's theorem
+$\varphi(n) \mid 2$, where $\varphi(n)$ is Euler's totient function.
+That means $\varphi(n) \in \{1, 2\}$, so $n \in \{2, 3\}$. Now simply
+checking both cases shows that only $n=3$ works where
+$(11111)_3 = 121 = 11^2$.
+
+
+\end{solution}
+\end{document}
