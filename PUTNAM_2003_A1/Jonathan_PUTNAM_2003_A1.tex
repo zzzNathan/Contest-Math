@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Putnam 2003 --- A1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Putnam 2003 --- A1}
+Let $n$ be a fixed positive integer. How many ways are there to
+write $n$ as a sum of positive integers,
+
+$$
+n = a_1 + a_2 + \cdots + a_k
+$$
+
+with $k$ an arbitrary positive integer and
+$a_1 \leq a_2 \leq \cdots \leq a_k \leq a_1 + 1$? For example, with $n=4$
+there are four ways: 4, 2+2, 1+1+2, 1+1+1+1.
+\end{problem}
+
+\begin{solution}{Solution}
+We say that we have represented $n$ \textit{nicely} if we have written
+$n = a_1 + a_2 + \cdots + a_k$, with $a_1, a_2, ...,a_k$ satisfying the
+conditions given in the problem statement.
+We claim that for a fixed positive integer $n$, there are $n$ ways to
+represent $n$ in the desired form. We can actually show a clever way to
+prove this fact inductively. \\
+
+The base case $n=1$ holds trivially. Now assume the claim holds for some
+$n=m$. There are $m$ ways to represent $m$ nicely. Now in each of these
+representations take $a_1$ and replace it with $a_1 + 1$. Every
+$(a_r)_{r=1}^k$ is still either $a_1$ or $a_1 + 1$ so this is a way to
+nicely represent $m+1$. The only representation that cannot be generated like this is
+
+$$m+1 = \underbrace{1+1+\cdots+1}_{m + 1 \; \text{repititions}}$$
+
+because this is the only representation, where you cannot take a different
+nicely represented number and replace $a_1$ with $a_1 + 1$, since that
+would imply that $a_1 + 1 = 1 \iff a_1 = 0$ which is impossible.\\
+
+So for the number $m+1$ we have shown that there are $m+1$ ways to
+represent it nicely, and now since we have the truth of $n=1$ and the
+truth of the $n=m$ statement implies the truth of the $n=m+1$ statement,
+the desired result is true for all positive integers $n$. $\blacksquare$
+\end{solution}
+
+\end{document}
