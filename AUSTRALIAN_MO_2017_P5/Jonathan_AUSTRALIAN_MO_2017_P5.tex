@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2017 --- P5/8}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2017 --- P5/8}
+Determine the number of positive integers $n$ less than 1000000 for which the sum
+$$
+\frac{1}{2 \times\lfloor\sqrt{1}\rfloor+1}+\frac{1}{2 \times\lfloor\sqrt{2}\rfloor+1}+\cdots+\frac{1}{2 \times\lfloor\sqrt{n}\rfloor+1}
+$$
+is an integer.
+\end{problem}
+
+\begin{solution}{Solution}
+We claim that the answer is $999$. Denote that sum in the problem
+statement by $S_n$. We first prove the following lemma,\\
+
+{\sffamily \bfseries Lemma:}
+\textit{$S_n$ is an integer if and only if $n$ is 1 less than a square.}\\
+
+{\sffamily \bfseries Proof:}
+The quantity $1/(2 \lfloor \sqrt{k} \rfloor + 1)$ is exactly $1/(2a+1)$
+for when $a^2 \leq k \leq (a + 1)^2 - 1$, for positive integers $k, a$,
+because once $k$ becomes $\geq (a + 1)^2$ the value of
+$\lfloor \sqrt{k} \rfloor \geq a+1$. In order to ensure that $S_n$ is an
+integer we have to have $2a + 1$ copies of the fraction
+$1/(2 \lfloor \sqrt{k} \rfloor + 1)$. There are
+$2a + 1$ integers in the range $[a^2, (a+1)^2 - 1]$, so for $S_n$ to be
+an integer all of the values of $k$ in that range
+$(a^2 \leq k \leq (a+1)^2 -1)$ have to occur in the summation. But clearly
+this can only happen if $n$ itself is 1 less than a square, since that last
+fraction must complete the collection of the final $2a + 1$ copies of the
+fraction $1/(2 \lfloor \sqrt{k} \rfloor + 1)$.\\
+
+So the problem reduces to counting the number of positive integer $n$ such
+that $n$ is 1 less than a square. $n$ must be one of the numbers
+$\{2^2-1, 3^2-1, 4^2-1,..., (10^3)^2 -1\}$. There are 999 elements in this
+set, this closes the problem. $\blacksquare$
+\end{solution}
+
+\end{document}
