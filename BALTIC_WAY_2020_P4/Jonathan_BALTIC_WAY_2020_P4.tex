@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Baltic Way 2020 --- P4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Baltic Way 2020 --- P4}
+Find all $f : \mathbb{R} \rightarrow \mathbb{R}$ such that
+$f(f(x) + x + y) = f(x + y) + yf(y)$.
+\end{problem}
+
+\begin{solution}{Solution}
+Let's call the equation in the problem statement ($*$).
+Clearly $f(x) = 0$ is a solution, we prove that it is the only
+one. We first prove the following claim,\\
+
+{\sffamily \bfseries Claim:} \textit{If $f$ isn't injective then $f(x) = 0$ is the only solution.}\\
+
+{\sffamily \bfseries Proof:} Assume that $f$ is not an injection. Then
+there must exist $a \neq b$ such that $f(a)=f(b)$, for some real $a, b$.
+Using ($*$) and the property $f(a)=f(b)$,
+we must have
+$f(f(a) + a + b) = f(a + b) + bf(b) = f(b + a) + af(a) = f(f(b) + b + a)$.
+But that means that we must have $af(a) = bf(b) \iff f(a)[a-b] = 0$. So
+either $a = b$ (which is impossible since we assumed $a\neq b$) or
+$f(a) = 0$. Now put $x = a$ into ($*$),
+$f(f(a) + a + y) = f(a + y) + yf(y)$. But since $f(a) = 0$ we have to
+have $yf(y) = 0$ for all real $y$, that is $f(y) = 0$ for all non-zero $y$.
+We now prove that $f(0) = 0$ by contradiction. Suppose that
+$f(0) = c \neq 0$. Then plugging in $x = y = 0$ into the equation in the
+problem statement gives $f(f(0)) = f(0) = c$, that is $f(c) = c \neq 0$,
+but we already know that only non-zero value in the image of $f(x)$ occurs
+at $x = 0$, so $c=0$ a contradiction. So we have shown that $f(x) = 0$ for
+all real $x$ under the assumption that $f$ isn't injective. This proves
+the lemma.\\
+
+Plug in $y = 0$ into ($*$) to find that $f(f(x) + x) = f(x)$.
+Now if $f$ were injective then we get that
+$f(f(x) + x) = f(x) \iff f(x) + x = x \iff f(x) = 0$. This finishes the
+proof that $f(x) = 0$ for all real $x$. $\blacksquare$
+\end{solution}
+
+\end{document}

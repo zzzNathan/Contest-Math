@@ -1,0 +1,131 @@
+\ProvidesPackage{math_template}
+
+% MUST GO FIRST
+\usepackage{tocloft}
+\usepackage{amsmath}  % Add this for align environment
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{fancyhdr}  % Add this for header customization
+\usepackage[
+    margin=1in,
+    includehead,
+    includefoot
+]{geometry}
+
+% Adjust TOC spacing
+\setlength{\cftbeforesecskip}{0.5ex}
+\setlength{\cftbeforesubsecskip}{0.5ex}
+\setlength{\cftbeforesubsubsecskip}{0.3ex}
+
+% Rest of the packages
+\usepackage{tabularray, xcolor, xurl, minted, newtxtext, newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage[most]{tcolorbox}
+\usepackage[backend=biber]{biblatex}
+
+% Colours
+\definecolor{lightgray}{gray}{0.963}
+\definecolor{googleblue}{HTML}{0000EE}
+
+% Headers and formatting
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{\sffamily\normalsize\bfseries}{\theparagraph}{1em}{}
+
+% TOC customization
+\renewcommand{\contentsname}{\sffamily\bfseries Contents}
+\renewcommand{\cftsecfont}{\sffamily\bfseries}
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries}
+
+% Header setup
+\pagestyle{fancy}
+\fancyhead[L]{\sffamily \bfseries Harris Academy Purley}
+\fancyhead[C]{\thepage}
+\fancyhead[R]{\sffamily \bfseries \HUGE Jonathan Kasongo}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks = true,
+  urlcolor   = googleblue,
+  linkcolor  = googleblue,
+}
+
+% Title formatting
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        {\sffamily\bfseries\LARGE \@title} \\[1em]
+        {\sffamily\large \@author} \\[1em]
+        {\sffamily\large \@date} \\[1em]
+    \end{center}
+    \vspace{1em}
+}
+\makeatother
+
+% Math stuff
+\tcbset{
+  problemstyle/.style={
+    enhanced,
+    breakable,
+    boxrule=0pt,
+    sharp corners,
+    colback=blue!5!white,
+    colframe=blue!5!white,
+    arc=2pt,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    borderline west={2pt}{0pt}{black!70!blue},
+    fonttitle=\sffamily\bfseries\color{black!70!blue},
+    title={#1}
+  }
+}
+
+\newtcolorbox{problem}[1]{problemstyle={#1}}
+
+\tcbset{
+  solutionstyle/.style={
+    enhanced,
+    breakable,
+    boxrule=0pt,
+    sharp corners,
+    colback=green!5!white,
+    colframe=green!5!white,
+    arc=2pt,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    borderline west={2pt}{0pt}{black!70!green},
+    fonttitle=\sffamily\bfseries\color{black!70!green},
+    title={#1}
+  }
+}
+
+\newtcolorbox{solution}[1]{solutionstyle={#1}}
+
+\tcbset{
+  hintstyle/.style={
+    enhanced,
+    breakable,
+    boxrule=0pt,
+    sharp corners,
+    colback=red!5!white,
+    colframe=red!5!white,
+    arc=2pt,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt,
+    borderline west={2pt}{0pt}{black!70!red},
+    fonttitle=\sffamily\bfseries\color{black!70!red},
+    title={#1}
+  }
+}
+
+\newtcolorbox{hint}[1]{hintstyle={#1}}
