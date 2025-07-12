@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2015 --- P6/8}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2015 --- P6/8}
+Determine the number of distinct real solutions of the equation \vspace{0.2cm}
+
+$(x-1)(x-3)(x-5) \cdots (x-2015) =
+ (x-2)(x-4)(x-6) \cdots (x-2014)$
+\end{problem}
+\begin{solution}{Solution}
+Let $L(x)$ be the left hand side and $R(x)$ be the right hand side.
+Define $f(x) = L(x) - R(x)$
+then we are interested in the number of distinct real roots of $f$.
+Since $\deg f = 1008$, $f(x)$ can't have more than 1008 distinct real
+roots. We will use the Intermediate Value Theorem to show that $f$ has
+exactly 1008 distinct real solutions.\\
+
+\textit{Lemma: For even integers $2 \leq k \leq 2014$, $f$ has a root in
+the open interval $(k, k + 1)$.}\\
+
+\textit{Proof:} We split the proof into 2 cases, when
+$k \equiv 0 \; (\text{mod} \; 4)$ and when
+$k \equiv 2 \; (\text{mod} \; 4)$.\\
+
+Case 1: $k \equiv 0 \; (\text{mod} \; 4)$. --- Since $k$ is even we know
+that $R(k) = 0$ when $2\leq k \leq 2014$. Then since $k$ is a multiple of
+4, there are $k/2$ odd positive integers less than $k$, because the
+$r^{\text{th}}$ positive odd integer less than $k$ satisfies,
+$2r - 1 \leq k \iff r \leq (k+1)/2 \iff r \leq \lfloor (k+1)/2 \rfloor = k/2$.
+Since $2 \mid k/2$, that means that an even number of brackets in the expression
+$(k-1)(k-3)(k-5) \cdots (k-2015)$ will be positive, and the remaining
+brackets will be negative. Since there are 1008 brackets, there will be an
+even number of brackets that are negative, meaning that $L(k)$ will be
+positive. So we have showed that $f(k) > 0$ is positive for
+$2 \leq k \leq 2014$. Now consider $f(k+1)$. Indeed $L(k+1) = 0$
+since $k+1$ is an odd integer in the range $[1, 2015]$. Now since $k+1$ is
+one more than a multiple of 4, there are $k/2$ even positive integers
+less than $k+1$, because there are $k/2 + 1$ odd positive integers less
+than $k+1$ due to the reasoning we used last time, and therefore there must
+be $(k+1) - (k/2 + 1) = k/2$ even positive integers less than $k+1$. But
+since $2 \mid k/2$ that means that an even number of brackets in the
+expression $((k+1)-2)((k+1)-4)((k+1)-6) \cdots ((k+1)-2014)$ will be positive. Now since
+there are 1007 brackets, we know that an odd number of brackets will be
+negative, therefore $R(k+1) < 0$ and $f(k+1) < 0$. Finally since $f$ is
+continous and $f$ exhibits a change in sign between inputs $k$ and $k + 1$
+we can use the Intermediate Value Theorem to conclude that $f$ has a root
+in the interval $(k, k+1)$.\\
+
+Case 2: $k \equiv 2 \; (\text{mod} \; 4)$. --- Indeed $R(k) = 0$ since
+$k$ is an even positive integer $\leq 2014$, and there
+are again $k/2$ odd positive integers less than $k$. But since $k$ isn't a
+multiple of 4, $k/2$ will be odd. Hence an odd number of brackets in the
+expression $(k-1)(k-3)(k-5) \cdots (k-2015)$ will be positive, now since
+there are 1008 brackets an odd number of brackets will be negative and so
+$L(k) < 0$ and $f(k) < 0$. Now we know that there are $k/2 + 1$ odd
+integers that are
+less than $k+1$, but since $k/2 + 1$ is even, an even number of brackets
+in the expression $((k+1)-1)((k+1)-3)((k+1)-5) \cdots ((k+1)-2015)$ will
+be positive and therefore an even number of brackets will be negative and
+$L(k+1) > 0$ so $f(k+1) > 0$.
+Finally since $f$ is
+continous and $f$ exhibits a change in sign between inputs $k$ and $k + 1$
+we can use the Intermediate Value Theorem to conclude that $f$ has a root
+in the interval $(k, k+1)$. This concludes the proof of the lemma.\\
+
+Now since there are 1007 even integers in the range $[0, 2014]$, and
+$f(2015) = -(2013!!) < 0, \; f(2016) = 2015!! - 2014!! > 0$ implies that
+there is a root in the interval $(2015, 2016)$, so we have shown that $f$
+has exactly 1008 distinct roots. This finishes the problem. $\blacksquare$
+
+\end{solution}
+
+\end{document}
