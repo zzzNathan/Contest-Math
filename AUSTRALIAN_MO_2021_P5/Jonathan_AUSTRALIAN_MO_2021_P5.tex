@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2021 --- P5/8}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2021 --- P5/8}
+Find the solutions to
+
+$$
+a^{2n} + b^{2n} = 1 \; \; \; \text{and} \; \; \; a^{2n+1} + b^{2n+1} = 1
+$$
+
+for positive integer $n$ and real numbers $a, b$.
+\end{problem}
+
+\begin{solution}{Solution}
+Firstly we can assume without loss of generality that $a \geq b$, since
+the equations have symmetry in $a, b$ and any solution $(a,b),\; a>b$ also
+has $(b,a)$ as a solution. Indeed by re-arranging the second equation and multiplying the second equation by $a$ then re-arranging we derive that
+$a^{2n+1} = 1 - b^{2n+1}$ and also $a^{2n+1} = a - ab^{2n}$
+so $a-1 = ab^{2n} - b^{2n+1} \iff a = b^{2n} (a-b) + 1$ and so
+$a \geq 1 \implies a^{2n} \geq 1$.
+But since $a^{2n}, b^{2n}$ are both non-negative numbers and
+$a^{2n} + b^{2n} = 1$ and $a\geq 1$ we have to have $a = 1, b = 0$. Now
+clearly we can see that $(a,b,n) = (1, 0, n) \; \text{or} \; (0, 1, n)$
+work for any positive integer $n$. $\blacksquare$
+
+\end{solution}
+
+\end{document}
