@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Canadian Math Olympiad 2013 --- P1/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Canadian Math Olympiad 2013 --- P1/5}
+Determine all polynomials $P(x)$ with real coefficients such that
+
+$$
+(x+1)P(x-1) - (x-1)P(x)
+$$
+
+is a constant polynomial.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $P(x) = c \in \mathbb{R}$. One can easily check that this
+works. Assume for the sake of contradiction that $n := \deg P > 0$, then
+one can write $P(x) = ax^n + bx^{n-1} + \mathcal{O}(x^{n-2})$ for some
+real $a\neq 0, b$. Substituting this defintion into the given equation
+yields
+
+\[
+\begin{aligned}
+&= (x+1)\left[a(x-1)^n + b(x-1)^{n-1} + \mathcal{O}(x^{n-2})\right] -
+(x-1)\left[ax^n + bx^{n-1} + \mathcal{O}(x^{n-2})\right] \\
+&= \left[ ax^{n+1} + bx^n + (b-a)x^{n-1} + \mathcal{O}(x^{n-2}) \right] -
+\left[ ax^{n+1} + (b-a)x^n - bx^{n-1} + \mathcal{O}(x^{n-2})\right] \\
+&= ax^n + (2b-a)x^{n-1} + \mathcal{O}(x^{n-2})
+\end{aligned}
+\]
+
+But that is a polynomial of degree $n$ so we have to have $n=0$,
+contradiction. $\blacksquare$
+\end{solution}
+
+\end{document}
