@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Mathematical Olympiad Round 2 2022 --- P2/4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Mathematical Olympiad Round 2 2022 --- P2/4}
+Find all functions $f$ from the positive integers to the positive integers such that for all $x, y$ we have:
+$$
+2 y f(f(x^2)+x)=f(x+1) f(2 x y)
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Let $P(x, y)$ denote the above assertion. $P(x, f(x+1))$ yields
+$2 f(x+1) f(f(x^2)+x) = f(x+1) f(2xf(x+1))$ but since the image of $f$ is
+the natural numbers we can cancel $f(x+1)$ to write
+$2 f(f(x^2)+x) = f(2xf(x+1))$. Substitute this result into the given
+equation to find that $y f(2x f(x+1)) = f(x+1) f(2xy)$, call this result
+($*$). Plug $y=1$ into ($*$) to find that
+$f(2x f(x+1)) = f(x+1) f(2x)$ and so $f(x+1) = f(2x f(x+1)) / f(2x)$.
+Now substitute this definition of $f(x+1)$ into ($*$) to find that
+$y = f(2xy) / f(2x)$ and so $f(2xy) = yf(2x)$. Now if $x=1$ then
+$f(2y) = yf(2)$. So we have found that $f$ is a linear for even positive
+integer inputs. $P(2x, f(2x+1))$ gives $2f(f(4x^2)+2x) = f(4xf(2x+1))$.
+But since $f(2xy) = yf(2x)$ we can write
+$2f(f(4x^2)+2x) = 2f(2x+1)f(2x)$ that becomes
+$f(2xf(2x)+2x) = f(2x(f(2x)+1)) = f(2x+1)f(2x)$ and using $f(2y) = yf(2)$
+we have $x(f(2x)+1)f(2) = f(2x+1)f(2x) = f(2x+1)xf(2)$. Finally cancel
+$xf(2)$ to find that $f(2x+1) = f(2x) + 1 = xf(2) + 1$. So we have shown
+that $f$ is affine for all even positive integers, and all odd positive
+integers that are $>1$. We can write $f(x) = ax + b$ where $x > 1$,
+then $f(2x) = 2ax + b = xf(2) = 2ax + 2b$ and so $b = 0$. So $f(x) = ax$
+for all positive integers $x > 1$. Plug this into the equation in the
+problem statement to get $2y f(ax^2 + x) = (ax + a) 2xya$ and so
+$a(ax^2 + x) = (ax + a) xa \iff (ax + 1) = ax + a \iff a = 1$ so we have
+found that $f(x) = x$ for $x > 1$. Finally $P(1,1)$ gives
+$f(f(1)+1)=2$, but since $f(1)+1 \geq 2 \iff f(1) \geq 1$ which is true
+since the image of $f$ is the natural numbers, we can write
+$f(f(1)+1)=f(1)+1=2 \iff f(1)=1$. So the final solution is $f(x)=x$ for all
+$x \in \mathbb{N}$.
+\end{solution}
+\end{document}
