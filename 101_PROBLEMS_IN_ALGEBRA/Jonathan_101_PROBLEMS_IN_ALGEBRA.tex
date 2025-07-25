@@ -1,0 +1,227 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Solving Problems from 101 Problems in Algebra --- T Andreescu \& Z Feng}
+
+\begin{document}
+\maketitle
+
+Recently I have been wanting to improve my algebra so I have been
+working through \textit{101 Problems in Algebra} by
+\textit{T Andreescu \& Z Feng}.
+
+\section{Introductory Problems}
+
+\begin{problem}{Problem 1}
+Let $a,b$ and $c$ be real and positive parameters. Solve the equation
+
+$$
+\sqrt{a+bx} + \sqrt{b+cx} + \sqrt{c+ax} =
+\sqrt{b-ax} + \sqrt{c-bx} + \sqrt{a-cx}
+$$
+\end{problem}
+
+\begin{solution}{Solution 1}
+If $x$ is a solution then that equation should hold for all triplets of
+parameters $a,b,c \in \mathbb{R}^{+}$. Consider the triplet
+$(a,b,c)=(1,1,1)$, we must have $3\sqrt{1+x} = 3\sqrt{1-x} \iff
+1+x = 1-x \iff x=0$. So $x=0$ is the only candidate for a solution. Now
+we can easily plug in $x=0$ into the above equation to see that it
+indeed works for all $a,b,c$. Hence $x=0$ is the only such solution.
+$\blacksquare$\\
+
+\textit{Remark: This one took me far longer than it should have!}
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 2}
+Find the general term of the sequence defined by $x_0 = 3, x_1 = 4$ and
+
+$$
+x_{n+1} = x_{n-1}^2 - nx_n
+$$
+
+for all $n \in \mathbb{N}$.
+\end{problem}
+
+\begin{solution}{Solution 2}
+After a little exploration it is not hard to see that each term $x_r$ seems
+to simply be $r+3$. This guess is easily proved since
+$x_{n-1}^2 - nx_n = (n+2)^2 - n(n+3) = (n^2 + 4n + 4) - (n^2 + 3n) = n+4 =
+x_{n+1}$. $\blacksquare$
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 3}
+Let \( x_1, x_2, \ldots, x_n \) be a sequence of integers such that
+\begin{enumerate}
+    \item[(i)] \(-1 \leq x_i \leq 2,\) for \(i = 1, 2, \ldots, n;\)
+    \item[(ii)] \(x_1 + x_2 + \cdots + x_n = 19;\)
+    \item[(iii)] \(x_1^2 + x_2^2 + \cdots + x_n^2 = 99.\)
+\end{enumerate}
+
+Determine the minimum and maximum possible values of
+\[
+x_1^3 + x_2^3 + \cdots + x_n^3.
+\]
+\end{problem}
+
+\begin{solution}{Solution 3}
+Let $a,b,c,d$ be the number of $(-1)$'s, 0's, 1's and 2's in the sequence,
+respectively. We have $-a + c + 2d = 19$ and $a + c + 4d = 99$ by condition
+(i) and (ii). We are interested in $x_1^3 + x_2^3 + \cdots + x_n^3 =
+-a + c + 8d = -a + (19 + a - 2d) + 8d = 19 + 6d$, using $c = 19 + a - 2d$.
+But since $2c + 6d = 118 \iff c = 59 - 3d$, from adding the first 2
+equations and $c\geq 0 \iff 3d \leq 59$ but that means that
+$0\leq d\leq 19$. So the maximum value is $19 + 6(19) = 133$ and the
+minimum is $19 + 6(0) = 19$. $\blacksquare$ \\
+
+\textit{Remark: I had to use a hint for this one.}
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 4}
+The function $f$, defined by
+
+$$
+f(x) = \frac{ax+b}{cx+d}
+$$
+
+where $a,b,c$ and $d$ are non-zero real numbers, has the properties
+$$
+f(19) = 19, \ \ f(97) = 97, \ \  f(f(x)) = x
+$$
+
+for all $x$, except $-\frac{d}{c}$.\\
+
+Find the range of $f$.
+\end{problem}
+
+\begin{solution}{Solution 4}
+Clearly for all $x \neq -d/c$, $x$ is in the image of $f$ due to the third
+property.
+Using the third property we know that $x = \frac{af(x)+b}{cf(x)+d}$ we can
+re-arrange to find that $f(x) = \frac{b-dx}{cx-a} = \frac{ax+b}{cx+d}$ so
+there must exist $\lambda \in \mathbb{R}_{\neq 0}$ such that
+$cx-a = \lambda (cx+d)$ and $b-dx = \lambda (ax+b)$. From the second
+equation $b = b \lambda$ so $\lambda = 1$ since $b \neq 0$ therefore
+$a=-d$. Now using those 2 fixed points we know that
+
+\[
+\begin{aligned}
+19a + b = 19^2 c - 19a\\
+97a + b = 97^2 c - 97a\\
+\end{aligned}
+\]
+
+We can subtract these 2 equations to get rid of $b$ and re-arrange to get
+$a = 58c$. Now $-d/c = 58c/c = 58$. So since 58 isn't in the domain of $f$
+and $f$ is an involution, 58 isn't in the image of $f$ either. So the range
+is $\mathbb{R} \setminus \{ 58 \}$. $\blacksquare$ \\
+
+\textit{Remark: I had to use a hint for this one.}
+\end{solution}
+
+\vspace{0.2cm}
+\begin{problem}{Problem 5}
+Prove that
+
+$$
+\frac{(a-b)^2}{8a} \leq \frac{a+b}{2} - \sqrt{ab} \leq \frac{(a-b)^2}{8b}
+$$
+
+for all $a\geq b >0$.
+\end{problem}
+
+\begin{solution}{Solution 5}
+The inequality is the same as
+
+$$
+\frac{(\sqrt{a} + \sqrt{b})^2(\sqrt{a} - \sqrt{b})^2}{8a} \leq
+\frac{(\sqrt{a} - \sqrt{b})^2}{2} \leq
+\frac{(\sqrt{a} + \sqrt{b})^2(\sqrt{a} - \sqrt{b})^2}{8b}
+$$
+
+That is
+
+\[
+\begin{aligned}
+\frac{(\sqrt{a} + \sqrt{b})^2}{8a} &\leq
+\frac{1}{2} \leq
+\frac{(\sqrt{a} + \sqrt{b})^2}{8b} \\
+b(\sqrt{a} + \sqrt{b})^2 &\leq
+4ab \leq
+a(\sqrt{a} + \sqrt{b})^2 \\
+\end{aligned}
+\]
+
+but since $b(\sqrt{a} + \sqrt{b})^2 \leq b (2\sqrt{a})^2 = 4ab$ and
+$4ab = a(2\sqrt{b})^2 \leq a(\sqrt{a} + \sqrt{b})^2$, the problem is
+finished. $\blacksquare$ \\
+
+\textit{Remark: I had to use a hint for this one.}
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 6}
+Several (at least two) nonzero numbers are written on a board. One may
+erase any two numbers, say $a$ and $b$, and then write the numbers
+$a + \frac{b}{2}$ and $b - \frac{a}{2}$ instead.
+
+Prove that the set of numbers on the board, after any number of the
+preceding operations, cannot coincide with the initial set.
+\end{problem}
+
+\begin{solution}{Solution 6}
+Suppose we apply the operation on $a$ and $b$. The sum of their
+squares is $a^2 + b^2$. Now after you apply the operation, the sum of
+squares becomes $(a^2 + ab + \frac{b^2}{4}) + (b^2 - ab + \frac{a^2}{4}) =
+\frac{5}{4} (a^2 + b^2)$. So the sum of squares all the numbers on the
+board will strictly increase after applying each operation. This means that
+after some number of operations we can never coincide with the original set
+because the sum of squares of the numbers on the board, before and after
+the operations, will be different.
+$\blacksquare$
+\\
+
+\textit{Remark: I first came across this technique by watching Timothy
+Gowers solve invariance problems on YouTube!}
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 7}
+The polynomial
+\[
+1 - x + x^{2} - x^{3} + \cdots + x^{16} - x^{17}
+\]
+may be written in the form
+\[
+a_0 + a_1 y + a_2 y^2 + \cdots + a_{16} y^{16} + a_{17} y^{17},
+\]
+where \( y = x + 1 \) and \( a_i \)s are constants. Find \( a_2 \).
+\end{problem}
+
+\begin{solution}{Solution 7}
+The polynomial in terms of $y$ is
+
+$$
+1 - (y-1) + (y-1)^2 - (y-1)^3 + \cdots + (y-1)^{16} - (y-1)^{17}
+$$
+
+and we want the coefficient of $y^2$.\\
+
+We can use binomial expansion to
+find that the coefficient is
+$ a_2 = \sum_{r=2}^{17} (-1)^r \binom{r}{2} (-1)^{r-2} =
+\sum_{r=2}^{17} \binom{r}{2}$. But by the Hockey stick identity this is
+just $\binom{18}{3} = 816$. $\blacksquare$
+
+\end{solution}
+
+\end{document}
