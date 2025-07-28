@@ -223,5 +223,112 @@ $ a_2 = \sum_{r=2}^{17} (-1)^r \binom{r}{2} (-1)^{r-2} =
 just $\binom{18}{3} = 816$. $\blacksquare$
 
 \end{solution}
+\vspace{0.2cm}
+
+\begin{problem}{Problem 8}
+Let $a, b$ and $c$ be distinct non-zero real numbers such that
+
+$$
+a + \frac{1}{b} = b + \frac{1}{c} = c + \frac{1}{a}
+$$
+
+Prove that $|abc| = 1$.
+\end{problem}
+
+\begin{solution}{Solution 8}
+The equation is symmetric, so notice that over all cyclic rotations
+$(a,b,c)$ we have $a-b = \frac{1}{c} - \frac{1}{b} = \frac{b-c}{bc}$ and
+we can say that $bc(a-b) = b-c$ holds over the cyclic rotations. \\
+
+Now observe the following
+
+\[
+\begin{aligned}
+b-c &= bc(a-b) \\
+&= bc\left[ ab(c-a) \right] \\
+&= bc\left[ ab( ac \left[ b-c \right] ) \right] \\
+\end{aligned}
+\]
+
+Now we can cancel $b-c \neq 0$ since we are told $a,b,c$ are distinct
+giving $1 = (abc)^2$ and so $|abc| = 1$ follows as desired. $\blacksquare$
+
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 9}
+Find polynomials \( f(x), g(x), \) and \( h(x), \) if they exist, such that for all \( x, \)
+\[
+|f(x)| - |g(x)| + h(x) =
+\begin{cases}
+-1 & \text{if } x < -1 \\
+3x + 2 & \text{if } -1 \leq x \leq 0 \\
+-2x + 2 & \text{if } x > 0.
+\end{cases}
+\]
+\end{problem}
+
+\begin{solution}{Solution 9}
+It is natural to guess that the left hand side can be written of the form
+$a|x+1| + b|x| + cx + d$. Now if you plug in the results we have and solve
+the resulting simultaenous equation you end up with
+$\frac{3}{2}|x+1| - \frac{5}{2}|x| - x + \frac{1}{2}$. $\blacksquare$
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 10}
+Find all real numbers \( x \) for which
+\[
+\frac{8^x + 27^x}{12^x + 18^x} = \frac{7}{6}.
+\]
+\end{problem}
+
+\begin{solution}{Solution 10}
+Let $a=3^x$, $b=2^x$. The equation becomes
+
+\[
+\begin{aligned}
+\frac{b^3 + a^3}{ab^2 + a^2 b} &= \frac{7}{6}\\
+6(a^3 + b^3) &= 7ab(a+b)\\
+6(a^2 - ab + b^2) &= 7ab\\
+6a^2 - 13ab + 6b^2 &= 0\\
+\end{aligned}
+\]
+
+We can use the quadratic formula to deduce that $a = \frac{3}{2} b \iff
+\frac{a}{b} = \left( \frac{3}{2} \right)^x = \frac{3}{2}$ and so $x=1$ is
+the only solution. $\blacksquare$
+\end{solution}
+
+\vspace{0.2cm}
+
+\begin{problem}{Problem 11}
+Find the least positive integer $m$ such that
+
+$$
+\binom{2n}{n}^{1/n} < m
+$$
+
+holds for all positive integers $n$.
+\end{problem}
+
+\begin{solution}{Solution 11}
+We claim that the answer is $m=3$. Firstly to show that $m=3$ works we
+have to show that
+
+$$
+\binom{2n}{n} < 3^n = (1+2)^n = \sum_{r=0}^n \binom{n}{r} 2^r
+$$
+
+but due to the Vandermonde Identity,
+$\binom{2n}{n} = \sum_{r=0}^n \binom{n}{r}^2$ and then since
+$\binom{n}{r} < \sum_{r=0}^n \binom{n}{r} = 2^r$ the claim is true. \\
+
+Now we just have to show that $m=2$ fails. Observe that
+$\binom{2}{1} = 2 < 2$ is a contradiction so indeed $m=3$ is the smallest
+such $m$. $\blacksquare$
+\end{solution}
 
 \end{document}
