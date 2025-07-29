@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Canadian Junior Math Olympiad 2025 --- P1/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Canadian Junior Math Olympiad 2025 --- P1/5}
+Suppose an infinite non-constant arithmetic progression of integers contains 1 in it. Prove that
+there are an infinite number of perfect cubes in this progression. (A \textit{perfect cube} is an integer
+of the form $k^3$, where $k$ is an integer. For example, $-8$, 0 and 1 are perfect cubes.)
+\end{problem}
+
+\begin{solution}{Solution}
+Suppose the arithmetic progression has a fixed difference $d \in
+\mathbb{Z}_{\neq 0}$. Notice that if we can prove that any perfect cube
+$k^3 \in \mathbb{Z} \setminus \{ -1, 0, 1\}$ exists in the sequence we
+automatically get that there
+are an infinite number of perfect cubes in the progression since
+there must exist some non-zero integer $\lambda$ such that
+$1+ \lambda d = k^3$. Then this implies that $k^3 + (k^3\lambda) d = k^6$
+is also part of the progression, but since $k^3 \neq k^{3n}$ for any
+integer $n \geq 2$ repeating this
+process will demonstrate that there are an infinite number of perfect cubes
+in the sequence.\\
+
+Hence it suffices to show that there exists $\mu \in \mathbb{Z}_{\neq 0}$
+and $m^3 \in \mathbb{Z} \setminus \{ -1, 0, 1\}$ such that
+$1 + \mu d = m^3$ and so $\mu d = (m - 1)(m^2 + m + 1)$. Now notice
+that we can let $m - 1 = d$ and $\mu = m^2 + m + 1$, since
+the discriminant of that quadratic $\Delta = 1 - 4 = -3 < 0$ shows us that
+$\mu \neq 0$. So this construction works for any $d$ except $m = d+1 \neq
+-1, 0, 1 \iff d \neq -2, -1, 0$. We can rule out the possibility of $d=0$
+since the progression is non-constant, $d=-1$ will make the progression
+simply run through all of the perfect cubes that are less than the initial
+value, and for $d=-2$ the number $(-3)^3 = -27 = 1 - 2(14)$ will occur in
+the sequence so it will contain an infinite number of perfect cubes by our
+arguement in the first paragraph. $\blacksquare$
+\end{solution}
+
+\end{document}
