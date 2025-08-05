@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Singapore Junior Math Olympiad 2025 --- P3/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Singapore Junior Math Olympiad 2025 --- P3/5}
+Jack and Jill play the following game: Jack throws 3 dice and Jill can
+select some of them, possibly none, and turn each of them to the opposite
+side. Jill wins if the sum of the values on the dice is a multiple of 4.
+Can Jill always win? (Note the game is played with standard dice
+where the sum of the numbers on opposite sides is 7.)
+\end{problem}
+
+\begin{solution}{Solution}
+We call Jill turning a die to the opposite side a \textit{flip}.
+Suppose Jack rolls the numbers $a,b$ and $c$. Jill wins if, after a
+series of flips, $a+b+c \equiv 0 \ (\text{mod} \ 4)$. After one flip a
+number $x$ is sent to $7-x \equiv 3-x$ working modulo 4. Let $\Sigma$
+denote $a+b+c$. Let $f(x)$ denote the operation of flipping the number $x$.
+Observe the following table (from here on working modulo 4 is assumed).
+
+\begin{center}
+\begin{tblr}{ccc}
+$x$ & $f(x)$ & $f(x) - x$ \\
+\hline
+0 & $-1$ & $-1$ \\
+1 & 2 & 1 \\
+2 & 1 & $-1$ \\
+3 & 0 & 1 \\
+\end{tblr}
+\end{center}
+
+So if we flip an even number we can decrease $\Sigma$ by 1, and if we flip
+an odd number we can increase $\Sigma$ by 1.\\
+
+If we initially have $\Sigma \equiv 0 \ (\text{mod} \ 4)$ then Jill wins
+without having to do anything.\\
+
+If we initially have $\Sigma \equiv 1 \ (\text{mod} \ 4)$ there is either
+2 even numbers and 1 odd number, or there is 3 odd numbers, due to parity
+issues. Then if there is any even number among $a,b,c$ Jill can flip it to
+decrease $\Sigma$ by 1 and Jill will win. Otherwise there must be 3 odd
+numbers and we can flip all 3 of them to increase $\Sigma$ by 3 and Jill
+wins. \\
+
+If we initially have $\Sigma \equiv 2 \ (\text{mod} \ 4)$ then we either
+have 1 even number, or 2 even numbers, due to parity issues. If there is 1
+even number we can flip the other 2 odd numbers to increase $\Sigma$ by 2
+and Jill wins. If there are 2 even numbers then we can flip those 2 even
+numbers to decrease $\Sigma$ by 2 and Jill will win. \\
+
+If we initially have $\Sigma \equiv 3 \ (\text{mod} \ 4)$ then there is at
+least one odd number among $a,b,c$ and we can flip it to increase $\Sigma$
+by 1 and Jill will win.\\
+
+So Jill always has a strategy to win. $\blacksquare$
+\end{solution}
+
+\end{document}

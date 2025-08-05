@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad 2007 Round 1 --- P3/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad 2007 Round 1 --- P3/6}
+The number 916238457 is an example of a nine-digit number which
+contains each of the digits 1 to 9 exactly once. It also has the property
+that the digits 1 to 5 occur in their natural order, while the digits 1
+to 6 do not. How many such numbers are there?
+\end{problem}
+
+\begin{solution}{Solution}
+There are no conditions on where to place the numbers 7,8,9 so we can
+ignore them for now and just place them in the remaining 3 places, once
+we have placed the numbers 1 to 6. There are $\binom{9}{6}$ ways to
+select 6 spaces in our nine-digit number. The number 6 must go before the
+number 5 so that we can make the digits 1 to 6 be out of their natural
+order. Thus we can place that number 6 in any of the first $k \leq 5$
+spaces such that this subsequence of 6 spaces looks like
+
+$$
+1,2,...,k-1,6,k,...,5
+$$
+
+clearly satisfying both of the given condiions. There are thus
+$5 \times \binom{9}{6}$ ways to arrange those 6 numbers and finally we
+can place the numbers 7,8,9 in the remaining 3 spaces in $3!$ ways. So
+the final answer is $5 \times \binom{9}{6} \times 3! = 2520$.
+$\blacksquare$
+\end{solution}
+
+\end{document}

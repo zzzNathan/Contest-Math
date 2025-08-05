@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Canadian Junior Mathematical Olympiad 2023 --- P1/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Canadian Junior Mathematical Olympiad 2023 --- P1/5}
+Let $a$ and $b$ be non-negative integers. Consider a sequence $s_1, s_2,
+s_3, ...$ such that $s_1 = a, s_2 = b$ and $s_{i+1} = |s_i - s_{i-1}|$
+for $i \geq 2$. Prove that there is some $i$ for which $s_i = 0$.
+\end{problem}
+
+\begin{solution}{Solution}
+Suppose, for the sake of contradiction, that $s_i \neq 0$. Notice that
+$\max (s_i, s_{i-1}) = \min (s_i, s_{i-1}) + s_{i+1}$ and since none of
+the terms are ever 0, we have $s_{i+1} < \min (s_i, s_{i-1})$. That
+means that the sequence $(s_r)_{r=1}$ contains a decreasing
+non-contigous subsequence $s_{\sigma (1)} > s_{\sigma (2)} > ...$. This
+means there must eventually exist some $i$ such that $s_{\sigma (i)} = 0$.
+$\blacksquare$
+\end{solution}
+
+\end{document}

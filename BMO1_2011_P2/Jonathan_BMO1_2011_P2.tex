@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2011 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2011 --- P2/6}
+Consider the numbers $1, 2, . . . , n$. Find, in terms of
+$n$, the largest
+integer $t$ such that these numbers can be arranged in a row so that all
+consecutive terms differ by at least $t$.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $t = \floor{\frac{n}{2}}$ and we split the proof into 2
+separate cases.\\
+
+\textit{Case 1: $n$ is even.} Write $n = 2m$ for some positive integer $m$.
+First we will show that $t = \floor{\frac{n}{2}} = m$ works by
+construction. Look at the sequence
+
+$$
+m, 2m, m-1, 2m-1, ..., 1, m+1
+$$
+
+The differences are always alternating between $m$ and $m+1$ which are both
+at least $t$ so this construction works. Now we show that any $t >
+\floor{\frac{n}{2}}$ doesn't work. The number $\floor{\frac{n}{2}}$
+appears in our sequence, the difference with the consecutive number is at
+most $\max\left(\floor{\frac{n}{2}}-1, 2n - \floor{\frac{n}{2}}\right)=
+\max(m-1, m)$ and thus any $t > \floor{\frac{n}{2}} = m$ won't work since
+there will be at least one pair of consecutive terms that differ by
+at most $m$. \\
+
+\textit{Case 2: $n$ is odd.} Write $n = 2m+1$ for some non-negative integer
+$m$. First we show that $t = \floor{\frac{n}{2}} = m$ works by
+construction. Take the construction we made for even $n$, then add
+$2m+1$ onto the end of that sequence. That last difference is $m$ and all
+the other differences are $m$ or $m+1$ so this value of $t$ works. Now we
+show that any $t > \floor{\frac{n}{2}} = m$ doesn't work. $m+1$ is in this
+sequence and the difference with the consecutive number will be at most
+$\max(m+1-1, 2m-(m+1)) = \max(m, m-1)$ and thus any
+$t > \floor{\frac{n}{2}} = m$ won't work because there is at least one pair
+of consecutive terms that differ by at most $m$. $\blacksquare$
+\end{solution}
+
+\end{document}
