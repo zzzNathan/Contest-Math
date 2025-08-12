@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2008 --- P5/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2008 --- P5/6}
+Determine the sequences $a_0, a_1, a_2, ...$ which satisfy all of the
+following conditions:
+
+\begin{itemize}
+\item $a_{n+1} = 2 a_n^2 - 1$ for every integer $n \geq 0$,
+\item $a_0$ is a rational number and
+\item $a_i = a_j$ for some $i,j$ with $i \neq j$.
+\end{itemize}
+\end{problem}
+
+\begin{solution}{Solution}
+Notice that if $a_0 > 1$ then the sequence is strictly increasing because
+$a_{n+1} = 2a_n^2 - 1 > a_n \iff (2a_n + 1)(a_n - 1) > 0 \iff
+a_n > 1 \ \text{or} \ a_n < -\frac{1}{2}$.
+Since $a_0$ is rational, and the set of rational numbers is closed under
+multiplication and subtraction, we conclude that $a_n$ is always rational.
+Write $a_n = \frac{p}{q}$ for integers $|q| \geq |p|$ and
+$\gcd(p, q) = 1$ and $q \neq 0$. If $|q| = |p|$ then $a_n = \pm 1$ and it
+can easily be
+checked that the only 2 sequences that work are $-1, 1, 1, 1,...$ and
+$1, 1, 1, ...$. Now if $|q| > |p|$ then
+notice that $a_{n+1} = \frac{2p^2 - q^2}{q^2}$. Because $p^2$ and $q^2$ are
+coprime the fraction can only simplify if $q^2$ has a factor of 2 and
+$a_{n+1} = \frac{p^2 - q^2 / 2}{q^2 / 2}$. Now observe that if
+$|q| > 2$ then the denominators of each of the terms are strictly
+increasing
+since $q^2 > \frac{q^2}{2} > |q| \iff q^2 - 2|q| = |q|(|q|-2) > 0$ which
+is clearly true when $|q|>2$. But if the denominators are strictly
+increasing then there can never be 2 different numbers that are the same
+in the sequence.\\
+
+Thus $|q| \leq 2$. That means that $a_0$ is one of $0, \pm \frac{1}{2}$.
+Now one can easily check each case and find that the only sequences here
+are $0, -1, 1, 1, 1, ...$ and $\frac{1}{2}, -\frac{1}{2}, -\frac{1}{2}, -\frac{1}{2},...$
+and $-\frac{1}{2}, - \frac{1}{2}, -\frac{1}{2}, ...$. $\blacksquare$\\
+
+\textit{Remark: I got this idea from the field of combinatorics actually,
+once I was confident that $a_0 = 0, \pm 1, \pm \frac{1}{2}$ and tested
+other values of $a_0$ I noticed that the denominator increased very
+quickly and that this could probably be used as a monovariant. I spent
+around 3 hours thinking about this problem.}
+\end{solution}
+
+\end{document}

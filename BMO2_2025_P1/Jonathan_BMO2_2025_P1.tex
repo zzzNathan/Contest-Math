@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 2 2025 --- P1/4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 2 2024 --- P1/4}
+Prove that if $n$ is a positive integer, then $\frac{1}{n}$ can be written
+as a finite sum of reciprocals of different triangular numbers.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $t_n = \frac{n(n+1)}{2}$ denote the $n^{\text{th}}$ triangular number.
+\\
+
+\textit{Claim:} For any positive integer $n$,
+$\frac{1}{t_{2n}} + \frac{1}{t_{2n + 1}} = \frac{1}{2}\frac{1}{t_n}$.\\
+
+\textit{Proof:} The left hand side reads
+
+\[
+\frac{2}{2n(2n + 1)} + \frac{2}{(2n + 1)(2n + 2)}
+= \frac{2}{2n + 1} \left( \frac{1}{2n} + \frac{1}{2n + 2} \right)
+= \frac{1}{2n + 1} \left( \frac{2n + 1}{n(n+1)} \right)
+= \frac{1}{n(n+1)}
+\]
+
+as desired.\\
+
+Now using our claim we have
+
+$$
+\frac{1}{n} = \frac{1}{n+1} + \frac{1}{n(n+1)} =
+\frac{1}{n+1} + \left( \frac{1}{t_{2n}} + \frac{1}{t_{2n + 1}} \right)
+$$
+
+By repeatedly substituting say $k$ times, we can show that
+
+$$
+\frac{1}{n} = \frac{1}{n+k} + \sum_{r=1}^k \left( \frac{1}{t_{2r}} +
+ \frac{1}{t_{2r + 1}} \right)
+$$
+
+Now if we pick $k = t_n - n = \frac{n(n-1)}{2}$ we have completed the proof
+for all $n > 1$, since all those fractions are pairwise distinct since
+$t_n < t_{n+1}$. But obviously $n=1$ can be written
+as a finite sum of reciprocals of different triangular numbers, since 1
+is a triangular number. $\blacksquare$
+\end{solution}
+
+\end{document}

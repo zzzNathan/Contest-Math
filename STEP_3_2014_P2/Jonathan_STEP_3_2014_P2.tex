@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{STEP 3 2014 --- P2}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{STEP 3 2014 --- P2}
+\begin{enumerate}
+\item[(i)] Show, by means of the substitution \( u = \cosh x \), that
+\[
+\int \frac{\sinh x}{\cosh 2x} \, \text{d}x = \frac{1}{2\sqrt{2}} \ln \left| \frac{\sqrt{2} \cosh x - 1}{\sqrt{2} \cosh x + 1} \right| + C.
+\]
+
+\item[(ii)] Use a similar substitution to find an expression for
+\[
+\int \frac{\cosh x}{\cosh 2x} \, \text{d}x.
+\]
+
+\item[(iii)] Using parts (i) and (ii) above, show that
+\[
+\int_0^1 \frac{1}{1 + u^4} \, \text{d}u = \frac{\pi + 2 \ln\left(\sqrt{2} + 1\right)}{4 \sqrt{2}}.
+\]
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+Parts (i) and (ii) will be omitted here since these problems are just
+straightforward $u$-subs. The real challenge here is part (iii), here was
+my solution. We will call the left hand side $I$.\\
+
+After a lot of attempts I couldn't see a clear substitution or algebraic
+method that yielded the answer. But after studying the right hand side
+of that equality, I guessed that the integral is probably just some linear
+combination of the 2 previous integrals. This thought motivated the
+following claim.\\
+
+\textit{Claim: For some choice of real $p, q$ and  $k \neq 0$,}
+$$
+I = \int_p^q \frac{a \sinh x + b \cosh x}{\cosh 2x} \text{d}x
+$$
+
+
+\textit{Proof:} Observe that right hand side becomes
+
+\[
+\begin{aligned}
+I &= \int_p^q \frac{a \sinh x + b \cosh x}{\cosh 2x} \text{d}x \\
+&= \int_p^q \frac{a (e^x - e^{-x}) + b (e^x + e^{-x})}{e^{2x} + e^{-2x}}} \text{d}x \\
+&= \int_p^q \frac{a(e^{3x} - e^x) + b(e^{3x} + e^x)}{e^{4x} + 1} \text{d}x \\
+\end{aligned}
+\]
+
+Put $u = e^x$, $\text{d}u = e^x \text{d}x$.
+
+\[
+\begin{aligned}
+I &= \int_{e^p}^{e^q} \frac{(au^3 - au) + (bu^3 + bu)}{u^4 + 1} \frac{\text{d}u}{u} \\
+\end{aligned}
+\]
+
+Now if we pick $a=-b$ we are left with
+
+$$
+I = 2b \int_{e^p}^{e^q} \frac{1}{u^4 + 1} \text{d}u
+$$
+
+Now clearly if we use $b = \frac{1}{2}, a = \frac{-1}{2}, q = 0,
+p \rightarrow -\infty$ the right hand side becomes $I$. \\
+
+Now the rest of the problem is just computation, it is left as an excercise
+to the reader (I'm too lazy to do it.)
+\end{solution}
+
+\end{document}

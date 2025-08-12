@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2024 --- P3/8}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2024 --- P3/8}
+Let \( a_1, a_2, \ldots, a_n \) be positive real numbers, where \( n \geq 2 \). For each permutation
+\( (b_1, b_2, \ldots, b_n) \) of \( (a_1, a_2, \ldots, a_n) \), define its \textit{score} to be
+\[
+\frac{b_1^2}{b_2} + \frac{b_2^2}{b_3} + \cdots + \frac{b_{n-1}^2}{b_n}.
+\]
+Show that there exist two permutations of \( (a_1, a_2, \ldots, a_n) \) whose scores differ by at least \( 3 |a_1 - a_n| \).
+\end{problem}
+
+\begin{solution}{Solution}
+We claim that it is possible to say WLOG
+$a_1 \leq a_2 \leq \cdots \leq a_n$, this is because any permutation
+$(b_r)_{r=1}^n$ can still be obtained and $a_n - a_1$ will be the largest
+difference of any two terms in $(a_r)_{r=1}^n$ so if we show that the score
+is $\geq 3(a_n - a_1)$ we also solve the original problem. \\
+
+\textit{Claim: For positive real numbers $x \geq y$ we have $\frac{x^2}{y}
+- \frac{y^2}{x} \geq 3(x-y)$.}\\
+
+\textit{Proof:} We need
+
+$$
+\frac{x^3 - y^3}{xy} = \frac{(x-y)(x^2 + xy + y^2)}{xy} \geq 3(x-y)
+$$
+
+so it suffices to show that $x^2 + y^2 \geq 2xy$ which is true by AM-GM.
+$\square$\\
+
+Consider,
+
+\[
+\begin{aligned}
+&\phantom{=} \left( \frac{a_n^2}{a_{n-1}} + \frac{a_{n-1}^2}{a_{n-2}} + \cdots +
+\frac{a_2^2}{a_1} \right) -
+\left( \frac{a_1^2}{a_2} + \frac{a_2^2}{a_3} + \cdots +
+\frac{a_{n-1}^2}{a_n} \right)\\
+&= \left( \frac{a_n^2}{a_{n-1}} - \frac{a_{n-1}^2}{a_n} \right) +
+\left( \frac{a_{n-1}^2}{a_{n-2}} - \frac{a_{n-2}^2}{a_{n-1}} \right) +
+\cdots + \left( \frac{a_2^2}{a_1} - \frac{a_1^2}{a_2} \right) \\
+&\geq 3\left[ (a_n - a_{n-1}) + (a_{n-1} - a_{n-2}) + \cdots + (a_2 - a_1)
+\right]\\
+&= 3(a_n - a_1)
+\end{aligned}
+\]
+
+as desired. $\blacksquare$\\
+
+\textit{Remark: The main challenge here is to guess the permutation that
+works, and once you've seen it the problem becomes routine.}
+\end{solution}
+
+\end{document}
