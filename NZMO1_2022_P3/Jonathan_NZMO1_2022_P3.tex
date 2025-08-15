@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{New Zealand Math Olympiad Round 1 2022 --- P3/8}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{New Zealand Math Olympiad Round 1 2022 --- P3/8}
+Find all real numbers \(x\) and \(y\) such that
+\begin{align*}
+x^2 + y^2 &= 2,\\
+\frac{x^2}{2-y} + \frac{y^2}{2-x} &= 2.
+\end{align*}
+\end{problem}
+
+\begin{solution}{Solution}
+Manipulate the second equation to show that
+
+\[
+\begin{aligned}
+x^2(2-x) + y^2(2-y) &= 2(2-x)(2-y)\\
+4 - (x^3 + y^3) &= 2(4 - 2(x+y) + xy)\\
+4(x+y) &= 4 + 2xy + (x^3 + y^3)\\
+&= 2 + (x+y)^2 + (x^3 + y^3)\\
+\end{aligned}
+\]
+
+Where the second line is due to $2(x^2 + y^2) = 4$, and the last line is
+due to $(x+y)^2 = x^2 + y^2 + 2xy = 2 + 2xy$. Now define $S := (x + y)$.
+Note that $S^3 = x^3 + y^3 + 3xyS$ and also since $S^2 = 2 + 2xy \iff
+xy = \frac{1}{2}S^2 - 1$ we can conclude that
+$S^3 = x^3 + y^3 + 3\left(\frac{1}{2}S^2 - 1\right)S$. Re-arranging and
+then substituting for $x^3 + y^3$ now yields
+
+\[
+\begin{aligned}
+4S &= 2 + S^2 + \left(S^3 - 3\left(\frac{1}{2}S^3 - S\right)\right)\\
+0 &= S^3 - 2S^2 + 2S - 4\\
+0 &= (S-2)(S^2 + 2)\\
+\end{aligned}
+\]
+
+and since $S \in \mathbb{R}$ we must have $S = x + y = 2$. Thus
+$x^2 + (2-x)^2 = 2 \iff (x-1)^2 = 0$ and so $y = \pm 1$ from which it can
+easily be checked that the only solution is in fact $(x, y) = (1, 1)$.
+$\blacksquare$
+\end{solution}
+
+\end{document}

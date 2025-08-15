@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2015 --- P3/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2015 --- P3/6}
+Suppose that a sequence \( t_0, t_1, t_2, \ldots \) is defined by a formula
+\(
+t_n = An^2 + Bn + C
+\)
+for all integers \( n \geq 0 \). Here \( A \), \( B \) and \( C \) are real constants with \( A \neq 0 \). Determine values of \( A \), \( B \) and \( C \) which give the greatest possible number of successive terms of the sequence which are also successive terms of the Fibonacci sequence.
+
+\textit{The Fibonacci sequence is defined by} \( F_0 = 0 \), \( F_1 = 1 \) \textit{and}
+\(
+F_m = F_{m-1} + F_{m-2} \ \text{for } m \geq 2.
+\)
+\end{problem}
+
+\begin{solution}{Solution}
+Suppose that $t_k = F_n, \ t_{k+1} = F_{n+1}, \ t_{k+2} = F_{n+2}, ...,
+t_{k+q} = F_{n+q}$ for positive integers $k, n$ and $q \geq 2$.
+Then by the properties of the fibonacci sequence
+$t_m = t_{m-1} + t_{m-2}$ for any integer $k+2 \leq m \leq k + q$.
+That is
+
+$$
+Am^2 + Bm + C = \left[ A(m-1)^2 + B(m-1) + C \right] +
+\left[ A(m-2)^2 + B(m-2) + C \right]
+$$
+
+but by the Fundamental Theorem of Algebra this equation has at most
+2 solutions, and thus there exist at most 2 values of $m$. That means that
+the number of integers in the interval $[k+2, k+q]$ is at most 2, and so
+$q \leq 3$ which tells us that $t_n$ can contain at most 4 consecutive
+fibonacci terms. Now we present the construction of a quadratic sequence
+that gives the maximal 4 consecutive fibonacci sequence terms.\\
+
+Use $t_n = \frac{1}{2} n^2 - \frac{1}{2} n + 2$ and then notice that
+$t_1 = 2 = F_3, \ t_2 = 3 = F_4, \ t_3 = 5 = F_5, \ t_4 = 8 = F_6$. So
+the values $A=\frac{1}{2}, \ B=-\frac{1}{2}, \ C=2$ give the greatest
+possible number of successive terms which are also successive terms of the
+fibonacci sequence. $\blacksquare$
+\end{solution}
+
+\end{document}

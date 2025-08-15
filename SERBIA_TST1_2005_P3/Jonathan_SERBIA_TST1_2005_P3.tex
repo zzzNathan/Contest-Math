@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{math_template}
+
+\author{Jonathan Kasongo}
+\title{Serbia Team Selection Test Round 1 2005 --- P3}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Serbia Team Selection Test Round 1 2005 --- P3}
+Find all polynomials $P\left(x\right)$ that satisfy
+$P\left(x^2+1\right) = P\left(x\right)^2 + 1$ for all $x$.
+\end{problem}
+
+\begin{solution}{Solution}
+\textit{Lemma: Any polynomial $P(x) \neq x$ has finitely many fixed
+points.}\\
+
+\textit{Proof:}
+Suppose not, then $P(x) - x$ has infinitely many solutions,
+but since the degree of the polynomial $P(x) - x$ is finite this is a
+contradiction. $\square$ \\
+
+Clearly $P(x) = x$ is a solution, now let's find polynomials $P(x) \neq x$
+that work also. \\
+
+\textit{Claim: If $t$ is a fixed point of the polynomial $P$, then so
+is $t^2 + 1$.}\\
+
+\textit{Proof:} By definition of a fixed point and using the given equation
+gives $P\left(t^2 + 1\right) = P\left(t\right)^2 + 1 = t^2 + 1$ and so
+$t^2 + 1$ is a fixed point. $\square$ \\
+
+Now suppose that some complex number $z$ is a fixed point of $P$. We must
+have $|z| = |z^2 + 1|$ in order to avoid having infinitely many fixed
+points. If we write $z = a + bi$ for some real $a,b$ then that last
+equation is equivalent to $a^2 + b^2 = (a^2 - b^2 + 1)^2 + (2ab)^2$.
+If we think of this equation as a polynomial of, say $a$, the polynomial
+is of degree 4 and there are at most 4 solutions. The 4 solutions are
+$z = \frac{1}{2} \pm \frac{\sqrt{3}i}{2},
+-\frac{1}{2} \pm \frac{\sqrt{3}i}{2}$ and these are easily verifiable
+since they correspond to the roots of $x^2 - x + 1 = 0$ and
+$x^2 + x + 1 = 0$. Since these are the only fixed points of $P$ we can
+write that
+$
+P(x) - x = (x^2 - x + 1)(x^2 + x + 1)
+$
+or
+$
+P(x) - x = x^2 - x + 1
+$
+or
+$
+P(x) - x = x^2 + x + 1
+$
+since we know that roots come in complex conjugate pairs. Solve for
+$P(x)$ in each of these equations to show that the candidates for $P(x)$
+are $x^4 + x^2 - x + 1$, $(x+1)^2$ and $x^2 + 1$. Then finally one can
+check that the only solutions are $P(x) = x \ \text{or}\
+  x^2 + 1$.\\
+
+\textit{Remark: Note that this solution is actually only partially
+correct. Instead of the condition $|z| = |z^2 + 1|$ the complete condition
+is actually that
+the sequence $z, \ z^2 + 1, \ (z^2 + 1)^2 + 1, ...$ must have some finite
+period, and this means that there are finitely many fixed points as we
+initially
+desired. Once you work this logic out the actual answer is
+$P(x) = x \ \text{or} \ x^2 + 1$ or $x^2 + 1$ composed with itself any
+positive integer number of times.}
+\end{solution}
+
+\end{document}
