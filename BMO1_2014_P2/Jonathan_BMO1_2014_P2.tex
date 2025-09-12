@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2014 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2014 --- P2/6}
+Positive integers $p$, $a$ and $b$ satisfy the equation $p^2 + a^2 = b^2$.
+Prove that if $p$ is a prime greater than 3, then $a$ is a multiple of 12
+and $2(p + a + 1)$ is a perfect square.
+\end{problem}
+
+\begin{solution}{Solution}
+We begin by noticing that $p^2 = (b - a)(b + a)$. The two factors on the
+right are either $p$ and $p$ or they are $1$ and $p^2$, but since $a > 0$
+we must have $b + a = p^2$ and $b - a = 1$. Solve this simaltaenous equation
+to get $a = \frac{p^2 - 1}{2}$ and $b = \frac{p^2 + 1}{2}$. Notice that
+$2a = (p - 1)(p + 1)$, now since $p > 3$ and $p$ is a prime 3 isn't a
+factor of $p$. But among the collection of numbers $p-1, p, p+1$ there must
+be one factor of 3, and thus one of $p-1, p+1$ is divisible by 3 and this
+means that $a$ also has a factor 3. Similarly notice that $p$ can't have
+a factor of 4 since it is odd, but among the collection of numbers
+$p-1, p, p+1, p+2$ one of them must be a factor of 4. But since $p$ and
+$p+2$ are both odd they can't be divisible by 4, and thus one of $p-1, p+1$
+is divisible by 4, and the other is divisible by 2 (since they are both
+even numbers), but this means that $a$ has a factor of 4. Combining these
+2 facts together shows that $a$ is indeed a multiple of 12. Finally
+to show that $2(p + a + 1)$ is a perfect square observe the following
+
+\[
+\begin{aligned}
+2(p + a + 1) &= 2\left(p + \frac{p^2 - 1}{2} + 1\right)\\
+&= p^2 + 2p + 1 \\
+&= (p+1)^2
+\end{aligned}
+\]
+
+and this completes the proof. $\blacksquare$
+\end{solution}
+\end{document}

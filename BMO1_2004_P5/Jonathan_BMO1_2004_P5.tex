@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2004 --- P5/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2004 --- P5/5}
+Let $p, q$ and $r$ be prime numbers. It is given that $p$ divides $qr - 1$,
+$q$ divides $pr - 1$, and $r$ divides $pq - 1$.
+
+Determine all possible values of $pqr$.
+\end{problem}
+
+\begin{solution}{Solution}
+Firstly if $p = q = r$ then $p \mid p^2 - 1 = (p - 1)(p + 1)$ but this
+is impossible since $\gcd(p, p+1) = \gcd(p, p-1) = 1$. Also due to
+symmetry in $(p, q, r)$ we can say, without loss
+of generality, if $p = q$ then $p \mid pr - 1$ but that means that
+$p \mid (-1)$ and this is impossible since prime numbers are larger than 1.
+\\
+
+Thus it is possible to assume, without loss of generality, $p < q < r$.\\
+
+\textit{Claim 1: $p = 2$.}\\
+
+\textit{Proof:} Assume not, then $3 \leq p < q < r$. Since
+$pqr \mid (pq-1)(rp-1)(qr-1) = (pqr)^2 - pqr(p+q+r) + (pq+qr+rp) - 1$, we
+must have $pq + qr + pr \equiv 1 \ \text{(mod } pqr)$. Now by assumption,
+$pq + qr + rp < 3qr \leq pqr$. That means that $pq + qr + rp = 1$, since
+it can't be more than $pqr$. However since all of the primes are $\geq 3$,
+this is a contradiction. $\square$
+\vspace{\baselineskip}
+
+\textit{Claim 2: $q = 3$.}\\
+
+\textit{Proof:} Again assume not, then $q \geq 4$. Due to claim 1, we must
+have $q \mid (2r-1)$ and $r \mid (2q - 1)$, thus
+$qr \mid (2r-1)(2q-1) = 4qr - 2(q + r) + 1$, but for this to be true we
+need $2(r + q) \equiv 1 \ \text{(mod } qr)$. Now by assumption,
+$2(r + q) < 4r \leq qr$ but this means that $2(p + q) = 1$ since it can't
+be bigger than $qr$. But this is impossible since $p$ and $q$ are positive
+integers. $\square$
+\\
+
+Now we finish the problem by using claims 1 and 2. We must have a prime
+$r$ dividing $2 \cdot 3 - 1 = 5$, and that forces $r = 5$.
+Thus the only possible value of $pqr$ is $2 \cdot 3 \cdot 5 = 30$.
+\blacksquare
+\end{solution}
+
+\end{document}

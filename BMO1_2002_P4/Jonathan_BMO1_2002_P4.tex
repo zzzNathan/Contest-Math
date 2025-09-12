@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 2002 --- P4/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 2002 --- P4/5}
+Twelve people are seated around a circular table. In how many ways
+can six pairs of people engage in handshakes so that no arms cross?
+(Nobody is allowed to shake hands with more than one person at once.)
+\end{problem}
+
+\begin{solution}{Solution}
+We will solve the following more general problem: Let $n$ be a positive
+integer. Given $2n$ people are sat around a circular table, in how many
+ways can $n$ pairs of people engage in handshakes so that no arms cross? \\
+
+Let's denote the $2n$ people sat at the table by $a_1, a_2, ..., a_{2n}$,
+where each of the people are sat in that order. \\
+
+\textit{Lemma: If person $a_k$ handshakes with person $a_{k + d}$ then
+each of the people $a_{k+1}, a_{k+2}, ..., a_{k + d - 1}$ must handshake
+another person amongst themselves, in order to have no arms crossing.} \\
+
+\textit{Proof:} When person $a_k$ handshakes with person $a_{k + d}$ their
+linked arms make a chord across the circular table, splitting the table
+into 2 halves. One halve contains the people $a_{k+1}, a_{k+2}, ...,
+a_{k + d - 1}$, and the other half contains the remainding people. If
+2 people from different halves were to handshake then their arms would
+cross that chord, which is a contradiction. $\square$ \\
+
+Due to our lemma if person $a_k$ handshakes with person $a_{k+d}$, it
+creates a group of $d-1$ people who have to handshake amongst themselves.
+For this to be possible $d-1$ must be even and $d$ must be odd. Thus
+if person $a_p$ handshakes with person $a_q$, the integers
+$p$ and $q$ must have opposite parity. \\
+
+Let $H_{2k}$ be the number of ways $k>2$ pairs of people can handshake such
+that no arms cross, given that the $2k$ people are sat around a circular
+table. Consider person $a_1$, they must handshake with person $a_{2m}$,
+for integer $1 \leq m \leq k$. Then there are 2 groups of people that
+should handshake among themselves under the same constraints as before.
+One group is of size $2m - 2$ and the other is of size $2k - 2m$.
+Thus
+
+\[
+\begin{aligned}
+H_{2k} &= \sum_{m=1}^k H_{2m - 2} \cdot H_{2k - 2m} \\
+\end{aligned}
+\]
+
+It is easily verifiable that $H_0 = 1, H_2 = 1$ and from there one can
+show that $H_12 = 132$ by brute-force computation (or by using the fact
+that $H_{2n}$ is the $n^\text{th}$ catalan number $
+\frac{1}{n+1} \binom{2n}{n}$). $\blacksquare$
+
+\end{solution}
+
+\end{document}

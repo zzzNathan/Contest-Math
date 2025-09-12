@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad 2013 Round 1 --- P3/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad 2013 Round 1 --- P3/6}
+A number written in base 10 is a string of $3^{2013}$ digit 3s. No other
+digit appears. Find the highest power of 3 which divides this number.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $N = 3\cdot 10^{3^{2013} - 1} + 3\cdot 10^{3^{2013} - 2} +
+\cdots + 3\cdot 10^1 + 3\cdot 10^0 = 3\cdot
+\frac{10^{3^{2013}} - 1}{10 - 1}$. We claim that $v_3 (N) = 3^{2013}$.
+It suffices to show that $v_3 \left(\frac{1}{3} \left( 10^{3^{2013}} - 1
+\right) \right) = 3^{2013} \iff v_3 \left(10^{3^{2013}} - 1\right) =
+{3^{2013} + 1}$. \\
+
+First we show that $10^{3^{2013}} \equiv 1 \ \left(\text{mod} \
+3^{3^{2013}+1}\right)$. Note that a positive integer is coprime with
+$3^{3^{2013}+1}$ as long as it doesn't have a factor of 3. We know that
+every third number of the
+positive integers is a multiple of 3, and thus the number of positive
+integers that are coprime with $3^{3^{2013} + 1}$ is exactly $\frac{2}{3} \cdot
+3^{3^{2013} + 1} = 2 \cdot 3^{3^{2013}}$ and thus $\varphi \left(
+3^{3^{2013}+1}\right) = 2 \cdot 3^{3^{2013}}$. Now notice that
+$1 \equiv 10^{2\cdot 3^{2013}} \equiv 10^{3^{2013}} \ \left(\text{mod} \
+3^{3^{2013}+1} \right)$ by Euler's theorem, and this establishes
+that $3^{3^{2013} + 1} \mid 10^{3^{2013}} - 1$ as desired. \\
+
+Now we just need to show that $3^{3^{2013} + 2} \nmid 10^{3^{2013}} - 1$.
+By the same arguement as last time we know that
+$\varphi \left( 3^{3^{2013} + 2} \right) = \frac{2}{3} \cdot
+3^{3^{2013} + 2} = 2 \cdot 3^{3^{2013} + 1}$. Assume, for the sake of
+contradiction, that $3^{3^{2013} + 2} \mid 10^{3^{2013}} - 1$. Thus
+$10^{3^{2013}} - 1 \equiv 3^{2\cdot 3^{2013}} - 1 \equiv
+3^{(3^{2013} + 2) + (3^{2013} - 2)} - 1 \equiv -1 \equiv 0 \
+\left(\text{mod }  3^{3^{2013} + 2}\right)$ which is a contradiction.
+Thus $3^{3^{2013} + 2} \nmid 10^{3^{2013}} - 1$ and so
+$v_3 \left(10^{3^{2013}} - 1\right) = {3^{2013} + 1}$ as desired. Thus the
+highest power of 3 dividing $N$ is $3^{2013}$. $\blacksquare$
+\end{solution}
+
+\end{document}

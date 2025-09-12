@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad 2023 Round 1 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad 2023 Round 1 --- P2/6}
+The sequence of integers $a_0, a_1, \ldots$ has the property that for
+each $i \geq 2$, $a_i$ is either $2a_{i-1} - a_{i-2}$ or
+$2a_{i-2} - a_{i-1}$.\vspace{0.2cm}
+
+Given that $a_{2023}$ and $a_{2024}$ are consecutive integers, prove that
+$a_0$ and $a_1$ are consecutive integers.\vspace{0.2cm}
+
+\textit{(Note that 6 and 7 are consecutive integers, as are 7 and 6)}
+\end{problem}
+
+\begin{solution}{Solution}
+Let $n$ be a positive integer. Suppose that $a_n$ and $a_{n + 1}$ are
+consecutive integers. That means that $| a_n - a_{n+1} | = 1$. But now
+depending on the defintion of $a_{n+1}$ we have either
+$| a_n - (2a_n - a_{n-1}) | = | a_{n-1} - a_n | = 1$ or
+$| a_n - (2a_{n-1} - a_n) | = 2 | a_n - a_{n-1} | = 1$. Notice that
+the second case is impossible because it implies that there are two integers
+that differ by $\frac{1}{2}$. Thus we know that $| a_{n-1} - a_{n} | = 1$,
+that is, the two integers before $a_n$ and $a_{n+1}$ are also consecutive.\\
+
+Now since we are given that $a_{2023}$ and $a_{2024}$ are consecutive
+integers, this implies that $a_{2023}$ and $a_{2022}$ are consecutive,
+and after repeating this arguement 2023 times we deduce that $a_0$ and
+$a_1$ are consecutive. $\blacksquare$
+\end{solution}
+
+\end{document}

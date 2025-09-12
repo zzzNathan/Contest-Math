@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Mathematical Reflections --- S705}
+
+\begin{document}
+\maketitle
+
+\textit{"All constructive problems are trivial."}
+
+\begin{problem}{Mathematical Reflections --- S705}
+Prove that there are infinitely many triples $(a,b,c)$ of distinct positive
+integers such that $a^3 + b^3 + c^3 - 3abc$ is a perfect square.
+\end{problem}
+
+\begin{solution}{Solution}
+We make use of the well-known identity
+
+$$
+a^3 + b^3 + c^3 - 3abc = \frac{1}{2}(a + b + c)\left[ (a-b)^2 +
+(b-c)^2 + (c-a)^2 \right]
+$$
+
+Let $c < b < a$ be in arithmetic progression with common difference
+$d > 1$, where $d$ is a positive integer. We have
+
+\[
+\begin{aligned}
+a^3 + b^3 + c^3 - 3abc &= \frac{1}{2} (c + 3d) \left[ d^2 + d^2 + 4d^2 \right]\\
+&= 3d^2 (c + 3d) \\
+\end{aligned}
+\]
+
+Now let $c = 3d^2 - 3d = 3d(d - 1)$ and we have $a^3 + b^3 + c^3 - 3abc =
+\left(3d^2\right)^2$
+\end{solution}
+
+\end{document}

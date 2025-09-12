@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Miscellaneous Theorems and Ideas}
+
+\begin{document}
+\maketitle
+\textit{This is just a collection of some cool facts and theorems I have
+found, along with their proofs.}
+
+\begin{problem}{Theorem 1.}
+For an odd positive integer $n$, and positive integers $a,b$ with
+$a^2 \leq b < (a+1)^2$ we have the following,
+
+$$
+\floor{\left( a + \sqrt{b} \right)^n} =
+\left( a + \sqrt{b} \right)^n + \left( a - \sqrt{b} \right)^n.
+$$
+\end{problem}
+
+\begin{solution}{Proof of Theorem 1.}
+Firstly, due to Binomial expansion,
+
+\[
+\begin{aligned}
+\left( a + \sqrt{b} \right)^n + \left( a - \sqrt{b} \right)^n &=
+\sum_{r=0}^n \binom{n}{r} \left(\sqrt{b}\right)^r a^{n-r} +
+\sum_{r=0}^n \binom{n}{r} \left(-\sqrt{b}\right)^r a^{n-r} \\
+&= \sum_{r=0}^n \binom{n}{r} \left( \sqrt{b} \right)^r \left[ 1 + (-1)^r \right] a^{n - r}\\
+&= 2 \sum_{\substack{r=0 \\ r \ \text{even}}}^{n} \binom{n}{r} \left(\sqrt{b}\right)^r
+a^{n-r}
+\end{aligned}
+\]
+
+which is clearly an integer. Now it suffices to show that
+
+\[
+\left(a + \sqrt{b}\right)^n - 1 <
+\left(a + \sqrt{b}\right)^n + \left(a - \sqrt{b}\right)^n
+\leq \left(a + \sqrt{b}\right)^n
+\]
+
+That is
+
+$$
+-1 < \left(a - \sqrt{b}\right)^n \leq 0
+$$
+
+but we know that $a \leq \sqrt{b} < a + 1$ and so
+$a - \sqrt{b} \leq 0$ and $-1 < a - \sqrt{b}$ and raising both inequalites
+to the power of $n$ gives the desired result. $\blacksquare$
+\end{solution}
+
+\end{document}

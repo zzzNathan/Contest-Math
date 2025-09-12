@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Solutions to Advanced Problems by Stephen Siklos}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Problem 1}
+\begin{enumerate}
+  \item[(i)] Find all sets of positive integers $a$, $b$ and $c$ that satisfy the equation
+  \[
+    \frac{1}{a} + \frac{1}{b} + \frac{1}{c} = 1.
+  \]
+
+  \item[(ii)] Determine the sets of positive integers $a$, $b$ and $c$ that satisfy the inequality
+  \[
+    \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \geq 1.
+  \]
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution to Problem 1}
+For part (i), the equation is symmetric so, without loss of generality,
+assume that $c \leq b \leq a$. Multiply through by $abc$, to get
+$ab + bc + ca = abc$. We claim that $c \leq 3$. Here is the proof,
+Suppose, for the sake of contradiction that $c > 3$, then
+$3ab < abc = ab + bc + ca \leq ab + ac + ab$ and so $ab < ac \iff b < c$
+which is a contradiction since we assumed $b \geq c$. Now we can just check
+each case.\\
+
+\textit{Case 1:} $c = 1$. Then $ab + b + a = ab \iff a + b = 0$ but since
+$a,b \geq 1$ this is impossible.\\
+
+\textit{Case 2:} $c = 2$. Then $ab + 2(a+b) = 2ab \iff 2(a+b) = ab \iff
+2b = ab - 2a \iff a = \frac{2b}{b-2}$. Since $a$ is a positive integer we
+need $2b \equiv (b-2) + (b-2) + 4 \equiv 4 \equiv 0 \ (\text{mod} \ b-2)$.
+Thus $b-2$ must be a factor of 4. We must have $b-2 = 1,2,4$ and so
+$b = 3,4,6$. When $b = 6$, $a = \frac{12}{4} = 3$ which is impossible
+since $a \geq b$. When $b = 4$, $a = \frac{8}{2} = 4$. When $b = 3$,
+$a = \frac{6}{1}$. So the solutions here are $(a,b,c) = (4,4,2), (6,3,2)$.
+\\
+
+\textit{Case 3:} $c = 3$. Then $ab + 3(a + b) = 3ab \iff 3(a+b) = 2ab \iff
+3b = 2ab - 3a \iff a = \frac{3b}{2b-3}$. Since $a$ is a positive integer
+we need $3b \equiv b + 3 \equiv 0 \ (\text{mod} \ 2b-3)$. Notice that if
+$2b - 3 > b + 3 \iff b > 6$, then we must have $b + 3 = 0 \iff b = -3$
+since it can't be a positive multiple of $2b + 3$. But since $b$ is
+positive this is impossible, so $3 = c \leq b \leq 6$. Now just try each
+value of $b$. When $b = 3$, $a = \frac{9}{3} = 3$. When $b = 4$,
+$a = \frac{12}{5} \notin \mathbb{N}$, so this is impossible. When $b = 5$,
+$a = \frac{15}{7} \notin \mathbb{N}$, so this is impossible. When $b = 6$,
+$a = \frac{18}{9} = 2$ but since $a \geq b$ this is impossible. So the only
+solution here is $(a,b,c) = (3,3,3)$.\\
+
+Finally combining each of the three cases shows that the only solutions are
+$(a,b,c) = (4,4,2), (6,3,2)$ and $(3,3,3)$ up to permutation.\\
+
+Part (ii) follows similarly, suppose that $c \geq 3$, then
+$\frac{1}{a} \leq \frac{1}{b} \leq \frac{1}{c} \leq \frac{1}{3}$ but this
+forces the equality case $a=b=c=3$. Now what if $c = 2$, then
+$\frac{1}{a} + \frac{1}{b} \geq \frac{1}{2}$. We must have $b \leq 4$,
+because if $b > 5$ then $\frac{1}{5} > \frac{1}{b} \geq \frac{1}{a}$ and
+there is no way that they can sum to more than $\frac{1}{2}$. When $b = 2$,
+$a$ can be any natural number. When $b = 3$, $\frac{1}{a} \geq \frac{1}{6}
+\iff a\leq 6$. Now what if $c=1$, then $a,b$ can be any natural numbers.\\
+\end{solution}
+
+\end{document}

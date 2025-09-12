@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Mathematical Reflections --- S702}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Mathematical Reflections --- S702}
+Prove that for each positive integer $c$ there are infinitely many
+positive integers $n$ such that $n! + c$ is not the square of an integer.
+\end{problem}
+
+\begin{solution}{Solution}
+Our proof naturally splits into two cases: when $c$ itself is a square and
+when $c$ is not a square. \\
+
+Let's look at when $c$ is not a square. It suffices to show that there
+exists a prime $p$ such that $v_p (n! + c)$ is odd, because if $n! + c$
+were a square then it is of the form $p_1^{2e_1} \cdot p_2^{2e_2} \cdots
+p_n^{2e_n}$, for some primes $(p_n)$ and some positive integers $(e_n)$.
+Since $c$ isn't a square, there exists some prime $p$ and a positive
+integer $k$ such that $v_p (c) = 2k-1$. Let $n \geq 2c \geq 2p^{2k-1}$ such
+that $n!$ will contain the factors $p^{2k-1}$ and $2p^{2k-1}$ and so
+$p^{2k} \mid n!$ whilst $p^{2k} \nmid c$. So that means that
+$p^{2k-1} \mid \left[n! + c\right]$ but $p^{2k} \nmid \left[n! + c\right]$
+and thus $v_p (n! + c) = 2k-1$ which is odd and this shows that it isn't
+square, for infinitely many $n \geq 2c$.\\
+
+Now what about when $c$ is a square. Let $c = m^2$ for some positive integer
+$m$. We claim that if $v_2(n!)$ is odd then $n! + m^2$ is not a square.
+Assume, for the sake of contradiction, that $v_2(n!)$ is odd and that
+$n! + m^2 = a^2$ for some positive integer $a$. We have
+$n! = (a-m)(a+m)$. Now suppose that $v_2(a) = a'$ and $v_2(m) = m'$,
+now for some odd integers $\lambda_a, \lambda_m$ we can write
+$a = 2^{a'} \lambda_a$ and $m = 2^{m'} \lambda_m$. Now notice that
+$v_2(a+m) = v_2(a-m) = \min (a', m')$ and so $v_2((a+m)(a-m)) =
+2 \min(a', m') = v_2(n!)$ but this is a contradiction since the left hand
+side is even and the right hand side is odd. Now we just need to show that
+there are infinitely many $n$ such that $v_2(n!)$ is odd. Notice that
+$v_2((n+1)!) = v_2(n!) + v_2(n+1)$, and so if $v_2(n+1)$ is odd the parity
+of $v_2((n+1)!)$ and $v_2(n!)$ are distinct and then by pigeonhole principle
+one of them must be odd, finally there are infinitely many $n$ such that
+$v_2(n+1)$ is odd because any number of the form $2^{2k-1}$ for positive
+integer $k$ will have an odd 2-adic valuation. $\blacksquare$ \\
+
+\textit{Remark: It seems as if this is essentially Alessandro Ventullo's
+solution just without the theory of quadratic residues (this is because I
+haven't learnt QR yet..). See Mathematical
+Reflections Issue 3 2025.}
+\end{solution}
+
+\end{document}

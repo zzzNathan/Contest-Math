@@ -18,7 +18,7 @@
 \setlength{\cftbeforesubsubsecskip}{0.3ex}
 
 % Rest of the packages
-\usepackage{tabularray, xcolor, xurl, minted, newtxtext, newtxmath, tikz}
+\usepackage{tabularray, xcolor, xurl, minted, newtxtext, newtxmath, tikz, graphicx}
 \usepackage{microtype}
 \usepackage[T1]{fontenc}
 \usepackage[most]{tcolorbox}
@@ -44,7 +44,7 @@
 
 % Header setup
 \pagestyle{fancy}
-\fancyhead[L]{\sffamily \bfseries Harris Academy Purley}
+\fancyhead[L]{\sffamily \bfseries Independent}
 \fancyhead[C]{\thepage}
 \fancyhead[R]{\sffamily \bfseries \HUGE Jonathan Kasongo}
 
@@ -68,6 +68,9 @@
 \makeatother
 
 % Math stuff
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
 \tcbset{
   problemstyle/.style={
     enhanced,
