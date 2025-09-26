@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Polish Math Olympiad 2007 Round 1 --- P6/12}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Polish Math Olympiad 2007 Round 1 --- P6/12}
+Find all polynomials $W(x)$ such that $W\left(x^2\right) W\left(x^3\right)
+= W(x)^5$ holds for every real number $x$.
+\end{problem}
+
+\begin{solution}{Solution}
+Let the roots of $W$ be $|r_1| \leq |r_2| \leq \cdots \leq |r_n|$ where
+$(r_n) \in \mathbb{C}$. The equation looks like so,
+
+$$
+\left(x^2 - r_1\right)\left(x^3 - r_1\right)\cdots
+\left(x^2 - r_n\right)\left(x^3 - r_n\right)
+=
+(x - r_1)^5\cdots(x - r_n)^5
+$$
+
+and so the set of roots of both sides of this equation must be the same.\\
+
+\textit{Claim 1:} If $r_i$ is a root of $W$, then $\pm \sqrt{r_i}$ and
+$\sqrt[3]{r_i}$ are roots of $W$ aswell.\\
+
+\textit{Proof:} On the LHS of the above equation we will find the factors
+$\left(x^2 - r_i\right)\left(x^3 - r_i\right)$ which have solutions
+$\pm \sqrt{r_i}$ and $\sqrt[3]{r_i}$. $\square$\\
+
+\textit{Claim 2:} $r_1 = r_2 = \cdots = r_n = 0$. \\
+
+\textit{Proof:}
+Suppose, for the sake of contradiction, that there exists
+an integer $k$ such that $r_k \neq 0$. \\
+
+In fact let $k^{*}$ be the
+smallest such integer for which $r_{k^{*}} \neq 0$. Now since
+$\sqrt{r_{k^{*}}} \neq 0$ is a root of the LHS, it is also a root of the
+RHS. But since $\sqrt{r_{k^{*}}} \leq r_{k^{*}}$ and $k^{*}$ is the smallest
+integer for which $r_{k^{*}} \neq 0$, it must be the case that
+$\sqrt{r_{k^{*}}} = r_{k^{*}}$. Since it cannot be 0, we have
+$r_{k^{*}} = 1$. Now consider the following, all due to claim 1:
+
+\[
+\begin{aligned}
+1 \text{ is a root of } W &\implies
+-\sqrt{1} = -1 \text{ is a root of } W &\implies \\
+\sqrt{-1} = i \text{ is a root of } W &\implies
+\sqrt{i} = e^{i\pi/2} \text{ is a root of } W &\implies \\
+\sqrt{e^{i\pi/2}} = e^{i\pi/4} \text{ is a root of } W &\implies
+\sqrt{e^{i\pi/4}} = e^{i\pi/8} \text{ is a root of } W &\implies \\
+\cdots &\implies \cdots &\implies
+\end{aligned}
+\]
+
+and thus $e^{i\pi/2^n}$ is a root of $W$ for any positive integer $n$.
+However since a polynomial can't have infinite roots, we have reached a
+contradiction. $\square$ \\
+
+So since $r_1 = r_2 = \cdots = r_n = 0$, it must be the case that
+$W(x) = x^n$ for positive integer $n$, and this works since
+$x^{2n} \cdot x^{3n} = (x^n)^5$. $\blacksquare$
+\end{solution}
+\end{document}

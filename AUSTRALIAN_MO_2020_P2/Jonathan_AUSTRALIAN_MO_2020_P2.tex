@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2020 --- P2/4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2020 --- P2/4}
+Amy and Bec play the following game. Initially, there are three piles, each containing
+2020 stones. The players take turns to make a move, with Amy going first. Each
+move consists of choosing one of the piles available, removing the unchosen pile(s)
+from the game, and then dividing the chosen pile into 2 or 3 non-empty piles. A
+player loses the game if they are unable to make a move.
+\vspace{0.2cm}
+
+Prove that Bec can always win the game, no matter how Amy plays.
+\end{problem}
+
+\begin{solution}{Solution}
+The following claim is the heart of the problem. \\
+
+\textit{Claim 1: If, on Bec's turn, there is a pile of
+$x$ stones, where} $x \nequiv 1 \ \text{(mod } 3)$
+\textit{then, in the subsequent turns she is able to force Amy to
+always choose a pile of $y < x$ stones, where} $y \equiv 1 \ \text{(mod } 3
+)$. \\
+
+\textit{Proof:} We have two cases,
+
+\begin{itemize}
+\item If $x \equiv 0 \ \text{(mod } 3)$, then Bec can split the pile of
+$x$ stones like so: $1, \ 1, \ x-2$. Each of these numbers is congruent to 1
+mod 3.
+\item If $x \equiv 2  \ \text{(mod } 3)$, then Bec can split the pile of
+$x$ stones like so: $1, \ x-1$. Each of these numbers is congruent to 1 mod
+3.
+\end{itemize}
+
+Thus on Amy's next turn she must pick a pile with $y$ stones, with
+$y \equiv 1 \ \text{(mod } 3)$. Also since Amy can never choose a pile of
+stones with 1 stone, it must be the case that $y \in \{ x-2, x-1 \}$
+and so $y < x$.
+Now when Amy makes her move,
+she will split the pile such that there is at least one new pile with
+$z \nequiv 1 \ \text{(mod } 3)$ stones. Suppose, FTSOC, that there isn't
+such a pile.
+
+\begin{itemize}
+\item If Amy splits the pile of $y$ stones into 2 piles with $a,b$ stones
+such that $a,b \equiv 1 \ \text{(mod } 3)$, then $2 \equiv a+b = y
+\equiv 1 \ \text{(mod } 3)$, a contradiction.
+\item If Amy splits the pile of $y$ stones into 3 piles with $a,b,c$ stones
+such that $a,b,c \equiv 1 \ \text{(mod } 3)$, then $0 \equiv a+b+c = y
+\equiv 1 \ \text{(mod } 3)$, a contradiction.
+\end{itemize}
+
+Thus after this point, Bec can always choose a pile of $x$ stones where
+$x \nequiv 1 \ \text{(mod } 3)$ and in the subsequent turns she is also
+able to force Amy to always choose a pile of $y$ stones,
+where $y \equiv 1 \ \text{(mod } 3)$.
+$\square$ \\
+
+Since $2020 = 673 \cdot 3 + 1 \equiv 1 \ \text{(mod } 3)$. Due to claim 1,
+Bec has a strategy to force Amy to always choose piles of stones with
+$k \equiv 1 \ \text{(mod } 3)$, whilst she can always avoid choosing piles
+of stones with $m \nequiv 1 \ \text{(mod } 3)$.
+Again due to claim 1, that means that Amy will eventually
+have to pick a pile of stones with 1 stone in that pile, but since it is
+impossible to divide this pile into 2 or 3 non-empty piles, Bec will win.
+$\blacksquare$
+\end{solution}
+
+\end{document}

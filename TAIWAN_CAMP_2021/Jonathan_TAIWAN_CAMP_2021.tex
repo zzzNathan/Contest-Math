@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{2021 Taiwan IMO Camp --- A5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{2021 Taiwan IMO Camp --- A5}
+Let $M$ be an arbitrary positive real number greater than 1 , and let $a_{1}, a_{2}, \ldots$ be an infinite sequence of real numbers with
+$a_{n} \in[1, M]$ for any $n \in \mathbb{N}$. Show that for any $\varepsilon>0$, there exists a positive integer $n$ such that
+
+$$
+\frac{a_{n}}{a_{n+1}}+\frac{a_{n+1}}{a_{n+2}}+\cdots+\frac{a_{n+t-1}}{a_{n+t}} \geq t-\varepsilon
+$$
+
+holds for any positive integer $t$.
+\end{problem}
+
+\begin{solution}{Solution}
+If we can find $n$ such that $a_n \geq a_{n+1} \geq \cdots \geq a_{n+t}$
+then we will be done because that sum on the left hand side will be
+$\geq t$. Hence assume, for the sake of contradiction, that such $n$ cannot
+be found.\\
+
+If we cannot find such $n$, then it must be the case that $(a_n)$ is
+strictly increasing. Because $(a_n)$ is bounded and strictly increasing,
+we can deduce that $\lim_{n \rightarrow \infty} a_n = M$ and so
+$\lim_{n \rightarrow \infty} (a_n - a_{n-1}) = 0$, and thus
+we can say the following: for some sufficiently large integer $N$, it is
+possible to find a contiguous sub-sequence $a_N, a_{N+1}, \ldots, a_{N+t}$
+with the following property
+
+$$
+a_{N + k} + \varepsilon_{N + k} = a_{N + k + 1}
+$$
+
+for integers $0 \leq k < t$, and for some \textit{very} small
+positive $(\varepsilon_n)$. Now we observe that
+
+$$
+\frac{a_N}{a_{N+1}} + \frac{a_{N+1}}{a_{N+2}} + \cdots +
+\frac{a_{N+t-1}}{a_{N+t}} =
+t - \left(\frac{\varepsilon_N}{a_N} + \frac{\varepsilon_{N+1}}{a_{N+1}} +
+\cdots + \frac{\varepsilon_{N+t}}{a_{N+t}} \right)
+$$
+
+Now letting $\varepsilon = \left(\frac{\varepsilon_N}{a_N} +
+\frac{\varepsilon_{N+1}}{a_{N+1}} + \cdots +
+\frac{\varepsilon_{N+t}}{a_{N+t}} \right)$ finishes the problem.
+\end{solution}
+
+\end{document}

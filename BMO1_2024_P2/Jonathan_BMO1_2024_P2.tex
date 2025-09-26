@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad 2024 Round 1 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad 2024 Round 1 --- P2/6}
+A magician performs a trick with a deck of $n$ cards that are numbered from 1 to $n$. The
+magician prepares for the trick by putting the cards in an order of her choosing. Then she
+challenges a member of the audience to write an integer on a board. The magician turns over
+the cards one by one, in their pre-arranged order. Every time the magician turns over a card,
+the audience member multiplies the number on the board by $-1$, adds it to the number on
+the card, writes the result on the board, and erases the old number. The magician guarantees
+that, no matter which initial integer is chosen, the initial and final numbers will sum to 0.
+Determine for which natural numbers $n$ the magician can perform the trick. You must both
+prove that the trick is possible for the numbers you claim, and prove that it is not possible
+for any other numbers.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is that the trick is only possible if
+$n \equiv 3 \ \text{(mod } 4)$. \\
+
+Let's say that the initial number written on the board is $x$. Let's say
+that the deck of cards is in the order $\sigma(1), \sigma(2), \ldots,
+\sigma(n)$, where $\sigma$ is a permutation of $\{1,2,\ldots, n\}$. The
+final number on the board is
+
+\[
+\begin{aligned}
+&\phantom{=} \sigma(n) - \left[ \sigma(n-1) - \left[ \sigma(n-2) -
+\cdots - \left[ \sigma(1) - x \right] \right] \cdots \right] \\
+&= \sigma(n) - \sigma(n-1) + \cdots + (-1)^{n-1} \sigma(1) + (-1)^n x \\
+\end{aligned}
+\]
+
+Note that if $n$ is even the final number will be of the form $a + x$, for
+an integer $a$, and so the sum of the initial and final numbers is $a + 2x$
+and so if $x \neq -\frac{a}{2}$ then that sum cannot be 0 and thus the trick
+cannot be performed for any $x$. \\
+
+So since $n$ is odd we just want to find $n$ such that there exists a
+permutation $\sigma$ and
+
+$$
+\sigma(n) - \sigma(n-1) + \cdots + (-1)^{n-1} \sigma(1) = 0
+$$
+
+But since
+
+$$
+\sum_{r=0}^{n-1} (-1)^r \sigma(n-r) \equiv
+\sum_{r=0}^{n-1} \sigma(n-r) \equiv
+\frac{n(n+1)}{2} \ \text{(mod } 2)
+$$
+
+If $n \equiv 1 \ \text{(mod } 4)$ then $\frac{n(n+1)}{2}$ is odd and so
+that sum can never be 0, since 0 is even. Thus we can only have
+$n \equiv 3 \ \text{(mod } 4)$. Now to finish the problem we will exhibit
+a construction that always works with such $n$. Consider the following
+ordering of the deck of cards, we place each integer $1\leq k \leq n-1, \
+k \neq \frac{n-1}{2}$ next to $k+1$, so that they will contribute $-1$
+to the alternating sum, and then we stick the number $\frac{n-1}{2}$ on the
+end of the list.
+
+$$
+1, 2, 3, 4, \ldots, \frac{n-1}{2} - 2, \frac{n-1}{2} - 1,  \frac{n-1}{2} + 1, \frac{n-1}{2} + 2, \ldots, n-1, n, \frac{n-1}{2}
+$$
+
+then the alternating sum of these numbers is
+$$
+\underbrace{\left[ (-1) + (-1) + \cdots (-1) \right]}_{\frac{n-1}{2} \ \text{copies}} + \frac{n-1}{2} = 0
+$$
+
+since there are $\frac{n-1}{2}$ pairs of integers $(k, k+1)$. $\blacksquare$
+\end{solution}
+
+\end{document}

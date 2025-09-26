@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Mathematical Excalibur --- Volume 7, No 3}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Example 1.}
+Numbers $1, 2, 3, \ldots, 1974$ are written on
+a board. You are allowed to replace any
+two of these numbers by one number,
+which is either the sum or the difference
+of these numbers. Show that after 1973
+times performing this operation, the only
+number left on the board cannot be 0.
+\\
+
+\textit{(1974 Kiev Math Olympiad)}
+\end{problem}
+
+\begin{solution}{Solution to Example 1.}
+Initially there are 987 odd numbers and 987 even numbers.
+
+\begin{itemize}
+\item If we choose to replace two numbers of the same parity, their sum and
+difference is even, so we either lose two odd numbers or we don't lose any
+odd numbers.
+\item If we choose to replace two numbers of different parity, their
+sum and difference is odd, so the number of odd numbers in the list
+doesn't change.
+\end{itemize}
+
+In each of these cases, the parity of the number of odd numbers on the board
+doesn't change and so it is an invariant. Thus the last number left on the
+board must be odd, and so it cannot be 0. $\blacksquare$
+\end{solution}
+\vspace{0.2cm}
+
+\begin{problem}{Example 2.}
+In an $8 \times 8$ board, there are
+32 white pieces and 32 black pieces, one
+piece in each square. If a player can
+change all the white pieces to black and
+all the black pieces to white in any row
+or column in a single move, then is it
+possible that after finitely many moves,
+there will be exactly one black piece left
+on the board?
+\end{problem}
+
+\begin{solution}{Solution to Example 2.}
+Let's say that in one row or column, there are $w$ white pieces and $b$
+black pieces. Indeed $w + b = 8 \equiv 0 \ \text{(mod } 2)$. Thus
+$w \equiv b \ \text{(mod } 2)$. The total number of black pieces on the
+board will increase by $w-b$ each move, and similarly the total number of
+white pieces on the board will increase by $b-w$ each move. Since both
+$b-w$ and $w-b$ have to be even, the number of white pieces on the board at
+any given time is even, and the same for the number of black pieces on the
+board at any given time. Thus there can never only be 1 black piece left
+on the board. $\blacksquare$
+\end{solution}
+\vspace{0.2cm}
+
+\begin{problem}{Example 3.}
+Four $x$’s and five $o$’s are
+written around the circle in an arbitrary
+order. If two consecutive symbols are the
+same, then insert a new $x$ between them.
+Otherwise insert a new $o$ between them.
+Remove the old $x$’s and $o$’s. Keep on
+repeating this operation. Is it possible to
+get nine $o$’s?
+\end{problem}
+
+\begin{solution}{Solution to Example 3.}
+\begin{itemize}
+\item If we have two consecutive $x$'s, then we will replace them with a
+singular $x$, and the number of $o$'s doesn't change.
+\item If we have two consecutive $o$'s then we will replace them with a
+singular $x$, and the number of $o$'s will decrease by 2.
+\item If we have an $x$ next to an $o$ then we will replace them with a
+singular $o$, and the number of $o$'s doesn't change.
+\end{itemize}
+
+In each case the number of $o$'s decreases and so it is impossible to get
+nine $o$'s. $\blacksquare$
+\end{solution}
+\vspace{0.2cm}
+
+\begin{problem}{Example 4.}
+There are three piles of
+stones numbering 19, 8 and 9,
+respectively. You are allowed to choose
+two piles and transfer one stone from
+each of these two piles to the third piles.
+After several of these operations, is it
+possible that each of the three piles has
+12 stones?
+\end{problem}
+
+\begin{solution}{Solution to Example 4.}
+Modulo 3 the piles of stones are 1, 2 and 0 respectively. If a pile receives
+two stones, or if it has one stone removed this corresponds to adding
+$2$ to the pile modulo 3. Since after each operation each of the piles
+modulo 3 change by the same amount, we can never have them all be equal
+to 0 mod 3 at some point, thus it is never possible to have each of the
+three piles with 12 stones. $\blacksquare$
+\\
+
+\textit{Remark: The motivation for mod 3, comes from the fact that $2
+\equiv -1 \ (\text{mod } 3)$.}
+\end{solution}
+\end{document}
