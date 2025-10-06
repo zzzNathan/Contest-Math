@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{China Western Math Olympiad 2024 --- P1/4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{China Western Math Olympiad 2024 --- P1/4}
+For positive integer $n$, denote $S_n=1^{2024}+2^{2024}+ \cdots +n^{2024}$.
+\vspace{0.2cm}
+
+Prove that there exists infinitely many positive integers $n$, such that $S_n$ isn’t divisible by $1865$ but $S_{n+1}$ is divisible by $1865$.
+\end{problem}
+
+\textit{"All constructive problems are trivial."}
+
+\begin{solution}{Solution}
+We will show that if $n$ is of the form $n = 1865^2 \lambda - 2$ for
+$\lambda \in \mathbb{N}$ then $S_n \nequiv 0 \ \text{(mod } 1865)$ whilst
+$S_{n+1} \equiv 0 \ \text{(mod } 1865)$. \\
+
+Let $n = 1865^2 \lambda - 2$.
+Notice that
+$S_{n+1} = S_n + (n+1)^{2024} \equiv S_n + (1865^2 \lambda - 1)^{2024}
+\equiv S_n + 1 \ \text{(mod } 1865)$ and so $S_n$ and $S_{n+1}$ aren't
+congruent modulo 1865. Denote $f(n) = 1865n$ over the non-negative
+integers. Notice that $f(n) \equiv 0 \ \text{(mod } 1865)$.
+Denote $\alpha = 2024$. Consider,
+
+\[
+\begin{aligned}
+S_{n+1} &= \left([f(0)+1]^{\alpha} + [f(0)+2]^{\alpha} + \cdots + [f(0)+1865]^{\alpha}\right) + \\
+&+ \left([f(1)+1]^{\alpha} + [f(1)+2]^{\alpha} +\cdots+ [f(1)+1865]^{\alpha}\right) + \\
+&+ \cdots \\
+&+ \left([f(1865\lambda-2)+1]^{\alpha} + [f(1865\lambda-2)+2]^{\alpha} + \cdots + [f(1865\lambda-2)+1865]^{\alpha} \right)\\
+&+ \left([f(1865\lambda-1)+1]^{\alpha} + [f(1865\lambda-1)+2]^{\alpha} + \cdots + [f(1865\lambda-1)+1864]^{\alpha} \right)\\
+&\equiv (1865\lambda-1)S_{1865} + (S_{1865} - 0)\\
+&\equiv (1865\lambda)S_{1865} \equiv 0 \ \text{ (mod } 1865)
+\end{aligned}
+\]
+
+Now since we already showed that $S_n \nequiv S_{n+1} \ \text{(mod } 1865)$
+we are done. $\blacksquare$ \\
+
+\textit{Remark: The result can clearly be generalised, we leave it as an
+excercise to the reader.}
+\end{solution}
+
+\end{document}

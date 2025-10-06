@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{IMO Shortlist 2013 --- C1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{IMO Shortlist 2013 --- C1}
+Let $n$ be a positive integer. Find the smallest integer $k$ with the
+following property: Given any real numbers $a_1, \ldots ,a_d$ such that
+$a_1 + a_2 + \cdots + a_d = n$ and $0 \leq a_i \leq 1$ for
+$i = 1, 2, \ldots, d$, it is possible to partition these numbers into $k$
+groups (some of which may be empty) such that the sum of the numbers in
+each group is at most 1.
+\end{problem}
+
+\begin{solution}{Solution}
+The smallest such $k$ is $2n-1$. First we show that $k \geq 2n-1$. Then
+we show that if the partitioning is possible for some $k > 2n-1$ groups
+then the partitioning is possible for $k-1$ groups also, establishing
+the result that $k = 2n-1$ is indeed minimal.\\
+
+\textit{Claim 1: $k \geq 2n-1$.}\vspace{0.2cm}
+
+\textit{Proof:} Consider the case, $a_1 = a_2 = \cdots = a_d = n/d$.
+Let's say that each group can hold at most $g$ numbers. We need the
+inequality
+
+$$
+g \cdot \frac{n}{d} \leq 1 \iff g \leq \floor{\frac{d}{n}}
+$$
+
+and since we are minimising $k$ we want $g$ to be as large as possible and
+so we pick $g = \floor{d/n} \geq 1$. We need to have $k \geq d/g$ groups,
+since we are splitting a collection of size $d$ intro groups of size
+$\leq g$, and so $k \geq \ceil{d/g}$. We can write $d = gn + r$ for
+integer $0 \leq r < n$. Our inequality becomes,
+
+$$
+k \geq \ceil{\frac{gn + r}{g}} = \ceil{n + \frac{r}{g}}
+$$
+
+Since $g\geq 1$ and $r \leq n-1$ the expression on the left is at most
+$\ceil{n + (n-1)/1} = 2n-1$ which is achieved in the case
+$(g, r) = (1, n-1)$, thus $k \geq 2n-1$ as desired. $\square$ \\
+
+\textit{Claim 2: If the partioning is possible for $k \geq 2n$ groups,
+it's also possible for $k-1$ groups.} \vspace{0.2cm}
+
+\textit{Proof:} Represent the $k$ groups by the sets
+$s_1, s_2, \ldots, s_k$ where, $S(i) \leq S(j)$ for all $i<j$, without loss
+of generality, where $S(i) = \sum_{a\in s_i} a$. We claim that
+$S(1) + S(2) \leq 1$. Assume the contrary, that $S(1) + S(2) > 1$. Then
+
+$$
+n = (S(1) + S(2)) + \cdots + (S(2\floor{k/2}-1) +
+S(2\floor{k/2})) + \varepsilon_k > \floor{k/2} \geq n
+$$
+
+where $\varepsilon_k \geq 0$ is $S(k)$ if $k$ is odd and is 0 otherwise.
+But since $n > n$ is ridiculous we have found the
+desired contradiction. Now since $S(1) + S(2) \leq 1$ we can
+combine them into 1 group and thus the partitioning is possible for $k-1$
+groups. $\square$
+\\
+
+By combining claim 1 and claim 2 we prove that the smallest such $k$ is
+$2n-1$. $\blacksquare$ \\
+
+\textit{Remark: This is my first ever IMOSL solve!}
+\end{solution}
+
+\end{document}
