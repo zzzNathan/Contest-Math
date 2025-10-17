@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Rd 1 2021 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Rd 1 2021 --- P2/6}
+One day Arun and Disha played several games of table tennis. At five points
+during the day, Arun calculated the percentage of the games played so far
+that he had won. The results of these calculations were exactly 30\%,
+exactly 40\%, exactly 50\%, exactly 60\% and exactly 70\% in some order.
+What is the smallest possible number of games they played?
+\end{problem}
+
+\begin{solution}{Solution}
+The smallest possible number of games is 30.
+Since 70\% = $7/10$ and 30\% = $3/10$ both of these percentages must occur
+after some $10k$ games have been played, where $k \in \mathbb{N}$. We
+observe three cases. \\
+
+If the 30\% occurs after exactly 10 games have been played,
+then $70\% = 14/20$ can't occur after exactly 20 games have been played
+since it would require Arun to win $14-3 = 11$ games whilst there are only
+10 games between the 10th and 20th games.\\
+
+If the $30\% = 6/20$ occurs after exactly 20 games have been played, then
+70\% can't occur after exactly 10 games have been played since it would
+require Arun to lose $7-6 = 1$ of his wins which is impossible.\\
+
+If the 30\% occurs after exactly $10k \geq 30$ games have been played then
+the number of games is definitely more than 30.\\
+
+Thus 30 games is the minimum and it suffices to demonstrate a
+valid construction, we can have the order for example
+
+$$
+50\% = \frac12, \ \ 60\% = \frac35, \ \ 30\% = \frac{3}{10}, \ \ 40\% = \frac{6}{15}, \ \ 70\% = \frac{21}{30}
+$$
+
+which is valid since Arun needs to win some non-negative integer number
+of wins that is $\leq$ the number of games that separate the two percentage
+calculation points. $\blacksquare$
+\end{solution}
+
+\end{document}

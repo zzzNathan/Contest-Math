@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{USA Math Olympiad 1976 --- P5/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{USA Math Olympiad 1976 --- P5/5}
+The polynomials $A(x), B(x), C(x)$ and $D(x)$ satisfy the equation
+
+$$
+A(x^5) + xB(x^5) + x^2 C(x^5) = (1+x+x^2+x^3+x^4)D(x)
+$$
+
+Show that $A(1)=0$.
+\end{problem}
+
+\begin{solution}{Solution}
+Observe the following
+
+\[
+\begin{aligned}
+A(x^5) + xB(x^5) + x^2 C(x^5) &= \frac{x^5 - 1}{x-1}D(x) \\
+(x-1)[A(x^5) + xB(x^5) + x^2 C(x^5)] &= (x^5 - 1)D(x) \\
+\end{aligned}
+\]
+
+Take a 5th root of unity $z$ that isn't 1, so $z = e^{2\pi i k/5}$ for
+$k=1,2,3,4$. Then
+
+$$
+p(z) := A(1) + zB(1) + z^2C(1) = 0
+$$
+
+has $4 > \deg p = 2$ roots which implies that $p(z) = 0$ for all
+$z\in \mathbb{C}$. Then since $p(0) = 0$ we have $A(1) = 0$. $\blacksquare$
+\end{solution}
+
+\end{document}
