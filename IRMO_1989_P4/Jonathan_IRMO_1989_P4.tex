@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\title{Irish Math Olympiad 1989 --- P4/10}
+\author{Jonathan Kasongo}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Irish Math Olympiad 1989 --- P4/10}
+Note that $12^2 = 144$ ends in two 4’s and $38^2 = 1444$ end in three 4’s.
+Determine the length of the longest string of equal nonzero digits in which
+the square of an integer can end.
+\end{problem}
+
+\begin{solution}{Solution}
+As hinted at in the problem statement, the answer is exactly 3.\\
+
+\textit{Claim 1: If a perfect square ends with two or more equal digits,
+then the last digit of that number must be 4.}\\
+
+\textit{Proof: } Let $x^2$ be the perfect square which ends in two or more
+equal digits. Let the last digit of $x^2$ be $d$.
+Perfect squares can only be $\equiv 0, 1$ modulo 4.
+
+\begin{itemize}
+\item If $x^2 \equiv 0 \ \text{(mod } 4)$ then the number $\overline{dd}$ is
+divisible by 4, due to the divisibility rule for 4. Checking each case we
+find that $d$ can only be $0, 4$ or 8, but since the problem
+wants "equal non-zero digits" $d$ can only be 4 or 8.
+\item If $x^2 \equiv 1 \ \text{(mod } 4)$ then the number
+$\overline{d(d-1)}$ is divisible by 4, due to the divisibility rule for 4.
+Again by checking each case, $d$ can only be 3 or 7.
+\end{itemize}
+
+Now if one lists out all the perfect squares mod 10, you find that
+$x^2$ can only be congruent to $0,1,4,5,6,9$ modulo 10. This filters our
+options down to only $d = 4$, as desired. $\square$\\
+
+\textit{Claim 2: If a perfect square $x^2$
+ends with two or more equal digits, then the units digit of $x$ can only be
+2 or 8.}\\
+
+\textit{Proof: } Let $u$ be the units digit of $x$.
+Note that $x-u \equiv 0 \ \text{(mod } 10)$ because $x-u$ is just the
+number $x$ but with a units digit of 0.
+
+\vspace{0.2cm}
+
+Now since
+$
+x^2 = ((x-u) + u)^2 = (x-u)^2 + 2u(x-u) + u^2 \equiv u^2 \ \text{(mod } 10)
+$,
+we need $u^2$ to end in a 4, due to claim 1. Now by checking each case
+we determine that $u$ can only possibly be 2 or 8. $\square$\\
+
+\textit{Claim 3: If a perfect square $x^2$ ends with two or more equal
+digits, then $x$ ends with the digits $\overline{38}$ or
+$\overline{12}$, provided that $x$ has at least 2 digits in it's decimal
+representation.}\\
+
+\textit{Proof: }
+Let $u$ be the units digit of $x$. Let $t$ be the tens digit of $x$.
+Note that $x-10t-u \equiv 0 \ \text{(mod } 100)$, because $x-10t-u$ is just
+the number $x$ with units digit 0 and tens digit 0 using the fact that
+$x \geq 100$. \vspace{0.2cm}
+
+Now $x^2 = ((x - 10t - u) + (10t + u))^2 = (x-10t-u)^2 +
+2(10t + u)(x-10t-u) + (10t+u)^2 \equiv (10t+u)^2 \ \text{(mod } 100)$
+shows us that $x^2$ ends in $(10t+u)^2 \ \text{(mod }100)$. We need
+$(10t + u)^2 \equiv 20tu + u^2 \equiv  44 \ \text{(mod } 100)$ due to claim
+1. We need only to check the cases $u = 2, 8$ due to claim 2.
+
+\begin{itemize}
+\item If $u=2$ then $40t + 4 \equiv 44 \ \text{(mod } 100)$, and so
+$40(t-1) \equiv 0 \ \text{(mod } 100)$ which gives $t=1$. So $x$ ends in
+$\overline{12}$.
+\item If $u=8$ then $60t + 64 \equiv 44 \ \text{(mod } 100)$, and so
+$60t \equiv 80 \ \text{(mod } 100)$ which gives $t=3$. So $x$ ends in $\overline{38}$.
+\end{itemize}
+
+$\square$\\
+
+Now finally if $x$ has at least three digits and ends in three consecutive
+digits then, let $h$ be the
+hundreds digit of $x$, let $t$ be the tens digit of $x$, let $u$ be the
+units digit of $x$.
+
+Then since
+$x^2 = ((x-100h-10t-u)+(100h+10t+u))^2 \equiv (100h + 10t + u)^2 \
+\text{(mod } 1000)$, we need $t^2 + u^2 + 200th + 200uh + tu \equiv 444 \
+\text{(mod } 1000)$.\\
+
+If $x$ ends in $\overline{38}$ then we have $9+64+1600h+24
+\equiv 444 \ \text{(mod } 1000)$ and so
+$600h \equiv 347 \ \text{(mod } 1000)$ which can be
+checked to have no solutions.\\
+
+Similarly if $x$ ends in $\overline{12}$ then we have $1+4+200h+400h+2
+\equiv 444 \ \text{(mod } 1000)$ and so $600h \equiv 437 \ \text{(mod }
+1000)$ which can again be checked to have no solutions.
+\\
+
+So $x$ has at most 2 digits and so the answer turns out to be $x=38$ with
+$38^2=1444$ ending in three 4's. $\square$
+\end{solution}
+
+\end{document}

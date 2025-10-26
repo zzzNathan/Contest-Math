@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Irish Math Olympiad 1992 --- P6/10}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Irish Math Olympiad 1992 --- P6/10}
+Let $n > 2$ be an integer and let $m = \sum k^3$, where the sum is taken
+over all integers $k$ with $1 \leq k < n$ that are relatively prime to $n$.
+Prove that $n$ divides $m$. (Note that two integers are
+\textit{relatively prime} if, and only if, their greatest common divisor
+equals 1.)
+\end{problem}
+
+\begin{solution}{Solution}
+Let $q$ be a positive integer that is coprime with $n$.
+Due to Euclid's algorithm $n-q$ is also coprime with $n$. Thus if we
+consider the sum modulo $n$, when $k = q$ we know that $q^3$ is contributed
+to the sum however since $k = n-q$ will also appear we know that $-q^3$
+will also be contributed to the sum. In total these values of $k$ have
+contributed $0$ to the sum mod $n$.\\
+
+Since we can pair up all of the integers $k$ that are coprime with $n$ like
+so $(q, n-q)$ and we know that these values of $k$ will contribute 0 to
+the sum mod $n$, we conclude that $m \equiv 0 \ \text{(mod } n)$,
+that is $n \mid m$. $\blacksquare$
+\end{solution}
+
+\end{document}

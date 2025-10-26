@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Canadian Math Olympiad 2005 --- P2/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Canadian Math Olympiad 2005 --- P2/5}
+Let $(a,b,c)$ be a Pythagorean triple, i.e. a triplet of positive integers
+with $a^2 + b^2 = c^2$.\\
+
+(a)\ Prove that $\left( \tfrac ca + \tfrac cb \right) ^2 > 8$ .
+\vspace{0.2cm}
+
+(b)\ Prove that there are no integer $n$ and Pythagorean triple $(a,b,c)$ satisfying $\left( \tfrac ca + \tfrac cb \right) ^2 = n$.
+\end{problem}
+
+\begin{solution}{Solution}
+For part (a) we have
+
+$$
+\frac{c^2}{a^2} + \frac{c^2}{b^2} + 2\frac{c^2}{ab} =
+\left(1 + \frac{b^2}{a^2}\right) + \left(1 + \frac{a^2}{b^2}\right) +
+2\frac{a^2 + b^2}{ab} \geq 1 + 1 + 2 + 4 = 8
+$$
+
+due to AM-GM. But since $a=b=c$ is impossible the inequality is strict.\\
+
+For part (b) we notice that $\frac{c}{a} + \frac{c}{b}$ must be an integer
+because if not then $n \notin \mathbb{Z}$. Consider the primitive
+Pythagorean triple $(a',b',c')$, that is we divide $a, b$ and $c$ by
+$\gcd(a,b,c)$. Now similarly $\frac{c'}{a'} + \frac{c'}{b'} =
+\frac{c' b' + c' a'}{a'b'}$ must be an integer. If $a'b' \neq 1$ then
+$a'b' \mid c'$ but this is impossible since $\gcd(a',b',c')=1$. Otherwise
+if $a'b' = 1$ then $a'=b'=1$ and $c' = \sqrt{2}$ which isn't an integer,
+so contradiction. Thus indeed there is no such integer $n$.
+$\blacksquare$
+\end{solution}
+
+\end{document}

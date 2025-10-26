@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Irish Math Olymipad 1989 --- P9/10}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Irish Math Olymipad 1989 --- P9/10}
+Let $a$ be a positive real number, and let
+
+$$
+b = \sqrt[3]{a + \sqrt{a^2 + 1}} + \sqrt[3]{a - \sqrt{a^2 + 1}}.
+$$
+
+Prove that $b$ is a positive integer, if and only if, $a$ is a positive
+integer of the form $\frac12 n(n^2 + 3)$.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $x = \sqrt[3]{a + \sqrt{a^2 + 1}}$ and
+$y = \sqrt[3]{a - \sqrt{a^2 + 1}}$. Notice that
+$xy = \sqrt[3]{a^2 - (a^2 + 1)} = -1$. \\
+
+Observe the following,
+\[
+\begin{aligned}
+b^3 &= \left(a + \sqrt{a^2 + 1}\right) + 3xy(x+y) + \left(a - \sqrt{a^2 + 1}\right) \\
+&= 2a + 3(-1)b \\
+\end{aligned}
+\]
+
+and so $b^3 + 3b = 2a$ giving $a = \frac12 b(b^2 + 3)$ for some
+positive integer $b$.
+\\
+
+\textit{Remark: This is a pretty dumb problem in that the most braindead
+approach (just cube both sides) actually works. It looks intimidating but
+is actually just really easy.}
+\end{solution}
+
+\end{document}

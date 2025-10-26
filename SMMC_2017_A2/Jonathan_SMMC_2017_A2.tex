@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Simon Marais Math Comp 2017 --- A2}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Simon Marais Math Comp 2017 --- A2}
+Let $a_1, a_2, a_3, \ldots$ be the sequence of real numbers defined by
+$a_1=1$ and
+$$
+a_m=\frac{1}{a_1^2+a_2^2+\cdots+a_{m-1}^2} \quad \text { for } m \geq 2 .
+$$
+
+Determine whether there exists a positive integer $N$ such that
+$$
+a_1+a_2+\cdots+a_N>2017^{2017} .
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+\textit{Claim 1: The sequence $(a_n)$ is always positive.}\\
+
+\textit{Proof: } Since $a_1 = 1$ we have that
+$a_1^2 + a_2^2 + \cdots + a_{m-1}^2 > 0$ and so by definition $a_m > 0$.
+$\square$ \\
+
+\textit{Claim 2: The sequence $(a_n)_{n=2}$ is decreasing.}\\
+
+\textit{Proof: } We note that $a_1^2 + a_2^2 + \cdots + a_{m-1}^2 = 1/a_m$.
+So
+
+$$
+a_{m+1} = \frac{1}{\frac{1}{a_m} + a_m^2} = \frac{a_m}{1 + a_m^3}
+$$
+
+and this is $< a_m$ iff $1/(1 + a_m^3) < 1$ and since $a_m > 0$ that
+inequality is always true. $\square$\\
+
+Note that due to claim 1 we know that $\sum_{\text{sym}} a_1 a_2 > 0$ where
+that sum is symmetric over $(a_1, a_2, \ldots, a_N)$. Now we can deduce that
+$(a_1 + a_2 + \cdots + a_N)^2 > a_1^2 + a_2^2 + \cdots + a_N^2 = 1/a_{N+1}$.
+Because of claim 2, we can make $a_{N+1}$ be arbitrarily small. That is,
+let $N$ be sufficiently large then we can make $1/a_{N+1} \rightarrow
+\infty$ and so we can make $(a_1 + a_2 + \cdots + a_N)^2$ arbitrarily
+large. \\
+
+That means that it is indeed possible to find a large positive integer $N$
+such that the inequality given in the problem statement is true.
+$\blacksquare$
+\end{solution}
+
+\end{document}

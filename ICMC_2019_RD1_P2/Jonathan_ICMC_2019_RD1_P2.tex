@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Imperial Cambridge Math Contest 2019 Rd 1 --- P2/6 }
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Imperial Cambridge Math Contest 2019 Rd 1 --- P2/6}
+Find integers \( a \) and \( b \) such that
+\[a^b = 3^0\binom{2020}{0} - 3^1\binom{2020}{2} + 3^2\binom{2020}{4} - \dots + 3^{1010}\binom{2020}{2020}.\]
+\end{problem}
+
+\begin{solution}{Solution}
+Let $z = 1 + \sqrt{3}i = 2e^{i\pi/3}$. Then that sum on the right hand
+side is just $\Re (z^{2020}) = 2^{2020}\cos(2020\pi/3) =
+2^{2020}\cos(2\pi/3) = (-2)^{2019}$.\\
+
+Thus $a=-2$ and $b=2019$ works. $\blacksquare$
+\end{solution}
+
+\end{document}

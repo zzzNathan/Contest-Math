@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Irish Math Olympiad 1988 --- P12}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Irish Math Olympiad 1988 --- P12}
+Prove that if $n$ is a positive integer, then
+
+$$
+\sum_{k=1}^n \cos^4 \left( \frac{k\pi}{2n+1} \right) = \frac{6n-5}{16}
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Where $z = e^{i \theta}$, we have $16\cos^4 \theta = (z + z^{-1})^4 =
+(z^4 + z^{-4}) + 4(z^2 + z^{-2}) + 6$. So the sum becomes
+
+$$
+\frac{6n}{16} + \frac{1}{16}\sum_{k=1}^n \left( 2\cos(2 \phi_k) + 8\cos(\phi_k) \right)
+$$
+
+where $\phi_k = 2k\pi / (2n+1)$.\\
+
+We notice that $e^{i \phi_0}, e^{i \phi_1}, \ldots, e^{i\phi_{2n}}$ form the
+$(2n+1)$-th roots of unity. Since they solve the equation $x^{2n+1} - 1 = 0$
+we deduce that they sum to 0 using Vieta's formulae. Also since
+$x^{2n+1} = e^{2m \pi i k} = e^{2\pi i k}$, we get that $x = e^{mi \phi_k}
+= e^{i \phi_k}$ for any positive integer $m$. Now,
+
+\[
+\begin{aligned}
+\sum_{k=0}^{2n} \cos(m\phi_k) &= 0 \\
+\sum_{k=1}^{2n} \cos(m\phi_k) &= -1 \\
+\end{aligned}
+\]
+
+Note that $\cos(m\phi_{2n+1-k}) = \cos\left(2m\pi - \frac{2km\pi}{2n+1
+}\right) = \cos(2km\pi/(2n+1)) = \cos(m \phi_k)$ and so we can write
+
+$$
+\sum_{k=1}^{2n} \cos(m\phi_k) =
+\sum_{k=1}^{n} \left[\cos(m\phi_k) + \cos(m\phi_{2n+1-k}) \right]=
+\sum_{k=1}^n 2\cos(m \phi_k) = -1
+$$
+
+And so our original sum becomes
+$$
+\frac{6n}{16} + \frac{1}{16} (-1 - 4) = \frac{6n - 5}{16}
+$$
+
+as desired. $\blacksquare$
+\end{solution}
+
+\end{document}
