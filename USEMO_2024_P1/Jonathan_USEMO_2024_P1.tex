@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Ersatz Math Olymipad 2024 --- P1/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Ersatz Math Olymipad 2024 --- P1/6}
+There are 1001 stacks of coins $S_1, S_2, \ldots, S_{1001}$.
+Initially, stack $S_k$ has $k$ coins for each $k=1,2, \ldots, 1001$.
+In an operation, one selects an ordered pair $(i, j)$ of indices
+$i$ and $j$ satisfying $1 \leq i<j \leq 1001$ subject to two conditions:
+
+\begin{itemize}
+\item The stacks $S_i$ and $S_j$ must each have at least one coin.
+\item The ordered pair $(i, j)$ must not have been selected in any
+previous operation.
+\end{itemize}
+
+Then, if $S_i$ and $S_j$ have $a$ coins and $b$ coins, respectively,
+one removes $\gcd(a, b)$ coins from each stack. \vspace{.2cm}
+
+What is the maximum number of times this operation could be performed?
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $250500$ times.
+Let $P(i,j)$ denote
+performing the given operation on the pair $(i,j)$.
+Define the $n$-\textit{shrink} process to be as follows. Let $S_n$ be the
+stack with the most amount of coins.
+Perform the operations
+
+$$
+P(n-1,n) \rightarrow P(n-2,n) \rightarrow P(n-3,n) \rightarrow \cdots
+$$
+
+until we have performed $P(1,n)$ or the next operation would involve using
+a stack with zero coins.\vspace{0.2cm}
+
+Let $a<b$. A $b$-shrink and an $a$-shrink never repeat operations because
+the ordered pairs $(\text{\_}, b)$ and $(\text{\_}, a)$ are never the same
+since $a < b$.
+Suppose that the $n$-shrink process terminates
+after the operation $P(k,n)$, so the stack $S_k$ has zero coins after the
+$n$-shrink.
+Then all of the stacks $S_{n-1}, S_{n-2},
+\ldots, S_k$ have had one coin removed from them, and the stack $S_n$ has
+had $n-k$ coins removed from it. Observe the following property of the
+$n$-shrink
+
+$$
+(1,2,3,\ldots,n-2, n-1, n) \overset{n-\text{shrink}}{\rightarrow}
+(0,1,2,\ldots,n-3, n-2, 1)
+$$
+
+that is an $n$-shrink performed on $1,2,\ldots,n$ always changes the last
+number to 1 and the first number to 0. Also we observe that if
+an $n$-shrink uses $x$ operations, then the following $(n-1)$-shrink
+would use $x-2$ operations. \vspace{0.2cm}
+
+Thus if we perform a $1001$-shrink followed by a $1000$-shrink followed and
+so on up to a $503$-shrink the sequence $(S_n)$ will look like so
+$
+0, 0,\ldots 0, 1, 2, 3, 1, 1, \ldots, 1
+$
+where the zeros repeat 499 times and the ones repeat 499 times. This is
+because the after the 503-shrink we have performed $1001-503+1=499$ shrinks.
+Now after the 502-shrink the subsequence $1,2,3$ gets turned into
+$0,1,1$. And so now the overall sequence consists of 500 zeros, followed
+by 501 ones.
+\vspace{0.2cm}
+
+So in total we have performed 500 shrinks which means we have used the
+given operation
+$2+ 4 + \cdots + 1000 = 250500$ times. Now we just need to show that
+250500 is in fact maximal.\vspace{0.2cm}
+
+If an operation $P(i,j)$ has $i\leq 500$, then there can be at most
+$1+2+\cdots +500 = 500\cdot 501/2$ of these operations since each operation
+will decrease the number of coins in stack $S_i$ by at least 1.
+If an operation $P(i,j)$ has $i > 500$ then there can be at most
+$\binom{501}{2} = 500\cdot 501/2$ such operations since each pair $(i,j)$
+can be used once. Thus the upper bound for operations is $500\cdot 501=
+250500$ as desired. $\blacksquare$
+\end{solution}
+
+\end{document}

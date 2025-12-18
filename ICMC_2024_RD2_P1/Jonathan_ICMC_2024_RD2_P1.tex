@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Imperial-Cambridge Math Contest 2024 Rd 2 --- P1/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Imperial-Cambridge Math Contest 2024 Rd 2 --- P1/5}
+\begin{enumerate}[label=(\alph*)]
+\item Prove that there exist distinct positive integers $a_1, a_2,
+\ldots, a_{2024}$ such that for each $i \in \{1,2,\ldots, 2024\}$,
+$a_i$ divides $a_1 a_2 \cdots a_{i-1}a_{i+1} \cdots a_{2024} + 1$.
+\item Prove that there exist distinct positive integers $b_1, b_2,
+\ldots, b_{2024}$ such that for each $i \in \{1,2,\ldots, 2024\}$,
+$b_i$ divides $b_1 b_2 \cdots b_{i-1}b_{i+1} \cdots b_{2024} + 2024$.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a):} Let $a_1 = 3$, then define $a_n$ like so
+$
+a_i = (a_1 a_2 \cdots a_{i-1}) + f(i), \ i \geq 2
+$
+where $f : \mathbb{N} \rightarrow \{-1, 1\}$ is 1 if $i$ is even, and $-1$
+if $i$ is odd. \vspace{0.2cm}
+
+Now if $i$ is odd, then there are $2024 - i$ numbers in the set
+$\{ a_{i+1}, \ldots, a_{2024} \}$. These numbers alternate between
+$\pm 1$ modulo $a_i$ and since there are an odd number of terms the
+product of elements in that set is $-1$ modulo $a_i$. Thus,
+
+$$
+a_1 a_2 \cdots a_{i-1}a_{i+1} \cdots a_{2024} + 1
+\equiv
+(a_i + 1)(-1) + 1 \equiv
+0 \ \text{(mod } a_i).
+$$
+
+Similarly if $i$ is even, then the product of the elements in the set
+$\{ a_{i+1}, \ldots, a_{2024} \}$ is 1 modulo $a_i$ because there is an
+even number of elements in that set, and so
+
+$$
+a_1 a_2 \cdots a_{i-1}a_{i+1} \cdots a_{2024} + 1
+\equiv
+(a_i - 1)(1) + 1 \equiv
+0 \ \text{(mod } a_i).
+$$
+
+To finish we just need to prove that all the $a_i$'s are distinct. We
+notice that
+\begin{align*}
+a_i &\geq (a_1 a_2 \cdots a_{i-1}) - 1\\
+&= (a_{i-1} \pm 1)a_{i-1} - 1\\
+&\geq (a_{i-1} - 1)a_{i-1} - 1\\
+&= (a_{i-1})^2 - a_{i-1} - 1
+\end{align*}
+But since $x^2 - x - 1 > x$ holds for $x > 1+\sqrt{2}$ and $a_1 = 3 >
+1 + \sqrt{2}$, we have that $a_i \geq (a_{i-1})^2 - a_{i-1} - 1 > a_{i-1}$
+and so $(a_n)$ is strictly increasing. This completes the proof.
+$\square$\\
+
+\textbf{(b):} We use a similar approach. Let $b_1 = 4048$, then
+define $b_n$ like so $b_i = (b_1 b_2 \cdots b_{i-1}) + f(i), \ 2 \leq i \leq
+2022$, where $f(i)$ has the same definition as in part (a).
+Set $b_{2023} = 1$ and $b_{2024} = 2024$. \vspace{0.2cm}
+
+If $i = 2023$ then we have nothing to prove since every positive integer
+is divisible by 1. If $i = 2024$ then $a_1\cdots a_{2023} + 2024 \equiv
+0 \ \text{(mod } b_{2024})$ because $b_1 = 4048 = 2\cdot 2024$. Now in what
+proceeds assume $i \leq 2022$. \vspace{0.2cm}
+
+If $i$ is odd then there are $2022 - i$ numbers in the set
+$\{ b_{i+1}, \ldots, b_{2022} \}$. These numbers alternate between $\pm 1$
+modulo $b_i$ and since there is an odd number of terms, the product of
+elements in that set is $-1$ mod $b_i$. Thus we write
+
+\[
+\begin{aligned}
+&\phantom{\equiv} b_1 b_2 \cdots b_{i-1} b_{i+1} \cdots b_{2024} + 2024\\
+&\equiv (b_i + 1)(-1)\cdot b_{2023} \cdot b_{2024} + 2024\\
+&\equiv
+-2024 + 2024 \equiv 0 \ \text{(mod } b_i)
+\end{aligned}
+\]
+
+Now if $i$ is even, then the product of the elements in the set
+$\{ b_{i+1},\ldots, b_{2022} \}$ is 1 mod $b_i$ since there is an even
+number of elements in that set. So we put
+
+\[
+\begin{aligned}
+&\phantom{\equiv} b_1 b_2 \cdots b_{i-1} b_{i+1} \cdots b_{2024} + 2024\\
+&\equiv (b_i - 1)(1)\cdot b_{2023} \cdot b_{2024} + 2024\\
+&\equiv
+-2024 + 2024 \equiv 0 \ \text{(mod } b_i)
+\end{aligned}
+\]
+
+Now due to the arguement in (a) we know that the numbers $a_1, \cdots,
+a_{2022}$ are all pairwise distinct and strictly greater than $4047$
+and since $1$ and $2024$ are distinct and both strictly less than 4047,
+the entire sequence is pairwise distinct as desired. This completes the
+proof. $\blacksquare$
+
+\end{solution}
+
+\end{document}

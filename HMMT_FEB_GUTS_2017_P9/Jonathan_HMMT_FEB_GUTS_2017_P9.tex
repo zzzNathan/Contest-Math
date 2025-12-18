@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Harvard-MIT Math Tournament February Guts 2017 --- P9}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Harvard-MIT Math Tournament February Guts 2017 --- P9}
+Jeffrey writes the numbers 1 and $10^8$ on
+the blackboard. Every minute, if $x$, $y$ are on the board, Jeffery
+replaces them with
+$$
+\frac{x+y}{2} \quad \text{and} \quad
+2\left( \frac{1}{x} + \frac{1}{y} \right)^{-1}
+$$
+
+After 2017 minutes the two numbers are $a$ and $b$. Find $\min(a, b)$ to
+the nearest integer.
+\end{problem}
+
+\begin{solution}{Solution}
+Observe that
+$$
+\frac{x+y}{2}\cdot 2\left( \frac{1}{x} + \frac{1}{y} \right)^{-1}
+=
+\frac{x+y}{2}\cdot \frac{2xy}{x+y} = xy
+$$
+
+and so under the given operation the product of the two numbers on the
+board in invariant. Suppose that $y\geq x$. Then
+
+\[
+\begin{aligned}
+\frac{x+y}{2} - \frac{2xy}{x+y} &< \frac{y-x}{2} \\
+\frac{(y-x)^2}{2(x+y)} &< \frac{y-x}{2} \\
+\frac{y-x}{x+y} &< 1 \\
+\end{aligned}
+\]
+
+but this is true since $y-x < x+y$. Thus the gap between the two numbers
+on the board reduces by more than half each minute. Formally let
+$D_k$ be the non-negative difference between the two numbers on the
+board after the $k$-th minute. Now since
+$\log_2(10^8) = 8\log_2(10) < 32$ notice that
+
+$$
+D_{2017} < \frac{1}{2^{2017}}\cdot 10^8 < \frac{1}{2^{2017}}\cdot 2^{32}.
+$$
+
+So for some $\epsilon < \frac{1}{2^{1985}}$ the last two numbers on the
+board are of the form $(k-\epsilon, k+\epsilon)$ and have product $10^8$.
+Clearly they are both just very close to $\sqrt{10^8} = 10^4$ and so
+the answer is $10^4$.
+\end{solution}
+
+\end{document}

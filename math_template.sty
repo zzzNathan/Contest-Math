@@ -19,7 +19,7 @@
 
 % Rest of the packages
 \usepackage{tabularray, xcolor, xurl, minted, newtxtext, newtxmath, tikz, graphicx,
-            microtype, enumitem, arcs}
+            microtype, enumitem, arcs, yhmath}
 \usepackage[inline]{asymptote}
 \usepackage[T1]{fontenc}
 \usepackage[most]{tcolorbox}
@@ -31,6 +31,8 @@
 \usepackage{newtxsf}
 
 \definecolor{googleblue}{HTML}{0000EE}
+\definecolor{lightgreeen}{RGB}{230,249,232}
+\definecolor{darkgreeen}{RGB}{0,154,85}
 
 % Headers and formatting
 \usepackage{hyperref}
@@ -109,8 +111,8 @@
     right=6pt,
     top=4pt,
     bottom=4pt,
-    borderline west={2pt}{0pt}{black!70!green},
-    fonttitle=\sffamily\bfseries\color{black!70!green},
+    borderline west={2pt}{0pt}{darkgreeen},
+    fonttitle=\sffamily\bfseries\color{darkgreeen},
     title={#1}
   }
 }

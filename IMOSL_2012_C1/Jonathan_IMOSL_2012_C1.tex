@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{IMO Shortlist 2012 --- C1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{IMO Shortlist 2012 --- C1}
+Several positive integers are written in a row.
+Iteratively, Alice chooses two adjacent numbers $x$
+and $y$ such that $x > y$ and $x$ is to the left of $y$, and replaces the
+pair $(x, y)$ by either $(y + 1, x)$ or
+$(x - 1, x)$. Prove that she can perform only finitely many such iterations.
+\end{problem}
+
+\begin{solution}{Solution}
+Let the positive integers be $a_1, a_2, \ldots, a_n$. Notice that
+if $(a_n)$ becomes increasing, then Alice will no longer be able to
+perform any operations.\vspace{0.2cm}
+
+
+Let $x>y$ be adjacent numbers with $x$ on the left of $y$.
+Since $\max(y+1, x-1) \leq x$, once we do the operation on $(x,y)$ the
+number on the right will be $\geq$ the number on the left. Suppose FTSOC
+that it's possible to perform an infinite number of iterations.
+\vspace{0.2cm}
+
+\textit{Claim 1: Let $M$ be the largest number such that
+$a_M = \max(a_n)$.
+Eventually it must end up at the end of the list.}\vspace{0.2cm}
+
+\textit{Proof:}
+Notice that the largest number in the list can only ever move right
+under this operation. Suppose FTSOC that the claim is false. That is, after
+a number of operations the number $a_M$ always stays in some fixed position
+$k<n$ in the list. Consider the lists $a_1,a_2 \ldots, a_{k-1}$ and
+$a_{k+1}, a_{k+2}, \ldots, a_n$. Now since claim 1 is false the largest
+number in each list will have some fixed position that isn't the end
+of the list after some number of operations also.
+If we keep repeating this arguement then eventually we will reach a point
+where all the numbers in $(a_n)$ have fixed positions and so no more
+operations can be performed, a contradiction. $\square$ \vspace{0.2cm}
+
+So due to claim 1, the largest number $a_M$ will end up at the end of the list
+after finitely many operations. Now since it's the largest number it
+can no longer move. Now consider the list $a_1, a_2, \ldots, a_{n-1}$.
+Due to claim 1, the largest number in this new list will eventually end up
+at the end of the list after finitely many operations also. If we repeat
+this arguement then we will show that $(a_n)$ will eventually become sorted
+in increasing order after finitely many operations, and so after this point
+Alice will no longer be able to perform any more operations, a
+contradiction.
+$\blacksquare$
+\end{solution}
+
+\end{document}

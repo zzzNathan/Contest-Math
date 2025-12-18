@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Moldova TST 2023 --- P4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Moldova TST 2023 --- P4}
+Polynomials $\left(P_n(X)\right)_{n \in \mathbb{N}}$ are defined as:
+$$
+\begin{aligned}
+& P_0(X)=0, \quad P_1(X)=X+2 \\
+& P_n(X)=P_{n-1}(X)+3 P_{n-1}(X) \cdot P_{n-2}(X)+P_{n-2}(X), \quad
+\forall n \geq 2 .
+\end{aligned}
+$$
+
+Show that if $k$ divides $m$ then $P_k(X)$ divides $P_m(X)$.
+\end{problem}
+
+\begin{solution}{Solution}
+One can apply Simon's favourite factoring trick to see that
+$
+3P_n + 1 = (3P_{n-1} + 1)(3P_{n-2} + 1)
+$. If we let $Q_n = \ln (3P_n + 1)$ then we have
+$Q_n = Q_{n-1} + Q_{n-2}$. Solving the recurrence relation with any
+standard method yields
+$3P_n + 1 = (3x+7)^{f_n}$ where $f_n$ is the $n$-th fibonacci number.
+Thus
+
+$$
+P_n (x) = \frac13 [(3x+7)^{f_n} - 1], \quad n \geq 2
+$$
+
+and so the roots of $P_n$ are of the form $\frac13 (\omega_k - 7)$, where
+$\omega_k$ are the $f_n$-th roots of unity. If $a \mid b$ then
+the $a$-th roots of unity are a proper subset of the $b$-th roots of unity,
+so we will be done if we show that $a \mid b \implies f_a \mid f_b$.
+\\
+
+\textit{Claim 1: For non-negative integers $k$ and $m$,
+$f_{k+m} \equiv f_m f_{k+1} \ \text{(mod } f_k)$.} \vspace{0.2cm}
+
+\textit{Proof:} We will induct on $m$. Throughout this proof any
+equivalences are assumed to be modulo $f_k$.
+If $m=1$ then $f_{k+1} \equiv f_1 f_{k+1}$ and if $m=2$ then $f_{k+2} \equiv
+f_{k+1} + f_k \equiv f_2 f_{k+1}$. This completes the base cases.
+\vspace{0.2cm}
+
+Now suppose the result holds for $m=a$ and $m=a+1$. Consider
+$f_{k+a+2} \equiv f_{k+a+1} + f_{k+a} \equiv f_{k+1}(f_{a+1} + f_a)
+\equiv f_{k+1}f_{a+2}$. This finishes the proof by induction. $\square$
+\\
+
+As a corollary of claim 1, we find that $f_{a + \lambda b}
+\equiv f_{b} f_{a+1}^{\lambda} \ \text{(mod } f_a)$ for $a,b,\lambda, \in
+\mathbb{Z}_{\geq0}$. Now letting $a=b$ shows the desired result
+$x \mid y \implies f_x\mid f_y$. $\blacksquare$
+\end{solution}
+\end{document}
