@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{European Girls Math Olympiad 2023 --- P3/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{European Girls Math Olympiad 2023 --- P3/6}
+Let $k$ be a positive integer. Lexi has a dictionary $\mathcal{D}$
+consisting of some
+$k$-letter strings containing only the letters A and B.
+Lexi would like to write either the
+letter A or the letter B in each cell of a $k \times k$ grid so that each
+column contains a string
+from $\mathcal{D}$ when read from top-to-bottom and each row contains a
+string from $\mathcal{D}$ when read
+from left-to-right.
+\vspace{0.2cm}
+
+What is the smallest integer $m$ such that if $\mathcal{D}$ contains at
+least $m$ different strings, then
+Lexi can fill her grid in this manner, no matter what strings are in
+$\mathcal{D}$?
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is that the smallest such $m$ is $2^{k-1}$.\vspace{0.2cm}
+
+Let $s$ be a string comprised of the letters A and B.
+Define the \textit{opposite} of $s$ to be a string $\overline{s}$ which is
+the same string, but just with any A's replaced by B's and vice versa.
+\\
+
+\textit{Claim 1: If $\mathcal{D}$ contains a string and it's opposite, then
+Lexi can fill in the grid.}\vspace{0.2cm}
+
+\textit{Proof:} We have both $s, \overline{s} \in \mathcal{D}$.
+WLOG let $s$ start with an A. We will
+show that Lexi can fill in the grid by construction.\vspace{0.2cm}
+
+Let $(i, j)$ be the cell in the $i$-th row (from the top) and the
+$j$-th column (from the left). Let $L(i,j)$ be the letter at cell $(i,j)$.
+Lexi can start by filling in the top row
+using $s$ (from left to right), and by filling in the leftmost column using
+$s$ (from top to bottom). Then for each column, she can fill in the column
+(from top to bottom) using $s$ if the topmost cell of that column is A, and
+using $\overline{s}$ otherwise. \vspace{0.2cm}
+
+Let $2\leq u,v \leq k$ be integers.
+Now consider a cell $(u, v)$.
+\vspace{0.2cm}
+
+\textit{Case 1: $L(1, v) = L(u,1)$.}
+Suppose WLOG that $L(1, v) = L(u, 1) = \text{A}$. Now we want the $u$-th row
+to be $s$ (from left to right), and we want the $v$-th column to be $s$
+(from top to bottom). Thus for the cell $(u,v)$ to be valid,
+we must have $s_v = s_u$, which is true since it is implied from
+$L(1,v) = L(u,1)$.
+\vspace{0.2cm}
+
+\textit{Case 2: $L(1,v)\neq L(u,1)$.}
+Suppose WLOG that $L(1,v) = \text{A}$ and $L(u,1) = \text{B}$. We want the
+$u$-th row to be $\overline{s}$ (from left to right) and we want the
+$v$-th column to be $s$ (from top to bottom). Thus for the cell $(u,v)$ to
+be valid we must have $\overline{s}_v = s_u$, which is true since
+$L(1,v) \neq L(u,1) \implies s_v \neq s_u \implies \overline{s}_v = s_u$.
+$\square$\\
+
+Notice that out of the $2^k$ possible distinct strings exactly $2^{k-1}$
+start with A, and exactly $2^{k-1}$ start with B.
+Now we cannot have $m < 2^{k-1}$ because otherwise, we can just
+take $\mathcal{D}$ to be $m$ different strings starting with A other than
+$\text{AAA}\ldots\text{A}$. This fails because after filling in the leftmost
+column with a string, one of the rows must start with the letter B, but no
+such string exists in $\mathcal{D}$, contradiction.\vspace{0.2cm}
+
+Note that by definition every string has a unique opposite. There are
+$2^{k-1}$ such unordered pairs of strings and their opposites
+$(s, \overline{s})$. However if $m = 2^{k-1}$ then, either we have picked a
+string of the form $\text{AAA}\ldots\text{A}$, $\text{BBB}\ldots\text{B}$ or
+we have picked a pair of opposite strings. If the latter case is true then
+Lexi can fill the grid due to claim 1. If the former case is true then
+Lexi can trivially fill in the entire grid with only one letter, A if
+$\text{AAA}\ldots\text{A} \in \mathcal{D}$ and B otherwise, this can be
+easily checked to satisfy the necessary requirements for a valid grid.
+$\blacksquare$\\
+
+\textit{Comments: Finding the actual solution isn't all that difficult, the
+real challenge is in properly describing one's construction as I did in
+claim 1.}
+\end{solution}
+
+\end{document}
