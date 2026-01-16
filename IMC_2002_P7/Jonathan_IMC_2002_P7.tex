@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{International Math Comp 2002 Day 2 --- P2/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{International Math Comp 2002 Day 2 --- P2/5}
+Two hundred students participated in a mathematical contest. They had 6
+problems to solve. It is known that each problem was correctly solved by at
+least 120 participants. Prove that there must be two participants such that
+every problem was solved by at least one of these two students.
+\end{problem}
+
+\begin{solution}{Solution}
+\textit{Claim: The student(s) who solved the most problems, solved
+at least 4 problems.}\vspace{0.2cm}
+
+\textit{Proof:} Note that there were at least $120\times 6 = 720$ distinct
+solutions submitted during the contest. If the student who solved the most
+problems solved $s < 4$ problems, then there had to have been at most
+$200\times 3 = 600$ distinct solutions submitted, a contradiction. $\square$
+\vspace{0.2cm}
+
+Suppose WLOG that the student who solved the most problems, correctly solved
+problems 1,2,3 and 4. We wish to show that there exists a student who
+correctly solved problems 5 and 6. However due to the pigeonhole principle
+at least $120\times 2 - 200 = 40$ students solved both problems 5 and 6.
+Thus there does indeed exist two participants such that every problem
+was solved by at least one of these two students. $\blacksquare$
+\end{solution}
+
+\end{document}

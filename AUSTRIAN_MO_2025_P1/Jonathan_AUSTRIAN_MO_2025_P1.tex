@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Austrian MO Regionals 2025 --- P1/4}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Austrian MO Regionals 2025 --- P1/4}
+Let $n \geqslant 3$ be a positive integer. Furthermore,
+let $x_1, x_2,\ldots, x_n \in [0, 2]$ be real numbers subject to
+$x_1 + x_2 +\cdots + x_n = 5$. Prove the inequality
+$$x_1^2 + x_2^2 + \cdots + x_n^2 \leqslant 9.$$
+When does equality hold?
+\end{problem}
+
+\begin{solution}{Solution}
+Without loss of generality we can order the variables like so
+$x_1 \leq x_2 \leq \cdots \leq x_n$. Denote
+$S = x_1^2 + x_2^2 + \cdots + x_n^2$.\vspace{0.2cm}
+
+\textit{Claim 1: Let $i < n$ be the largest integer such that
+$x_i > 0$ and $x_{i+1} < 2$. Let
+$r_{n-2}, r_{n-1}, r_{n}$ be non-negative reals with sum $x_i$.
+Denote $x_k' = x_k + r_k, (k = n-2, n-1, n)$. Let the $r_k$ be such that
+$x_k'$ are in ascending order and $x_k' \in [0,2]$. We claim that
+the transformation $x_i \rightarrow 0$ and $x_k \rightarrow x_k'$ never
+decreases the quantity $S$.} \vspace{0.2cm}
+
+\textit{Proof:} Let $S$ be the original value of the sum of squares of
+$(x_n)$ and let $S'$ be the value after the aformentioned transformation.
+We note that
+\[
+\begin{aligned}
+S' - S &= \left[ (x_{n-2}+r_{n-2})^2 + (x_{n-1}+r_{n-1})^2 +
+(x_{n}+r_{n})^2 \right] -
+\left[ (r_{n-2} + r_{n-1} + r_n)^2 + x_{n-2}^2 + x_{n-1}^2 + x_n^2 \right]\\
+&= 2(x_{n-2}r_{n-2} + x_{n-1}r_{n-1} + x_{n}r_{n}) -
+2(r_{n-2}r_{n-1} + r_{n-2}r_n + r_{n-1}r_n)\\
+&= 2(x_{n-2} - r_{n-1})r_{n-2} + 2(x_{n-1} - r_n)r_{n-1} + 2(x_n - r_{n-2})r_n
+\end{aligned}
+\]
+and since $r_{n-2}, r_{n-1}, r_n \leq x_i \leq x_{n-2}, x_{n-1}, x_n$
+the quantity $S' - S$ is $\geq 0$. $\square$
+\\
+
+Now we can repeatedly make that transformation as given in claim 1 because
+it won't decrease $S$, in fact it can only increase $S$. After applying the
+transformation until we can't anymore we end up with
+$(x_1, x_2, \ldots, x_{n-3}, x_{n-2}, x_{n-1}, x_n) =
+(0, 0, \ldots, 0, 1, 2, 2)$. Indeed now we observe that
+$$
+S \leq 1 + 4 + 4 = 9
+$$
+as desired, with equality when $x_{n-1} = x_{n} = 2$ and $x_{n-2} = 1$.
+$\blacksquare$
+\end{solution}
+
+\end{document}

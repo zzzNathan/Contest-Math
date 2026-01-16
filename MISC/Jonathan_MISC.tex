@@ -52,5 +52,103 @@ but we know that $a \leq \sqrt{b} < a + 1$ and so
 $a - \sqrt{b} \leq 0$ and $-1 < a - \sqrt{b}$ and raising both inequalites
 to the power of $n$ gives the desired result. $\blacksquare$
 \end{solution}
+\newpage
+
+
+\begin{problem}{Theorem 2.}
+Let $C_1$ and $C_2$ be externally tangent circles with centres $O_1, O_2$
+and radii $r_1, r_2, (r_1 \geq r_2)$ respectively. Let $P_1, P_2$ be points on $C_1, C_2$
+respectively such that $P_1 P_2$ is a common tangent to both circles.
+\vspace{0.2cm}
+
+(a) Show that $P_1P_2 = 2\sqrt{r_1 r_2}$.\vspace{0.2cm}
+
+(b) Find the area of the region bounded by the two circles and their common
+tangent.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) The idea is to draw in the line $l$ through $P_2$ that is parallel to
+$O_1 O_2$. Let $Q = l \cap O_1P_1$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(250);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -4.352660005815247, xmax = 9.312262465894712, ymin = -5.495146144789845, ymax = 7.539749049794846;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen ffwwqq = rgb(1.,0.4,0.);
+pair O_1 = (0.,0.), O_2 = (6.,0.), P_1 = (1.3333333333333333,3.7712361663282534), P_2 = (6.666666666666667,1.8856180831641276), Q = (0.666666666666667,1.8856180831641276);
+
+filldraw(circle(O_1, 4.), qqzzff + opacity(0.05000000074505806),  qqzzff);
+filldraw(circle(O_2, 2.), qqzzff + opacity(0.05000000074505806),  qqzzff);
+filldraw((1.2304643290459811,3.4802786843062745)--(1.52142181106796,3.377409680018922)--(1.6242908153553124,3.668367162040901)--P_1--cycle, ffwwqq + opacity(0.10000000149011612),  ffwwqq);
+/* draw figures */
+draw((xmin, -0.35355339059327373*xmin + 4.242640687119285)--(xmax, -0.35355339059327373*xmax + 4.242640687119285),  ffwwqq); /* line */
+draw(P_1--O_1,  ffwwqq);
+draw(P_2--O_2,  ffwwqq);
+draw(Q--P_2,  qqzzff);
+draw(O_1--(4.,0.),  qqzzff);
+draw(O_2--(4.,0.),  qqzzff);
+label("$r_1$",(2.041463350518847,-0.13488113233546092),SE*labelscalefactor);
+label("$r_2$",(5.0383254153452315,-0.13488113233546092),SE*labelscalefactor);
+label("$r_1 + r_2$",(2.992580523213357,1.8261047654783293),SE*labelscalefactor);
+label("$r_1 - r_2$",(-0.648404598668290756,3.1317431971618523),SE*labelscalefactor);
+/* dots and labels */
+dot(O_1,dotstyle);
+label("$O_1$", (0.0629524727693897,0.1494290064365599), NE * labelscalefactor);
+dot(O_2,dotstyle);
+label("$O_2$", (6.056676602422158,0.1494290064365599), NE * labelscalefactor);
+//dot((1.3333333333333333,-3.7712361663282534), dotstyle);
+dot(P_1, dotstyle);
+//dot((4.,0.), dotstyle);
+//dot((4.,0.), dotstyle);
+dot(P_1, dotstyle);
+label("$P_1$", (1.3868090159693944,3.8882326504189995), NE * labelscalefactor);
+dot(P_2, dotstyle);
+label("$P_2$", (6.72587881107271,1.9970090172761312), NE * labelscalefactor);
+dot(Q, dotstyle);
+label("$Q$", (0.7176068073188426,1.9970090172761312), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+We notice that since $O_1 P_1$ and $O_2 P_2$ are radii they meet the
+common tangent at right angles, and in particular $O_1 P_1 \parallel
+O_2 P_2$. Now it is clear to see that $QP_2 = r_1 + r_2$ and $QP_1 =
+r_1 - r_2$. Now owing to Pythagoras,
+$$
+P_1P_2 = \sqrt{(r_1 + r_2)^2 - (r_1 - r_2)^2} = 2\sqrt{r_1 r_2}.
+\ \square
+$$
+
+(b) Notice that due to the parallel conditions $O_1P_1P_2O_2$ is a trapezium,
+with area
+$$
+\frac{r_1 + r_2}{2}\left(2\sqrt{r_1 r_2}\right).
+$$
+Now we just need to subtract off the two sectors. Let
+$\angle P_1 O_1 O_2 = \theta$. Notice that $\angle O_1 O_2 P_2 = 180 - \theta$ due
+to corresponding angles. Taking $\theta$ to be measured in radians gives the
+area of the two sectors to be
+$$
+\frac12 r_1^2 \theta + \frac12 r_2^2 (\pi - \theta) =
+\frac12 \theta \left(r_1^2 - r_2^2\right) + \frac12 \pi r_2^2.
+$$
+So the final area is
+$$
+(r_1 + r_2)\sqrt{r_1 r_2} - \frac12 \theta \left(r_1^2 - r_2^2\right) +
+\frac12 \pi r_2^2. \ \blacksquare
+$$
+
+\textit{Comments: I first came across the fact (a) from a BPRP
+(Black pen red pen) video, and then I actually used this fact to solve a problem
+in a Year 12/13 geometry topic test. Part (b) actually came up as a question
+with special case $r_1 = 3, r_2 = 1$ when
+I was sitting the 2026 Jan TMUA, I was unable to solve it during contest.}
+\end{solution}
 
 \end{document}
