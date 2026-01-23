@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Imperial-Cambridge Math Contest 2018 Rd 1 --- P2/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Imperial-Cambridge Math Contest 2018 Rd 1 --- P2/6}
+(i) Show that if $(k+1)$ integers are chosen from $\{1, 2, \ldots 2k+1\}$,
+then among the chosen integers there are always two that are coprime.
+\vspace{0.2cm}
+
+(ii) Let $A = \{1,2,\ldots, n\}$. Prove that if $n > 11$ then there is a
+bijective map $f : A \rightarrow A$ with the property that for every
+$a \in A$, exactly one of $f(f(f(f(a)))) = a$ and
+$f(f(f(f(f(a))))) = a$ holds.
+\end{problem}
+
+\begin{solution}{Solution}
+(i) Let $1 \leq a \leq 2k$ be an integer. If both $a$ and $(a+1)$ are chosen
+then we are done since $a$ and $(a+1)$ are coprime. \vspace{0.2cm}
+
+Thus suppose we don't select two consecutive integers. There are exactly
+$k$ even and $(k+1)$ odd numbers among $\{1,2,\ldots, 2k+1\}$. If we chose
+the $k$ even numbers, then we would have to pick one odd number which would
+create a pair of consecutive numbers. Thus the only way to pick $(k+1)$
+non-consecutive numbers is to choose all of the odd numbers. However now
+since 1 was chosen and every number is coprime with 1, there does infact
+exist two coprime numbers among the chosen integers. \\
+
+(ii) We examine two cases. \vspace{0.2cm}
+
+\textit{Case 1: $n$ is even.} Then define $f$ like so,
+$$
+f(a) =
+\begin{cases}
+a+1 \quad \text{if } a \text{ is odd},\\
+a-1 \quad \text{if } a \text{ is even}.
+\end{cases}
+$$
+For odd $a$ we have $f(f(a)) = a$ and so $f(f(f(f(a)))) = a$,
+whilst $f(f(f(f(f(a))))) = f(a) = a+1$. Similarly for even $a$ we have
+$f(f(a)) = a$ and so $f(f(f(f(a)))) = a$ whilst
+$f(f(f(f(f(a))))) = f(a) = a-1$, as desired.\vspace{0.2cm}
+
+\textit{Case 2: $n$ is odd.} Then define $f$ like so,
+$$
+f(n-4) = n-3, \ \  f(n-3) = n-2, \ \ f(n-2) = n-1, \ \ f(n-1) = n, \ \
+f(n) = n-4
+$$
+and for $1 \leq a < n-4$,
+$$
+f(a) =
+\begin{cases}
+a+1 \quad \text{if } a \text{ is odd},\\
+a-1 \quad \text{if } a \text{ is even}.
+\end{cases}
+$$
+By the same arguement as in case 1, clearly the desired property is true
+for $1 \leq a < n-4$. But now for each $n-4 \leq a \leq n$ it can easily
+be verified that only $f(f(f(f(f(a))))) = a$ holds. $\blacksquare$
+\end{solution}
+
+\end{document}
