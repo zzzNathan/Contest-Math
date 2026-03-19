@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Rd 1 2001 --- P5/5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Rd 1 2001 --- P5/5}
+A triangle has sides of length $a,b,c$ and it's circumcircle has radius
+$R$. Prove that the triangle is right-angled if and only if
+$a^2 + b^2 + c^2 = 8R^2$.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $\triangle ABC$ have side lengths $a \leq b \leq c$ with the normal
+labelling convention. \vspace{0.2cm}
+
+First we show that if $\triangle ABC$ is right-angled then
+$a^2 + b^2 + c^2 = 8R^2$. Observe that side $AB$ is a diameter of the
+circumcircle. This follows from the converse of the "angles in a semi circle
+are $180^\circ$" circle theorem. Thus $c = 2R$. Now by Pythagoras,
+$$
+a^2 + b^2 + c^2 = 2c^2 = 2 (4R^2) = 8R^2.
+$$
+\vspace{0.2cm}
+
+Now we show that if $a^2 + b^2 + c^2 = 8R^2$ then $\triangle ABC$ is
+right-angled. Note that we must have $c \leq 2R$ because otherwise the
+triangle cannot be inscribed within it's circumcircle. By cosine rule
+$$
+c^2 = a^2 + b^2 - 2ab\cos \angle C \leq 4R^2
+$$
+Now subbing $a^2 + b^2 = 8R^2 - c^2$ yields
+\[
+\begin{aligned}
+(8R^2 - c^2) - 2ab \cos \angle C \leq 4R^2 \\
+4R^2 \leq c^2 + 2ab \cos \angle C \\
+0 \leq 4R^2 - c^2 \leq 2ab\cos\angle C
+\end{aligned}
+\]
+where the third line is because $c^2 \leq 4R^2$. So this tells us that
+$\cos \angle C \geq 0$. Thus from the cosine rule formula we must have
+$$
+c^2 \geq a^2 + b^2.
+$$
+Now observe that
+$$
+8R^2 = a^2 + b^2 + c^2 \leq (c^2) + c^2 \leq 8R^2.
+$$
+But this equality case can only happen if $c^2 = a^2 + b^2$. That is
+$\triangle ABC$ is right-angled with hypotenuse $c$. This completes the
+proof. $\blacksquare$
+\end{solution}
+\end{document}

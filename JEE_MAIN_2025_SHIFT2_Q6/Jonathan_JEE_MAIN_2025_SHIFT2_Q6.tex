@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{JEE Mains 2025 Shift 2 --- Q6}
+
+\begin{document}
+\maketitle
+\textit{An educated guess is not a guess.}
+\begin{problem}{JEE Mains 2025 Shift 2 --- Q6}
+If
+$$
+\int e^x \left( \frac{x\arcsin x}{\sqrt{1-x^2}} +
+                \frac{\arcsin x}{(1-x^2)^{\frac32}} +
+                \frac{x}{1-x^2}
+\right) \mathrm{d}x = g(x) + C
+$$
+where $C$ is the constant of integration, then $g(1/2)$ is?
+\end{problem}
+
+\begin{solution}{Solution}
+It is natural to guess that the anti-derivative might take the form
+$g(x) = e^x q(x) \arcsin x$. We have
+$$
+g'(x) = e^x q(x) \arcsin x + e^x q'(x)\arcsin x +
+e^x q(x)\frac{1}{\sqrt{1-x^2}}.
+$$
+We want to try and match that last term to the last term in the integrand
+so we try the function
+$$
+q(x) = \frac{x}{\sqrt{1-x^2}}
+$$
+which has derivative
+$$
+q'(x) = \frac{1}{\sqrt{1-x^2}} + \frac{x^2}{(1-x^2)^{\frac32}}.
+$$
+So we can re-write $g'(x)$ now as
+\[
+\begin{aligned}
+g'(x) &= e^x \left( \frac{x \arcsin x}{\sqrt{1-x^2}} +
+                    \frac{\arcsin x}{\sqrt{1-x^2}}   +
+                    \frac{x^2 \arcsin x}{(1-x^2)^\frac32} +
+                    \frac{x}{1-x^2}
+                    \right)\\
+&= e^x \left( \frac{x \arcsin x}{\sqrt{1-x^2}} +
+              \frac{(1-x^2)\arcsin (x) + x^2\arcsin x}{(1-x^2)^{\frac32}} +
+              \frac{x}{1-x^2}
+\right) \\
+&= e^x \left( \frac{x\arcsin x}{\sqrt{1-x^2}} +
+              \frac{\arcsin x}{(1-x^2)^{\frac32}} +
+              \frac{x}{1-x^2}
+\right)\\
+\end{aligned}
+\]
+which is the given integrand. So we know that our choice of $g(x)$ does
+in fact satisfy the given equation. Finally we can just compute
+$$
+g\left(\frac12\right) = \frac{\pi}{6}\sqrt{\frac{e}{3}}. \ \blacksquare
+$$
+
+\textit{Comments: Interestingly enough ChatGPT with thinking mode,
+struggled significantly to solve this one even after I gave hints. The
+real trap is that after you compute $g'(x)$ it doesn't look like it
+matches the integrand, but if you combine like terms correctly, you'll
+see that it actually does match the integrand.}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Mathematical Olympiad Challenges}
+
+\begin{document}
+\maketitle
+\textit{Problems taken from the book by the same name as the title, by
+Andreescu and Gelca.}
+
+\begin{problem}{Chapter 1.9 --- Problem 1}
+Prove that
+$$
+\frac{\sin x}{\cos x} + \frac{\sin 2x}{\cos^2 x} + \cdots +
+\frac{\sin nx}{\cos^n x} = \cot x - \frac{\cos (n+1)x}{\sin x \cos^n x}
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+The heart of the problem is to consider the related sequences,
+$$
+a_k = \frac{\sin kx}{\cos^k x}, \quad b_k = \frac{\cos kx}{\cos^k x}.
+$$
+We apply the cosine addition formula on $b_k$,
+\[
+\begin{aligned}
+b_k &= \frac{\cos [(k-1)x] \cos x - \sin [(k-1)x] \sin x}{\cos^k x}\\
+&= b_{k-1} - a_{k-1} \tan x\\
+\end{aligned}
+\]
+which implies that $a_{k} \tan x = b_k - b_{k+1}$.
+Indeed the LHS of our identity now telescopes down to,
+\[
+\begin{aligned}
+a_1 + a_2 + \cdots + a_n &= (b_1 - b_{n+1})\cot x\\
+&= \cot x - \frac{\cos (n+1)x}{\sin x \cos^n x}. \ \blacksquare \\
+\end{aligned}
+\]
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 1.9 --- Problem 3}
+Let $n$ be a positive integer and $a$ a real number, such that $a/\pi$ is
+an irrational number. Compute
+$$
+\frac{1}{\cos a - \cos 3a} + \frac{1}{\cos a - \cos 5a} + \cdots +
+\frac{1}{\cos a - \cos (2n+1)a}
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Motivated by the sum to product formulae we notice that
+\[
+\begin{aligned}
+\cos a - \cos (2k+1)a &= \cos [(k+1)a - ka] - \cos [(k+1)a + ka] \\
+&= 2\sin [(k+1)a] \sin (ka).
+\end{aligned}
+\]
+So we wish to compute
+$$
+S = \sum_{k=1}^n \frac{1}{2\sin [(k+1)a] \sin(ka)}.
+$$
+If one looks for a function that might telescope into the general term of
+this series then we may figure out that
+\[
+\begin{aligned}
+\frac{\cos(k+1)a}{\sin(k+1)a} - \frac{\cos(ka)}{\sin(ka)} &=
+\frac{\cos[(k+1)a] \sin(ka) - \cos(ka) \sin[(k+1)a]}{\sin(ka)\sin[(k+1)a]}\\
+&= \frac{\sin(-a)}{\sin(ka)\sin(k+1)a}.
+\end{aligned}
+\]
+Armed with this fact it is clear that we can re-write our sum as
+$$
+S = -\frac{1}{2\sin a} \sum_{k=1}^n [\cot[(k+1)a] - \cot (ka)]
+$$
+which telescopes down to
+$$
+S = \frac{1}{2\sin a}(\cot a - \cot (n+1)a). \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 3.2 --- Problem 2}
+Show that each of the numbers
+$$
+\frac{107811}{3}, \frac{110778111}{3}, \frac{111077781111}{3}, \ldots
+$$
+is the cube of a positive integer.
+\end{problem}
+
+\begin{solution}{Solution}
+First we try to characterise the pattern given in these numbers. Let the
+$k$-th number in this list be $n_k$, then
+
+$$
+3n_k = \underbrace{11\ldots1}_{k \text{ times}}\ 0 \
+       \underbrace{77\ldots7}_{k \text{ times}}\ 81 \
+       \underbrace{11\ldots1}_{k \text{ times}}.
+$$
+
+After looking at small cases and guessing, one finds that these numbers
+are of the form $(33\ldots3)^3$. The solution is to show that
+$$
+n_k = (\underbrace{33\ldots3}_{k+1 \text{ times}})^3.
+$$
+Notice that we can write (make sure to pay careful attention
+to the summation bounds, it's easy to mess up)
+\[
+\begin{aligned}
+3n_k &= \sum_{r = 2k+3}^{3k+2} (10^r) + 7\sum_{r = k+2}^{2k+1} (10^r) +
+81(10^{k}) + \sum_{r = 0}^{k-1} (10^r)\\
+&= \left( 1 + 7(10^{k+2}) + 10^{2k+3} \right) \frac{10^k - 1}{9} + 81(10^k)
+\\
+&= -\frac19 + 30\frac{10^k}{9} - 300\frac{10^{2k}}{9} + 1000\frac{10^{3k}}{9}\\
+n_k &= -\frac{1}{27} + 30\frac{10^k}{27} - 300\frac{10^{2k}}{27} +
+1000\frac{10^{3k}}{27}\\
+&= -\frac{1}{27} + 3\frac{10^{k+1}}{27} - 3\frac{10^{2k+2}}{27} +
+\frac{10^{3k+3}}{27} \\
+&= \left(\frac{10^{k+1} - 1}{3}\right)^3
+\end{aligned}
+\]
+which is exactly the number $(\underbrace{33\ldots3}_{k+1 \text{ times}})^3$
+as desired. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 1.9 --- Problem 5}
+Compute
+$$
+\frac{\tan 1}{\cos 2} + \frac{\tan 2}{\cos 4} + \cdots +
+\frac{\tan 2^n}{\cos 2^{n+1}}.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+We observe the following fact.
+
+\[
+\begin{aligned}
+\tan 2^{k+1} - \tan 2^k &=
+\frac{\sin 2^{k+1}}{\cos 2^{k+1}} - \frac{\sin 2^k}{\cos 2^k} \\
+&=
+\frac{\sin 2^{k+1} \cos 2^k - \sin 2^k \cos 2^{k+1}}{\cos 2^k \cos 2^{k+1}} \\
+&= \frac{\sin 2^k}{\cos 2^k \cos 2^{k+1}}\\
+&= \frac{\tan 2^k}{\cos 2^{k+1}}.
+\end{aligned}
+\]
+
+Thus we can re-write the sum as
+$$
+\sum_{k=0}^n (\tan 2^{k+1} - \tan 2^k)
+$$
+which telescopes to $\tan 2^{n+1} - \tan 1$. $\blacksquare$
+\end{solution}
+
+\end{document}
