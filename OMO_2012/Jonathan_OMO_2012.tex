@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Online Math Olympiad 2012}
+
+\begin{document}
+\maketitle
+\textit{Selected solves from Evan Chen's Online Math Olympiad 2012.}
+
+\begin{problem}{Problem 5}
+Two circles have radius 5 and 26. The smaller circle passes through center
+of the larger one. What
+is the difference between the lengths of the longest and shortest chords of
+the larger circle that are
+tangent to the smaller circle?
+\end{problem}
+
+\begin{solution}{Solution}
+The longest chord cannot exceed the diameter of the larger circle which
+is $2\times 26 = 52$. This is achievable by taking the diameter of the
+larger circle which is tangent to the smaller one.
+\vspace{0.2cm}
+
+Let $O$ be the centre of the larger circle. Let $E$ be the foot of the
+perpendicular to $AB$ through $O$. Denote $h = OE$, $x = BE$ and $y = AE$.
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -27.39094890611301, xmax = 26.96168859328205, ymin = -27.021936890795512, ymax = 27.305623302584824;  /* image dimensions */
+pen ffwwqq = rgb(1.,0.4,0.); pen wwzzff = rgb(0.4,0.6,1.);
+pair O = (0.,0.), A = (10.,24.), B = (10.,-24.);
+
+filldraw(circle(O, 26.), ffwwqq + opacity(0.05000000074505806),  ffwwqq);
+filldraw(circle((5.,0.), 5.), wwzzff + opacity(0.15000000596046448),  wwzzff);
+/* draw figures */
+draw(O--A);
+draw(O--B);
+draw(A--B,  linetype("4 4"));
+/* dots and labels */
+dot(O, dotstyle);
+label("$O$", (0.33260533600915065,0.6327031463560191), NE * labelscalefactor);
+dot(A, dotstyle);
+label("$A$", (10.32322295441296,24.659725683178497), NE * labelscalefactor);
+dot(B, dotstyle);
+label("$B$", (10.32322295441296,-23.311752302711056), NE * labelscalefactor);
+label("$26$", (6.194868566642791,11.531558730069309), NW * labelscalefactor);
+label("$26$", (3.71785593398069,-12.49546380675317), NW * labelscalefactor);
+dot((10.,0.), dotstyle);
+label("$E$", (10.32322295441296,0.6327031463560191), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+Then
+$$
+26^2 = x^2 + h^2 = y^2 + h^2.
+$$
+So clearly $x = y$ and $x$ is minimised when $h$ is as large as possible.
+Since $OE \perp AB$, point $E$ is actually the point of tangency from the
+chord to the smaller circle so $OE$ is a chord of the smaller circle.
+Thus $h$ cannot exceed 10, giving $x = y = 24$.
+So the final answer is $52 - (24 + 24) = \boxed{4}$. $\blacksquare$
+\end{solution}
+\newpage
+
+\end{document}

@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{HMMT November General --- Q6/10}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{HMMT November General --- Q6/10}
+Call a polygon \textit{normal} if it can be inscribed within a unit circle.
+How many non-congruent normal polygons are there such that the square
+of each side length is a positive integer?
+\end{problem}
+
+\begin{solution}{Solution}
+The idea is that we can dissect any such polygon into a finite number of
+triangles that look like so,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(130);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.148317663962672, xmax = 2.8495529768213816, ymin = -1.7315642208694166, ymax = 1.749754082680477;  /* image dimensions */
+pen ududff = rgb(0.30196078431372547,0.30196078431372547,1.);
+pair A = (0.,0.), B = (2.,-1.5), C = (2.,1.5);
+pair m_AC = (1, 0.75), m_AB = (1, -0.75), m_BC = (2, 0);
+
+filldraw(arc(A,0.26506675908800126,323.130102354156,396.869897645844)--(0.,0.)--cycle, ududff + opacity(0.30000001192092896) + ududff);
+/* draw figures */
+draw(A--C);
+draw(C--B);
+draw(B--A);
+/* dots and labels */
+//dot(A, dotstyle);
+//dot(B,dotstyle);
+//dot(C,dotstyle);
+label("$1$", m_AC, NW * labelscalefactor);
+label("$1$", m_AB, SW * labelscalefactor);
+label("$\sqrt{a}$", m_BC, NE * labelscalefactor);
+
+label("$\theta$", (0.3297286905226872,-0.04713626954620386), NE * labelscalefactor,ududff);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+where $a$ is a positive integer. Now from Cosine law,
+\[
+\begin{aligned}
+a &= 2(1 - \cos \theta) \\
+\cos \theta &= 1 - \frac{a}{2} \\
+\end{aligned}
+\]
+Since $\cos \theta \in [-1, 1]$ and $a \in \mathbb{N}$,
+we can check that $a \in \{ 1, 2, 3, 4 \}$. Note that
+$\theta \in [0, 180]$ since the angle is in a triangle. Now plugging in
+each value of $a$ and solving yields
+$$
+\theta \in \{ 60, 90, 120, 180 \}.
+$$
+Since any normal polygon is just a collection of these triangles, we
+are just looking for solutions to
+\[
+\begin{aligned}
+60a + 90b + 120c + 180d &= 360\\
+2a + 3b + 4c + 6d &= 12.
+\end{aligned}
+\]
+
+\end{solution}
+
+\end{document}

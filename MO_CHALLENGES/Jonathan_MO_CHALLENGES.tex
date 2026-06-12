@@ -153,5 +153,186 @@ $$
 $$
 which telescopes to $\tan 2^{n+1} - \tan 1$. $\blacksquare$
 \end{solution}
+\newpage
+
+\begin{problem}{Chapter 2.3 --- Problem 3}
+Evaluate
+$$
+\sum_{k=1}^\infty \frac{6^k}{(3^k - 2^k)(3^{k+1} - 2^{k+1})}.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Define $c_k = 3^k - 2^k$. We have the recurrence
+\[
+\begin{aligned}
+c_{k+1} &= 2c_k + 3^k\\
+2^k c_{k+1} - 2^{k+1} c_k &= 6^k\\
+\frac{2^k}{c_k} - \frac{2^{k+1}}{c_{k+1}} &= \frac{6^k}{c_k c_{k+1}}
+\end{aligned}
+\]
+
+So the sum to evaluate is just
+$$
+\sum_{k=1}^\infty \frac{6^k}{c_k c_{k+1}} =
+\sum_{k=1}^\infty \left( \frac{2^k}{c_k} - \frac{2^{k+1}}{c_{k+1}} \right)
+$$
+which telescopes down to just $2^1/c_1 - 0 = 2$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 2.3 --- Problem 4}
+The sequence $(x_n)_n$ is defined by $x_1 = \frac12$,
+$x_{k+1} = x_k^2 + x_k$. Find the greatest integer less than
+$$
+\frac{1}{x_1 + 1} + \frac{1}{x_2 + 1} + \cdots + \frac{1}{x_{100} + 1}.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+We notice that
+$$
+\sum_{k=1}^{100} \frac{1}{x_k + 1} =
+\sum_{k=1}^{100} \frac{x_k}{x_k^2 + x_k} =
+\sum_{k=1}^{100} \frac{x_k}{x_{k+1}}.
+$$
+Now consider
+\[
+\begin{aligned}
+\frac{1}{x_{k+1}} - \frac{1}{x_k} &= \frac{x_{k+1} - x_k}{x_k x_{k+1}}\\
+&= \frac{x_k^2}{x_k x_{k+1}}\\
+&= \frac{x_k}{x_{k+1}}.
+\end{aligned}
+\]
+So our sum becomes
+$$
+\sum_{k=1}^{100} \frac{1}{x_{k+1}} - \frac{1}{x_k} =
+\frac{1}{x_{101}} - \frac{1}{x_1} = \frac{1}{x_{101}} - 2.
+$$
+Now the arguement should read $x_{101}$ is very large so that quantity
+is just a tad more than $-2$ meaning that it's floor is indeed just $-2$.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 1.9 --- Problem 6}
+Prove that
+$$
+\sum_{n=1}^\infty 3^{n-1}\sin^3 \frac{a}{3^n} = \frac14 (a - \sin a).
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Using the complex definition of sine one can show that
+$$
+\sin^3 \frac{a}{3^n} =
+\frac14 \left( 3\sin \frac{a}{3^n} - \sin \frac{a}{3^{n-1}} \right)
+$$
+Plugging this into the sum we have
+\[
+\begin{aligned}
+S &= \frac14 \sum_{n=1}^\infty
+\left(
+3^n \sin \frac{a}{3^n} - 3^{n-1} \sin \frac{a}{3^{n-1}}
+\right) \\
+&= \frac14
+\left(
+\lim_{n\rightarrow \infty} \left[ 3^n \sin \frac{a}{3^n} \right] - \sin a
+\right) \\
+&= \frac14
+\left(
+a - \sin a
+\right)
+\end{aligned}
+\]
+where one evaluates that limit by using, for instance Taylor expansion.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 2.5 --- Problem 3}
+Solve the system of equations
+\[
+\begin{aligned}
+xy + yz + zx &= 12, \\
+xyz &= 2 + x + y + z
+\end{aligned}
+\]
+in positive real numbers $x,y,z$.
+\end{problem}
+
+\begin{solution}{Solution}
+It's a nice problem with inequalities. Consider
+\[
+\begin{aligned}
+(x+y+z)^2 &= x^2 + y^2 + z^2 + 2(xy + yz + zx) \\
+&\geq 3(xy + yz + zx) && \text{(Re-arrangement ineq).} \\
+&= 36
+\end{aligned}
+\]
+Now since $x,y,z > 0$ it must be the case that $x + y + z \geq 6$.
+This implies that $xyz - 2 \geq 6 \iff xyz \geq 8$. Notice that the
+entire problem is symmetrical in $x,y,z$.
+\vspace{0.2cm}
+
+At least one of
+$x,y,z$ must be $\geq 2$ because otherwise their sum would be $< 6$.
+WLOG let $x \geq 2$. Now we have
+$y + z \geq 4$ and $yz \geq 4$. Again at least one of $y,z$ must be $\geq 2$
+because otherwise their sum would be $ < 4$. WLOG let $y \geq 2$. But now
+these two inequalties imply that $z \geq 2$ also. So we find that
+$$
+12 = xy + yz + zx \geq 4 + 4 + 4 = 12
+$$
+and so actually none of the variables can exceed 2. Thus the only solution
+is $(x,y,z) = (2,2,2)$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 3.2 --- Problem 5}
+Prove that the equation $x^2 + y^2 + 1 = z^2$ has infinitely many integer
+solutions.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $k \in \mathbb{N}$. Notice that
+\[
+\begin{aligned}
+(2k)^2 + (2k^2)^2 + 1 &= 4k^4 + 4k^2 + 1 \\
+&= (2k^2 + 1)^2
+\end{aligned}
+\]
+So the tuple $(x,y,z) = (2k, 2k^2, 2k^2 + 1)$ produces a solution for
+any $k \in \mathbb{N}$ and there are infinitely many such solutions.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 3.2 --- Problem 6}
+Let $a$ and $b$ be integers such that there exist consecutive integers
+$c$ and $d$ for which $a-b = a^2 c - b^2 d$. Prove that $|a-b|$ is a
+perfect square.
+\end{problem}
+
+\begin{solution}{Solution}
+Let $d = c+1$. We have
+\[
+\begin{aligned}
+a-b &= a^2 c - b^2 c - b^2 \\
+b^2 &= c(a^2 - b^2) - (a-b)\\
+&= (a-b)(c(a+b)-1).
+\end{aligned}
+\]
+Consider a prime $p$ dividing $a-b$. Due to the equality above $p$ is
+also a divisor of $b^2$, which only happens if $p \mid b$.
+So $p$ also divides $(a-b) + 2b = a+b$. Since $c(a+b) - 1$ is coprime to
+$a+b$, we have that $p \nmid [c(a+b) - 1]$. \vspace{0.2cm}
+
+Thus we have found that $\gcd(a-b, c(a+b)-1) = 1$. Note that
+$\nu_p(b^2)$ is always even. If $\nu_p(a-b)$ happened to be odd for some
+prime $p$ then this means that $\nu_p(c(a+b)-1)$ must also be odd, but
+this means that $a-b$ and $c(a+b)-1$ share a common factor, a contradiction.
+$\blacksquare$
+\end{solution}
 
 \end{document}

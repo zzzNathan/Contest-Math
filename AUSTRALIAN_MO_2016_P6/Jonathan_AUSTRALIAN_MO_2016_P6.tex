@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Australian Math Olympiad 2016 --- P5}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Australian Math Olympiad 2016 --- P5}
+If $a,b,c$ are positive integers such that $a^3 + b^3 = 2^c$, prove that
+$a = b$.
+\end{problem}
+
+\begin{solution}{Solution}
+WLOG assume that $a \geq b$.
+Let $g = \gcd(a,b)$. For some coprime positive integers $x,y$ we may write
+$a = gx$ and $b = gy$. We have
+$$
+g^3(x^3 + y^3) = 2^c.
+$$
+Since $(x^3 + y^3) \mid 2^c$, this quantity must be a pure power of 2.
+Since $x,y \in \mathbb{N}$ we have $x^3 + y^3 = 2^n$ for some
+$n \in \mathbb{N}$. Reducing mod 2 we find that $x,y$ must have the same
+parity, but they cannot both be even since $\gcd(x,y) = 1$, so the only
+possiblity is that $x,y$ are both odd. Notice that
+$$
+x^3 + y^3 = (x + y)(x^2 - xy + y^2) = 2^n.
+$$
+Since both $x,y$ are odd we observe that
+$x^2 - xy + y^2 \equiv 1 \ (\text{mod } 2)$. Since $x^3 + y^3$ is a pure
+power of 2, the only possibility is that
+$
+x^2 - xy + y^2 = 1.
+$
+Now suppose FTSOC that $a > b$ or equivalently $x > y$. Then
+$$
+1 = x^2 - xy + y^2 > (y+1)^2 - (y+1)y + y^2 = y^2 + y + 1 \geq 3
+$$
+which is a contradiction. Thus $a\leq b$, but since we assumed also
+$a\geq b$, the only possibility is $a = b$. $\blacksquare$
+\end{solution}
+
+\end{document}

@@ -150,5 +150,150 @@ in a Year 12/13 geometry topic test. Part (b) actually came up as a question
 with special case $r_1 = 3, r_2 = 1$ when
 I was sitting the 2026 Jan TMUA, I was unable to solve it during contest.}
 \end{solution}
+\newpage
+
+\begin{problem}{Theorem 3.}
+Consider some $3 \times 3$ matrix $A$ of the form
+$$
+A = \begin{bmatrix}
+k & 0 & 0 \\
+x & k & 0 \\
+y & z & k \\
+\end{bmatrix}.
+$$
+Let $M$ be another $3\times 3$ matrix defined like so, $A = kI + M$.
+Then
+$$
+A^n = k^{n}I + k^{n-1} n M + k^{n-2}\frac{n(n-1)}{2}M^2.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+\textit{Claim 1: $M$ is nilpotent with nilpotency index $\leq 3$. In other
+words there is a postive integer $k \leq 3$ such that } $M^k = \mathbf{0}$.
+\vspace{0.2cm}
+
+\textit{Proof:} We use the Caley-Hamilton theorem. Look at the
+characteristic equation of $M$,
+$$
+\begin{vmatrix}
+-\lambda & 0 & 0 \\
+x & -\lambda & 0 \\
+y & z & -\lambda
+\end{vmatrix}
+= - \lambda^3 = 0.
+$$
+Now since $M$ satisfies it's own characteristic equation (by Caley-Hamilton)
+we have $M^3 = 0$. $\square$ \\
+
+Now we can apply Binomial theorem like so,
+\[
+\begin{aligned}
+A^n &= (kI + M)^n \\
+&= \sum_{r=0}^n \binom{n}{r} (M)^r (kI)^{n-r} \\
+&= \binom{n}{0} k^n I + \binom{n}{1} k^{n-1} M + \binom{n}{2} k^{n-2} M^2 \\
+&= k^n I + n k^{n-1} M + \frac{n(n-1)}{2} k^{n-2} M^2
+\end{aligned}
+\]
+where the expansion stops at $r = 2$ because any further terms will have
+a factor of $M^3 = 0$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Theorem 4.}
+Take $2^n + 1$ lattice points in $n$-dimensional space. Then there are two
+points $P, Q$ out of this group such that the segment with endpoints
+$P, Q$ passes through another point with integer coordinates.
+\end{problem}
+
+\begin{solution}{Solution}
+Consider a point from this group
+$$
+P = (p_1, p_2, \ldots, p_n).
+$$
+There are $2^n$ ways to choose each of the parities of each of the
+$p_i, (i=1,2,\ldots, n)$. Since we have $2^n + 1$ points, by Pigeonhole
+principle there must be some point $Q$ also a part of this group
+$$
+Q = (q_1, q_2, \ldots, q_n)
+$$
+that satisfies
+$$
+p_i \equiv q_i \ (\text{mod } 2), \quad (i = 1,2,\ldots, n).
+$$
+Now define
+$$
+\overrightarrow{\Delta} = \overrightarrow{OQ} - \overrightarrow{OP}
+= \langle x_1, x_2, \ldots, x_n \rangle
+$$
+where $x_i = q_i - p_i$. Note that $x_i$ is even because $p_i$ and $q_i$
+have the same parity. Since every component is even
+$$
+\frac12 \overrightarrow{\Delta} \in \mathbb{Z}^n
+$$
+and so the point at
+$$
+\overrightarrow{OP} + \frac12 \overrightarrow{\Delta}
+= \left(p_1 + \frac12 x_1, p_2 + \frac12 x_2, \ldots \right)
+$$
+is a lattice point and lies on the segement $PQ$ between $P$ and $Q$.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Theorem 5 --- (Strengthened Theorem 1).}
+Let $a,b \in \mathbb{N}$, $b$ not a perfect square.
+Define $x = a + \sqrt{b}$ and $y = a - \sqrt{b}$.
+Let $n \in \mathbb{N}$.
+\begin{itemize}
+\item If $0 < y < 1$, then $x^n + y^n = \ceil{x^n}$.
+\item If $-1 < y < 0$ and $n$ is odd, then $x^n + y^n = \floor{x^n}$.
+\end{itemize}
+\end{problem}
+
+\begin{solution}{Solution}
+We present a strengthened version of theorem 1, along with motivation
+for why these statements are true. Define $S_n = x^n + y^n$.
+First we are going to show that $S_n \in \mathbb{Z}$. Then since
+$|y| < 1$ we know that $y^n$ is very small, enough to restrict $S_n$ to an
+interval of size $< 1$. Finally we are able to conclude the results of
+theorem 5.
+\vspace{0.2cm}
+
+Note that $x,y$ are the roots of
+$$
+x^2 - 2ax + (a^2 - b) = 0.
+$$
+If one has studied how to solve second order linear recurrence relations
+then you know that it is the case that
+$$
+S_{n+1} = 2a S_n - (a^2 - b) S_{n-1}
+$$
+with the initial conditions $S_0 = 2, S_1 = 2a$ both of which are integers.
+Since $a,b\in \mathbb{N}$ and the integers are closed under $+, -, \times$
+we deduce that $S_n \in \mathbb{Z}$. \\
+
+{
+\color{gray}
+\hline
+}
+\vspace{0.2cm}
+
+Now observe that if $0 < y < 1$ then $0 < y^n < 1$. Thus $S_n$ satisfies
+the inequality
+$$
+x^n < S_n < x^n + 1.
+$$
+Now since $S_n$ is an integer in the interval $(x^n, x^n + 1)$ it is
+the smallest integer $ > x^n$, that is $S_n = \ceil{x^n}$. \\
+
+Similarly if $-1 < y < 0$ then $-1 < y^n < 0$ since $n$ is odd. So
+$S_n$ satisfies
+$$
+x^n - 1 < S_n < x^n.
+$$
+Again since $S_n$ is an integer in the interval $(x^n - 1, x^n)$ it is the
+largest integer $< x^n$, that is $S_n = \floor{x^n}$. $\blacksquare$
+\end{solution}
 
 \end{document}

@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Canadian Math Olympiad 1971 --- P10}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Canadian Math Olympiad 1971 --- P10}
+Suppose that $n$ people each know exactly one piece of information,
+and all $n$ pieces are different. Every time person $A$ phones person
+$B$, $A$ tells $B$ everything that $A$ knows, while $B$ tells $A$ nothing.
+What is the minimum number of phone calls between pairs of people
+needed for everyone to know everything? Prove your answer is a minimum.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $2(n-1)$. Finding a construction is easy.
+There are two main steps. \vspace{0.2cm}
+
+Firstly we show that it takes at least $n-1$ phone calls to have
+1 person know all bits of information. For someone to know
+all pieces of information, each of the other $n-1$ people must've
+phoned someone else at least one time, otherwise a piece of information
+would still be known uniquely by exactly one person. \vspace{0.2cm}
+
+Now once we have someone that knows all pieces of information, for the
+remaining $n-1$ people to know everything it takes at least one phone
+call for them to know everything. Thus in each case we add up to get
+at least $2(n-1)$ phone calls. $\blacksquare$
+\end{solution}
+
+\end{document}

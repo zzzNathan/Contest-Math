@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\title{Math Prize for Girls 2025 --- P3}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Math Prize for Girls 2025 --- P3}
+An octagon is inscribed in a circle. It has four consecutive sides of
+length 10 and four consecutive sides of length $7\sqrt2$. What is the radius
+of the circle?
+\end{problem}
+
+\begin{solution}{Solution}
+Let $O$ be the centre of the circle.
+Suppose that the sides of length 10 subtend an angle of $\theta$
+at $O$, and that the sides of length $7\sqrt2$ subtend an angle of
+$\phi$. Because there are 4 sides of length 10, $7\sqrt2$ we have
+$$
+4 \theta + 4 \phi = 360 \iff \theta + \phi = 90
+$$
+Consider,
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(160);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -7.611861471861468, xmax = 16.959567099567092, ymin = -3.102943722943712, ymax = 13.887532467532468;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (-5.,11.), B = (5.,11.), C = (0.,0.), D = (11.543227463323507,3.5712602439438603);
+
+filldraw(arc(C,1.4964088269454114,425.55604521958344,474.44395478041656)--(0.,0.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw(arc(C,1.4964088269454114,377.1910965084706,425.55604521958344)--(0.,0.)--cycle, red + opacity(0.10000000149011612),  red);
+/* draw figures */
+draw(A--C);
+draw(C--B);
+draw(A--B);
+draw(B--D);
+draw(D--C);
+draw(A--D,  linetype("4 4"));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-4.90268339140534,11.261189314750293), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (5.109652032520323,11.261189314750293), NE * labelscalefactor);
+dot(C,linewidth(4.pt) + dotstyle);
+label("$C$", (0.10348432055749185,0.2149714285714362), NE * labelscalefactor);
+label("$r$", (-3.6165407665505207,5.3299688734030255), NE * labelscalefactor);
+label("$r$", (2.8786425087108007,5.3299688734030255), NE * labelscalefactor);
+label("$10$", (-0.005345412311265355,11.281003484320561), NE * labelscalefactor);
+dot(D,linewidth(4.pt) + dotstyle);
+label("$D$", (11.639436004645756,3.779145180023235), NE * labelscalefactor);
+label("$7\sqrt2$", (7.939225087108011,7.0168297328687625), NE * labelscalefactor);
+label("$r$", (5.62659326364692,2.228321486643445), NE * labelscalefactor);
+label("$\theta$", (-0.11417514518002256,1.793002555168416), NE * labelscalefactor,qqwuqq);
+label("$\phi$", (1.2734039488966318,1.1672315911730617), NE * labelscalefactor,red);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Because of the two isoceles triangles we know that
+$$
+\angle ABC + \angle CBD = \left(90 - \frac{\theta}{2}\right) +
+                          \left(90 - \frac{\phi}{2}\right)
+                        = 180 - 45 = 135.
+$$
+So we can use the cosine rule to find out $AD$,
+$$
+AD^2 = 10^2 + (7\sqrt2)^2 - 2(10)(7\sqrt2)\cos135 = 338.
+$$
+Now since $\theta + \phi = 90$, $\triangle ACD$ is right-angled and thus
+$$
+2r^2 = x^2 = 338 \implies r = \boxed{13}.
+$$
+
+\end{solution}
+
+\end{document}
