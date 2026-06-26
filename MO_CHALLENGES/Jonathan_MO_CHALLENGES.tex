@@ -334,5 +334,42 @@ prime $p$ then this means that $\nu_p(c(a+b)-1)$ must also be odd, but
 this means that $a-b$ and $c(a+b)-1$ share a common factor, a contradiction.
 $\blacksquare$
 \end{solution}
+\newpage
+
+\begin{problem}{Chapter 1.10 --- Problem 6}
+The sequence $(x_n)_n$ satisfies $\sqrt{x_{n+2} + 2} \leq x_n \leq 2$
+for all $n \geq 1$. Find all possible values of $x_{1986}$.
+\end{problem}
+
+\begin{solution}{Solution}
+\textit{Claim 1:} $x_n \geq 0$ for $n \in \mathbb{N}$. \vspace{0.2cm}
+
+\textit{Proof:} Suppose $x_n < 0$. Then $\sqrt{x_{n+2} + 2} \leq x_n < 0$.
+This is impossible since the square root only gives values $\geq 0$.
+$\square$ \\
+
+We can re-arrange the given inequality to $x_{n+2} + 2 \leq x_n^2$.
+Since $x_{n+2} \geq 0$ it must be the case that $x_n \geq \sqrt{2}$ for
+$n \in \mathbb{N}$. Define $\alpha = \sqrt2$. We now have
+$$
+x_n^2 \geq 2 + \alpha \ \Rightarrow \ x_n \geq \sqrt{\alpha + 2}.
+$$
+Define $B_{k+1} = \sqrt{B_k + 2}, B_0 = \sqrt{\alpha + 2}$, for
+$k = 1,2,\ldots$. We are going to show that
+$x_n \geq \lim_{k \rightarrow \infty} B_k$.
+Suppose that $x_n \geq B_m$ for some non-negative integer $m$. Then
+$$
+B_m + 2 \leq x_n^2 \ \Rightarrow \ \sqrt{B_m + 2} = B_{m+1} \leq x_n.
+$$
+So for any large $N$, $x_n \geq B_N$ via induction. Now we aim to compute
+$B' := \lim_{k \rightarrow \infty} B_k$.
+$$
+B' = \sqrt{B' + 2} \ \Rightarrow \ B' = 2
+$$
+via the quadratic formula and the fact that $B' > 0$. So we have deduced
+that $x_n \geq 2$. But we also have $x_n \leq 2$. Thus the only sequence
+that works is the constant sequence $x_n = 2$. The only value of $x_{1986}$
+is 2. $\blacksquare$
+\end{solution}
 
 \end{document}

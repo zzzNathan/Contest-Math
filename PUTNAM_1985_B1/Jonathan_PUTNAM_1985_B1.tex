@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Putnam 1985 --- B1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Putnam 1985 --- B1}
+Let $k$ be the smallest positive integer for which there exist
+distinct integers $m_1, m_2, m_3, m_4, m_5$ such that the polynomial
+\[
+p(x) = (x-m_1)(x-m_2)(x-m_3)(x-m_4)(x-m_5)
+\]
+has exactly $k$ nonzero coefficients. Find, with proof, a set of
+integers $m_1, m_2, m_3, m_4, m_5$ for which this minimum $k$ is achieved.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $k=3$. It is achievable with
+$(m_1,m_2,m_3,m_4,m_5) = (0,-1,1,-2,2)$, where $p(x) = x^5 - 5x^3 + 4x$.\\
+
+Firstly we show that $k \neq 1$. Observe that $\deg p(x) = 5$ and
+$p(x)$ is monic, so $p(x)$ must include the term $x^5$. FTSOC assume $k=1$.
+Then $p(x) \equiv x^5$. But this is a contradiction since we assumed that
+$p$ had 5 distinct roots. \\
+
+Next we show that $k \neq 2$. One of the non-zero coefficients has to be
+$x^5$.
+
+\begin{itemize}
+\item If $p(x) = x^5 - c$, then it can be checked that
+$c^\frac15 e^\frac{2\pi i}{5}$ is a root of $p$. This is a contradiction
+since we assumed all the roots of $p$ were integers.
+
+\item If $p(x) = x^5 - cx$, then it can be checked that
+$c^\frac14 i$ is a root of $p$. This again is a contradiction.
+
+\item If $c\neq 0$ is the coefficient of $x^m$, for $2\leq m\leq 4$ an
+integer, then $p$ will have a factor of $x^2$, that is a repeated root of 0,
+contradicting the assumption that $p$ had five distinct roots.
+$\blacksquare$
+\end{itemize}
+
+\end{solution}
+
+\end{document}

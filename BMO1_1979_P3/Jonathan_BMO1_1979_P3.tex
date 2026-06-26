@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{British Math Olympiad Round 1 1979 --- P3/6}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{British Math Olympiad Round 1 1979 --- P3/6}
+$S$ is a set of distinct positive odd integers $(a_i)_{i=1}^n$. No
+two differences $|a_i - a_j|$ are equal, $1 \leq i < j \leq n$.
+\vspace{0.2cm}
+
+Prove that $a_1 + a_2 + \cdots + a_n \geq \frac13 n (n^2 + 2)$.
+\end{problem}
+
+\begin{solution}{Solution}
+Without loss of generality, order the numbers such that
+$a_1 < a_2 < \cdots < a_n$.
+Note that since $S$ is comprised only of odd distinct integers, all the
+differences $|a_i - a_j|$ are even. So for some pairwise distinct positive
+even integers $d_2, d_3, \ldots, d_n$ we know that
+$$
+a_k = a_{k-1} + d_k, \quad (k=2,3,\ldots,n).
+$$
+Observe that for some integer $m \geq 2$.
+\[
+\begin{aligned}
+\sum_{k=2}^m (a_k) &= \sum_{k=2}^m (a_{k-1} + d_k) \\
+&= \sum_{k=1}^{m-1} (a_k) + \sum_{k=2}^m (d_k) \\
+a_m - a_1 &= \sum_{k=2}^m (d_k).
+\end{aligned}
+\]
+Since we want to minimise $a_m$ we should let $d_2, d_3, \ldots, d_m$
+just be the first $(m-1)$ positive even integers.
+These sum to $2(1 + 2 + \cdots + (m-1)) = (m-1)m$. Thus
+$$
+a_m \geq a_1 + m(m-1).
+$$
+Now clearly $a_1 \geq 1$ so we deduce that
+$a_m \geq m^2 - m + 1$. Thus
+\[
+\begin{aligned}
+a_1 + a_2 + \cdots + a_n &\geq 1 + \sum_{k=2}^n (k^2 - k + 1) \\
+&= 1 + \left[ \frac{n(n+1)(2n+1)}{6} - 1\right] -
+\left[ \frac{n(n+1)}{2} - 1 \right] + (n-1) \\
+&=\frac13 n(n^2 + 2).
+\end{aligned}
+\]
+which is the desired result. $\blacksquare$
+\end{solution}
+
+\end{document}
