@@ -1,0 +1,698 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 4}
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 4. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+Solve the simultaneous equations
+\[
+\begin{aligned}
+4x + 3y &= 496\\
+\sqrt{5x} + \sqrt{5y} &= \sqrt{17x + 7y}.
+\end{aligned}
+\]
+\end{problem}
+
+\begin{solution}{Solution}
+Define $\alpha = 496$. Square the second equation twice to end up with
+$$
+144x^2 - 52xy + 4y^2 = 0.
+$$
+Now substitute in $4x = \alpha - 3y$ to get
+$$
+9(\alpha - 3y)^2 - 13y(\alpha - 3y) + 4y^2 = 0
+$$
+which simplifies to
+$$
+124y^2 - 67\alpha y + 9\alpha^2 = 0
+$$
+which yields the solutions $y = 144, 124$, with corresponding values of
+$x = 16, 31$, and both solutions can be checked to work. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+(a) Show algebraically that
+$$
+\binom{n+1}{r+1} = \binom{n}{r} + \binom{n}{r+1}.
+$$
+\vspace{0.1cm}
+
+(b)
+\vspace{-0.65cm}
+\begin{enumerate}[label=\roman*.]
+  \item How many ways are there to choose $r+1$ objects from a set of $n+1$.
+  \item Suppose that one of the $n+1$ objects is special. How many ways can
+  you choose the $r+1$ items including the special one?
+  \item Hence give a combinatorial proof that $$
+  \binom{n+1}{r+1} = \binom{n}{r} + \binom{n}{r+1}.
+  $$
+\end{enumerate}
+
+(c) Show that
+$$\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n.$$
+\end{problem}
+
+\begin{solution}{Solution}
+(a) The RHS reads
+\[
+\begin{aligned}
+\binom{n}{r} + \binom{n}{r+1} &= \frac{n!}{r!(n-r)!} +
+\frac{n!}{(r+1)!(n-r-1)!}\\
+&= \frac{n!}{r!} \left( \frac{1}{(n-r)!} + \frac{n-r}{(r+1)(n-r)!} \right)\\
+&= \frac{n!}{r!} \left( \frac{(r+1) + (n-r)}{(r+1)(n-r)!} \right)\\
+&= \frac{n!}{r!} \left( \frac{n+1}{(r+1)(n-r)!} \right)\\
+&= \frac{(n+1)!}{(r+1)!(n-r)!}\\
+&= \binom{n+1}{r+1}. \ \square
+\end{aligned}
+\]
+\\
+
+(b) i. There are $\binom{n+1}{r+1}$ ways to choose $r+1$ objects from a set
+of $n+1$.
+\vspace{0.2cm}
+
+ii. We must pick the one special object, other than it, we need to pick
+$r$ items from a set of $n$ items. There are $\binom{n}{r}$ ways to do this.
+\vspace{0.2cm}
+
+iii. From i and ii we know that there are $\binom{n+1}{r+1} - \binom{n}{r}$
+ways to choose a set of $r+1$ objects from a set of $n+1$, excluding the
+special one. Alternatively, to pick $r+1$ objects excluding the special one,
+we can just remove the special object from the
+set and pick $r+1$ objects from this new set. There $\binom{n}{r+1}$ ways
+to do this. But this means that
+$$
+\binom{n+1}{r+1} - \binom{n}{r} = \binom{n}{r+1}
+$$
+which re-arranges to the desired result. $\square$
+\\
+
+(c) Note that the sum is exactly $(1+1)^n$ due to the binomial theorem
+which is the same as $2^n$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 3}
+Suppose that $l$ is a line, and that $\Gamma$ and $\Delta$ are circles,
+tangent to $l$ at $C$ and $D$ respectively and also tangent to each other
+at $T$. Let $E$ be the opposite end of the diameter from $\Delta$ from $D$.
+\vspace{0.2cm}
+
+Prove that $C, T$ and $E$ are collinear.
+\end{problem}
+
+\begin{solution}{Solution}
+The following diagram gives an overview of our arguement.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(220);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.325167272386684, xmax = 10.129696578885018, ymin = -1.025734314251339, ymax = 8.815415888658772;  /* image dimensions */
+pen ccqqqq = rgb(0.8,0.,0.); pen qqqqcc = rgb(0.,0.,0.8); pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair gamma  = (0.,2.), delta  = (5.656854249492381,4.), T = (1.8856180831641276,2.6666666666666665), D = (5.656854249492381,0.), C = (0.,0.), P = (2.8284271247461885,0.);
+
+filldraw(arc(C,0.8085208357109156,414.7356103172453,450.)--(0.,0.)--cycle, ccqqqq + opacity(0.10000000149011612),  ccqqqq);
+filldraw(arc((5.656854249492381,8.),0.8085208357109156,234.73561031724537,270.)--(5.656854249492381,8.)--cycle, ccqqqq + opacity(0.10000000149011612),  ccqqqq);
+filldraw(arc(gamma ,0.8085208357109156,270.,379.4712206344907)--(0.,2.)--cycle, qqqqcc + opacity(0.10000000149011612),  qqqqcc);
+filldraw(arc(delta ,0.8085208357109156,90.,199.4712206344907)--(5.656854249492381,4.)--cycle, qqqqcc + opacity(0.10000000149011612),  qqqqcc);
+filldraw((1.346604192690184,2.476096478112732)--(1.537174381244118,1.9370825876387885)--(2.076188271718062,2.127652776192723)--T--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((2.0761882717180615,2.127652776192723)--(2.6152021621920056,2.318222964746657)--(2.4246319736380713,2.8572368552206004)--T--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(circle(gamma , 2.));
+draw(circle(delta , 4.));
+draw(gamma --C);
+draw(delta --D);
+draw((xmin, 0.*xmin + 0.)--(xmax, 0.*xmax + 0.)); /* line */
+draw((xmin, -2.828427124746183*xmin + 8.)--(xmax, -2.828427124746183*xmax + 8.)); /* line */
+draw(gamma --T);
+draw(T--delta );
+draw((5.656854249492381,8.)--delta );
+draw(C--T,  linetype("4 4"));
+draw(T--(5.656854249492381,8.),  linetype("4 4"));
+/* dots and labels */
+dot(gamma ,dotstyle);
+label("$\gamma$", (0.07880339263036736,2.1849424514030202), NE * labelscalefactor);
+dot(delta ,dotstyle);
+label("$\delta$", (5.720482112924312,4.179293846156609), NE * labelscalefactor);
+label("$\Gamma$", (-1.0171915179999849,3.35280588076323), NE * labelscalefactor);
+label("$\Delta$", (3.654262199440861,7.054034595350973), NE * labelscalefactor);
+dot(T, dotstyle);
+label("$T$", (1.9653520092891705,2.813791990289287), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (5.720482112924312,0.1366896676020362), NE * labelscalefactor);
+dot(C, dotstyle);
+label("$C$", (0.07880339263036736,0.1366896676020362), NE * labelscalefactor);
+dot((5.656854249492381,8.), dotstyle);
+label("$E$", (5.720482112924312,8.150029505981324), NE * labelscalefactor);
+label("$l$", (-2.8678058752938584,0.154656797284501), NE * labelscalefactor);
+label("$k$", (-0.8195530914928723,10.413887845971885), NE * labelscalefactor);
+dot((5.656854249492385,0.), dotstyle);
+//dot((3.142696805273544,7.11111111111112), dotstyle);
+dot((1.8856180831641298,2.6666666666666643), dotstyle);
+dot((1.8856180831641298,2.6666666666666643), dotstyle);
+dot(P, dotstyle);
+label("$P$", (2.8996427527773396,0.1366896676020362), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+\textit{Claim 1: $\gamma, T$ and $\delta$ are collinear.} \vspace{0.2cm}
+
+\textit{Proof:} We note that because radii meet tangents at right angles
+${\color{darkgreen}{\angle PT \gamma}} =
+{\color{darkgreen}{\angle PT \delta}} = 90^\circ$. Now since
+$\angle \gamma T \delta = 90 + 90 = 180^\circ$, we can conclude that
+$\gamma, T$ and $\delta$ lie on a common line. $\square$ \\
+
+\textit{Claim 2: ${\color{blue}{\angle C\gamma T}} =
+{\color{blue}{\angle T\delta E}}$.}\vspace{0.2cm}
+
+\textit{Proof:} Notice that since both $C\gamma$ and $D\delta$ are
+perpendicular to the line $l$, we have $C\gamma \parallel D\delta$. Now due
+to Alternate angle theorem
+${\color{blue}{\angle C\gamma T}} = {\color{blue}{\angle T\delta E}}$.
+$\square$
+\\
+
+Finally since $\triangle TC\gamma$ and $\triangle TE\delta$ are both
+isoceles,
+${\color{red}{\angle TC\gamma}} = {\color{red}{\angle TE\delta}}$.
+Now since both $CT$ and
+$TE$ make the the same angle with the with the line perpendicular to $l$, we
+have $CT \parallel TE$ and since the two segments both pass through the
+point $T$, it is the case that $C,T$ and $E$ are collinear. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 4}
+(a) What is the remainder when $1000^{1000}$ is divided by 89?
+\vspace{0.2cm}
+
+(b) What is the remainder when $1000^{1000}$ is divided by 87?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) We notice that 89 is a prime number. Since $1000 = 11\cdot 89 + 21$,
+we wish to compute $21^{1000} \ (\text{mod } 89)$. We use Fermat's little
+theorem,
+$$
+21^{1000} \equiv (21^{11})^{89}\cdot 21^{21} \equiv 21^{11 + 21}
+\equiv 21^{32} \ (\text{mod } 89).
+$$
+Now since $21^2 = 121 \equiv 32 \ (\text{mod } 89)$ we have to compute
+$32^{16} \ (\text{mod } 89)$. Now we can keep applying this same trick
+to find
+$$
+32^{16} \equiv 45^8 \equiv 67^4 \equiv 39^2 \equiv 8 \ (\text{mod } 89). \
+\square
+$$
+\phantom{.}\\
+(b) We make use of Euler's theorem. Note that
+$\varphi(87) = 87\left(1 - \frac{1}{3}\right)\left(1 - \frac{1}{29}\right)
+= 56$. Since $3000 = 56\cdot 53 + 32$ we can write
+$$
+1000^{1000} = 10^{3000} = (10^{53})^{56} \cdot 10^{32}.
+$$
+Because 10 and 87 are coprime we can apply Euler's theorem to reduce the
+last expression mod 87. It becomes
+$$
+(1)  10^{32} \ (\text{mod } 87).
+$$
+We can use the same trick as we used in part (a),
+$$
+10^{32} \equiv 13^{16} \equiv 82^8 \equiv 25^4 \equiv 16^2 \equiv 82 \
+(\text{mod } 87). \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+Jose buys a lottery ticket for his $45$-th birthday, for which he has to
+select six numbers between 1 and $59$.
+To celebrate his age, he chooses the number $45$ as one of them. In his six
+numbers, he uses all the
+digits $0$ to $9$ once each, and the product of his numbers is a perfect
+square.
+\vspace{0.2cm}
+
+What numbers did he pick?
+\end{problem}
+
+\begin{solution}{Solution}
+We begin with a few claims.
+\vspace{0.2cm}
+
+\textit{Claim 1: The chosen number that uses the digit $7$ is either $7$ or $27$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $x$ be the chosen number that uses the digit $7$. If $x$ has
+two digits, then it's tens digit must be $1,2,3$ since Jose selects numbers from
+$1$ to $59$. Note that $17$ and $37$ are prime numbers.
+\begin{itemize}
+\item If the number $17$ is chosen then, there must be another multiple of $17$
+among the chosen numbers to make the product square. The only other multiples of
+$17$ in the given range are $34, 51$. But $34$ can't be used since the digit $4$
+has been taken, and $51$ can't be used since the digit $5$ has been taken.
+\item If the number $37$ is chosen, then there must be another multiple of $37$
+among the chosen numbers to make the product square. However since $37$ itself is
+the only multiple of $37$ in the given range, the number $37$ can't be chosen.
+\end{itemize}
+Thus it must be the case that $x \in \{ 7, 27 \}$. $\square$
+\\
+
+\textit{Claim 2: The chosen number that uses the digit $0$ is either $10, 20$ or
+$30$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Since $45 = 3^2 \cdot 5$, one of the chosen numbers must have an
+odd $5$-adic valuation, in order to ensure that the product is square, and in
+particular such a number must be a multiple of $5$. Recall that multiples of $5$
+can only end in the digits $0, 5$. Since the digit $5$ has been taken, such a
+number must end in the digit $0$. Finally since all the numbers are between
+$1$ and $59$ and the digits $4, 5$ have been taken, the only permissable
+numbers that use the digit $0$ are $10, 20$ and $30$. $\square$
+\\
+
+\textit{Claim 3: The chosen number that uses the digit $7$, must be $27$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $x$ be the chosen number that uses the digit $7$.
+Thanks to claim 1, we need only demonstrate that $x \neq 7$. We proceed by way
+of contradiction. Suppose that $x = 7$. Another one of the chosen numbers must
+have an odd $7$-adic valuation in order to ensure that the product is square, and
+in particular such a number must be a multiple of $7$. The only other multiples of
+$7$ in the given range that don't use the digits $4,5,7$ are $21, 28$.
+\vspace{0.2cm}
+
+Suppose that the other multiple of $7$ is $21$. Since the digits $1,2$ are taken
+another one of the chosen numbers must be $30$ as a consequence of claim 2.
+The remaining digits are $6,8,9$, and we need to choose two more numbers. It is
+easy to check that one of the numbers must have two digits and the other one must
+have one digit. However, the two digit number is at least $68 > 59$, a
+contradiction. \vspace{0.2cm}
+
+Suppose that the other multiple of $7$ is $28$. Again due to claim 2, one of the
+other numbers must be from the set $\{ 10, 30 \}$. If the number $10$ is chosen
+then then the remaining digits are $3,6,9$. There are two numbers left to choose.
+Since
+$\nu_2 (45\cdot 7\cdot 28\cdot 10) = 3$, exactly one of the last two numbers must
+have an
+odd $2$-adic valuation. The only number that has an odd $2$-adic valuation is $6$,
+so the number $6$ has to be chosen also. Thus the complete set of chosen numbers
+is $\{ 45, 7, 28, 10, 6, 39 \}$. However since $39 = 3\cdot 13$ and this is the
+only multiple of $13$ amongst the six numbers, the product isn't a perfect square,
+a contradiction. $\square$ \\
+
+So we must have chosen the numbers $45, 27$. Due to claim 2, we must've also
+chosen one of the numbers $10, 30$. If we choose the number $10$ then the
+remaining digits are $3,6,8,9$, and we have to choose three more numbers. It is
+easy to check that one of the numbers must have two digits, and the other two
+numbers must have one digit each. The two digit number must come from the set
+$\{ 36, 38, 39 \}$. Now one can check that if we choose the number
+$38 = 2 \cdot 19$ then the product won't be a perfect square since there is no
+way to get an additional factor of $19$, similarly if we choose the number
+$39 = 3 \cdot 13$ then the product won't be a perfect square since there is no way
+to get an additional factor of $13$. Thus the two digit number is $36$, and the
+complete set of chosen numbers is $\{ 45, 27, 10, 36, 8, 9 \}$. But since
+$\nu_3(45\cdot 27\cdot 10\cdot 36\cdot 8\cdot 9) = 9$, the product isn't a
+perfect square. Thus we cannot choose the number $10$.
+\vspace{0.2cm}
+
+Thus we must have chosen the numbers $45, 27, 30$. The remaining digits are
+$1, 6, 8, 9$ and we need to choose three more numbers. Again we must
+have 1 two digit number and 2 one digit numbers. The two digit number is one of
+$16, 18, 19$, and from here it is easy to check case by case that the complete
+set of chosen number is $\{ 45, 27, 30, 16, 8, 9 \}$, which has product
+$45\cdot 27\cdot 30\cdot 16\cdot 8\cdot 9 = (6480)^2$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+An \textit{equilateral} shape is one where all the sides have the same
+length.\vspace{0.2cm}
+
+(a) Construct an equilateral hexagon of side length 5 such that all the
+vertices have integer coordinates.\vspace{0.2cm}
+
+(b) Is it possible to construct an equilateral pentagon of side length 5
+where all the vertices have integer coordinates?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Consider the following construction.
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(220);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -1.083722943722935, xmax = 14.167359307359302, ymin = -1.630068333869977, ymax = 7.385083181281503;  /* image dimensions */
+pen xdxdff = rgb(0.49019607843137253,0.49019607843137253,1.); pen bubtba = rgb(0.7058823529411765,0.7019607843137254,0.7294117647058823); pen rcrcrf = rgb(0.10980392156862745,0.10980392156862745,0.12156862745098039);
+pair A = (4.,0.), B = (9.,0.), C = (13.,3.), D = (9.,6.), F = (0.,3.);
+
+filldraw((4.,6.)--D--C--B--A--F--cycle, xdxdff + opacity(0.10000000149011612),  xdxdff);
+/* draw grid of horizontal/vertical lines */
+pen gridstyle = linewidth(0.7) + bubtba; real gridx = 1., gridy = 1.; /* grid intervals */
+for(real i = ceil(xmin/gridx)*gridx; i <= floor(xmax/gridx)*gridx; i += gridx)
+draw((i,ymin)--(i,ymax), gridstyle);
+for(real i = ceil(ymin/gridy)*gridy; i <= floor(ymax/gridy)*gridy; i += gridy)
+draw((xmin,i)--(xmax,i), gridstyle);
+/* end grid */
+
+Label laxis; laxis.p = fontsize(10);
+xaxis(xmin, xmax,defaultpen+rcrcrf, Ticks(laxis, Step = 1., Size = 2, NoZero),EndArrow(6), above = true);
+yaxis(ymin, ymax,defaultpen+rcrcrf, Ticks(laxis, Step = 1., Size = 2, NoZero),EndArrow(6), above = true); /* draws axes; NoZero hides '0' label */
+/* draw figures */
+draw(F--(4.,6.));
+draw((4.,6.)--D);
+draw(D--C);
+draw(C--B);
+draw(B--A);
+draw(A--F);
+draw((4.,6.)--D,  xdxdff);
+draw(D--C,  xdxdff);
+draw(C--B,  xdxdff);
+draw(B--A,  xdxdff);
+draw(A--F,  xdxdff);
+draw(F--(4.,6.),  xdxdff);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (4.076450216450217,0.17079746699581105), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (9.063463203463199,0.17079746699581105), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (13.063463203463197,3.1664684626668), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (9.063463203463199,6.179455475653806), NE * labelscalefactor);
+dot((4.,6.),dotstyle);
+label("$E$", (4.076450216450217,6.179455475653806), NE * labelscalefactor);
+dot(F,dotstyle);
+label("$F$", (0.07645021645022068,3.1664684626668), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+Each pair of adjacent points differs by the vector $\langle \pm 5,0\rangle$ or by the
+vector $\langle \pm 4, \pm 3 \rangle$. Since both vectors have magnitude 5
+this construction is valid. $\square$
+\\
+
+(b) Call an equilateral shape \textit{primitive} if all it's vertices lie
+on lattice points. In what follows if we have $\pm$ in both the $x$ and $y$
+component of a point/vector we assume that each sign is chosen
+independently. \vspace{0.2cm}
+
+\textit{Claim 1: On a primitive shape with side length 5, adjacent vertices
+must differ by one of the vectors $\langle \pm 5,0\rangle$ or
+$\langle \pm 3, \pm 4 \rangle$ and their permutations.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $P$ and $Q$ be adjacent vertices of a primitive shape.
+Without loss of generality we can let one of the vertices
+lie on the origin, because we can translate the primitive shape in such a
+way that this occurs. Let $P = (0,0), Q = (a,b)$ for some
+$a,b \in \mathbb{Z}$. Because the primitive shape has side length 5, we
+have
+$$
+a^2 + b^2 = 5^2.
+$$
+Now one can test the squares $a^2 = 0,1,4$ and we find that $(a,b)$ is a
+permutation of $(\pm 5, 0)$ or $(\pm 3, \pm 4)$, from which the desired
+result follows. $\square$\\
+
+Say that a vector is of type I if it is of the form
+$\langle \pm 5, 0 \rangle$ or $\langle \pm 3, \pm 4\rangle$, say that a
+vector is of type II if it is of the form $\langle \pm 4, \pm 3\rangle$ or
+$\langle 0, \pm 5 \rangle$. Notice that type I vectors have an odd
+$x$ component and an even $y$ component and vice versa for type II vectors.
+\vspace{0.2cm}
+
+Suppose that a primitive pentagon of side length 5 does indeed exist.
+Let it have vertices $P_1, P_2,\ldots, P_5$. We must have
+$$
+\overrightarrow{V} := \overrightarrow{P_1 P_2} + \overrightarrow{P_2 P_3} + \cdots +
+\overrightarrow{P_5 P_1} = \overrightarrow{0}
+$$
+Suppose that among $\overrightarrow{P_1 P_2}, \overrightarrow{P_2 P_3},
+\ldots, \overrightarrow{P_5 P_1}$, there are $n$ vectors of type I, and
+therefore $(5-n)$ vectors of type II. Because
+$5-n \equiv 1 + n \ (\text{mod } 2)$, $n$ and $(5-n)$ have different
+parities. If there is an odd number of type I vectors
+then $\overrightarrow{V}$ has an odd $x$ component, and if there is an odd
+number of type II vectors then $\overrightarrow{V}$ has an odd $y$
+component. In both cases it is the case that $\overrightarrow{V}$ cannot be
+the zero vector, contradiction. $\blacksquare$\\
+
+\textit{Comments: Frankly a very nice problem, finding the invariant that
+one of the components of the vector $\overrightarrow{P_1 P_2} +
+\overrightarrow{P_2 P_3} + \cdots + \overrightarrow{P_5 P_1}$ must be odd
+allows us to finish the contradiction nicely.}
+\end{solution}
+\newpage
+
+
+\begin{problem}{Problem 7}
+A \textit{quirky} sequence is a sequence of positive integers
+$a_1, a_2, \ldots$ satisfying the following properties:
+\begin{itemize}
+\item $a_1 = 1$;
+\item $a_{i+1} > a_i + 1$ for every $i\geq 1$, and
+\item $a_i \pm a_j$ is composite for every $i,j$ with $i > j$.
+\end{itemize}
+(a) Construct a quirky sequence.
+\vspace{0.2cm}
+
+(b) Given a set of numbers $a_1, a_2, \ldots, a_n$ satisfying the quirkyness
+properties, can this always be extended into an infinite quirky sequence?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Define $a_k = 5^{k-1}$. The first two conditions are clearly satisfied.
+Since the two smallest numbers in the sequence
+are $a_1 = 1, a_2 = 5$ we have
+\[
+\begin{aligned}
+a_i + a_j &\geq 1 + 5 = 6\\
+a_i - a_j &\leq 1 - 5 = -4
+\end{aligned}
+\]
+Notice that $a_k$ consists of only odd terms.
+Now since $a_i \pm a_j$ is the sum of two odd integers, it is even. This
+coupled with the fact that $|a_i \pm a_j| \geq 4$ implies that the quantity
+$a_i \pm a_j$ is in fact composite. $\square$\\
+
+(b) Suppose $a_1, a_2, \ldots, a_n$ is a quirky sequence. Let
+$c_1, c_2, \ldots, c_{2n}$ be composite positive integers such
+that they are pairwise coprime. If we can find a solution
+$a_{n+1} > a_n + 1$ to the system
+\[
+\begin{aligned}
+a_{n+1} + a_1 &\equiv 0 \ (\text{mod } c_1)\\
+&\vdots\\
+a_{n+1} + a_n &\equiv 0 \ (\text{mod } c_n)\\
+a_{n+1} - a_1 &\equiv 0 \ (\text{mod } c_{n+1})\\
+&\vdots\\
+a_{n+1} - a_n &\equiv 0 \ (\text{mod } c_{2n})\\
+\end{aligned}
+\]
+then the sequence $a_1, a_2, \ldots, a_{n+1}$ is also quirky. However such
+a solution is guarenteed due to the Chinese remainder theorem. Now by
+iteratively repeating this arguement we can keep on introducing new terms
+into the sequence, and so indeed we can create an infinite quirky sequence.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 8}
+$ABCDEF$ is a cyclic hexagon in which $AF$ and $CD$ are parallel. The lines
+$BC$ and $EF$ intersect at $L$, and the lines $AB$ and $DE$ intersect at
+$M$. \vspace{0.2cm}
+
+Prove that $LM$ is parallel to $CD$.
+\end{problem}
+
+\begin{solution}{Solution}
+The arguement splits into two parts.
+The following diagram gives an overview of the first part of our arguement.
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(270);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -7.145383243355196, xmax = 11.636811683872974, ymin = -6.349095835703575, ymax = 12.011874323671082;  /* image dimensions */
+pen qqttcc = rgb(0.,0.2,0.8); pen qqzzqq = rgb(0.,0.6,0.); pen ffxfqq = rgb(1.,0.4980392156862745,0.);
+pair O = (0.,0.), A = (0.,6.), F = (3.678895565319094,4.73980246629282), B = (-2.4736630207026806,5.466350817502303), C = (-5.986698741850665,0.3992971003196306), D = (4.974123632197761,-3.3553083452362094), L = (1.1397665965708184,10.678208432203846), M = (9.079013303114511,7.95863704415021), G = (2.8748780137761,6.620204243258815);
+
+filldraw(circle(O, 6.), qqttcc + opacity(0.10000000149011612),  qqttcc);
+filldraw(arc(C,1.1129951530935935,-18.90878251891273,24.183304184973036)--(-5.986698741850665,0.3992971003196306)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc(F,1.1129951530935935,161.09121748108728,204.18330418497305)--(3.678895565319094,4.73980246629282)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc(B,1.1129951530935935,235.26606848443078,372.17398178054503)--(-2.4736630207026806,5.466350817502303)--cycle, blue + opacity(0.10000000149011612),  blue);
+filldraw(arc((5.9684156499251735,-0.6148289434698667),1.1129951530935935,113.150463602668,250.05837689878223)--(5.9684156499251735,-0.6148289434698667)--cycle, blue + opacity(0.10000000149011612),  blue);
+filldraw(arc((5.9684156499251735,-0.6148289434698667),1.1129951530935935,430.0583768987822,473.150463602668)--(5.9684156499251735,-0.6148289434698667)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc(B,1.1129951530935935,12.173981780545025,55.266068484430804)--(-2.4736630207026806,5.466350817502303)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc(G,1.1129951530935935,113.150463602668,192.173981780545)--(2.8748780137761,6.620204243258815)--cycle, qqzzqq + opacity(0.10000000149011612),  qqzzqq);
+filldraw(arc(G,1.1129951530935935,293.15046360266797,372.17398178054503)--(2.8748780137761,6.620204243258815)--cycle, qqzzqq + opacity(0.10000000149011612),  qqzzqq);
+filldraw(arc(L,1.1129951530935935,-124.73393151556921,-66.84953639733202)--(1.1397665965708184,10.678208432203846)--cycle, ffxfqq + opacity(0.10000000149011612),  ffxfqq);
+filldraw(arc(M,1.1129951530935935,-167.826018219455,-109.94162310121779)--(9.079013303114511,7.95863704415021)--cycle, ffxfqq + opacity(0.10000000149011612),  ffxfqq);
+/* draw figures */
+draw((xmin, 1.442357584547096*xmin + 9.034257437026493)--(xmax, 1.442357584547096*xmax + 9.034257437026493)); /* line */
+draw((xmin, -2.3387571245892658*xmin + 13.343845680302707)--(xmax, -2.3387571245892658*xmax + 13.343845680302707)); /* line */
+draw((xmin, 0.21573236856898417*xmin + 6.)--(xmax, 0.21573236856898417*xmax + 6.)); /* line */
+draw((xmin, 2.756211809916845*xmin-17.065046644286152)--(xmax, 2.756211809916845*xmax-17.065046644286152)); /* line */
+draw(L--M,  linetype("4 4") + red);
+draw(A--F,  linetype("4 4") + red);
+draw((2.0149366401168147,5.3097879134192825)--(1.7673117989869938,5.1593146041976885),  linetype("4 4") + red);
+draw((2.0149366401168147,5.3097879134192825)--(1.9115837663321016,5.580487862095132),  linetype("4 4") + red);
+draw(C--D,  linetype("4 4") + red);
+draw((-0.3307986973691843,-1.5381189421854184)--(-0.5784235384990053,-1.6885922514070106),  linetype("4 4") + red);
+draw((-0.3307986973691843,-1.5381189421854184)--(-0.43415157115389885,-1.2674189935095705),  linetype("4 4") + red);
+draw(C--F,  linetype("4 4"));
+/* dots and labels */
+dot(O, dotstyle);
+label("$O$", (0.10823441570224968,0.18600119968622317), NE * labelscalefactor);
+dot(A,dotstyle);
+label("$A$", (0.10823441570224968,6.245641477640231), NE * labelscalefactor);
+dot(F,dotstyle);
+label("$F$", (3.7687518080989575,4.984246970800825), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (-2.3650881467279583,5.7015105139055855), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (-5.877206185378854,0.6559324865479625), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (5.079612766186968,-3.1529842595945565), NE * labelscalefactor);
+dot((5.9684156499251735,-0.6148289434698667),dotstyle);
+label("$E$", (6.068941791159051,-0.35812976404842245), NE * labelscalefactor);
+//label("$i$", (-3.3296839460757393,13.418276908687831), NE * labelscalefactor);
+dot(L, dotstyle);
+label("$L$", (1.2459627944201455,10.870754669384718), NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", (9.185328219821113,8.150099850711491), NE * labelscalefactor);
+dot(G, dotstyle);
+label("$G$", (2.977288588121291,6.814505666999179), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+%\definecolor{darkgreen}{RGB}{0,133,0}
+
+\textit{Claim 1: $\triangle BGL \sim \triangle EGM$.}\vspace{0.2cm}
+
+\textit{Proof: } Owing to the alternate angle theorem,
+${\angle AFC} = {\angle FCD} :=
+{\theta}$. Now since opposite angles in a cyclic
+quadrilateral sum to $180^\circ$, we have
+${\angle FBC} = {\angle FED} =
+180 - {\theta}$. But now since angles on a straight line sum
+to $180^\circ$ we deduce
+${\angle LBG} = {\angle GEM} =
+{\theta}$. We also have
+${\angle BGL} = {\angle EGM}$ due to
+vertically opposite angles being equal.
+Now since $\triangle BGL$ and $\triangle EGM$ have two equal angles, their
+third angles' must be equal also and so $\triangle BGL \sim \triangle EGM$
+by AAA criterion. $\square$ \\
+
+\textit{Claim 2: Quadrilateral $LMEB$ is cyclic.} \vspace{0.2cm}
+
+\textit{Proof: } We note that $\angle LBM = \angle LEM$, and so the line
+segment $LM$ subtends two equal angles at points $B$ and $E$.
+By the converse
+of the "Angles subtending the same segment are equal" theorem, we can deduce
+that $LMEB$ are concyclic. $\square$ \\
+
+The following diagram gives an overview of the second part of our
+arguement.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(270);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -7.389137561570594, xmax = 12.733489266356116, ymin = -7.157870372699978, ymax = 16.24176461576778;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen qqwwzz = rgb(0.,0.4,0.6); pen ffzzff = rgb(1.,0.6,1.); pen qqccqq = rgb(0.,0.8,0.); pen ffzzcc = rgb(1.,0.6,0.8);
+pair O = (0.,0.), A = (-1.3311258534328012,5.850478951532327), F = (3.1232172370599534,5.123037584298166), C = (-5.933347405288747,-0.8918455965879346), D = (5.3413516262621705,-2.7331232691970677), B = (-4.573826133661758,3.883312310262045), G = (1.6866967014810506,7.681224733217836), L = (-1.7500564535895504,13.801469823739785), M = (8.906580392780866,12.061128246956558);
+
+filldraw(circle(O, 6.), ttttff + opacity(0.05000000074505806),  ttttff);
+filldraw(circle((2.6407021743535424,7.190337379924182), 7.936361478569885), qqwwzz + opacity(0.10000000149011612),  qqwwzz);
+filldraw(arc(A,1.9932448981981477,350.7248714177551,391.24286847748385)--(-1.3311258534328012,5.850478951532327)--cycle, ffzzff + opacity(0.10000000149011612),  ffzzff);
+filldraw(arc(A,0.8542478135134919,-148.75713152251615,-9.275128582244916)--(-1.3311258534328012,5.850478951532327)--cycle, qqccqq + opacity(0.10000000149011612),  qqccqq);
+filldraw(arc((6.,0.),1.4237463558558199,479.3158869886146,519.8338840483434)--(6.,0.)--cycle, ffzzcc + opacity(0.10000000149011612),  ffzzcc);
+filldraw(arc(M,1.4237463558558199,170.72487141775508,211.24286847748385)--(8.906580392780866,12.061128246956558)--cycle, ffzzcc + opacity(0.10000000149011612),  ffzzcc);
+/* draw figures */
+draw(A--F,  linetype("4 4") + red);
+draw((1.1068154878902132,5.452337329627645)--(0.8547405658684547,5.2338345126232815),  linetype("4 4") + red);
+draw((1.1068154878902132,5.452337329627645)--(0.9373508177586982,5.7396820232072105),  linetype("4 4") + red);
+draw(C--D,  linetype("4 4") + red);
+draw((-0.08522809343664976,-1.846905371180105)--(-0.3373030154584083,-2.065408188184467),  linetype("4 4") + red);
+draw((-0.08522809343664976,-1.846905371180105)--(-0.2546927635681648,-1.559560677600538),  linetype("4 4") + red);
+draw((xmin, 3.5123818997957805*xmin + 19.948336434948516)--(xmax, 3.5123818997957805*xmax + 19.948336434948516)); /* line */
+draw((xmin, -1.7808218438650776*xmin + 10.684931063190465)--(xmax, -1.7808218438650776*xmax + 10.684931063190465)); /* line */
+draw((xmin, 0.6066446082804134*xmin + 6.65799927346)--(xmax, 0.6066446082804134*xmax + 6.65799927346)); /* line */
+draw((xmin, 4.14959389284846*xmin-24.897563357090768)--(xmax, 4.14959389284846*xmax-24.897563357090768)); /* line */
+draw(F--C,  linetype("4 4"));
+draw(L--M,  linetype("4 4") + red);
+draw(B--(6.,0.));
+/* dots and labels */
+dot(O, dotstyle);
+label("$O$", (0.10122279014072529,0.21375819973222002), NE * labelscalefactor);
+dot((6.,0.),dotstyle);
+label("$E$", (6.109432411852285,0.27070805396645264), NE * labelscalefactor);
+dot(A,dotstyle);
+label("$A$", (-1.208623857246629,6.136543040092414), NE * labelscalefactor);
+dot(F,dotstyle);
+label("$F$", (3.233464773023529,5.39619493504739), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (-5.821562050219486,-0.6120146866641533), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (4.913485472933396,-2.4913598763938305), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (-4.454765548597898,4.171773069011389), NE * labelscalefactor);
+dot(G, dotstyle);
+label("$G$", (1.8097184171677092,7.901988521353626), NE * labelscalefactor);
+dot(L, dotstyle);
+label("$L$", (-1.6357477640033748,14.024097851533636), NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", (9.013874977798158,12.28712729738954), NE * labelscalefactor);
+label("$\theta$", (0.7561461138344024,6.079593185858182), NE * labelscalefactor,ffzzff);
+label("$180-\theta$", (-1.6357477640033748,4.541947121533901), NE * labelscalefactor,qqccqq);
+label("$\theta$", (4.457886639059534,0.9825812318943606), NE * labelscalefactor,ffzzcc);
+label("$\theta$", (7.049105006717126,11.546779192344516), NE * labelscalefactor,ffzzcc);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Let $\angle GAF = \theta$. Since $B, A$ and $G$ lie on a straight line,
+$\angle BAF = 180 - \theta$. \vspace{0.2cm}
+
+Now consider the cyclic quadrilateral
+$ABEF$. Since opposite angles in a cyclic quadrilateral sum to $180^\circ$
+we have $\angle BEL = \theta$. \vspace{0.2cm}
+
+Now look at the circle through $LMEB$. The segment $LB$ subtends the points
+$M$ and $E$, so by the "Angles subtending the same segment are equal"
+theorem, $\angle BEL = \angle LMB = \theta$. \vspace{0.2cm}
+
+Now finally by the converse of the "Alternate angles are equal" theorem
+it must be the case that $AF \parallel LM$. $\blacksquare$
+\end{solution}
+
+\end{document}

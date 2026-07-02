@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Simon Marais 2025 --- B1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Simon Marais 2025 --- B1}
+A function $f:\{1,2, \ldots, n\} \rightarrow\{m+1, m+2, \ldots, m+n\}$,
+where $m$ and $n$ are positive integers, is said to be \textit{beaut} if
+\begin{itemize}
+\item $a$ divides $f(a)$ for all $a \in\{1,2, \ldots, n\}$, and
+\item $f(a) \neq f(b)$ for all distinct elements $a$ and $b$
+of $\{1,2, \ldots, n\}$ with $\operatorname{gcd}(a, b) \neq 1$.
+\end{itemize}
+Determine all positive integers $n$ such that, for every positive
+integer $m$, there exists a beaut function
+$f:\{1,2, \ldots, n\} \rightarrow\{m+1, m+2, \ldots, m+n\}$.
+\end{problem}
+
+\begin{solution}{Solution}
+First we are going to show that for $n \geq 6$, a beaut function never
+exists. \\
+
+Suppose $n$ is even and $n \geq 6$. Pick $m = n(n-2) - 3$ so that the
+image of $f$ is
+$$
+\{ n(n-2) - 2,\ n(n-2) - 1,\ n(n-2), \ldots, n(n-2) + (n-3) \}
+$$
+If we reduce this set modulo $n$ or $(n-2)$ it becomes
+$$
+\{ -2, \ -1, \ 0, \ 1, \ 2, \ldots, (n-3) \}
+$$
+So $n(n-2)$ is the only number that is divisible by $n$ or $(n-2)$.
+Now if a beaut function $f$ existed we would require
+$f(n) = f(n-2) = n(n-2)$ due to the divisiblity condition of beaut
+functions. However $\gcd(n, n-2)$ is a multiple of 2 since both $n, (n-2)$
+are even. But this contradicts the second condition of beaut functions.\\
+
+Similarly suppose $n$ is odd and $n \geq 7$. Pick $m = (n-1)(n-3) - 4$ so
+that the image of $f$ is
+$$
+\{ (n-1)(n-3) -3, \ (n-1)(n-3) -2, \ (n-1)(n-3) -1, \ (n-1)(n-3),
+\ldots,
+(n-1)(n-3) + (n-4) \}
+$$
+Reducing this set modulo $(n-1)$ or $(n-3)$ we have
+$$
+\{ -3, \ -2, \ -1, \ 0, \ 1, \ldots, (n-4) \}
+$$
+So $(n-1)(n-3)$ is the only number divisible by $(n-1)$ or $(n-3)$.
+If a beaut function $f$ existed we would need $f(n-1) = f(n-3) = (n-1)(n-3)$
+due to the divisibility condition of beaut functions. However
+$\gcd(n-1, n-3)$ is even since both $(n-1), (n-3)$ are even. This
+contradicts the second condition of beaut functions. \\
+
+It remains to show that beaut functions do exist for $n=1,2,3,4,5$.
+The $n=1$ case is trivial since 1 divides every integer. For the remaining
+$n$, note that any set of $n$ consecutive numbers will have all the
+residues mod $n$, so we will be able to find numbers in the image of
+$f$ such that $a \in \{1,2,\ldots, n\}$ divides $f(a)$. Since $2,4$
+is the only pair of non-coprime integers here we just need to ensure
+$f(2) \neq f(4)$. This is possible since in any set of $\geq 4$ numbers
+there should be one number $\equiv 0$ mod 4 and one number $\equiv 2$ mod 4.
+$\blacksquare$
+\end{solution}
+
+\end{document}

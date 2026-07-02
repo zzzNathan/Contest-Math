@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Putnam and Beyond}
+
+\begin{document}
+\maketitle
+
+\textit{Problems taken from the book by the same name as the title,
+by Andreescu and Gelca.}
+
+\begin{problem}{Chapter 2.2 --- Problem 147}
+Let $P(x)$ be a polynomial of odd degree with real coefficients. Show
+that $P(P(x)) = 0$ has at least as many real roots as the equation
+$P(x) = 0$, counted without multiplicities.
+\end{problem}
+
+\begin{solution}{Solution}
+It is well-known that any polynomial with odd degree has at least one real
+root. Suppose $r_1 < r_2 < \cdots < r_k$ are the real roots of $P(x)$.
+Consider the polynomials $P_i(x) = P(x) - r_i$, $(i=1,2,\ldots,k)$.
+Noticing that $\deg P_i = \deg P$ we conclude that each $P_i(x)$ has
+at least one real root. Suppose that $\alpha_i \in \mathbb{R}$ is one of
+the real roots of $P_i$. Then
+\[
+\begin{aligned}
+P(\alpha_i) &= r_i \\
+P(P(\alpha_i)) &= P(r_i) = 0. \\
+\end{aligned}
+\]
+So $\alpha_1, \alpha_2, \ldots, \alpha_k$ are roots of $P(P(x))$. Hence
+$P(P(x))$ has at least $k$ real roots (counted without multiplicity).
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 2.2 --- Problem 151}
+Let $P(x)$ be a polynomial of degree $n$. Knowing that
+$$
+P(k) = \frac{k}{k+1}, \quad k=0,1,\ldots,n
+$$
+find $P(m)$ for $m > n$.
+\end{problem}
+
+\begin{solution}{Solution}
+Define $g(x) = (x+1)P(x) - x$. This is a polynomial of degree $(n+1)$
+with roots $0,1,\ldots, n$. Thus for some $\lambda \in \mathbb{C}$,
+$$
+g(x) = \lambda x(x-1)(x-2)\cdots(x-n).
+$$
+Now we can re-arrange to find that
+$$
+P(x) = \frac{g(x) + x}{x+1}.
+$$
+Now since $P$ is a polynomial of degree $(n+1)$, $(x+1)$ should divide
+$g(x) + x$. Factor theorem tells us that $g(-1) -1 = 0$. Now we can
+compute $\lambda$,
+\[
+\begin{aligned}
+g(-1) &= \lambda (-1)(-2)\cdots(-n-1) \\
+&= \lambda (-1)^{n+1} (n+1)!
+\end{aligned}
+\]
+Since $g(-1) = 1$ we find that $\lambda = \frac{1}{(-1)^{n+1} (n+1)!}$.
+So we find that
+$$
+P(x) = \frac{\frac{1}{(-1)^{n+1} (n+1)!}x(x-1)\cdots(x-n) + x}{x + 1}
+$$
+or using generalised binomial coefficients
+$$
+P(x) = \frac{1}{x+1}\left( \binom{-x}{n+1} + x \right). \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Chapter 2.2 --- Problem 148}
+Determine all polynomials $P(x)$ with real coefficients for which there
+exists a positive integer $n$ such that for all $x$,
+$$
+P\left( x + \frac{1}{n} \right) + P\left( x - \frac{1}{n} \right) = 2P(x).
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is that all linear polynomials $P(x) = ax + b$ work,
+$a,b\in \mathbb{R}$. We verify
+\[
+\begin{aligned}
+\left[ a\left( x + \frac{1}{n} \right) + b \right] +
+\left[ a\left( x - \frac{1}{n} \right) + b \right] &=
+2(ax + b).
+\end{aligned}
+\]
+Now let's show that polynomials of degree $\geq 2$ don't work. \\
+
+\textit{Claim 1:
+Consider some} $p(x) \in \mathbb{R}[x]$, \textit{with degree} $n$.
+\textit{Fix} $d > 0$.
+\textit{Then} $\deg[p(x+d) - p(x)] = n-1$. \vspace{0.2cm}
+
+\textit{Proof:}
+Let
+$p(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$, where $a_n \neq 0$.
+Note that
+\[
+\begin{aligned}
+p(x+d) - p(x) &= \sum_{r=0}^n a_r \left[ (x+d)^r - x^r \right] \\
+&= \sum_{r=0}^n a_r \sum_{k=0}^{r-1} \binom{r}{k} x^k d^{r-k}
+\end{aligned}
+\]
+and so $\deg [p(x+d) - p(x)] = n-1$. $\square$
+\\
+
+Suppose that $\deg P = N$.
+We may re-arrange the given equation to get
+$$
+P\left( x + \frac{1}{n} \right) - P(x) =
+P(x) - P\left( x - \frac{1}{n} \right)
+$$
+Define $\Delta_n(x) = P\left( x + \frac{1}{n} \right) - P(x)$. Observe
+$\deg \Delta_n = N-1$. We have
+$$
+\Delta_n(x) - \Delta_{n-1}(x) = 0
+$$
+Noting that $\deg [\Delta_n(x) - \Delta_{n-1}(x)] = N-2 = 0$, we find that
+$N = 2$. So now suppose that $P(x) = ax^2 + bx + c$. Plugging this into
+the given equation We have
+$$
+\frac{2a}{n^2} = 0
+$$
+and so $a=0$. Thus only linear $P$ work. $\blacksquare$
+\end{solution}
+
+\end{document}

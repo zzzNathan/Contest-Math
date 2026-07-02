@@ -1,0 +1,1160 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 6}
+
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 6. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+The fibonacci sequence is the sequence $1,1,2,3,5,8,13,21,\ldots$, where
+each term after the first two terms is the sum of the previous two.
+\vspace{0.2cm}
+
+(a) Show that there are infinitely many Fibonacci numbers that are the
+mean of two different Fibonacci numbers.
+\vspace{0.2cm}
+
+(b) Show that there are infinitely many Fibonacci numbers that are the mean
+of three different Fibonacci numbers.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Let $F_n$ denote the $n$-th Fibonacci number. Call a Fibonacci number
+$\textit{special}$ if it can be expressed as the mean of two different
+Fibonacci numbers.
+After some exploration
+one may find that $F_5 = \frac12 (F_3 + F_6)$ and similarly,
+$F_{11} = \frac12 (F_9 + F_{12})$. These results motivate the following
+claim, \vspace{0.2cm}
+
+\textit{Claim 1: For positive integer $n$,
+$$
+F_{3n + 2} = \frac12 (F_{3n} + F_{3n+3}).
+$$}
+
+\textit{Proof:} The proof is as follows,
+\[
+\begin{aligned}
+F_{3n} + F_{3n+3} &= 2F_{3n+2} \\
+F_{3n} + (F_{3n+1} + F_{3n+2}) &= F_{3n+2} + F_{3n+2}\\
+F_{3n} + F_{3n+1} &= F_{3n+2}
+\end{aligned}
+\]
+which is true by definition of the Fibonacci numbers. $\square$
+\vspace{0.2cm}
+
+Thus since there are infinitely many $n \in \mathbb{N}$, using claim 1
+we can show that infinitely many Fibonacci numbers are special. $\square$
+\\
+
+(b) Call a Fibonacci number \textit{quirky} if it can be expressed as the
+mean of three different Fibonacci numbers. Simimlarly to (a) after a bit
+of exploration we may find that
+$F_6 = \frac13 (F_4 + F_6 + F_7)$ and
+$F_{14} = \frac13 (F_{12} + F_{14} + F_{15})$. \vspace{0.2cm}
+
+\textit{Claim 2: For positive integer $n$,
+$$
+F_{8n-2} = \frac13 (F_{8n-4} + F_{8n-2} + F_{8n-1}).
+$$
+}
+
+\textit{Proof:} The proof is as follows,
+\[
+\begin{aligned}
+F_{8n-4} + F_{8n-2} + F_{8n-1} &= 3F_{8n-2}\\
+F_{8n-4} + F_{8n-1} &= 2F_{8n-2}\\
+F_{8n-4} + (F_{8n-2} + F_{8n-3}) &= 2F_{8n-2}\\
+F_{8n-4} + F_{8n-3} &= F_{8n-2}\\
+\end{aligned}
+\]
+which is true due to the definition of the Fibonacci numbers. $\square$
+
+Thus since there are infinitely many $n \in \mathbb{N}$, using claim 2
+we can show that infinitely many Fibonacci numbers are quirky.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+Solve the simultaneous equations
+\[
+\begin{aligned}
+x + \sqrt{y} &= 13,\\
+xy &= 90.\\
+\end{aligned}
+\]
+\end{problem}
+
+\begin{solution}{Solution}
+Square the first equation to find that $y = (13 - x)^2$. Sub into the
+second equation to get
+\[
+\begin{aligned}
+x(13 - x)^2 &= 90 \\
+x^3 - 26x^2 + 169x - 90 &= 0 \\
+(x - 10)(x^2 - 16x + 9) &= 0 \\
+\end{aligned}
+\]
+
+which solves to give $x = 10, 8 + \sqrt{55}, 8 - \sqrt{55}$. But now one can
+simply check that the only solutions are
+$(x, y) = (10, 9), (8 - \sqrt{55}, 80 + 10\sqrt{55})$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 3}
+Let $ABC$ be a triangle.
+\vspace{0.2cm}
+
+(a) Prove that the perpendicular bisectors of the three sides meet at a
+point. This is the \textit{circumcentre} of $\triangle ABC$, usually
+denoted $O$. \vspace{0.2cm}
+
+Prove also that the circle through $A, B$ and $C$ has it's centre at $O$.
+\vspace{0.2cm}
+
+(b) Prove that the angle bisectors of $\angle A, \angle B$ and $\angle C$
+meet at a point. This is the \textit{incentre} of $\triangle ABC$, usually
+denoted $I$. \vspace{0.2cm}
+
+(c) Prove that the altitudes of the triangle meet at a point. This is the
+\textit{orthocentre} of the $\triangle ABC$, usually denoted $H$.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Construct points $L, M, N$ to be the midpoints of the sides
+$BC, AB, AC$ respectively. Let the side lengths be $a,b,c$ is the usual
+convention. Let $O$ be the intersection of the perpendicular bisectors
+of $AC, AB$. Such a point must exist because two lines intersect if they
+aren't parallel, since $AC$ and $AB$ aren't parallel, their perpendicular
+bisectors aren't parallel either. We have the diagram,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(210);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -1.1271641961608405, xmax = 10.833480545268682, ymin = -0.20225179001776172, ymax = 7.880244504948259;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (1.,1.), B = (9.,1.), C = (3.,7.), M = (5.,1.), L = (6.,4.), O = (5.,3.), N = (2, 4);
+pair MCL = (4.5, 5.5), MBL = (7.5, 2.5), MBM = (7, 1), MAM = (3, 1), MAN = (1.5, 2.5), MCN = (2.5, 5.5);
+
+filldraw((5.255837953371849,1.)--(5.255837953371849,1.2558379533718482)--(5.,1.2558379533718482)--M--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((1.9190969355429004,3.7572908066287014)--(2.161806128914199,3.676387742171602)--(2.2427091933712986,3.9190969355429006)--(2.,4.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(A--B);
+draw(C--B);
+draw(C--A);
+draw((2.,4.)--O,  linetype("4 4"));
+draw(O--M,  linetype("4 4"));
+draw(O--L,  linetype("4 4"));
+draw(O--B);
+draw(O--C);
+draw(A--O);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", A, NW * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", B, NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", C, NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", M, NW * labelscalefactor);
+dot(L, dotstyle);
+label("$L$", L, NE * labelscalefactor);
+dot((2.,4.), dotstyle);
+label("$N$", N, NE * labelscalefactor);
+dot(O, dotstyle);
+label("$O$", O, NE * labelscalefactor);
+
+label("$c/2$", MBM, SE * labelscalefactor);
+label("$c/2$", MAM, SE * labelscalefactor);
+label("$b/2$", MAN, NW * labelscalefactor);
+label("$b/2$", MCN, NW * labelscalefactor);
+label("$a/2$", MCL, NE * labelscalefactor);
+label("$a/2$", MBL, NE * labelscalefactor);
+
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+And our goal is to show that $\angle OLB = 90^\circ$.
+\vspace{0.2cm}
+
+\textit{Claim 1: If $OC = OB$ then this implies $\angle OLB = 90^\circ$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $\angle OLB = \theta$. Due to cosine rule and
+angles on a straight line summing to 180,
+\[
+\begin{aligned}
+OC^2 &= \left( \frac{a}{2} \right)^2 + OL^2 -
+2 \left(\frac{a}{2}\right) (OL) \cos (180 - \theta) \\
+OB^2 &= \left( \frac{a}{2} \right)^2 + OL^2 -
+2 \left(\frac{a}{2}\right) (OL) \cos (\theta) \\
+\end{aligned}
+\]
+and so if $OB = OC$ then $\cos (\theta) = \cos(180 - \theta) =
+-\cos(\theta)$. But this means that $\cos \theta = 0$ and since
+$\theta \in (0, 180)$ we have $\theta = 90^\circ$ only. $\square$ \\
+
+Denote $x = OB, y = OC, h = OM$.
+By Pythagoras,
+\[
+\begin{aligned}
+x^2 &= h^2 + \left( \frac{c}{2} \right)^2 \\
+y^2 &= \left( \frac{b}{2} \right)^2 + ON^2 \\
+&= \left( \frac{b}{2} \right)^2 + \left[
+OA^2 - \left( \frac{b}{2} \right)^2 \right]  \\
+&= OA^2 = \left( \frac{c}{2} \right)^2 + h^2 \\
+\end{aligned}
+\]
+
+So this must mean that $x = y$ and due to claim 1 we are done. Note that
+$OA^2 = (c/2)^2 + h^2$ also by Pythagoras and so $OA = OB = OC$. Since the
+point $O$ is equidistant from all three points, the circle through $A, B, C$
+has centre $O$ and radius $OA$. $\square$
+\\
+
+(b) Let $I$ intersection of the angle bisectors $B_A$ of $\angle A$ and
+$B_B$ of $\angle B$. We need to show that such a point must exist.
+\vspace{0.2cm}
+
+WLOG assume the point configuration as seen in the diagram. If two
+lines aren't parallel then they must intersect at a point. Suppose for
+the sake of contradiction that those two bisectors are parallel.
+Let $\theta$ be the angle $B_A$ makes with the side $AB$ (measuring
+anti-clockwise), since $B_B$ is parallel it also makes an angle of $\theta$
+of with the side $AB$ (measuring anti-clockwise). That means that
+measuring clockwise the angle it makes is $180 - \theta$. But this angle
+is exactly $\frac12 \angle B$ so $\angle B = 360 - 2\theta$, similarly
+$\angle A = 2\theta$. But clearly this means that the interior angle sum
+in $\triangle ABC$ is greater than 180, a contradiction. \vspace{0.2cm}
+
+Let $P, N, M$ be the feet of the perpendiculars from $I$ to sides
+$AC, BC, AB$. Our goal is to show that $\angle PCI = \angle NCI$.
+\vspace{0.2cm}
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(210);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.6827729217113703, xmax = 12.811002999016145, ymin = -1.604348280411282, ymax = 8.732561309184055;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (0.,0.), B = (9.,0.), C = (6.,7.), I = (5.301885675714489,2.4385223772067337), M = (5.301885675714488,0.), P = (3.450421460804758,4.025491704272217);
+
+filldraw((5.301885675714488,0.45068546827615547)--(4.851200207438334,0.450685468276156)--(4.851200207438333,0.)--M--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((3.1571192459086723,3.6833057868934507)--(3.499305163287439,3.390003571997365)--(3.7926073781835243,3.7321894893761316)--P--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw(arc(A,0.7648386019207299,360.,384.69935267749776)--(0.,0.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw(arc(A,0.9560482524009124,384.69935267749776,409.3987053549955)--(0.,0.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw(arc(B,0.7648386019207299,146.59929525682412,180.)--(9.,0.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw(arc(B,0.8923117022408517,473.1985905136481,506.59929525682406)--(9.,0.)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((7.330200955060078,3.896197771526483)--(6.833106585139211,3.683157327274683)--(7.046147029391011,3.1860629573538155)--(7.543241399311878,3.3991034016056156)--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(A--C);
+draw(C--B);
+draw(B--A);
+draw(A--I,  linetype("4 4"));
+draw(I--B,  linetype("4 4"));
+draw(I--C,  linetype("4 4"));
+draw(I--M);
+draw(I--P);
+draw(arc(A,0.7648386019207299,360.,384.69935267749776),  qqwuqq);
+draw(arc(A,0.6819810867126509,360.,384.69935267749776),  qqwuqq);
+draw(arc(A,0.9560482524009124,384.69935267749776,409.3987053549955),  qqwuqq);
+draw(arc(A,0.8731907371928334,384.69935267749776,409.3987053549955),  qqwuqq);
+draw(arc(B,0.7648386019207299,146.59929525682412,180.),  qqwuqq);
+draw(arc(B,0.6819810867126509,146.59929525682412,180.),  qqwuqq);
+draw(arc(B,0.5991235715045719,146.59929525682412,180.),  qqwuqq);
+draw(arc(B,0.8923117022408517,473.1985905136481,506.59929525682406),  qqwuqq);
+draw(arc(B,0.8094541870327726,473.1985905136481,506.59929525682406),  qqwuqq);
+draw(arc(B,0.7265966718246936,473.1985905136481,506.59929525682406),  qqwuqq);
+draw(I--(7.543241399311878,3.3991034016056156));
+/* dots and labels */
+dot(A, dotstyle);
+label("$A$", (0.05731495367236327,0.0963241562213689), NW * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (9.056915836272951,0.12181877628539327), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (6.048550668718081,7.132839293892092), NE * labelscalefactor);
+dot(I, dotstyle);
+label("$I$", (5.347448616957411,2.5438076823677074), NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", (5.347448616957411,0.0963241562213689), NE * labelscalefactor);
+dot(P, dotstyle);
+label("$P$", (3.4990886623156476,4.124474126337217), NW * labelscalefactor);
+dot((7.543241399311878,3.3991034016056156), dotstyle);
+label("$N$", (7.590975182591553,3.499855934768621), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\textit{Claim 1: A point $A$ lies on the bisector of $PQ$ and $PR$ if and
+only if the perpendiculars from $A$ to $PQ, PR$ are the same length.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let (1) be the statement
+"A point $A$ lies on the bisector of $PQ$ and $PR$".
+Let (2) be the statement "The perpendiculars from $A$ to $PQ, PR$ are the
+same length". \vspace{0.2cm}
+
+First we show that $(1) \implies (2)$.
+Let $F_Q, F_R$ be the feet of the perpendiculars from
+$A$ to $PQ, PR$ respectively. Since $\angle APQ = \angle APR$ by assumption
+and $\angle P F_Q A = \angle P F_R A = 90^\circ$, and angles in a triangle
+sum
+to 180 means that their third angles are the same also, the triangles
+$\triangle APF_Q$ and $\triangle APF_R$ are similar by AAA criterion.
+In fact since both triangles share the hypotenuse $AP$, the two triangles
+are congruent. This gives $AF_Q = AF_R$.
+\vspace{0.2cm}
+
+Next we show that $(2) \implies (1)$. Define $F_Q, F_R$ as we did before.
+Since $\angle A F_Q P = \angle A F_R P = 90^\circ$, $AF_R = AF_Q$ by
+assumption and the triangles $\triangle AF_Q P$ and $\triangle AF_R P$
+both share hypotenuse $AP$, the two triangles are congruent by SAS
+criterion. But this means that $\angle APF_R = \angle APF_Q$. $\square$
+\\
+
+Now using the fact that two equal angles in two triangles implies that their
+third angles are equal, the triangles $\triangle PIA$ and
+$\triangle MIA$ are similar and so are the triangles
+$\triangle MIB$ and $\triangle NIB$. Moreover since each pair of triangles
+shares a hypotenuse the each pair of two triangles are actually congruent.
+This allows us to conclude $IM = PI = NI$. \vspace{0.2cm}
+
+Now we have $NI = PI$ so claim 2 tells us that $I$ lies on the angle
+bisector of $(PC, CN)$. That means that $CI$ bisects $\angle PCN$ and
+so $\angle PCI = \angle NCI$ as desired. $\square$
+\\
+
+(c) Let $H$ be the intersection of the altitudes through $C$ and through
+$B$. Two lines intersect if they aren't parallel. The altitude
+through $C$ is perpendicular to $AB$, and the altitude through $B$ is
+perpendicular $AC$, so if the two altitudes were parallel then this would
+imply that $AC \parallel AB$ which is impossible for a non-degenerate
+triangle.
+\vspace{0.2cm}
+
+Let $F_B, F_C$ be the feet of the altitudes through $B,C$
+respectively. Let $F_A$ be the intersection of the line through $(A, H)$
+and side $BC$. Our goal is to show $\angle AF_A B = 90^\circ$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(230);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -1.3619020684590244, xmax = 14.729499480406975, ymin = -0.7953404609680161, ymax = 10.383421362698996;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (1.,1.), B = (10.,1.), C = (4.,9.), H = (4.,3.25), F_A = (6.76,5.32), F_B = (2.1095890410958904,3.958904109589041), F_C = (4.,1.);
+
+filldraw((4.575357853277581,1.)--(4.575357853277581,1.575357853277581)--(4.,1.575357853277581)--F_C--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((2.6483133866631787,3.7568824800013076)--(2.850335016250912,4.295606825568596)--(2.3116106706836237,4.497628455156329)--F_B--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(A--B);
+draw(C--B);
+draw(C--A);
+draw(A--F_A);
+draw(B--F_B);
+draw(F_C--C);
+draw(circle((2.5,2.125), 1.875));
+draw(F_B--F_C,  linetype("4 4"));
+draw(circle((7.,5.), 5.));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (1.0631228384646503,1.1641542877834476), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (10.062411243777303,1.1641542877834476), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (4.057461114373381,9.17075446032199), NW * labelscalefactor);
+dot(H, dotstyle);
+label("$H$", (4.057461114373381,3.3773608395420696), NE * labelscalefactor);
+dot(F_A, dotstyle);
+label("$F_A$", (6.823969304071665,5.444105193022547), NE * labelscalefactor);
+dot(F_B, dotstyle);
+label("$F_B$", (2.169726114343964,4.093398253346329), NW * labelscalefactor);
+dot(F_C, dotstyle);
+label("$F_C$", (4.057461114373381,1.1316071326105268), SE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\textit{Claim 1: $A F_B H F_C$ is a cyclic quadilateral.}
+\vspace{0.2cm}
+
+\textit{Proof:} We have $\angle AF_C H = \angle AF_B H = 90^\circ$, so
+these two opposite angles sum to 180. Now since angles in a quadrilateral
+sum to 360 this forces $\angle F_B A F_C + \angle F_B H F_C = 180^\circ$,
+which means that $A F_B H F_C$ is cyclic. $\square$ \\
+
+\textit{Claim 2: $C F_B F_C B$ is a cylic quadrilateral.}
+\vspace{0.2cm}
+
+\textit{Proof:} Firstly notice that $\angle ACF_C = 90 - \angle A$.
+Then since $A F_B H F_C$ is cyclic, we know that
+$\angle F_B H F_C = 180 - \angle A$ which means that
+$\angle F_C H B = \angle A$ due to angles on a straight line sum to 180.
+Then we get that $\angle H B F_C = 90 - \angle A$. \vspace{0.2cm}
+
+Now the key step is to use the fact that $\angle F_B B F_C = \angle
+F_B C F_C$, and then by the converse of "Angles subtending the same segment
+are equal" it must be the case that $F_B, F_C, B, C$ all lie on the same
+circle. $\square$ \\
+
+Now since $C F_B F_C B$ is cyclic, we know that
+$\angle F_B F_C B = 180 - \angle C$. Since $\angle HF_CB$ is right-angled
+we deduce $\angle F_B F_C H = 90 - \angle C$. Now consider the cyclic
+quadrilateral $A F_B H F_C$.
+Since angles subtending
+the same segment are equal we have $\angle F_B A H = 90 - \angle C$.
+Finally we can look at $\triangle C F_A A$ and deduce that
+$\angle C F_A A = 180 - (\angle C + 90 - \angle C) = 90^\circ$.
+as desired. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 4}
+The five tetrominoes are shown below. They can be turned either way up.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.8282552137749006, xmax = 15.645367724743695, ymin = -0.6384843590483772, ymax = 10.613025335560076;  /* image dimensions */
+
+/* draw figures */
+draw((2.,7.)--(4.,7.));
+draw((4.,7.)--(4.,5.));
+draw((4.,5.)--(2.,5.));
+draw((2.,7.)--(2.,5.));
+draw((3.,7.)--(3.,5.),  linetype("4 4"));
+draw((2.,6.)--(4.,6.),  linetype("4 4"));
+draw((6.,7.)--(8.,7.));
+draw((8.,7.)--(8.,6.));
+draw((7.,6.)--(8.,6.));
+draw((7.,6.)--(7.,5.));
+draw((7.,5.)--(5.,5.));
+draw((5.,5.)--(5.,6.));
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,7.));
+draw((6.,6.)--(7.,6.),  linetype("4 4"));
+draw((6.,6.)--(6.,5.),  linetype("4 4"));
+draw((7.,7.)--(7.,6.),  linetype("4 4"));
+draw((9.,7.)--(9.,5.));
+draw((9.,5.)--(12.,5.));
+draw((12.,5.)--(12.,6.));
+draw((12.,6.)--(10.,6.));
+draw((10.,6.)--(10.,7.));
+draw((10.,7.)--(9.,7.));
+draw((9.,6.)--(10.,6.),  linetype("4 4"));
+draw((10.,6.)--(10.,5.),  linetype("4 4"));
+draw((11.,6.)--(11.,5.),  linetype("4 4"));
+draw((3.,3.)--(7.,3.));
+draw((7.,3.)--(7.,2.));
+draw((7.,2.)--(3.,2.));
+draw((3.,2.)--(3.,3.));
+draw((4.,3.)--(4.,2.),  linetype("4 4"));
+draw((5.,2.)--(5.,3.),  linetype("4 4"));
+draw((6.,3.)--(6.,2.),  linetype("4 4"));
+draw((8.,2.)--(11.,2.));
+draw((11.,3.)--(11.,2.));
+draw((8.,3.)--(8.,2.));
+draw((9.,3.)--(8.,3.));
+draw((10.,3.)--(11.,3.));
+draw((9.,4.)--(10.,4.));
+draw((10.,4.)--(10.,3.));
+draw((9.,4.)--(9.,3.));
+draw((9.,3.)--(9.,2.),  linetype("4 4"));
+draw((10.,3.)--(10.,2.),  linetype("4 4"));
+draw((9.,3.)--(10.,3.),  linetype("4 4"));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+(a) Show that a $4 \times 6$ and a $3\times 8$ rectangle can be tiled by
+six tetrominoes, five of them different. Which tetromino have you used
+twice? \vspace{0.2cm}
+
+(b) Show that no rectangle can be tiled by the set of five each used once.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Here are the two rectangles.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.0825866388662369, xmax = 16.78750866076997, ymin = 0.5331405008056004, ymax = 9.350176266212774;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen dcrutc = rgb(0.8627450980392157,0.0784313725490196,0.23529411764705882); pen qqwuqq = rgb(0.,0.39215686274509803,0.); pen ffwwqq = rgb(1.,0.4,0.); pen ffdxqq = rgb(1.,0.8431372549019608,0.); pen qqqqcc = rgb(0.,0.,0.8); pen qqccqq = rgb(0.,0.8,0.); pen wwccff = rgb(0.4,0.8,1.);
+
+filldraw((2.,1.)--(2.,2.)--(3.,2.)--(3.,3.)--(4.,3.)--(4.,2.)--(5.,2.)--(5.,1.)--cycle, ttttff + opacity(0.3499999940395355),  ttttff);
+filldraw((3.,5.)--(4.,5.)--(4.,4.)--(5.,4.)--(5.,2.)--(4.,2.)--(4.,3.)--(3.,3.)--cycle, dcrutc + opacity(0.3499999940395355),  dcrutc);
+filldraw((2.,6.)--(3.,6.)--(3.,2.)--(2.,2.)--cycle, qqwuqq + opacity(0.3499999940395355),  qqwuqq);
+filldraw((2.,8.)--(4.,8.)--(4.,6.)--(2.,6.)--cycle, black + opacity(0.3499999940395355));
+filldraw((2.,8.)--(2.,9.)--(5.,9.)--(5.,7.)--(4.,7.)--(4.,8.)--cycle, ffwwqq + opacity(0.3499999940395355),  ffwwqq);
+filldraw((4.,7.)--(5.,7.)--(5.,4.)--(4.,4.)--(4.,5.)--(3.,5.)--(3.,6.)--(4.,6.)--cycle, ffdxqq + opacity(0.3499999940395355),  ffdxqq);
+filldraw((7.,1.)--(7.,3.)--(9.,3.)--(9.,1.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((8.,3.)--(8.,4.)--(10.,4.)--(10.,1.)--(9.,1.)--(9.,3.)--cycle, qqqqcc + opacity(0.3499999940395355),  qqqqcc);
+filldraw((10.,1.)--(11.,1.)--(11.,5.)--(10.,5.)--cycle, qqccqq + opacity(0.3499999940395355),  qqccqq);
+filldraw((7.,3.)--(7.,6.)--(8.,6.)--(8.,5.)--(9.,5.)--(9.,4.)--(8.,4.)--(8.,3.)--cycle, ffdxqq + opacity(0.3499999940395355),  ffdxqq);
+filldraw((9.,4.)--(9.,6.)--(10.,6.)--(10.,7.)--(11.,7.)--(11.,5.)--(10.,5.)--(10.,4.)--cycle, black + opacity(0.3499999940395355));
+filldraw((7.,6.)--(7.,7.)--(10.,7.)--(10.,6.)--(9.,6.)--(9.,5.)--(8.,5.)--(8.,6.)--cycle, wwccff + opacity(0.3499999940395355),  wwccff);
+/* draw figures */
+draw((2.,1.)--(2.,2.),  ttttff);
+draw((2.,2.)--(3.,2.),  ttttff);
+draw((3.,2.)--(3.,3.),  ttttff);
+draw((3.,3.)--(4.,3.),  ttttff);
+draw((4.,3.)--(4.,2.),  ttttff);
+draw((4.,2.)--(5.,2.),  ttttff);
+draw((5.,2.)--(5.,1.),  ttttff);
+draw((5.,1.)--(2.,1.),  ttttff);
+draw((3.,5.)--(4.,5.),  dcrutc);
+draw((4.,5.)--(4.,4.),  dcrutc);
+draw((4.,4.)--(5.,4.),  dcrutc);
+draw((5.,4.)--(5.,2.),  dcrutc);
+draw((5.,2.)--(4.,2.),  dcrutc);
+draw((4.,2.)--(4.,3.),  dcrutc);
+draw((4.,3.)--(3.,3.),  dcrutc);
+draw((3.,3.)--(3.,5.),  dcrutc);
+draw((2.,6.)--(3.,6.),  qqwuqq);
+draw((3.,6.)--(3.,2.),  qqwuqq);
+draw((3.,2.)--(2.,2.),  qqwuqq);
+draw((2.,2.)--(2.,6.),  qqwuqq);
+draw((2.,8.)--(4.,8.));
+draw((4.,8.)--(4.,6.));
+draw((4.,6.)--(2.,6.));
+draw((2.,6.)--(2.,8.));
+draw((2.,8.)--(2.,9.),  ffwwqq);
+draw((2.,9.)--(5.,9.),  ffwwqq);
+draw((5.,9.)--(5.,7.),  ffwwqq);
+draw((5.,7.)--(4.,7.),  ffwwqq);
+draw((4.,7.)--(4.,8.),  ffwwqq);
+draw((4.,8.)--(2.,8.),  ffwwqq);
+draw((4.,7.)--(5.,7.),  ffdxqq);
+draw((5.,7.)--(5.,4.),  ffdxqq);
+draw((5.,4.)--(4.,4.),  ffdxqq);
+draw((4.,4.)--(4.,5.),  ffdxqq);
+draw((4.,5.)--(3.,5.),  ffdxqq);
+draw((3.,5.)--(3.,6.),  ffdxqq);
+draw((3.,6.)--(4.,6.),  ffdxqq);
+draw((4.,6.)--(4.,7.),  ffdxqq);
+draw((7.,1.)--(7.,3.),  red);
+draw((7.,3.)--(9.,3.),  red);
+draw((9.,3.)--(9.,1.),  red);
+draw((9.,1.)--(7.,1.),  red);
+draw((8.,3.)--(8.,4.),  qqqqcc);
+draw((8.,4.)--(10.,4.),  qqqqcc);
+draw((10.,4.)--(10.,1.),  qqqqcc);
+draw((10.,1.)--(9.,1.),  qqqqcc);
+draw((9.,1.)--(9.,3.),  qqqqcc);
+draw((9.,3.)--(8.,3.),  qqqqcc);
+draw((10.,1.)--(11.,1.),  qqccqq);
+draw((11.,1.)--(11.,5.),  qqccqq);
+draw((11.,5.)--(10.,5.),  qqccqq);
+draw((10.,5.)--(10.,1.),  qqccqq);
+draw((7.,3.)--(7.,6.),  ffdxqq);
+draw((7.,6.)--(8.,6.),  ffdxqq);
+draw((8.,6.)--(8.,5.),  ffdxqq);
+draw((8.,5.)--(9.,5.),  ffdxqq);
+draw((9.,5.)--(9.,4.),  ffdxqq);
+draw((9.,4.)--(8.,4.),  ffdxqq);
+draw((8.,4.)--(8.,3.),  ffdxqq);
+draw((8.,3.)--(7.,3.),  ffdxqq);
+draw((9.,4.)--(9.,6.));
+draw((9.,6.)--(10.,6.));
+draw((10.,6.)--(10.,7.));
+draw((10.,7.)--(11.,7.));
+draw((11.,7.)--(11.,5.));
+draw((11.,5.)--(10.,5.));
+draw((10.,5.)--(10.,4.));
+draw((10.,4.)--(9.,4.));
+draw((7.,6.)--(7.,7.),  wwccff);
+draw((7.,7.)--(10.,7.),  wwccff);
+draw((10.,7.)--(10.,6.),  wwccff);
+draw((10.,6.)--(9.,6.),  wwccff);
+draw((9.,6.)--(9.,5.),  wwccff);
+draw((9.,5.)--(8.,5.),  wwccff);
+draw((8.,5.)--(8.,6.),  wwccff);
+draw((8.,6.)--(7.,6.),  wwccff);
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+In each case we used the "T" tetromino twice. $\square$
+\\
+
+(b) Observe the following diagram.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.5071096746123463, xmax = 10.65398055532054, ymin = 0.4805785164044289, ymax = 8.357208349815396;  /* image dimensions */
+pen ududff = rgb(0.30196078431372547,0.30196078431372547,1.);
+
+filldraw((1.,5.)--(2.,5.)--(2.,4.)--(1.,4.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((1.,4.)--(2.,4.)--(2.,3.)--(1.,3.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((1.,3.)--(2.,3.)--(2.,2.)--(1.,2.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((3.,3.)--(3.,2.)--(4.,2.)--(4.,3.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((4.,4.)--(5.,4.)--(5.,3.)--(4.,3.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((4.,2.)--(4.,3.)--(5.,3.)--(5.,2.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((8.,3.)--(8.,4.)--(9.,4.)--(9.,3.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((7.,2.)--(7.,3.)--(8.,3.)--(8.,2.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((9.,2.)--(9.,3.)--(10.,3.)--(10.,2.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((8.,2.)--(8.,3.)--(9.,3.)--(9.,2.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((2.,8.)--(3.,8.)--(3.,7.)--(2.,7.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((3.,7.)--(4.,7.)--(4.,6.)--(3.,6.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((3.,7.)--(3.,8.)--(4.,8.)--(4.,7.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((2.,6.)--(2.,7.)--(3.,7.)--(3.,6.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((6.,7.)--(7.,7.)--(7.,6.)--(6.,6.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((8.,7.)--(9.,7.)--(9.,6.)--(8.,6.)--cycle, ududff + opacity(0.3499999940395355),  ududff);
+filldraw((7.,7.)--(8.,7.)--(8.,6.)--(7.,6.)--cycle, red + opacity(0.3499999940395355),  red);
+filldraw((8.,7.)--(8.,8.)--(9.,8.)--(9.,7.)--cycle, red + opacity(0.3499999940395355),  red);
+/* draw figures */
+draw((1.,5.)--(2.,5.),  red);
+draw((2.,5.)--(2.,4.),  red);
+draw((2.,4.)--(1.,4.),  red);
+draw((1.,4.)--(1.,5.),  red);
+draw((1.,4.)--(2.,4.),  ududff);
+draw((2.,4.)--(2.,3.),  ududff);
+draw((2.,3.)--(1.,3.),  ududff);
+draw((1.,3.)--(1.,4.),  ududff);
+draw((1.,3.)--(2.,3.),  red);
+draw((2.,3.)--(2.,2.),  red);
+draw((2.,2.)--(1.,2.),  red);
+draw((1.,2.)--(1.,3.),  red);
+draw((1.,2.)--(2.,2.),  ududff);
+draw((2.,2.)--(2.,1.),  ududff);
+draw((2.,1.)--(1.,1.),  ududff);
+draw((1.,1.)--(1.,2.),  ududff);
+draw((3.,3.)--(3.,2.),  ududff);
+draw((3.,2.)--(4.,2.),  ududff);
+draw((4.,2.)--(4.,3.),  ududff);
+draw((4.,3.)--(3.,3.),  ududff);
+draw((4.,4.)--(5.,4.),  ududff);
+draw((5.,4.)--(5.,3.),  ududff);
+draw((5.,3.)--(4.,3.),  ududff);
+draw((4.,3.)--(4.,4.),  ududff);
+draw((4.,2.)--(4.,3.),  red);
+draw((4.,3.)--(5.,3.),  red);
+draw((5.,3.)--(5.,2.),  red);
+draw((5.,2.)--(4.,2.),  red);
+draw((5.,4.)--(6.,4.),  red);
+draw((6.,4.)--(6.,3.),  red);
+draw((6.,3.)--(5.,3.),  red);
+draw((5.,3.)--(5.,4.),  red);
+draw((8.,3.)--(8.,4.),  red);
+draw((8.,4.)--(9.,4.),  red);
+draw((9.,4.)--(9.,3.),  red);
+draw((9.,3.)--(8.,3.),  red);
+draw((7.,2.)--(7.,3.),  red);
+draw((7.,3.)--(8.,3.),  red);
+draw((8.,3.)--(8.,2.),  red);
+draw((8.,2.)--(7.,2.),  red);
+draw((9.,2.)--(9.,3.),  red);
+draw((9.,3.)--(10.,3.),  red);
+draw((10.,3.)--(10.,2.),  red);
+draw((10.,2.)--(9.,2.),  red);
+draw((8.,2.)--(8.,3.),  ududff);
+draw((8.,3.)--(9.,3.),  ududff);
+draw((9.,3.)--(9.,2.),  ududff);
+draw((9.,2.)--(8.,2.),  ududff);
+draw((2.,8.)--(3.,8.),  red);
+draw((3.,8.)--(3.,7.),  red);
+draw((3.,7.)--(2.,7.),  red);
+draw((2.,7.)--(2.,8.),  red);
+draw((3.,7.)--(4.,7.),  red);
+draw((4.,7.)--(4.,6.),  red);
+draw((4.,6.)--(3.,6.),  red);
+draw((3.,6.)--(3.,7.),  red);
+draw((3.,7.)--(3.,8.),  ududff);
+draw((3.,8.)--(4.,8.),  ududff);
+draw((4.,8.)--(4.,7.),  ududff);
+draw((4.,7.)--(3.,7.),  ududff);
+draw((2.,6.)--(2.,7.),  ududff);
+draw((2.,7.)--(3.,7.),  ududff);
+draw((3.,7.)--(3.,6.),  ududff);
+draw((3.,6.)--(2.,6.),  ududff);
+draw((6.,7.)--(7.,7.),  ududff);
+draw((7.,7.)--(7.,6.),  ududff);
+draw((7.,6.)--(6.,6.),  ududff);
+draw((6.,6.)--(6.,7.),  ududff);
+draw((8.,7.)--(9.,7.),  ududff);
+draw((9.,7.)--(9.,6.),  ududff);
+draw((9.,6.)--(8.,6.),  ududff);
+draw((8.,6.)--(8.,7.),  ududff);
+draw((7.,7.)--(8.,7.),  red);
+draw((8.,7.)--(8.,6.),  red);
+draw((8.,6.)--(7.,6.),  red);
+draw((7.,6.)--(7.,7.),  red);
+draw((8.,7.)--(8.,8.),  red);
+draw((8.,8.)--(9.,8.),  red);
+draw((9.,8.)--(9.,7.),  red);
+draw((9.,7.)--(8.,7.),  red);
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Thus if we were to tile the tetrominoes on a chessboard, then every
+tetromino except the "T" tetromino will cover 2 white squares and 2 black
+squares. The "T" tetromino covers 3 white squares and 1 black square
+or 3 black squares and one white square. In any case if we tile all five
+tetrominoes together on a rectangular chessboard we will cover 2 more white
+squares than black squares (or 2 more black squares than white squares).
+However this is impossible, since a chessboard has an equal number of
+white and black squares. Therefore it is not possible to tile a rectangle
+using each tetromino exactly once. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+(a) Suppose the numbers $1,2,\ldots, n$ are to be split into three
+non-empty subsets. How many ways are there to achieve this?
+\vspace{0.2cm}
+
+(b) What happens if we insist that each subset consists of a run of at least
+one consecutive number?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Clearly $n\geq3$.
+Suppose the first subset has size $a$ the second has size $b$ and the
+third has size $c$.
+\begin{itemize}
+\item Since $b,c \geq 1$ we find that $a$ is at most $n-2$.
+\item Since $c\geq 1$ we have that $a+b \leq n-1$ and so $b$ is at most
+$n-1-a$.
+\item Finally there is exactly one choice for $c$ that is $c = n-a-b$.
+\end{itemize}
+Putting this together, the number of choices turns out to be
+$$
+S = \sum_{a=1}^{n-2}\left[ \binom{n}{a} \times \sum_{b=1}^{n-a-1}
+\binom{n-a}{b} \times 1 \right].
+$$
+
+By Binomial theorem,
+$$
+\sum_{b=0}^{n-a} \binom{n-a}{b} = (1+1)^{n-a} = 2^{n-a}
+$$
+and so we can re-write $S$ as
+$$
+S = \sum_{a=1}^{n-2} \left[ \binom{n}{a} (2^{n-a} - 2)\right].
+$$
+We apply a similar observation
+$$
+\sum_{a=0}^n \binom{n}{a} 2^{-a} = \left(1 + \frac12\right)^n =
+\left(\frac32\right)^n
+\quad
+\text{and}
+\quad
+\sum_{a=0}^n \binom{n}{a} = (1+1)^n = 2^n.
+$$
+Thus
+\[
+\begin{aligned}
+S &= 2^n \left[ \left(\frac32\right)^n - \binom{n}{0} -
+\binom{n}{n-1}\frac{1}{2^{n-1}} - \binom{n}{n} \frac{1}{2^n} \right] -
+2\left[2^n - \binom{n}{0} - \binom{n}{n-1} - \binom{n}{n}\right]\\
+&= \left[3^n - 2^n - 2n - 1 \right] - 2\left[2^n - n - 2\right]\\
+&= 3^n - 3(2^n) + 3
+\end{aligned}
+\]
+and so there are exactly $3^n - 3(2^n) + 3$ ways to split the numbers.
+$\square$\\
+
+(b) To split the numbers in this way we can think about placing two
+"dividers" in the spots underlined below
+
+$$
+\text{
+\Large
+$1\ \_ \ 2\ \_ \ 3\ \_ \ 4 \ \_ \ 5 \ \_ \ldots \_ \ (n-1) \ \_ \ n$
+}
+$$
+There are $(n-1)$ places to put the dividers so the answer is
+$\binom{n-1}{2}$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+(a) In a group of six academics, each pair corresponds only about one topic. Moreover, the only two
+topics are geometry and algebra. Prove that there must be three academics such that each pair of
+those three correspond with each other about the same topic.
+\vspace{0.2cm}
+
+(b) In a group of seventeen academics, each pair corresponds only about one topic. Moreover, the only
+three topics are geometry, algebra and number theory. Prove that there must be three academics
+such that each pair of those three correspond with each other about the same topic.
+\end{problem}
+
+\begin{solution}{Solution}
+(a)
+\textit{Claim 1: Consider the complete graph with 6 vertices, $K_6$. Colour
+every edge either red or blue. Then there must exist a monochromatic
+3-cycle in $K_6$.}
+\vspace{0.2cm}
+
+\textit{Proof:} We proceed by way of contradiction.
+On $K_6$ every vertex has degree 5. Consider vertex $i$.
+Suppose there are $r$ red edges and $b$ blue edges that connect to $i$.
+At least one of $r,b$ must be $\geq 3$ because otherwise
+$$
+\deg i = 5 = r+b \leq 2 + 2 = 4
+$$
+which is impossible. Suppose that the edges from vertex $i$ to
+vertices $a,b,c$ are all the same colour, say WLOG they are all red. Since
+there doesn't exist a monochromatic 3-cycle on $K_6$ all of the edges
+$a - b$, $b - c$ and $c - a$ must be blue. But now notice that
+there is a monochromatic 3-cycle between $a - b - c$ where all edges are
+blue. Contradiction. $\square$
+\\
+
+If we model each academic as a vertex on a graph, colour an edge red
+if a pair corresponds about geometry and colour an edge blue if a pair
+corresponds about algebra, then the problem reduces to showing that claim 1
+is true, as we have done. $\square$
+\\
+
+(b) \textit{Claim 2: Consider the complete graph with 17 vertices,
+$K_{17}$. Colour every edge either red, green or blue. Then there must
+exist a monochromatic 3-cycle in $K_{17}$}
+\vspace{0.2cm}
+
+\textit{Proof:} We proceed by way of contradiction. On $K_{17}$ every vertex
+has degree 16. Consider a vertex $i$. Suppose that there are
+$r$ red edges, $b$ blue edges and $g$ green edges that connect to $i$.
+At least one of $r,b,g$ must be $\geq 6$ because otherwise
+$$
+\deg i = 16 = r + b + g \leq 5 + 5 + 5 = 15
+$$
+which is impossible. Suppose that the edges from vertex $i$ to the vertices
+$a,b,c,d,e,f$ are all the same colour, say WLOG they are red. We note that
+any edges between two of these vertices cannot be red, because there are
+no 3-cycles on $K_{17}$. \vspace{0.2cm}
+
+Thus the vertices $a,b,c,d,e,f$ actually form a 2-coloured complete
+sub-graph with 6 vertices, since edge colours can only be blue or green.
+However due to claim 1, there must exist a monochromatic 3-cycle on this
+sub-graph, contradiction. $\square$\\
+
+If we model each academic as a vertex on a graph, colour an edge red
+if a pair corresponds about geometry and colour an edge blue if a pair
+corresponds about algebra and colour an edge green if a pair corresponds
+about number theory, then the problem reduces to showing that claim 2
+is true, as we have done. $\blacksquare$
+\\
+
+\textit{Comments: This is really the first time I've done any graph theory
+in maths, though previously I've come across graphs in computer science
+and through solving problems on atcoder.jp and codeforces.com etc. Actually
+today I was recommended a youtube video that was a lecture on Ramsey
+theory, and
+I ended up finding out that part (a) is equivalent to showing that
+$R(3,3) = 6$ and part (b) is equivalent to showing that $R(3,3,3)=17$.}
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 7}
+Let $G$ be a convex quadrilateral. Show that there is a point $X$ in the
+plane of $G$ with the property that every straight line through $X$ divides
+$G$ into two regions of equal area if and only if $G$ is a parallelogram.
+\end{problem}
+
+\begin{solution}{Partial Solution}
+First we show the following statement to be true. If $G$ is a parallelogram
+then there exists some point $X$, with the property that any line through
+$X$ splits $G$ into two regions of equal area. Let $G$ have vertices
+$ABCD$.
+\vspace{0.2cm}
+
+Take $X = AD \cap BC$ like so.
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(210);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -1.071933600271589, xmax = 8.5653337946408, ymin = -1.0230073202821973, ymax = 4.907180676820011;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.);
+pair A = (0.,0.), B = (6.,0.), C = (2.,4.), D = (8.,4.), X = (4.,2.);
+
+filldraw(C--D--B--A--cycle, ttttff + opacity(0.10000000149011612),  ttttff);
+/* draw figures */
+draw(C--D,  ttttff);
+draw(D--B,  ttttff);
+draw(B--A,  ttttff);
+draw(A--C,  ttttff);
+draw(C--B);
+draw(A--D);
+draw((xmin, -4.965414931958289*xmin + 21.861659727833157)--(xmax, -4.965414931958289*xmax + 21.861659727833157),  linetype("4 4")); /* line */
+/* dots and labels */
+dot(A, dotstyle);
+label("$A$", (0.05096696358781762,0.10455017641659202), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (6.055239796089695,0.1292591181141306), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (2.0523912410884435,4.119753202266612), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (8.044309602741551,4.119753202266612), NE * labelscalefactor);
+dot(X, dotstyle);
+label("$X$", (4.05381551858907,2.093619983068448), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+
+\textit{Claim 1: $BC$ and $AD$ are lines of symmetry of $G$.}
+\vspace{0.2cm}
+
+\textit{Proof:} We show that $\triangle AXB \equiv \triangle CXD$.
+\begin{itemize}
+\item $AB = CD$ by properties of a parallelogram.
+\item $\angle BAX = \angle CDX$ because of alternate angles.
+\item $\angle ABX = \angle XCD$ because of alternate angles.
+\end{itemize}
+Thus the two triangles are indeed congruent by the ASA criterion. This
+allows us to conclude that $AX = DX$. Now since $A,X,D$ are collinear,
+$D$ is in fact the reflection of the point $A$ across $BC$. Moreover
+points $C, B$ are invariant under the transformation of reflection across
+$BC$, since they lie on this line. This means that $G$ is in fact unchanged
+under this reflection and so $BC$ is a line of symmetry
+of $G$. By a similar arguement we can show that $AD$ is also a line of
+symmetry of $G$.
+$\square$
+\\
+
+Now consider some line $l$ passing through $X$.
+\vspace{0.2cm}
+
+\textit{Case 1: The line $l$ doesn't pass through any of $A, B, C$ or $D$.}
+We assume WLOG that $l$ passes through sides $AB$ and $CD$. We have
+already seen that $AX = DX$ and $CX = BX$. The points $A, D$ lie on
+opposite sides of the line $l$, and the same is true for the points
+$B, C$. Now since $A, X, D$ are collinear and $l$ passes though $X$,
+$D$ is the reflection of $A$ across $l$.
+Similarly $C$ is the reflection of $B$ across $l$. \vspace{0.2cm}
+
+Suppose that $l$ cuts through $CD$ and $AB$ at points $H, K$ respectively.
+If we reflect $ACHK$ across $l$ it maps onto $BDHK$. Since
+reflection transformations preserve areas, we have that the area of
+$ACHK$ and the area of $BDHK$ are equal.
+\\
+
+\textit{Case 2: The line $l$ passes through two diagonally opposite
+vertices.} Then $l$ either passes through $BC$ or $AD$. Due to claim 1,
+we established that these are lines of symmetry of $G$, so the two regions
+formed map onto each other upon reflection across $l$. Again since
+reflections preserve area, the area of the two regions are equal.
+\\
+
+Next we show the following statement to be true. For some convex
+quadrilateral $G$, if there exists a point $X$ with the property that
+any line through $X$ divides $G$ into two regions of equal area then $G$
+must be a parallelogram. Call such a point $X$ \textit{special}.
+\vspace{0.2cm}
+
+We instead prove the contrapostive of this statement, which is logically
+equivalent. We show that if $G$ is not a parallelogram, then there does not
+exist a special point $X$ in the plane.\vspace{0.2cm}
+
+Let us suppose that $G$ has vertices $ABCD$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.0991317996570658, xmax = 10.954488410387674, ymin = -3.312073815761595, ymax = 5.71415039149418;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen qqzzqq = rgb(0.,0.6,0.);
+pair A = (0.,0.), B = (4.9498390358302675,0.8517969150759968), C = (6.2173683456576105,2.317931116762521), D = (2.,4.);
+
+filldraw(A--D--C--B--cycle, ttttff + opacity(0.10000000149011612),  ttttff);
+//filldraw(arc(D,0.5059542717071605,-116.56505117707799,-21.74425128726117)--(2.,4.)--cycle, qqzzqq + opacity(0.10000000149011612),  qqzzqq);
+//filldraw(arc(B,0.5059542717071605,49.155326516450366,189.76415485058544)--(4.9498390358302675,0.8517969150759968)--cycle, red + opacity(0.10000000149011612),  red);
+/* draw figures */
+draw(A--D,  ttttff);
+draw(D--C,  ttttff);
+draw(C--B,  ttttff);
+draw(B--A,  ttttff);
+/* dots and labels */
+dot(A, dotstyle);
+label("$A$", (0.03599522694715149,0.07781980467639213), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (4.9943470896773245,0.9480611520127112), SE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (6.259232768945225,2.415328539963482), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (2.0395741429075067,4.105215807465404), NE * labelscalefactor);
+//label("$\beta$", (2.0699313992099366,3.6802142192313876), SW * labelscalefactor,qqzzqq);
+//label("$\alpha$", (4.771727210126174,1.0694901772224301), NW * labelscalefactor,red);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\textit{Claim 1: For any line $l$ splitting $G$ into two regions of non-zero
+area we can translate $l$ onto precisely one line $l'$ such that $l'$
+splits $G$ into two regions of equal areas.}
+\vspace{0.2cm}
+
+\textit{Proof: } We may rotate the entire configuration so that $l$ is
+parallel to the $y$-axis, because rotations leave lengths and areas
+unchanged. Now $l$ splits $G$ into a left region with area $L$ and a right
+region with area $R$.
+Suppose the parallelogram has area 1. If we move $l$ to be as rightmost
+as possible then $L \rightarrow 1$ and $R \rightarrow 0$, similarly
+if we move $l$ to be as leftmost as possible then $L \rightarrow 0$ and
+$R \rightarrow 1$. Recalling that $L + R = 1$, by applying
+intermediate value theorem coupled with the fact that moving the line in
+one direction changes $L, R$ monotonically
+there must be some unique point at which $L = R = 1/2$.
+$\square$ \\
+
+If I take some line $M$ that splits $G$ into two regions
+of equal area, then for any point $P$ that doesn't lie on $M$, we can take
+the line through $P$ that is parallel to $M$. Then since $P \neq M$ due to
+claim 1, this line doesn't split $G$ into two regions of equal area.
+Thus any point $P$ not lying on $M$ isn't special.
+\vspace{0.2cm}
+
+We may make the exact same statement but this time replacing the line $M$
+with some line $T$ that isn't parallel to $M$. So any point $P$ not lying
+on $T$ isn't special either. The only point remaining that could be special
+is the point $Y = T \cap M$, since it is the only point lying on both
+$T$ and $M$. \vspace{0.2cm}
+
+The solution is nearly finished, we just need to patch up this line
+passing through $Y$ case.
+\end{solution}
+\newpage
+
+
+\begin{problem}{Problem 8}
+Let $p \equiv 3 \ (\text{mod } 4)$ be a prime.\vspace{0.2cm}
+
+(a) Suppose that $x^4 \equiv 1 \ (\text{mod } p)$. Prove that
+$x^2 \equiv 1 \ (\text{mod } p)$.\vspace{0.2cm}
+
+(b) Therefore show that there are no solutions to
+$x^2 + 1 \equiv 0 \ (\text{mod } p)$. \vspace{0.2cm}
+
+(c) Prove that there are an infinite number of primes
+$\equiv 1 \ (\text{mod } 4)$.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Write $p = 4k+3$ for $k \in \mathbb{Z}_{\geq0}$.
+We are given $x^4 \equiv 1 \ (\text{mod } p)$.
+Note that since $x^4$ leaves a non-zero residue modulo $p$, the numbers
+$x$ and $p$ must be coprime. Thus by Fermat's little theorem
+\[
+\begin{aligned}
+x^{4k+2} &\equiv 1 \ (\text{mod } p) \\
+(x^4)^k \cdot x^2 &\equiv 1 \ (\text{mod } p) \\
+1 \cdot x^2 &\equiv 1 \ (\text{mod } p) \\
+\end{aligned}
+\]
+and so $x^2 \equiv 1 \ (\text{mod } p)$ as desired. $\square$\\
+
+(b) \textit{Solution 1.} Suppose for the sake of contradiction that
+$x^2 \equiv -1 \ (\text{mod } p)$. We find that
+
+\[
+\begin{aligned}
+x^2 \cdot x^2 &\equiv (-1) \cdot (-1) \ (\text{mod } p) \\
+x^4 &\equiv 1 \ (\text{mod } p)
+\end{aligned}
+\]
+
+However in part (a) we showed that if $x^4 \equiv 1 \ (\text{mod } p)$ then
+$x^2 \equiv 1 \ (\text{mod } p)$, and since $1 \equiv -1 \ (\text{mod } p)$
+only when $p = 2$ we have a contradiction. $\square$
+\\
+
+\textit{Solution 2.} \textit{(In this solution do not interpret $(a/b)$
+as a fraction. It is instead the Legendre symbol.)}
+\vspace{0.1cm}
+
+It suffices to show that $-1$ cannot be a
+quadratic residue mod $p$.
+Let $a$ be a positive integer and $p$ an odd prime.
+Suppose that $a$ and $p$ are coprime (I'm purposefully avoiding the
+$a\equiv 0 \ \text{mod } p$ case).
+The Legendre symbol is defined like so
+$$
+\left( \frac{a}{p} \right) =
+\begin{cases}
+1 & \text{if $a$ is a quadratic residue mod $p$}\\
+-1 & \text{if $a$ is not a quadratic residue mod $p$}\\
+\end{cases}
+$$
+Now let $p = 4k+3$ for some $k \in \mathbb{Z}_{\geq0}$. By Euler's
+criterion we note that
+\[
+\begin{aligned}
+\left( \frac{p-1}{p} \right) &\equiv (-1)^{\frac{p-1}{2}} \ (\text{mod } p)\\
+&\equiv (p-1)^{2k + 1} \ (\text{mod } p)\\
+&\equiv -1 \ (\text{mod } p).
+\end{aligned}
+\]
+But if $((p-1) / p)$ were equal to 1 then it wouldn't leave a residue of $-1$
+mod $p$ since $1 \equiv -1 \ (\text{mod } p)$ only when $p=2$. Thus it must
+be the case that $((p-1) / p) = -1$ and so by definition
+$-1$ isn't a quadratic residue mod $p$. $\square$
+\\
+
+(c) Let us suppose for the sake of contradiction that $p_1, p_2, \ldots,
+p_n$ are all of the primes that are $\equiv 1 \ (\text{mod } 4)$.
+Consider the number
+$$
+P = (2p_1 p_2 \cdots p_n)^2 + 1.
+$$
+Note that $\gcd(P, p_i) = 1$ due to the Euclidean algorithm.
+Due to part (b), $P$ is never divisible by a prime of the form $4k+3$.
+But since $P$ is odd it must then have some odd prime factors of the form
+$4k+1$ but none of these prime come from the collection $p_1, \ldots, p_n$,
+a contradiction. $\blacksquare$
+\end{solution}
+
+\end{document}

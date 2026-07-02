@@ -1,0 +1,1113 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 5}
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 5. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+(a) Suppose that every positive integer is coloured red or blue. Show that
+there must be integers $u,v, w$ and $x$ (which need not all be different)
+of the same colour such that $u + v + w = x$. (This is called a
+\textit{monochromatic} sum.)
+\vspace{0.2cm}
+
+(b) What is the largest $N$ such that the integers $1, \ldots, N$ can be
+coloured red and blue without the sum $u+v+w=x$ having a monochromatic
+solution?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Let us assume WLOG that $1$ is blue. We can do this because if $1$ was red
+then the arguement follows the same we just exchange the words red and blue.
+We argue by contradiction.
+\vspace{0.2cm}
+
+Note that if $k$ and $3k$ are the same colour than we have a contradiction
+because $(k) + (k) + (k) = (3k)$ is a monochromatic sum.
+\vspace{0.2cm}
+
+Suppose that we have found a blue integer $k > 2$ such that $k + 1$ is red.
+Since $k$ is blue, $3k$ must be red. Because there doesn't exist a
+monochromatic sum there cannot exist a red integer $y$ such that
+$$
+(k+1) + (k+1) + (y) = (3k) \iff y = k - 2
+$$
+and so $k-2$ must be blue. But now observe that
+$$
+(k-2) + (1) + (1) = (k)
+$$
+is a monochromatic sum where every integer is blue, contradiction.
+\vspace{0.2cm}
+
+If we cannot find such a blue integer $k$ then either the numbers
+$3,4,5,\ldots$ must be coloured
+$$
+\text{red, red,} \ldots \text{red, blue, blue, blue,} \ldots
+$$
+or such that every one of the numbers $3,4,5\ldots$ is blue, or such that
+every one of those numbers is red. These are the only constructions,
+because any other construction would have a point at which $k$ is blue
+and $k+1$ is red.
+In each case the colour
+of the numbers is eventually constant so clearly for large enough $k$
+we can find integers $k, \ 3k$ that are the same colour, then we are done
+because of the reasoning presented in the second paragraph. $\square$
+\\
+
+(b) Again we can assume that $1$ is blue. We look at two cases.
+\vspace{0.2cm}
+
+\textit{Case 1:} If $2$ is blue, then we have
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+B & B \\
+\end{tblr}
+\end{center}
+Now if $k$ is blue you can make the monochromatic sums
+$(k) + (1) + (1), \ (k) + (1) + (2), \ (k) + (2) + (2)$. So if $k$ is blue
+then $k+2, k+3$ and $k+4$ must all be red. This gives
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+B & B & R & R & R & R & \\
+\end{tblr}
+\end{center}
+Now note that $k$ and $3k$ must be different colours. Also since
+$3$ is red, if $k$ is red then you can make the monochromatic sum
+$(k) + (3) + (3)$. So if $k$ is red then $k+6$ must be blue. This gives
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\ \hline
+B & B & R & R & R & R &   &   & B & B  & B  & B \\
+\end{tblr}
+\end{center}
+But now since $(9) + (1) + (1) = (11)$ is a monochromatic sum with all
+numbers being blue, and we previously deduced that the number $11$ must
+be blue, we have a contradiction. So in this case
+$N \leq 10$. In particular $N = 10$ is achievable with construction
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+B & B & R & R & R & R & R & R & B & B  \\
+\end{tblr}
+\end{center}
+which can be checked to work.
+\vspace{0.2cm}
+
+\textit{Case 2:} If $2$ is red, then we have
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+B & R
+\end{tblr}
+\end{center}
+
+Now since $k$ and $3k$ cannot be the same colour, we have
+
+\begin{center}
+\begin{tblr}{cc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+B & R & R &   &   & B
+\end{tblr}
+\end{center}
+But now since $(6) + (1) + (1) = (8)$ is a monochromatic sum with
+all numbers being blue, and $(3) + (3) + (2) = (8)$ is a monochromatic sum
+with all numbers being red, the number $8$ can't be red or blue. So in
+this case $N \leq 7$.\vspace{0.2cm}
+
+Thus we have demonstrated that the largest such $N$ is $N = 10$.
+$\blacksquare$
+
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+A rectangular piece of paper has a line drawn down its centre.
+One corner is folded such that the corner lies on the line, as shown
+in the diagram. (Here the top left corner is folded such that
+point $A$ is sent to point $M$.)
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -7.319930920336964, xmax = 7.316908081987427, ymin = -4.71504179447276, ymax = 5.1086344198213745;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.);
+pair A = (-4.,3.), B = (4.,3.), D = (-4.,-3.), C = (4.,-3.), M = (1.1961524227066318,0.);
+
+filldraw((-0.5358983848622455,3.)--M--D--cycle, qqzzff + opacity(0.10000000149011612),  qqzzff);
+filldraw((-0.5358983848622455,3.)--A--D--cycle, gray + opacity(0.10000000149011612),  gray);
+/* draw figures */
+draw(A--B);
+draw(B--C);
+draw(C--D);
+draw(D--A);
+draw((-4.,0.)--(4.,0.),  linetype("4 4"));
+draw(D--M);
+draw((-0.5358983848622455,3.)--M);
+draw((-0.5358983848622455,3.)--D);
+draw((-0.5358983848622455,3.)--M,  qqzzff);
+draw(M--D,  qqzzff);
+draw(D--(-0.5358983848622455,3.),  qqzzff);
+draw((-0.5358983848622455,3.)--A,  gray);
+draw(A--D,  gray);
+draw(D--(-0.5358983848622455,3.),  gray);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-3.9540061460196694,3.113200188792878), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (4.038694702440616,3.113200188792878), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (-3.9540061460196694,-2.895030352985231), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (4.038694702440616,-2.895030352985231), NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", (1.2428939941314627,0.08715706921120271), NE * labelscalefactor);
+dot((-0.5358983848622455,3.), dotstyle);
+label("$N$", (-0.48940605258558134,3.0912723401002573), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+What is angle $\angle ADN$?
+\end{problem}
+
+\begin{solution}{Solution}
+We note that since the top left corner is folded, the segment
+$AD$ is sent to $DM$, whilst $AN$ is sent to $NM$. This means that
+$AD = DM$ and $AN = NM$. Now also since $DN$ is
+common to both triangles $\triangle AND$ and $\triangle DMN$, we deduce that
+those two triangles are congruent by the SSS criterion. Now draw in
+the segment $AM$ like so.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -7.319930920336964, xmax = 7.426547325450532, ymin = -4.71504179447276, ymax = 5.1086344198213745;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen ffwwqq = rgb(1.,0.4,0.);
+pair A = (-4.,3.), B = (4.,3.), D = (-4.,-3.), C = (4.,-3.), M = (1.1961524227066318,0.);
+
+filldraw((-0.5358983848622455,3.)--M--D--cycle, qqzzff + opacity(0.10000000149011612),  qqzzff);
+filldraw((-0.5358983848622455,3.)--A--D--cycle, gray + opacity(0.10000000149011612),  gray);
+/* draw figures */
+draw(A--B);
+draw(B--C);
+draw(C--D);
+draw(D--A);
+draw((-4.,0.)--(4.,0.),  linetype("4 4"));
+draw(D--M);
+draw((-0.5358983848622455,3.)--M);
+draw((-0.5358983848622455,3.)--D);
+draw((-0.5358983848622455,3.)--M,  qqzzff);
+draw(M--D,  qqzzff);
+draw(D--(-0.5358983848622455,3.),  qqzzff);
+draw((-0.5358983848622455,3.)--A,  gray);
+draw(A--D,  gray);
+draw(D--(-0.5358983848622455,3.),  gray);
+draw(A--M,  ffwwqq);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-3.9540061460196694,3.113200188792878), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (4.038694702440616,3.113200188792878), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (-3.9540061460196694,-2.895030352985231), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (4.038694702440616,-2.895030352985231), NE * labelscalefactor);
+dot(M, dotstyle);
+label("$M$", (1.2428939941314627,0.08715706921120271), NE * labelscalefactor);
+dot((-0.5358983848622455,3.), dotstyle);
+label("$N$", (-0.48940605258558134,3.0912723401002573), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Now since $A$ is just the reflection of $D$ over that horizontal
+dashed line, and $M$ lies on that dashed line it must be the case that
+$AM = DM$. So we can deduce that $\triangle AMD$ is in fact equilateral.
+\vspace{0.2cm}
+
+Moreover since $\triangle AND$ is congruent to $\triangle DMN$ we have
+$\angle ADN = \angle NDM$. So we deduce that
+$$
+\angle ADN = \frac12 \angle ADM = \frac12 (60) = 30^\circ. \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 3}
+A domino in this question covers exactly two adjacent squares of a standard
+$8 \times 8$ chessboard.
+
+\begin{enumerate}[label=(\alph*)]
+  \item Can the entire chessboard be covered in dominoes, with every domino
+  covering exactly two squares?
+  \item One corner is removed from the chessboard. Can it now be covered in
+  dominoes?
+  \item Two opposite corners are removed. Can it now be covered in dominoes?
+  \item If two squares are removed from the chessboard, under what
+  condition can the board still be covered in dominoes?
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+(a) The answer is yes. Here is one such way to do so.
+
+\begin{center}
+\begin{asy}
+usepackage("chessfss"); // optional, for later piece-glyphs if desired
+
+unitsize(0.7cm);   // adjust printed size
+real s = 1;        // square side in coordinate units (keep = 1 for simplicity)
+
+// board pens
+pen darkSquare = black;
+pen lightSquare = white;
+pen borderPen = darkSquare + linewidth(0.6);
+
+// circle (domino mark) style
+real radius = 0.30; // circle radius (fraction of square side)
+pen redFill  = rgb(0.86, 0.20, 0.20) + opacity(0.70);
+pen blueFill = rgb(0.15, 0.45, 0.85) + opacity(0.70);
+pen circleBorder = black + linewidth(0.6);
+
+// draw the chessboard (a1 = (0,0) dark)
+for (int i = 0; i < 8; ++i) {
+  for (int j = 0; j < 8; ++j) {
+    path square = (i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;
+    if ((i + j) % 2 == 0) fill(square, darkSquare);
+    else fill(square, lightSquare);
+    draw(square, borderPen);
+  }
+}
+
+// draw domino-center circles ON TOP of board
+for (int i = 0; i < 8; ++i) {
+  for (int j = 0; j < 8; j += 2) {
+
+    int k = (int)(j/2);  // domino row: 0,1,2,3
+    pen useFill = ((i + k) % 2 == 0) ? redFill : blueFill;
+
+    pair c1 = (i + 0.5, j + 0.5);
+    pair c2 = (i + 0.5, j + 1.5);
+
+    fill(circle(c1, radius), useFill);
+    //draw(circle(c1, radius), circleBorder);
+    fill(circle(c2, radius), useFill);
+    //draw(circle(c2, radius), circleBorder);
+  }
+}
+\end{asy}
+\end{center}
+
+(b) The answer is no. We say that two tiles are \textit{neighbours}
+if they share a vertical or horizontal border. Each domino covers one
+pair of neighbours, that is exactly one white square and exactly one black
+square. So if the board can be completely covered in dominoes, then there
+has
+to be $k$ white tiles and $k$ black tiles. Since one corner is removed
+from the chess board there is a different number of white and black tiles
+on the board, which means that tiling it with dominoes is now impossible.
+$\square$
+\\
+
+(c) We assume that the question means two vertically/horizontally opposite
+corners. The tiling can't be done if we are speaking about diagonally
+opposite corners because of the same reasoning that was presented in (b).
+The answer to the first interpretation is yes. It suffices to show one
+construction for one pair of vertically opposite corners, because we can
+rotate the board to get the other 3 configurations of
+vertically/horizontally opposite corners being removed.
+
+\begin{center}
+\begin{asy}
+usepackage("chessfss"); // optional (keeps file ready for piece glyphs)
+
+unitsize(0.7cm);
+
+// board pens
+pen darkSquare = black;
+pen lightSquare = white;
+pen borderPen = darkSquare + linewidth(0.6);
+
+// circle (domino mark) style
+real radius = 0.30;
+pen redFill  = rgb(0.86, 0.20, 0.20) + opacity(0.70);
+pen blueFill = rgb(0.15, 0.45, 0.85) + opacity(0.70);
+pen circleBorder = black + linewidth(0.6);
+
+// helper: does the square (file i, rank j) exist (i=0..7, j=0..7)?
+bool squareExists(int i, int j) {
+  // remove a1 (i=0,j=0) and a8 (i=0,j=7)
+  if (i == 0 && (j == 0 || j == 7)) return false;
+  return true;
+}
+
+// draw the chessboard, skipping a1 and a8
+for (int i = 0; i < 8; ++i) {
+  for (int j = 0; j < 8; ++j) {
+    if (!squareExists(i,j)) continue;
+    path square = (i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;
+    if ((i + j) % 2 == 0) fill(square, darkSquare);
+    else fill(square, lightSquare);
+    draw(square, borderPen);
+  }
+}
+
+// --- A-file: iterate j = 1, 3, 5 (dominoes covering (1,2), (3,4), (5,6)) ---
+// A-file coloring: blocks b b r r b b on a2..a7
+int i = 0;
+for (int j = 1; j <= 5; j += 2) {
+  // block index 0,1,2 for j=1,3,5 respectively
+  int blockIndex = (int)((j - 1) / 2);
+  pen useFill = (blockIndex % 2 == 0) ? blueFill : redFill; // 0->blue,1->red,2->blue
+
+  pair c1 = (i + 0.5, j + 0.5);
+  pair c2 = (i + 0.5, j + 1.5);
+
+  if (squareExists(i, j))   { fill(circle(c1, radius), useFill); }
+  if (squareExists(i, j+1)) { fill(circle(c2, radius), useFill); }
+}
+
+// --- B..H files: iterate i=1..7 and j = 0,2,4,6 (standard domino tiling)
+// color by checker on (column i) + (domino-row k = j/2) so horizontally/vertically adjacent differ
+for (int i2 = 1; i2 < 8; ++i2) {
+  for (int j = 0; j < 8; j += 2) {
+    int k = (int)(j/2);  // domino-row index 0..3
+    pen useFill = ((i2 + k) % 2 == 0) ? redFill : blueFill;
+
+    pair c1 = (i2 + 0.5, j + 0.5);
+    pair c2 = (i2 + 0.5, j + 1.5);
+
+    if (squareExists(i2, j))   { fill(circle(c1, radius), useFill); }
+    if (squareExists(i2, j+1)) { fill(circle(c2, radius), useFill); }
+  }
+}
+\end{asy}
+\end{center}
+
+(d) Again because of the reasoning in (b), we must remove exactly
+1 black square and exactly 1 white square. Now we will prove that this
+condition is necessary and sufficient.
+\vspace{0.2cm}
+
+It will be useful to us to
+introduce some notation to refer to which square we are talking about
+on a chess board. Let square $(i,j)$ refer to the square on the $i$-th
+row from the top of the board and the $j$-th column from the left of the
+board. For example square $(1,1)$ refers to the very top left square.
+\vspace{0.2cm}
+
+For some square $(i,j)$ define the \textit{weight} of that square to be
+the quantity $i+j \ (\text{mod } 2)$. \\
+
+\textit{Claim 1: Two squares are the same colour, if and only if,
+they have the same weight.}
+\vspace{0.2cm}
+
+\textit{Proof:} Consider two squares $(i,j)$ and $(x,y)$. We note that
+if two squares are neighbours, then they have different colours, and also
+the two squares have different weights.
+We can
+travel from $(i,j) \rightarrow (x,y)$ by moving exactly $|x-i|$ squares
+vertically and $|y-j|$ squares horizontally. In total we have travelled
+$|x-i| + |y-j|$ squares.
+\begin{itemize}
+\item If we travel an even number of squares, then $(i,j)$ and $(x,y)$ are
+the same colour, because the coloured flipped an even number of times
+along our path, and
+$|x-i| + |y-j| \equiv (x-i) + (y-j) \equiv 0 \ (\text{mod } 2) \implies
+x + y \equiv i + j \ (\text{mod } 2)$. Which means that $(i,j)$ and $(x,y)$
+have the same weight.
+\item If we travel an odd number of squares, then $(i,j)$ and $(x,y)$
+are different colours, since the colours flipped an odd number of times
+along our path, and $|x-i| + |y-j| \equiv (x-i) + (y-j) \equiv 1 \
+(\text{mod } 2) \implies x+y \nequiv i+j \ (\text{mod } 2)$. Which means
+that $(i,j)$ and $(x,y)$ have different weights. $\square$
+\end{itemize}
+\vspace{0.2cm}
+
+\textit{Claim 2: Let $n, m$ be positive integers, with at least one of
+$n, m$ even.
+Consider a $n \times m$ chessboard. We can always tile it with dominoes.}
+\vspace{0.2cm}
+
+\textit{Proof:} We assume WLOG that $n$ is even. The
+construction is simple, for each of the $m$ rows tile the row vertically
+with $n/2$ dominoes starting from the very top of the row.
+$\square$
+\\
+
+\textit{Claim 3: Let $n, m$ be positive integers of different parity.
+Consider a $n \times m$ chessboard. If the squares $(1,1)$ and $(n,m)$ are
+removed then, it is always possible to tile the resultant board with
+dominoes.} \vspace{0.2cm}
+
+\textit{Proof:} We can assume WLOG that $n$ is even and $m$ is odd. Since
+$m$ is odd and we've removed the top left square and the bottom right
+square, there remains $m-1$ squares on the top-most and bottom-most rows
+of the chess board. Since $m-1$ is even we can tile these two rows
+horizontally with dominoes. Now we are just left with a $(n-2) \times m$
+chessboard to tile, but this can be done due to claim 2. $\square$
+\\
+
+Here's an example illustrating claim 3 for the case $(n,m) = (4,3)$.
+\begin{center}
+\begin{asy}
+// 4x3 board (3 columns x 4 rows) with a4 and c1 removed
+// Pattern (top->bottom):
+// _  b  b
+// g  r  g
+// g  r  g
+// b  b  _
+
+unitsize(0.8cm);
+
+// pens (use pen types; rgb returns a pen)
+pen borderPen   = black + linewidth(0.6);
+pen redFill     = rgb(0.86,0.20,0.20) + opacity(0.85);
+pen blueFill    = rgb(0.15,0.45,0.85) + opacity(0.85);
+pen greenFill   = rgb(0.12,0.6,0.25)  + opacity(0.85);
+pen squareFill  = white;
+
+// geometry
+int cols = 3;   // files a,b,c -> i = 0..2
+int rows = 4;   // ranks 1..4     -> j = 0..3
+
+real r = 0.32;  // circle radius (in square units)
+
+// helper: whether square (i,j) exists
+bool squareExists(int i, int j) {
+  // remove a4 (i=0,j=3) and c1 (i=2,j=0)
+  if (i == 0 && j == 3) return false;
+  if (i == 2 && j == 0) return false;
+  return true;
+}
+
+// draw grid squares and borders (white squares)
+for (int i = 0; i < cols; ++i) {
+  for (int j = 0; j < rows; ++j) {
+    if (!squareExists(i,j)) continue;
+    path sq = (i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle;
+    if ((i + j) % 2 == 0) squareFill = black;
+    else squareFill = white;
+    fill(sq, squareFill);
+    draw(sq, borderPen);
+  }
+}
+
+// draw colored circles according to the specified pattern
+for (int i = 0; i < cols; ++i) {
+  for (int j = 0; j < rows; ++j) {
+    if (!squareExists(i,j)) continue;
+
+    pen useFill;
+
+    // Map the pattern (j=3 is top row, j=0 is bottom)
+    if (j == 3) {                 // top row: _ b b
+      // a4 removed already skipped
+      useFill = (i == 1 || i == 2) ? blueFill : blueFill; // i==1 or 2 => blue
+    }
+    else if (j == 2) {            // second row from top: g r g
+      useFill = (i == 1) ? redFill : greenFill;
+    }
+    else if (j == 1) {            // third row: g r g
+      useFill = (i == 1) ? redFill : greenFill;
+    }
+    else {                        // j == 0 bottom row: b b _
+      // c1 removed already skipped
+      useFill = (i == 0 || i == 1) ? blueFill : blueFill; // i==0 or 1 => blue
+    }
+
+    pair center = (i + 0.5, j + 0.5);
+    fill(circle(center, r), useFill);
+    //draw(circle(center, r), borderPen);
+  }
+}
+\end{asy}
+\end{center}
+
+\textit{Claim 4: Let $a,b$ be postive integers of different parity.
+Let $n$ be a positive integer satsifying $\max\{a,b\} \leq 2n$.
+Consider a $2n \times 2n$ chessboard with a $a \times b$ sub-chessboard
+removed from the board. The resultant shape can be tiled with dominoes.}
+\vspace{0.2cm}
+
+\textit{Proof:} WLOG let $a$ be even, and $b$ be odd. Consider squares
+on the same row as the $a \times b$ hole in the chessboard. These squares
+either fall on the left or on the right of the hole. All of the squares that
+fall on one particular side of the hole can be tiled, because these squares
+will make a sub-chessboard of size $a \times k$, recalling that $a$ is even
+gives us the conclusion that this shape(s) can be tiled due to claim 2.
+Here is an illustration of the idea.
+\begin{center}
+\begin{asy}
+unitsize(0.7cm);   // adjust printed size
+real s = 1;        // square side in coordinate units
+
+// pens and styles
+pen darkSquare  = black;
+pen lightSquare = white;
+pen borderPen   = black + linewidth(0.6);
+
+pen redFill  = rgb(0.86, 0.20, 0.20) + opacity(0.85);
+pen blueFill = rgb(0.15, 0.45, 0.85) + opacity(0.85);
+pen circleBorder = black + linewidth(0.5);
+
+real radius = 0.28; // circle radius (in square units)
+
+// helper predicates (i = file 0..7 for a..h, j = rank 0..7 for 1..8)
+// removed rectangle: files b..d => i in [1..3], ranks 4..7 => j in [3..6]
+bool isRemoved(int i, int j) {
+  return (i >= 1 && i <= 3 && j >= 3 && j <= 6);
+}
+// blue region: files e..h (i=4..7), ranks 4..7 (j=3..6)
+bool isBlueRegion(int i, int j) {
+  return (i >= 4 && i <= 7 && j >= 3 && j <= 6);
+}
+// red region: file a (i=0), ranks 4..7 (j=3..6)
+bool isRedRegion(int i, int j) {
+  return (i == 0 && j >= 3 && j <= 6);
+}
+
+// draw the chessboard, skipping removed squares
+for (int i = 0; i < 8; ++i) {
+  for (int j = 0; j < 8; ++j) {
+    if (isRemoved(i,j)) continue;    // omit removed squares
+    path square = (i,j) -- (i+1,j) -- (i+1,j+1) -- (i,j+1) -- cycle;
+    if ((i + j) % 2 == 0) fill(square, darkSquare);
+    else fill(square, lightSquare);
+    draw(square, borderPen);
+  }
+}
+
+// draw colored circles on top: blue in e4..h7, red in a4..a7
+for (int i = 0; i < 8; ++i) {
+  for (int j = 0; j < 8; ++j) {
+    if (isRemoved(i,j)) continue;  // no circle in removed squares
+    pair center = (i + 0.5, j + 0.5);
+    if (isBlueRegion(i,j)) {
+      fill(circle(center, radius), blueFill);
+      //draw(circle(center, radius), circleBorder);
+    } else if (isRedRegion(i,j)) {
+      fill(circle(center, radius), redFill);
+      //draw(circle(center, radius), circleBorder);
+    }
+  }
+}
+
+draw((1,3)--(4,3)--(4,7)--(1,7)--cycle, red+linewidth(0.6));
+
+// ---------------------------
+// measurement arrow: "<---->" with "2n squares" under the board
+// center the arrow under the chessboard; arrow spans 2*n squares
+int n = 4;
+real arrowY = -0.55;                  // vertical position (below file labels)
+real arrowHead = 0.12;                // arrowhead size (in coord units)
+real span = 2*n;                      // span in square units
+real x0 = (8 - span)/2.0;             // left x (centers it under the 8-wide board)
+real x1 = x0 + span;                  // right x
+
+// main line
+draw((x0, arrowY) -- (x1, arrowY), borderPen + linewidth(0.8));
+
+// left arrowhead (filled triangle)
+fill((x0, arrowY) -- (x0 + arrowHead, arrowY + arrowHead/2) -- (x0 + arrowHead, arrowY - arrowHead/2) -- cycle, borderPen);
+draw((x0, arrowY) -- (x0 + arrowHead, arrowY + arrowHead/2), borderPen);
+draw((x0, arrowY) -- (x0 + arrowHead, arrowY - arrowHead/2), borderPen);
+
+// right arrowhead
+fill((x1, arrowY) -- (x1 - arrowHead, arrowY + arrowHead/2) -- (x1 - arrowHead, arrowY - arrowHead/2) -- cycle, borderPen);
+draw((x1, arrowY) -- (x1 - arrowHead, arrowY + arrowHead/2), borderPen);
+draw((x1, arrowY) -- (x1 - arrowHead, arrowY - arrowHead/2), borderPen);
+
+// centered label under the arrow
+label("$2n$ squares", ((x0 + x1)/2.0, arrowY - 0.34), fontsize(10pt));
+\end{asy}
+\end{center}
+
+Finally to finish the proof we observe that all there is left to tile, is
+squares that lie directly above or below the $a\times b$ hole in the
+chessboard. To tile these shape(s) we can just make a rectangle with
+all of the squares that lie (above or below) the hole, such a rectangle will
+have exactly $2n$ squares on at least one of it's sides and so it is
+possible to tile it with dominoes again due to claim 2. $\square$ \\
+
+Now let us return to the original problem. I will describe the
+high-level strategy. We will
+consider the "sub-chessboard" that is defined by these two removed squares.
+We will show that this sub-chessboard with it's two corner squares removed
+can be tiled using claim 3, then finally we will show that the remaining
+shape "a chessboard with a hole in it" can be tiled using claim 4.
+\vspace{0.2cm}
+
+Suppose we have removed two
+squares of distinct colours on an $8\times 8$ chessboard,
+$(x_1, y_1)$ and $(x_2, y_2)$. Note that the two removed squares,
+define a sub-chessboard of dimensions
+$(|x_1 - x_2| + 1) \times (|y_1 - y_2| + 1)$.
+Due to claim 1 these two squares have
+different weights. We show that exactly one of the quantities
+$$
+|x_1 - x_2| + 1, \quad |y_1 - y_2| + 1
+$$
+must be even. It suffices to show that their sum is
+$\equiv 1 \ (\text{mod } 2)$. We have
+\[
+\begin{aligned}
+&\phantom{\equiv} \left(|x_1 - x_2| + 1\right) +  \left(|y_1 - y_2| + 1\right) \\
+&\equiv (x_1 - x_2) + (y_1 - y_2) + 2 \\
+&\equiv (x_1 - x_2) + (y_1 - y_2) \\
+&\equiv (x_1 + y_1) - (x_2 + y_2) \\
+&\equiv 1 \ (\text{mod } 2)
+\end{aligned}
+\]
+where the last line is because the two squares have different weights.
+So since this sub-chess board has dimension of the form
+$a \times b$, with $a,b \in \mathbb{N}$ and exactly one of $a,b$ even,
+The $(|x_1 - x_2| + 1) \times (|y_1 - y_2| + 1)$ chessboard with two
+corners removed can be tiled with dominoes by applying claim 3. Finally the
+remaining untiled squares form an $8\times 8$ chessboard with a
+$(|x_1 - x_2| + 1) \times (|y_1 - y_2| + 1)$ hole in it. Indeed exactly
+one of those numbers is even and
+$$
+\max(|x_1 - x_2| + 1) = \max(|y_1 - y_2| + 1) = 8-1+1=8 \leq 8.
+$$
+Thus this shape can indeed be tiled due to claim 4. $\blacksquare$
+\\
+
+\textit{Comments: I am purposefully hand-waving with all these WLOG's, I'm
+not super sure on how to formally justify them tbh. Other than this I
+believe the problem is solved now, this one was particularly enjoyable.
+I have a feeling that my "chessboard with a hole in it" solution wasn't the
+intended one, so im curious to see what other (probably much simpler)
+approaches work.}
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 4}
+(a) Suppose that $ABCDEF$ is a regular hexagon. If you connect the
+vertices $AC, BD, CE, DF, EA$ and $FB$, then a smaller hexagon is formed.
+\vspace{0.2cm}
+
+What is the ratio of the side lengths of the original hexagon to those of
+the smaller hexagon?\\
+
+(b) Suppose that $ABCDE$ is a regular pentagon. If you connect vertices
+$AC, BD, CE, DA$ and $EB$, then a smaller pentagon is formed. \vspace{0.2cm}
+
+What is the ratio of the side lengths of the original pentagon to those of
+the smaller pentagon?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Here's a diagram. Let the regular hexagon have the 6-th roots of unity
+as vertices.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.703120263794179, xmax = 3.7752900936807827, ymin = -2.5178424429372392, ymax = 1.9445066218254417;  /* image dimensions */
+
+pair A = (-0.5,0.8660254037844387), B = (0.5,0.8660254037844386), C = (1.,0.), D = (0.5,-0.8660254037844386), F = (-1.,0.);
+
+filldraw(arc(A,0.2501316740337822,-90.,-30.)--(-0.5,0.8660254037844387)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc((0.5,0.28867513459481287),0.2501316740337822,450.,510.00000000000006)--(0.5,0.28867513459481287)--cycle, red + opacity(0.10000000149011612),  red);
+/* draw figures */
+draw(A--B);
+draw(B--C);
+draw(C--D);
+draw(D--(-0.5,-0.8660254037844384));
+draw((-0.5,-0.8660254037844384)--F);
+draw(F--A);
+draw(A--C);
+draw((0.26500790044202716,0.4590071479727455)--(0.2349920995579733,0.4070182558116933));
+draw(C--(-0.5,-0.8660254037844384));
+draw((0.2650079004420266,-0.4590071479727452)--(0.23499209955797273,-0.40701825581169304));
+draw(D--F);
+draw(F--B);
+draw(B--D);
+draw(A--(-0.5,-0.8660254037844384));
+draw((-0.4699841991159463,0.)--(-0.5300158008840541,0.));
+/* dots and labels */
+dot(C,dotstyle);
+dot(B,dotstyle);
+dot(A,dotstyle);
+dot(F,dotstyle);
+dot((-0.5,-0.8660254037844384),dotstyle);
+dot(D,dotstyle);
+dot(A,dotstyle);
+label("$A$", (-0.48195099837419186,0.9139641248062578), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (0.518575697760937,0.9139641248062578), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (1.0188390458285015,0.04850853264937002), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (0.518575697760937,-0.8169470595075177), NE * labelscalefactor);
+dot((-0.5,-0.8660254037844384),dotstyle);
+label("$E$", (-0.48195099837419186,-0.8169470595075177), NE * labelscalefactor);
+dot(F,dotstyle);
+label("$F$", (-0.9822143464417563,0.04850853264937002), NE * labelscalefactor);
+label("$60^\circ$", (-0.39190359572203026,0.5637797811589621), NE * labelscalefactor,red);
+label("$60^\circ$", (0.2884545576498574,0.5187560798328813), NE * labelscalefactor,red);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Since this is a regular hexagon, rotating the diagram by $120^\circ$
+anti-clockwise about the origin will send $C \rightarrow A$ and
+$A \rightarrow E$. Similarly rotating the diagram by $120^\circ$
+clockwise about the origin will send $E \rightarrow A$ and
+$C \rightarrow E$. Since the length of a segment is unchanged
+under rotation this allows us to conclude that $AC = CE = AE$.
+\vspace{0.2cm}
+
+Now since $\triangle ACE$ is equilateral, we have
+$\angle CAE = 60^\circ$. Then note that $AE \parallel BD$, because they map
+to each other under a reflection in the line $x=0$. Thus by alternate angles
+we deduce that $\angle AHB = 60^\circ$ where $H = AC \cap BD$.
+Now since the hexagon $ABCDEF$ has side length 1, we deduce that
+$$
+AH = \frac{1}{\sin 60^\circ} = \frac{2}{\sqrt3}.
+$$
+Now where $X = AC \cap BF$, we note that $X$ lies on the midpoint of
+$AH$, because $BF$ is just the reflection of $AC$ over $x=0$ and so the only
+point at which they intersect would be at $x=0$. Thus
+$$
+HX = \frac12 \frac{2}{\sqrt3} = \frac{1}{\sqrt3}
+$$
+and so the desired ratio is $1 : \frac{1}{\sqrt3} = \sqrt3 : 1$. $\square$
+\\
+
+\newpage
+(b) Here's a diagram.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(170);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.160089228990391, xmax = 1.7239076975923278, ymin = -1.1511653384781935, ymax = 1.51385409114626;  /* image dimensions */
+
+pair B = (0.,1.), C = (0.9510565162951536,0.30901699437494723), D = (0.587785252292473,-0.8090169943749476), A = (-0.9510565162951535,0.30901699437494745), G = (-0.22451398828979274,0.30901699437494734), H = (0.2245139882897927,0.30901699437494723);
+
+filldraw(arc(B,0.19883076574159989,-144.,-108.)--(0.,1.)--cycle, red + opacity(0.10000000149011612),  red);
+filldraw(arc(B,0.19883076574159989,-108.,-72.)--(0.,1.)--cycle, red + opacity(0.10000000149011612),  red);
+/* draw figures */
+draw(A--B);
+draw(B--C);
+draw(C--D);
+draw(D--(-0.5877852522924732,-0.8090169943749473));
+draw((-0.5877852522924732,-0.8090169943749473)--A);
+draw(A--C);
+draw(B--D);
+draw(C--(-0.5877852522924732,-0.8090169943749473));
+draw(D--A);
+draw((-0.5877852522924732,-0.8090169943749473)--B);
+/* dots and labels */
+dot(B,dotstyle);
+dot(A,dotstyle);
+dot((-0.5877852522924732,-0.8090169943749473),dotstyle);
+dot(D,dotstyle);
+dot(C,dotstyle);
+dot(B,dotstyle);
+label("$B$", (0.01485941919762576,1.0349572700986107), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (0.9656319899256397,0.3444722472505079), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (0.600506401927429,-0.7725951457341191), NE * labelscalefactor);
+dot((-0.5877852522924732,-0.8090169943749473),dotstyle);
+label("$E$", (-0.574402668363843,-0.7725951457341191), NE * labelscalefactor);
+dot(A,dotstyle);
+label("$A$", (-0.9359131515303882,0.3444722472505079), NE * labelscalefactor);
+label("$36^\circ$", (-0.20927708036563228,0.7602093028920358), NE * labelscalefactor,red);
+label("$36^\circ$", (-0.042982258109021475,0.7095978352487193), NE * labelscalefactor,red);
+dot(G, dotstyle);
+label("$G$", (-0.20927708036563228,0.33724203758717697), NE * labelscalefactor);
+dot(H, dotstyle);
+label("$H$", (0.2389959187608838,0.33724203758717697), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Firstly because $\angle EAB = 108^\circ$ and $AB = AE$, $\triangle ABE$ is
+isoceles and so $\angle ABE = 36^\circ$. By a similar arguement
+$\angle DBC = 36^\circ$ which forces $\angle GBH = 36^\circ$ since a
+regular pentagon have interior angles of $108^\circ$. \vspace{0.2cm}
+
+Now if we let the regular pentagon have side length $1$, we can use sine
+rule to find that
+$$
+GB = \frac{\sin 36^\circ}{\sin 108^\circ} =
+\frac{\sin 36^\circ}{\sin (180-108)^\circ} =
+\frac{\sin 36^\circ}{\sin 72^\circ} =
+\frac{\sin 36^\circ}{\cos 36^\circ} = \tan 36^\circ .
+$$
+Then again by sine rule
+$$
+GH = \frac{\sin 36^\circ}{\sin 72^\circ} GB =
+\frac{\sin 36^\circ}{\cos 36^\circ} GB = \tan^2 36^\circ.
+$$
+So the desired ratio is $1 : \tan^2 36^\circ$. \vspace{0.2cm}
+
+Now we attempt to evaluate $\tan^2 36^\circ$. We can use De Moivre's
+theorem as follows. Let $\theta = \pi/5$.
+\[
+\begin{aligned}
+\sin 5\theta &= \text{Im } (e^{i\theta})^5\\
+&= \text{Im } \sum_{r=0}^5 (i\sin \theta)^r \cos^{5-r} \theta \\
+&= x(16x^4 - 20x^2 + 5) \\
+\end{aligned}
+\]
+where $x = \sin \theta$. The roots of this polynomial correspond to
+$$
+x = \sin \frac{k \pi}{5}, \quad (k = 0, 1, 2, 3, 4).
+$$
+Clearly $k=0$ corresponds to the lone factor of $x$ so let's ignore it.
+If we solve that quartic in terms of $x^2$ we get
+$$
+x^2 = \frac{5 \pm \sqrt{5}}{8}.
+$$
+Since $\sin \theta$ is positive on the interval $(0, \pi)$, the 4 roots must
+be
+$$
+\sqrt{\frac{5-\sqrt{5}}{8}}, \ \sqrt{\frac{5-\sqrt{5}}{8}}, \
+\sqrt{\frac{5+\sqrt{5}}{8}}, \ \sqrt{\frac{5+\sqrt{5}}{8}}.
+$$
+Now if you look at the graph of $\sin x$ you can see that $\sin \pi/5$ and
+$\sin 4\pi/5$
+should be amongst the smallest of these values so
+$$
+\sin \frac{\pi}{5} = \sqrt{\frac{5-\sqrt5}{8}}.
+$$
+Now since both $\sin \pi/5$ and $\cos \pi/5$ are positive we can compute
+$$
+\cos\frac{\pi}{5} = \sqrt{1 - \left(\sqrt{\frac{5-\sqrt5}{8}}\right)^2} =
+\sqrt{\frac{3+\sqrt{5}}{8}}.
+$$
+Now recalling that $\tan^2 \theta = \sec^2 \theta -1$ we have
+$$
+\tan^2 \frac{\pi}{5} = \frac{8}{3+\sqrt5} - 1 = 5 - 2\sqrt5
+$$
+and thus the desired ratio turns out to be $1 : (5-2\sqrt5)$. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+(a) Show that
+$$
+\binom{n}{r} = \binom{n}{n-r}.
+$$
+
+(b) Show that
+$$
+\binom{n}{0}^2 + \binom{n}{1}^2 + \cdots + \binom{n}{n}^2 = \binom{2n}{n}.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+(a) We note that
+$$
+\binom{n}{n-r} = \frac{n!}{(n-r)!(n - (n-r))!} = \frac{n!}{(n-r)!r!} =
+\binom{n}{r}. \ \square
+$$
+
+(b) This result is a direct application of Vandermonde's identity.
+\vspace{0.2cm}
+
+\textit{Theorem. Vandermonde's Identity.} Let $q \leq \min\{m, n\}$ be
+positive integers. Then
+$$
+\sum_{r=0}^{q} \binom{m}{r} \binom{n}{q-r} = \binom{m+n}{q}.
+$$
+
+\textit{Proof:} Consider
+\[
+\begin{aligned}
+(1+x)^m (1+x)^n &= (1+x)^{m+n} \\
+\left[ \sum_{r=0}^m \binom{m}{r} x^r \right]
+\left[ \sum_{k=0}^n \binom{n}{k} x^k \right] &=
+\sum_{t=0}^{m+n}\binom{m+n}{t} x^t\\
+\end{aligned}
+\]
+Now compare the coefficients of $x^q$,
+$$
+\sum_{r=0}^q \binom{m}{r} \binom{n}{q-r} = \binom{m + n}{q}. \ \square
+$$
+
+If we apply this theorem with $(q,m,n) = (n, n, n)$ we get
+$$
+\sum_{r=0}^n \binom{n}{r}\binom{n}{n-r} = \binom{2n}{n}.
+$$
+Now using the result from part (a) we can re-write this as
+$$
+\sum_{r=0}^n \binom{n}{r}^2 = \binom{2n}{n}. \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+2021 has the property that it is formed by concatenating two consecutive
+numbers (20 and 21), and it is also the product of two numbers that differ
+by 4 ($43 \times 47$).
+\vspace{0.2cm}
+
+Find all other 4 digit numbers with these properties.
+\end{problem}
+
+\begin{solution}{Solution}
+I assume that when we say concatenating two consecutive numbers we write
+$\overline{x(x+1)}$. If writing $\overline{(x+1)x}$ is allowed the strategy
+detailed below doesn't seem to work. \vspace{0.2cm}
+
+Call a number \textit{special} if it satisfies these properties.
+Indeed the number that is formed by concatenating two consecutive numbers
+$\overline{x(x+1)}$ can be expressed as $100x + (x+1) = 101x + 1$.
+The problem reduces to finding solutions to
+$$
+101x + 1 = k(k+4)
+$$
+for $k,x \in \mathbb{N}$.
+We can complete the square to find that
+$$
+(k+2)^2 - 5 = 101x.
+$$
+Subtract $20\cdot 101$ from both sides, (see below for the motivation)
+$$
+(k+2)^2 - 5 - 20\cdot 101 = (k+2)^2 - 2025 = 101(x-20)
+$$
+Noting that $2025 = 45^2$ we complete the square,
+$$
+(k-43)(k+47) = 101(x-20)
+$$
+Since $k(k+4)$ must be a 4 digit number we require $k \leq 99$.
+Now we note that $101$ must divide one of $(k+47)(k-43)$.
+
+\begin{itemize}
+\item If $101 \mid (k+47)$ then using $1 \leq k \leq 99$ it's easy to show that only
+$k + 47 = 101 \implies k = 54$.
+\item If $101 \mid (k-43)$ then using $1\leq k \leq 99$ it's easy to show that only
+$k-43 = 0 \implies k = 43$.
+\end{itemize}
+
+From here it can be checked that $(k,x) = (54, 31), (43, 20)$ are the
+only solutions. So the only 4 digit special numbers are $3132, \ 2021$
+(assuming the $\overline{x(x+1)}$ convention.) $\blacksquare$
+\vspace{1.0cm}
+
+\textit{Motivation:} Once I reached the equation $(k+2)^2 - 5 = 101x$, I
+spent a long time trying to find solutions to
+$(k+2)^2 \equiv 5 \ (\text{mod } 101)$, but I wasn't able to find anything
+here. Then after thinking a while about how I can use the fact that $101$
+is prime, I thought if I can factor the LHS I might be able to force
+unique values of $k$ since the range for $1 \leq k \leq 99$ is fairly
+small. I looked for $a\in \mathbb{N}$ such that $5 + 101a$ is square
+so that I could factor the LHS with difference of two squares as desired.
+I wrote a quick python script and found the first two solutions $a=20,31$.
+\vspace{0.2cm}
+
+Re-reading over this I realise that finding $a$ such that $101a + 5$ is
+square is essentially the same as my original problem of finding
+solutions to $(k+2)^2 \equiv 5 \ (\text{mod } 101)$. Right now I can't see
+any better method other than trial and error to solve this congruence, or
+guessing to solve here.
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 7}
+Suppose that $p_1, p_2, \ldots, p_n$ are all primes.\vspace{0.2cm}
+
+(a) Consider the quantity $p_1 p_2 \cdots p_n + 1$. Could this be
+divisible by any of the $p_i$ ? \vspace{0.2cm}
+
+(b) Using this result prove that there are infinitely many primes.
+\vspace{0.2cm}
+
+(c) By considering the quantity $4p_1 p_2 \cdots p_n - 1$, show that there
+are infinitely many primes of the form $4k+3$.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Notice that $p_1 p_2 \cdots p_n + 1 \equiv 1 \ (\text{mod } p_i)$.
+Using the Euclidean algorithm,
+$$
+\gcd(p_1 p_2 \cdots p_n + 1, p_i) =
+\gcd(1, p_i) = 1.
+$$
+So $p_i$ never divides $p_1 p_2 \cdots p_n + 1$. $\square$
+\\
+
+(b) If there are finitely many primes $p_1, p_2, \ldots, p_n$ and
+$P = p_1 p_2 \cdots p_n + 1$ is coprime to all of the primes $p_i$, then
+due to the fundamental theorem of arithmetic $P$ must have some prime
+factors, in particular it's prime factors aren't among
+$p_1, \ldots, p_n$. But this contradicts the assumption that
+$p_1,\ldots, p_n$ are all the primes. $\square$ \\
+
+(c) Suppose there are finitely many primes congruent to
+$3 \ (\text{mod } 4)$, say $q_1, q_2, \ldots q_n$. Consider the quantity,
+$$
+P = 4q_1 q_2 \cdots q_n - 1.
+$$
+Note that for every $q_i$ we have $P \equiv -1 \ (\text{mod } q_i)$, and
+so by the Euclidean algorithm,
+$$
+\gcd(4q_1 q_2 \cdots q_n - 1, q_i) = \gcd(-1, q_i) = 1.
+$$
+So for every $q_i$, we have $q_i \nmid P$. By the fundamental theorem of
+arithmetic $P$ factors into a set of primes. Since $P$ is odd, all of these
+primes are congruent to $\pm 1 \ (\text{mod } 4)$. However since $P$ itself
+is congruent to $-1 \ (\text{mod } 4)$, $P$ must have
+$2k+1, (k \in \mathbb{Z}_{\geq0})$
+pairwise distinct prime factors that are congruent to
+$-1 \ (\text{mod } 4)$. Moreover since $q_i \nmid P$, this means that there
+exists at least one new prime $q_{n+1} \equiv -1 \ (\text{mod } 4)$ which
+is not a part of the collection $q_1, \ldots, q_n$, a contradiction.
+$\square$\\
+
+\textit{Comments:} I first saw the problem in part (c) at the Winchester
+maths summer camp in Year 12. At that time I had just started discovering
+contest math, so when the teacher (Dominic Rowland) tried explaining this
+proof to me I was lost and couldn't understand a thing. Good to know that
+now I can actually understand and explain the proof. \\
+
+Here's a note explaining the Euclidean algorithm. Basically
+suppose we have $a,b \in \mathbb{Z}$ satisfying
+$a \equiv r \ (\text{mod } b)$. Then
+$$
+\gcd(a,b) = \gcd(r, b).
+$$
+This is because the gcd, $g$ must be a divisor of $b$. Since we also have
+$g \mid a$, we require
+$$
+\frac{a}{g} = \frac{kb + r}{g} = k\left(\frac{b}{g}\right) + \frac{r}{g}
+$$
+to be an integer, which happens iff $g \mid r$.
+\end{solution}
+
+\end{document}

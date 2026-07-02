@@ -1,0 +1,729 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 1}
+
+\begin{document}
+\maketitle
+
+\noindent
+These were my solutions to the Noether Mentoring Scheme Sheet 1.
+Problem statements are abridged, and
+\centerline{problem 1 is omitted because it isn't
+a math problem.}
+
+\begin{problem}{Problem 2}
+17:36 29/05/84 is a \textit{pandigital} time and date as it uses each of
+the digits 0-9 exactly once. \vspace{0.2cm}
+
+What is the first pandigital time and date of each century?
+\end{problem}
+
+\begin{solution}{Solution to problem 2}
+The day cannot be 30 or 31. Suppose the contrary, the tens digit of the
+hour is 0,1 or 2 and the tens digit of the month is 0 or 1. Thus the
+hour must use the number 2, so that the month can use 0 if the day is 31 and
+1 if the day is 30. So now the numbers 0,1,2 and 3 are all taken. In the
+hour the only numbers that can follow that 2 are 0,1,2 and 3, but since all
+of them are taken we will repeat a digit, contradiction.
+\vspace{0.2cm}
+
+Now we notice that these positions can only contain numbers from the set
+$\{0, 1, 2\}$ (the tens digit of the month can't be 2 though).
+
+\large
+$$
+\text{
+\underline{*} \underline{\phantom{a}} : \underline{\phantom{a}} \underline{\phantom{a}} \ \ \
+\underline{*} \underline{\phantom{a}} / \underline{*} \underline{\phantom{a}} / \underline{\phantom{a}} \underline{\phantom{a}}
+}
+$$
+
+\normalsize
+Also if we make the tens digit of the hour a 2 then it must be followed by
+a 3 since 0,1 and 2 are taken, but if we make the tens digit of the hour a
+1 then we can freely put whatever digit after it, allowing us to use
+the digit 3 in the tens digit of the year.
+This is optimal 3 is the smallest digit available to use.
+Finally if we make the tens digit of the hour a 0 then the month will be
+$\overline{1x} > \overline{0x}$ so this is unoptimal. Putting this
+information together we have
+
+\large
+$$
+\text{
+\underline{1} \underline{\phantom{a}} : \underline{\phantom{a}} \underline{\phantom{a}} \ \ \
+\underline{2} \underline{\phantom{a}} / \underline{0} \underline{\phantom{a}} / \underline{\phantom{a}} \underline{\phantom{a}}
+}
+$$
+\normalsize
+
+Now we proceed greedily, it is optimal to make the year 34. We can't make
+the month 05 because otherwise the tens digit of the minutes would cause
+a repitition (the numbers 0,1,2,3,4 and 5 would be taken), so it is best to
+make the month 06. As reasoned the tens digit of the minutes must be 5 since
+there are no other options. The time and date now look like so
+
+\large
+$$
+\text{
+\underline{1} \underline{\phantom{a}} : \underline{5} \underline{\phantom{a}} \ \ \
+\underline{2} \underline{\phantom{a}} / \underline{0} \underline{6} / \underline{3} \underline{4}
+}
+$$
+\normalsize
+
+Now there are no more restrictions on the digits we can just greedily fill
+in the blanks and the final answer comes out as
+
+\large
+$$
+\text{
+\underline{1} \underline{8} : \underline{5} \underline{9} \ \ \
+\underline{2} \underline{7} / \underline{0} \underline{6} / \underline{3} \underline{4}
+}
+$$
+\normalsize
+
+$\blacksquare$\\
+
+\textit{Comments: This problem looks deceptively easy. I fakesolved many
+times, I wonder if there is a more elegant approach here. }
+\end{solution}
+\vspace{0.5cm}
+\newpage
+
+\begin{problem}{Problem 3}
+Derive the quadratic formula for $ax^2 + bx + c$ given $b^2 \geq 4ac$.
+\end{problem}
+
+\begin{solution}{Solution to problem 3}
+Complete the square,
+
+\[
+\begin{aligned}
+a\left(x+\frac{b}{2a}\right)^2 &= \frac{b^2 - 4ac}{4a} \\
+\sqrt{a}\left(x+\frac{b}{2a}\right) &= \pm\frac{1}{2\sqrt{a}}\sqrt{b^2-4ac}
+\\
+x &= -\frac{b}{2a} \pm \frac{1}{2a}\sqrt{b^2 - 4ac}\\
+\end{aligned}
+\]
+
+as required. $\blacksquare$\\
+
+\textit{Comments: This is a pretty standard problem and I've seen the
+derivation before so it was solved quickly.}
+\end{solution}
+\vspace{0.5cm}
+\newpage
+
+\begin{problem}{Problem 4}
+A triangle has sides of length 13 cm, 14 cm and 15 cm.
+
+\begin{enumerate}[label=(\alph*)]
+\item Show that this triangle can be split into two right angled triangles with integer side lengths (when
+measured in centimetres).
+\item A rectangle is drawn inside the triangle, with its base on one of the sides of the triangle.
+What is the largest possible area of this rectangle?
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}{Solution to problem 4}
+\textbf{(a):} Let $\triangle ABC$ be a triangle such that $AB = 15$ cm,
+$CA = 14$ cm and $BC = 13$ cm. Let $F$ be the foot of the altitude that
+passes through $B$. Let $FC = a$ cm and $FA = b$ cm, and notice that
+$\triangle BFC$ and $\triangle BFA$ are both right angled triangles.
+Let $BF = x$ cm.
+
+
+\begin{center}
+\begin{asy}
+size(120);
+
+pair A = (0,0);
+pair C = (14,0);
+pair F = (9,0);
+pair B = (9,12);
+
+pen pastel_blue = rgb(0.68, 0.85, 0.90);
+pen pastel_pink = rgb(0.99, 0.71, 0.75);
+pen line_pen = black + linewidth(1);
+
+fill(A--F--B--cycle, pastel_blue + opacity(0.2));
+fill(F--C--B--cycle, pastel_blue + opacity(0.2));
+
+draw(A--B, blue);
+draw(B--C, blue);
+draw(C--A, blue);
+draw(B--F, blue);
+
+label("$A$", A, SW);
+label("$C$", C, SE);
+label("$B$", B, N);
+label("$F$", F, S);
+
+label("$15$", midpoint(A--B), NW);
+label("$13$", midpoint(B--C), NE);
+label("$b$", midpoint(A--F), S);
+label("$a$", midpoint(F--C), S);
+label("$x$", midpoint(B--F), E);
+\end{asy}
+\end{center}
+
+
+We have a system of equations.
+
+\[
+\begin{aligned}
+a^2 + x^2 &= 13^2\\
+b^2 + x^2 &= 15^2
+\end{aligned}
+\]
+
+and so $b^2 - a^2 = (b-a)(14) = 56$ since $b+a = 14$. So we deduce that
+$b-a = 4$, from which we can solve to see that $b = 9, a = 5$ and also
+$x = \sqrt{13^2 - 5^2} = 12$. Thus the triangles $\triangle BFC$ and
+$\triangle BFA$ are both right-angled and also have integer side lengths.
+$\blacksquare$ \\
+
+\textbf{(b):} We begin with a claim. \vspace{0.2cm}
+
+
+\textit{Claim 1: For any non-degenerate triangle $\triangle ABC$, let
+$R$ be a rectangle inscribed within $\triangle ABC$ such that one of it's
+bases lies on one of the sides of $\trinangle ABC$. Then
+$\text{Area}(R) \leq \frac12 \text{Area}(\triangle ABC)$.
+} \vspace{0.2cm}
+
+\textit{Proof:} Let the base of $R$ lie on some side $P$ of
+$\triangle ABC$ that has length $p$. Let the height of
+$\triangle ABC$ be $h$ (modelling $P$ to be the base of the triangle).
+Let $R$ have vertices $r_1, r_2, r_3$ and $r_4$, (starting from the top
+left and going clockwise). Let the height of $R$ be $(1-\lambda)h$ and let
+the length of $R$ be $\mu p$ for some $0< \mu, \lambda <1$.
+The following diagram can help us visualise,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(120);
+real labelscalefactor = 1.0; /* changes label-to-point distance */
+real xmin = -9.809343418249249, xmax = 4.164122123731424, ymin = -2.0835419068351797, ymax = 7.156476636053874;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen zzttqq = rgb(0.6,0.2,0.); pen ccqqqq = rgb(0.8,0.,0.);
+pair A = (-5.,0.), B = (3.,0.), C = (-3.,6.), r_1 = (-4.,3.), r_2 = (0.,3.), r_3 = (0.,0.), r_4 = (-4.,0.);
+pen pastel_blue = rgb(0.68, 0.85, 0.90);
+
+
+filldraw(A--B--C--cycle, pastel_blue + opacity(0.2) ,ttttff);
+filldraw(r_1--r_2--r_3--r_4--cycle, zzttqq + opacity(0.2), zzttqq + opacity(0));
+/* draw figures */
+draw(A--B, ttttff);
+draw(B--C, ttttff);
+draw(C--A,  ttttff);
+draw(r_1--r_2, dashed + ccqqqq);
+draw(r_2--r_3, dashed + ccqqqq);
+draw(r_3--r_4, zzttqq);
+draw(r_4--r_1, dashed + ccqqqq);
+draw(C--(-3.,3.), arrow=Arrows);
+draw((-2.,6.)--(-2.,0.), arrow=Arrows);
+/* dots and labels */
+label("$A$", (-4.931521129424998,0.10271248054481974), NE * labelscalefactor);
+label("$B$", (3.040057367955859,0.10271248054481974), NE * labelscalefactor);
+label("$C$", (-2.9618296766439585,6.1045995251446294), NE * labelscalefactor);
+label("$p$", (-1.0024507445581072,-0.85510053683489716), NE * labelscalefactor,ttttff);
+label("$r_1$", (-3.900269059906129,3.093343482149536), NE * labelscalefactor);
+label("$r_2$", (0.039113845655950406,3.083030961454347), NE * labelscalefactor);
+label("$r_3$", (0.039113845655950406,0.10271248054481974), NE * labelscalefactor);
+label("$r_4$", (-3.9621441840772613,0.10271248054481974), NE * labelscalefactor);
+label("$\mu p$", (-2.00276525199141,0.17490012541114047), NE * labelscalefactor,zzttqq);
+label("$\lambda h$", (-3.168080090547732,4.506158817390385), NE * labelscalefactor);
+label("$h$", (-2.1677655831144294,3.3005307958928378), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Using corresponding angles and the fact that $\angle ACB$ is common to
+both triangles we deduce that $\triangle ABC$ and
+$\triangle C r_1 r_2$ are similar, thus it is the case that
+$\lambda h / h = \mu p / p$. Thus it is the case that
+$\mu = \lambda$. The area of $R$ is $\mu p \cdot (1-\lambda)h =
+\mu (1-\mu) ph$. It is easy to check that the maxima of $f(x)=x(1-x)$
+is $\frac14$ and so we find that
+
+$$
+\text{Area}(R) \leq \frac14 ph =
+\frac12 \text{Area}(\triangle ABC).\ \square
+$$
+
+
+
+Now due to part (a) we know that $\text{Area}(\triangle ABC) =
+\frac12 (12)(14)=84$, and so by claim 1 the largest possible area of the
+rectangle is 42. $\blacksquare$
+\\
+
+\textit{Comments: I think this problem was my favourite just after problem
+8. The motivation for conjecturing
+$\text{Area}(R) \leq \frac12 \text{Area}(\triangle ABC)$, came from
+considering a rectangle with base on the side $AC$ using the triangle
+in part (a). One can form a quadratic for the area of the rectangle in
+terms of the height of the
+rectangle which attains a maxima of 42. Now that answer is
+fairly suspicious since $42 = \frac12 84 =
+\frac12 \text{Area}(\triangle ABC)$, so from here it is natural to
+guess that claim 1 might be true.
+}
+\end{solution}
+\vspace{0.5cm}
+\newpage
+
+\begin{problem}{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+\item Aadya cycles down a hill at $x$ m/s and up the same hill at $y$ m/s. Barry then estimates her average
+speed by calculating $\frac{x+y}{2}$ m/s.
+Show that Barry’s estimation is always greater than or equal to Aadya’s true average speed.
+\item One day, Aadya cycled down the hill at $x$ m/s and up the hill at 3 m/s. Both $x$ and the difference
+between Barry’s estimation of Aadya’s average speed and her true average speed are integers. What are the possible values of $x$?
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution to problem 5}
+\textbf{(a):} Suppose that the hill is $h$ metres long. For some real
+positive times $t_1,t_2$ we have
+$
+x = h/t_1,\ y = h/t_2.
+$
+
+The average speed of Aadya is
+$$
+\overline{s}:=\frac{2h}{t_1 + t_2} = \frac{2xy}{x+y}
+$$
+
+Now consider
+
+\[
+\begin{aligned}
+\frac{2xy}{x+y} &\leq \frac{x+y}{2} \\
+4xy &\leq (x+y)^2 \\
+2xy &\leq x^2 + y^2 \\
+\end{aligned}
+\]
+
+
+but this is true by AM-GM. $\blacksquare$
+\\
+
+\textbf{(b):} Similarly we write $x=h/t_1,\ 3=h/t_2$. The average speed of
+Aadya is
+$$
+\overline{s} := \frac{2h}{t_1+t_2} = \frac{6x}{x+3}
+$$
+
+Now we are told that
+
+$$
+\frac{x+3}{2} - \frac{6x}{x+3} = \frac{(x-3)^2}{2(x+3)} \in
+\mathbb{Z}_{\geq 0}
+$$
+
+since Barry's estimation is always greater than or equal to Aadya'a true
+speed. We are asking to find all $x \in
+\mathbb{Z}_{\geq 0}$ such that $2(x+3) \mid (x-3)^2$. If $x$ were even
+then the numerator isn't divisible by 2 whilst the denominator is divisible
+by 2, a contradiction. So $x$ must be odd. Observe that
+
+$$
+\frac{(x-3)^2}{2(x+3)} = \frac{x-9}{2} + \frac{36}{2x+6}.
+$$
+
+Since $x$ is odd the first term is an integer so we just require
+$2x+6$ to be a factor of 36. Thus $2x+6 \in
+\{ 1,2,3,4,6,9,12,18,36 \}$. Since $2x+6$ is even we can eliminate any odd
+candidates, and since $x\geq0$ we have $2x+6\geq 6$. Thus
+$2x+6 \in \{ 6,12,18,36\}$. So we solve to see that
+$x=0,3,6,15$. $\blacksquare$
+\end{solution}
+\vspace{0.5cm}
+\newpage
+
+\begin{problem}{Problem 6}
+Prove the Power of a point theorem.
+\end{problem}
+
+\begin{solution}{Solution to problem 6}
+\textbf{(a):} Consider constructing $\overline{DA}$ and $\overline{BC}$,
+
+\begin{center}
+\begin{asy}
+size(120);
+pair A = (-4,3);
+pair C = (4,3);
+pair B = (0,5);
+pair D = (0,-5);
+pair P = intersectionpoint(A--C, B--D);
+pen pastel_blue = rgb(0.68, 0.85, 0.90);
+pen pastel_pink = rgb(0.99, 0.71, 0.75);
+pen line_pen = black + linewidth(0.75);
+fill(circle((0,0),5), pastel_blue + opacity(0.2));
+fill(A--P--D--cycle, pastel_blue + opacity(0.2));
+fill(B--P--C--cycle, pastel_pink + opacity(0.2));
+draw(circle((0,0),5), blue);
+draw(A--C, red);
+draw(B--D, red);
+draw(A--D, dashed + red);
+draw(B--C, dashed + red);
+label("$A$", A, W);
+label("$C$", C, E);
+label("$B$", B, N);
+label("$D$", D, S);
+label("$P$", P, E);
+\end{asy}
+\end{center}
+
+
+Due to the Inscribed angle theorem $\angle ADP = \angle BCP$, and since
+opposite angles are equal $\angle APD = \angle BPC$. Since there are two
+equal angles and angles in a triangle add to $180^{\circ}$ we also have
+$\angle DAP= \angle PBC$. Now since there are three equal angles the
+triangles $\triangle DAP$ and $\triangle PBC$ are similar. \vspace{0.2cm}
+
+Thus $AP/DP = BP/CP$ which
+re-arranges to $AP\cdot CP = BP \cdot DP$ .
+\\
+
+\textbf{(b):} Consider constructing the triangles $\triangle ABP$ and
+$\triangle DCP$.
+
+\begin{center}
+\begin{asy}
+import graph;
+size(120);
+
+real labelscalefactor = 1.0;
+
+// Image dimensions
+real xmin = -13.91341807885702, xmax = 15.180591129029986, ymin = -7.699509283857027, ymax = 7.771251695529754;
+
+/* --- Define Points (Pairs) --- */
+// These coordinates are taken from your draw/label commands
+pair A = (-3.489002731044119,-1.9562361674313966);
+pair D = (0.5974092528636418,3.9551361777558185);
+pair P = (7.,-4.);
+pair B = (3.9914183964301753,-0.26187627735013763);
+pair C = (2.499312903336305,-3.123048992765987);
+
+/* --- Define Colors & Pens --- */
+pen pastel_blue = rgb(0.68, 0.85, 0.90);
+pen pastel_pink = rgb(0.99, 0.71, 0.75); // <-- New color for polygon fill
+
+/* --- Draw Figures with Colors --- */
+// Circle
+path circ = circle((0.,0.), 4.);
+fill(circ, pastel_blue + opacity(0.2)); // Fill the circle
+
+// *** FILL POLYGONS HERE ***
+// Define the polygons as paths
+path poly_ABP = A--B--P--cycle;
+path poly_DCP = D--C--P--cycle;
+
+// Fill the polygons (with your chosen color and opacity)
+fill(poly_ABP, blue + opacity(0.1));
+fill(poly_DCP, pastel_pink + opacity(0.2));
+
+/* --- Draw Lines and Circle Border --- */
+// (Drawn *after* filling so they are on top)
+draw(circ, blue); // Circle border
+
+// Solid lines
+draw(A--P, red);
+draw(D--P, red);
+
+// Dashed lines
+draw(A--B, dashed + red);
+draw(D--C, dashed + red);
+
+/* --- Dots and Labels --- */
+// Using the pair variables makes this cleaner
+label("$A$", A, NE * labelscalefactor);
+label("$D$", D, NE * labelscalefactor);
+label("$P$", P, NE * labelscalefactor);
+label("$C$", C, NE * labelscalefactor);
+label("$B$", B, NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+\end{asy}
+\end{center}
+
+Again due to the Inscribed angle theorem $\angle PAB = \angle CDP$.
+Since $BP$ and $CP$ are common to both triangles
+we deduce that $\angle APB = \angle DPC$. Since there are two equal angles
+and angles in a triangle add up to $180^\circ$ we also have
+$\angle ABP = \angle PCD$. Now since there are three equal angles the
+triangles $\triangle ABP$ and $\triangle DCP$ are similar. \vspace{0.2cm}
+
+Thus $AP/BP = DP/CP$ which
+re-arranges to $AP\cdot CP = BP \cdot
+DP$.\\
+
+\textbf{(c):} Consider constructing the triangles $\triangle ABP$ and
+$\triangle BCP$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(120);
+real labelscalefactor = 1.0; /* changes label-to-point distance */
+real xmin = -9.469163778645866, xmax = 9.583363840658867, ymin = -7.075242178993681, ymax = 5.837817387494271;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen ccqqqq = rgb(0.8,0.,0.); pen yqqqqq = rgb(0.5019607843137255,0.,0.); pen zzttqq = rgb(0.6,0.2,0.); pen ttffcc = rgb(0.2,1.,0.8);
+pair B = (0.,-5.), P = (8.,-5.), A = (3.3184235880875335,3.74006215055636), C = (4.95215586502357,0.6900378891862754);
+pen pastel_blue = rgb(0.68, 0.85, 0.90);
+
+filldraw(circle((0.,0.), 5.), pastel_blue + opacity(0.2), ttttff);
+filldraw(arc(B,0.8958126070288543,359.42543793229623,408.44701114793276)--(0.,-5.)--cycle, yqqqqq + opacity(0.10000000149011612), linetype("4 4") + yqqqqq);
+filldraw(arc(A,0.8958126070288543,-110.7907497333701,-62.3437385854374)--(3.3184235880875335,3.74006215055636)--cycle, yqqqqq + opacity(0.10000000149011612), linetype("4 4") + ccqqqq);
+
+filldraw(B--P--C--cycle, zzttqq + opacity(0.10000000149011612), zzttqq +
+opacity(0.10000000149011612));
+filldraw(A--B--P--cycle, ttffcc + opacity(0.10000000149011612), ttffcc +
+opacity(0.10000000149011612));
+/* draw figures */
+draw(B--P, ccqqqq);
+draw(A--P, ccqqqq);
+draw(B--C, dashed + ccqqqq);
+draw(A--B, dashed + ccqqqq);
+/* dots and labels */
+label("$B$", (0.08723215613926336,-4.847961214935062), NE * labelscalefactor);
+label("$P$", (8.070211666712167,-4.808924640311234), NE * labelscalefactor);
+label("$A$", (3.4053409991646757,3.9352680754263316), NE * labelscalefactor);
+label("$C$", (5.025358846053554,0.8513786801438865), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+
+Now clearly $\angle BPC = \angle APB$ because $BP$ and
+${CP}$ are common to both triangles. Then also
+$\angle PBC = \angle BAP$ due to the Alternate segment theorem.
+Since there are two equal angles
+and angles in a triangle add up to $180^\circ$ we also have
+$\angle ABP = \angle BCP$. Since we have three equal angles
+triangles $\triangle ABP$ and $\triangle BCP$ are similar.
+\vspace{0.2cm}
+
+Thus ${AP}/{BP} = {BP}/{CP}$ which
+re-arranges to ${AP}\cdot {CP} = {BP}^2$.
+$\blacksquare$
+\end{solution}
+\vspace{0.5cm}
+\newpage
+
+\begin{problem}{Problem 7}
+Consider the thirteen factorials $0!, 1!, 2!, \ldots , 12!$. We want to divide these up into three sets of size 4
+and one set of size 1. Moreover, we would like the product of the elements in each of the sets of size 4
+to be a square number.
+\vspace{0.2cm}
+
+In how many ways can this be achieved?
+\end{problem}
+
+\begin{solution}{Solution to problem 7}
+The following table will be of use to us, even numbers are in red whilst
+odd numbers are in blue.
+
+
+\[
+\begin{tblr}{
+  colspec={c|*{13}{c}},
+  hlines,
+  vlines,
+}
+n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+v_2(n!)  & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{3} & \textcolor{blue}{3} & \textcolor{red}{4} & \textcolor{red}{4} & \textcolor{blue}{7} & \textcolor{blue}{7} & \textcolor{red}{8} & \textcolor{red}{8} & \textcolor{red}{10} \\
+v_3(n!)  & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{red}{2} & \textcolor{red}{2} & \textcolor{red}{2} & \textcolor{red}{4} & \textcolor{red}{4} & \textcolor{red}{4} & \textcolor{blue}{5} \\
+v_5(n!)  & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{red}{2} & \textcolor{red}{2} & \textcolor{red}{2} \\
+v_7(n!)  & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} & \textcolor{blue}{1} \\
+v_{11}(n!) & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{red}{0} & \textcolor{blue}{1} & \textcolor{blue}{1} \\
+\end{tblr}
+\]
+
+We define the \textit{score} of a set, to be the product of the elements in
+that set. \vspace{.4cm}
+
+\textit{Claim 1: The number in the set of size 1 must be $6!$.}
+\vspace{.2cm}
+
+\textit{Proof:}
+Suppose the three sets of size 4 have scores $A^2, B^2$ and $C^2$. Then
+suppose the number we place in the set of size 1 is $k!$. We observe that
+$A^2 B^2 C^2 k! = 0! \cdot 1! \cdot 2! \cdots 12!$.
+Let $N = (0! \cdot 1! \cdot 2! \cdots 12!)/k! = (ABC)^2$. Since
+$v_5(0! \cdot 1! \cdot 2! \cdots 12!) = 11$, $k!$ must have an odd 5-adic
+valuation which means $k \in \{ 5,6,7,8,9 \}$, \vspace{0.2cm}
+
+If $k = 7,8,9$ then $v_7(N) = 5$ so $N$ isn't square.
+If $k = 6$ then $N$ is in fact a square.
+If $k = 5$ then $v_3(N) = 25$ so $N$ isn't square.
+Thus $k = 6$. $\square$ \vspace{0.4cm}
+
+\textit{Claim 2: Let $p$ be some prime. There must be an even number of
+factorials that have an odd $p$-adic valuation
+in each set of size 4, similarly there must be an even number of factorials
+that have an even $p$-adic valuation in each set of size 4.}
+\vspace{0.2cm}
+
+\textit{Proof:} Suppose there are $x$ factorials that have an even $p$-adic
+valuation and $y$ factorials that have an odd
+$p$-adic valuation in one set of size 4. Let $S$ be the score of that set.
+Then $v_p (S) \equiv y \equiv 0 \ \text{(mod } 2)$ since
+perfect squares only have even $p$-adic valuations. The claim follows from
+the fact that y is even. $\square$
+\vspace{0.4cm}
+
+\textit{Claim 3: $11!$ and $12!$ must be in the same set. }
+\vspace{0.2cm}
+
+\textit{Proof:} Since $11!$ and $12!$ are the only numbers with factors of
+11, and they both have exactly one factor of 11, they must be in the same
+set otherwise one of the sets would have a score with an
+odd 11-adic valuation, but since the scores are all perfect squares this
+is a contradiction. $\square$
+\vspace{0.4cm}
+
+\textit{Claim 4: The set that contains $11!$ and $12!$ is either
+$\{2!, 3!, 11!, 12! \}$ or $\{2!, 4!, 11!, 12!\}$.}
+\vspace{0.2cm}
+
+\textit{Proof:}
+Now in the set that contains $11!, 12!$ the two other numbers $x!$ and
+$y!$ must satisfy $v_3(x!\cdot y!) \equiv 1 \ \text{(mod }2)$ because
+$v_3(11!\cdot 12!) = 9$ is odd and $x!\cdot y!\cdot 11!\cdot 12!$ is a
+perfect square. Call a number 3-\textit{blue} if it has an odd 3-adic
+valuation and is not one of $11!, 12!$. Call a number 3-\textit{red} if it
+has an even 3-adic valuation and is not one of $11!, 12!$.\vspace{0.2cm}
+
+Out of $x!$ and $y!$ exactly one of them must be 3-blue because otherwise
+$x!\cdot y!$ would have an even 3-adic valuation. The only 3-blue numbers
+are $3!,4!$ and $5!$ and they all have an odd 2-adic valuation. Suppose
+WLOG that $x!$ is 3-blue. Then $y!$ must have an odd 2-adic valuation
+also because $v_2(11!\cdot 12!\cdot x!)$ is odd and
+$x!\cdot y!\cdot 11!\cdot 12!$ is a perfect square. We can use our table
+and the information deduced thus far to see that $y! \in \{ 2!, 8!, 9! \}$.
+However $y! \neq 8!, 9!$ because then $v_5(x!\cdot y!\cdot 11!\cdot 12!)=3$
+which is odd, but this is a contradiction. Thus $y!=2!$. Now it can be
+checked that the set that contains $11!, 12!$ must be either
+$\{2!, 3!, 11!, 12 \}$ or $\{2!, 4!, 11!, 12!\}$. $\square$
+\vspace{0.4cm}
+
+Now suppose that we have placed $6!$ in the set of size 1, and we have
+selected the numbers that will be in the set that contains $11!$ and
+$12!$ using claim 4. The only remaining numbers that have factors of 7
+are $7!, 8!, 9!$ and $10!$. Let's call these numbers \textit{elegant}.
+Notice that elegant numbers all have exactly one factor of 7.
+Now due to claim 2 each set must contain an even number of elegant numbers.
+It is important to note that we can't have all four elegant numbers in one
+set since $v_3(7!\cdot 8!\cdot 9!\cdot 10!) = 5$ is odd and so the product
+of the four elegant numbers isn't a perfect square.
+\vspace{0.2cm}
+
+One of the sets will look like this $\{ 10!, x!, \_, \_ \}$ where $x!$ is
+an elegant number other than $10!$. Since $v_5(10!\cdot x!) = 3$, $5!$ must
+be in this set because it is the only remaining number with a factor of 5.
+Thus that set looks like $\{ 10!, x!, 5!, \_ \}$. However now using the
+table it can be checked that $v_3(10!\cdot x!\cdot 5!)$ is odd and so the
+final number represented by \_ must have an odd 3-adic valuation. That
+means it must be $3!$ or $4!$, whichever one wasn't used in the set
+that contains $11!$ and $12!$. \vspace{0.2cm}
+
+That means the third and final set must look like $\{ 0!, 1!, y!, z!\}$
+where $y!$ and $z!$ are the two remaining unused elegant numbers.
+One can use the table to check that only $(y!, z!) = (8!, 9!)$ works.
+This means that $x! = 7!$.
+\vspace{0.2cm}
+
+
+Now putting all of this together our sets look like so, let $a!, b!$ be
+$3!, 4!$ in some order,
+$\{6!\}$, $\{0!,1!,8!,9!\}$, $\{2!, a!, 11!, 12!\}$ and
+$\{b!, 5!, 7!, 10!\}$. Now it can be checked that, no matter the
+order of $a!, b!$, each set has a score that is a perfect square. There
+are 2 ways to choose $(a!, b!)$ so the final answer is 2. $\blacksquare$
+\\
+
+\textit{Comments: This problem is arguably the hardest on the sheet,
+the solution I found involves some facts from number theory and a lot of
+patience to work through all of the cases.}
+\end{solution}
+\vspace{0.5cm}
+
+\newpage
+\begin{problem}{Problem 8}
+Find all sets of three consecutive positive integers such that each is either a prime or a power of a prime.
+(We do not regard 1 as a power of a prime in this question.)
+\end{problem}
+
+\begin{solution}{Solution to problem 8}
+Call a set $\textit{good}$ if it contains three consecutive positive
+integers such that they are all prime or powers of a prime.
+Let $n \in \mathbb{N}$ such that $n, n+1$ and $n+2$ are all primes or powers
+of a prime. \vspace{0.2cm}
+
+If $n$ is even then $n=2$ since 2 is the only even prime.
+Also since $n+1 = 3$ and $n+2 = 2^2$ the set $\{2, 3, 4\}$ is a good set.
+\vspace{0.2cm}
+
+If $n$ is odd then $n+1$ is even which means it must be of the form $2^k$
+for $k \in \mathbb{N}$. Similarly $n = 2^k-1$ must be of the form $p^a$
+and $n+2=2^k+1$ must be of the form $q^b$ for odd primes $p,q$ and
+$a,b \in \mathbb{N}$. Now we notice that
+$n = 2^k - 1 \equiv (-1)^k - 1 \ \text{(mod } 3)$ and
+$n + 2 = 2^k + 1 \equiv (-1)^k + 1 \ \text{(mod } 3)$. Thus
+if $k$ is even then $3 \mid n$, and if $k$ is odd then $3 \mid (n+2)$.
+\vspace{0.2cm}
+
+Suppose that $k$ is even, then we have $n = 3^a$ and $n+1 = 2^k$. We deduce that
+$2^k - 3^a = 1$ or equivalently $(2^{k/2}-1)(2^{k/2}+1)=3^a = n$. Now we
+have two
+powers of 3 that are 2 apart, this only happens for $(3^0, 3^1)$ because
+powers of 3 grow too quickly past this point. So we have $2^{k/2}-1=1$ and
+$2^{k/2}+1=3$ which gives $a=1, k=2$ and so $n=3$. Also since $n+1=2^2$ and
+$n+2=5$ the set will be good. So the only good set in this
+case is $\{3, 4, 5 \}$.
+\vspace{0.2cm}
+
+Suppose that $k$ is odd, then $n+2=3^b$ and $n+1 = 2^k$. This time we have
+$3^b - 2^k = 1$. We use LTE to finish. We need that $v_2(3^b-1^b) = k$,
+there are two cases. If $b$ is odd then $v_2(3^b-1^b) = v_2(3-1) = 1 = k$.
+We find that $k=1, b=1$ but that implies that $n = 1$ which is not a power
+of a prime in the context of this question. \vspace{0.2cm}
+
+Thus $b$ must be even and we
+have $v_2(3^b-1^b)= v_2(3-1) + v_2(3+1) + v_2(b) - 1 = k$ which re-writes
+as $v_2(b) = k-2$. So we find that $2^{k-2} \mid b$ and so $b \geq 2^{k-2}$.
+Clearly this inequality will be very restrictive since
+
+$$
+1 = 3^b - 2^k \geq 3^{2^{k-2}} - 2^k
+$$
+
+will only hold for $k \leq 3$ since that RHS grows too quickly. We have
+already eliminated the case $k=1$ and it can be checked that $k=3, b=2$
+is a valid solution here. Thus $n = 7$, and since $n+1=2^3$ and $n+2 = 3^2$
+the set $\{7,8,9 \}$ is the only good set here. \vspace{0.2cm}
+
+Putting all of that together the only good sets are $\{2,3,4 \}$,
+$\{ 3,4,5 \}$ and $\{7,8,9 \}$. $\blacksquare$
+\\
+
+\textit{Comments: This one was fun! The case when $k$ is odd is probably
+the most challenging part of the problem, I personally can never remember
+all of the edge cases of LTE so I had to look it up. Of course my arguements
+that say something like "...grows too quickly" are not at all rigorous but
+I omit
+a formal justification because it'd make the solution really long, but I
+don't mind adding justification if you want!}
+\end{solution}
+
+\end{document}

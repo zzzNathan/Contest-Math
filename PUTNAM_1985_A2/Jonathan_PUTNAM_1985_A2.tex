@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Putnam 1985 --- A2}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Putnam 1985 --- A2}
+Let $T$ be an acute triangle. Inscribe a rectangle $R$ in $T$ with one
+side along a side of $T$. Then inscribe a rectangle $S$ in the triangle
+formed by the side of $R$ opposite the side on the boundary of $T$,
+and the other two sides of $T$, with one side along the side of
+$R$.
+\vspace{0.2cm}
+
+For any polygon $X$, let $A(X)$ denote the area of $X$. Find the
+maximum value, or show that no maximum exists, of
+$$
+\frac{A(R)+A(S)}{A(T)},
+$$
+where $T$ ranges over all triangles and $R,S$ over all rectangles as above.
+\end{problem}
+
+\begin{solution}{Solution}
+The answer is $\frac23$. We begin with this well-known fact.\\
+
+\textit{Claim 1:} Let $T_0$ be an acute, non-degenerate triangle. Inscribe a
+rectangle $R_0$ with one of it's sides lying on a side of $T_0$. Then
+$A(R_0) \leq \frac12 A(T_0)$. \vspace{0.2cm}
+
+\textit{Proof:} Orient the diagram such that the side of $T_0$ that $R_0$
+lies on is the base. Say the base of $T_0$ has length $b$, and $T_0$ has
+height $h$. There is a triangle $T_0'$ formed by the region bounded by
+the two sides that $R_0$ doesn't lie on and the line passing through the
+side of $R_0$ opposite to the one that lies on the base of $T_0$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(160);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.256210334345086, xmax = 11.225065386849124, ymin = 0.2020164080228714, ymax = 10.736029712276126;  /* image dimensions */
+
+pair A = (1.,1.), B = (10.,1.), C = (8.,9.), F = (9.,5.), G = (4.5,5.), D = (4.5,1.);
+/* draw figures */
+draw(A--B);
+draw(C--B);
+draw(A--C);
+draw(G--F);
+draw(F--(9.,1.));
+draw(D--G);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (1.048601315069408,1.1266543009016423), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (10.047857652705797,1.1266543009016423), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (8.052259849020892,9.121756329677504), NE * labelscalefactor);
+dot((9.,1.),dotstyle);
+label("$E$", (9.05641415788145,1.1266543009016423), NE * labelscalefactor);
+dot(F, dotstyle);
+label("$F$", (9.05641415788145,5.105139094235259), NE * labelscalefactor);
+dot(G, dotstyle);
+label("$G$", (4.556785989063255,5.105139094235259), NW * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (4.556785989063255,1.1012326728292232), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+For example here $T_0' = \triangle CGF$. Note that
+$\angle CAB = \angle CGF$ and $\angle CBA = \angle CFG$ so
+$T_0' \sim T_0$ by the AAA criterion. So let the base of $T_0'$ be
+$\lambda b$ and the height be $\lambda h$ for $(0 < \lambda < 1)$. The
+area of $R_0$ is
+$$
+(\lambda b)(h - \lambda h) = bh \cdot \lambda (1-\lambda).
+$$
+Now it can easily be checked that $f(\lambda) = \lambda (1-\lambda)$
+has maxima $f(1/2) = 1/4$. Thus $A(R_0) \leq \frac14 bh = \frac12 A(T_0)$.
+$\square$ \\
+
+Take the same setup as claim 1. The area of $T_0'$ is
+$\frac12 (\lambda b)(\lambda h) = \frac12 \lambda^2 bh$. If we inscribe
+a rectangle $R_0'$ inside of $T_0'$ then it has a maximum area of
+$
+\frac14 \lambda^2 bh.
+$
+due to claim 1. \\
+
+So for some selection of $\lambda$ the maximal value of $A(R_0) + A(R_0')$
+is
+\[
+\begin{aligned}
+&= bh \cdot \lambda (1 - \lambda) + \frac14 \lambda^2 bh \\
+&= bh \left[ -\frac34 \lambda^2 + \lambda \right]
+\end{aligned}
+\]
+We can easily check that $g(\lambda) = -\frac34 \lambda^2 + \lambda$
+has maxima $g(2/3) = 1/3$. Thus
+$$
+\max \frac{A(R_0) + A(R_0')}{A(T_0)} = \frac{bh/3}{bh/2} = \frac23. \
+\blacksquare
+$$
+\end{solution}
+
+\end{document}

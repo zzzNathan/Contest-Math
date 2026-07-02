@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Notes on Real Analysis}
+
+\begin{document}
+\maketitle
+
+\textit{This set of notes shows my thoughts as I work through Rudin's
+Principles of Mathematical Analysis.}\\
+
+\textit{We begin from page 31.}\\
+
+A set $E \subset \mathbb{R}^k$ is convex if
+$$
+\lambda {\bf x} + (1-\lambda) {\bf y} \in E
+$$
+for ${\bf x, y} \in E$ and $0 < \lambda < 1$.\\
+
+\begin{problem}{Problem}
+Show that an open ball $B$ in $\mathbb{R}^k$ with centre $\bf c$ and
+radius $r$ is convex.
+\end{problem}
+
+\begin{solution}{Solution}
+$B$ is the set of ${\bf x} \in \mathbb{R}^k$ such that
+$|{\bf x} - {\bf c}| < r$. Suppose that ${\bf x,y} \in B$. Let
+$0 < \lambda < 1$. We want to show that the vector
+$\lambda {\bf x} + (1-\lambda) {\bf y} \in B$. We want to show that
+$$
+| \left[ \lambda {\bf x} + (1-\lambda) {\bf y} \right] - {\bf c} | < r.
+$$
+Consider
+\[
+\begin{aligned}
+| \left[ \lambda {\bf x} + (1-\lambda) {\bf y} \right] - {\bf c} | &=
+| \lambda {\bf x} - \lambda {\bf c} + (1-\lambda) {\bf y} +
+\lambda {\bf c} - {\bf c} | && \text{(Adding 0.)} \\
+&= | \lambda ({\bf x} - {\bf c}) + (1-\lambda)({\bf y} - {\bf c}) | \\
+&\leq \lambda |{\bf x} - {\bf c}| + (1-\lambda) |{\bf y} - {\bf c} |
+&& \text{(Triangle ineq.)} \\
+&< \lambda r + (1-\lambda) r && \text{(Def. of a ball.)} \\
+&= r.
+\end{aligned}
+\]
+As desired. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem}
+Show that a $k$-cell, $C$ in $\mathbb{R}^k$ is convex.
+\end{problem}
+
+\begin{solution}{Solution}
+For two sequences $(a_i)_{i=1}^k, (b_i)_{i=1}^k$ with $a_i < b_i$, some
+vector ${\bf x} \in \mathbb{R}^k$ is in $C$ if
+${\bf x} := \langle x_1, x_2, \ldots, x_k \rangle$ satsify
+$a_i \leq x_i \leq b_i$ for $(i=1,2,\ldots, k)$. Suppose that
+${\bf x,y} \in C$. We want to show that if ${\bf v} := \lambda {\bf x} +
+(1-\lambda) {\bf y}$ for $0 < \lambda < 1$ then
+$$
+a_i \leq v_i \leq b_i.
+$$
+The $i$-th component of $v_i$ is
+$$
+\lambda x_i + (1-\lambda)y_i
+$$
+and because ${\bf x,y} \in C$ they satisfy
+\[
+\begin{aligned}
+\lambda a_i + (1-\lambda) a_i &\leq \lambda x_i + (1-\lambda)y_i
+\leq \lambda b_i + (1-\lambda) b_i \\
+a_i &\leq \lambda x_i + (1-\lambda) y_i \leq b_i
+\end{aligned}
+\]
+and so ${\bf v}$ is in $C$, as desired. $\blacksquare$
+\end{solution}
+
+Let $X$ be a metric space. A \textit{neighbourhood} of $p$, $N_r(p)$ is
+just the set of points of distance $< r$ from $p$, for some $r > 0$. \\
+
+Some point $p$ is a \textit{limit point} of $E \subset X$ if every
+neighbourhood of $p$ contains a point $q \neq p$ such that $q \in E$.
+
+\end{document}

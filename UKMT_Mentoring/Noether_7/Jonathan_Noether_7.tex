@@ -1,0 +1,2184 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 7}
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 7. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+Show that for real numbers $x,y$ and $z$ we have
+$$
+x(x-y) + y(y-z) + z(z-x) \geq 0.
+$$
+Find all cases where equality occurs.
+\end{problem}
+
+\begin{solution}{Solution}
+We want to show
+$
+x^2 + y^2 + z^2 \geq xy + yz + zx.
+$
+\vspace{0.2cm}
+
+\textit{Theorem --- Cauchy-Schwarz Inequality:
+For vectors $\mathbf{u}, \mathbf{v} \in \mathbb{R}^n$, we have
+$$
+\mathbf{u} \cdot \mathbf{v} \leq \| u \| \| v \|.
+$$
+with equality if and only if the two vectors are parallel.
+\vspace{0.2cm}
+}
+
+\textit{Proof:} It follows very simply from the formula for the dot product
+$$
+\mathbf{u} \cdot \mathbf{v} = \| u \| \| v \| \cos \theta
+$$
+where $\theta$ is the angle between the two vectors. Now since
+$\cos \theta \leq 1$ we have $\mathbf{u} \cdot \mathbf{v} \leq
+\| u \| \| v \|$. The equality case happens only when $\cos \theta = 1$
+which means $\theta = 0^\circ$, that is the two vectors are parallel.
+$\square$
+\\
+
+Now let us apply Cauchy-Schwarz with the vectors
+$\mathbf{u} = \langle x,y,z \rangle$ and
+$\mathbf{v} = \langle y,z,x \rangle$. We have
+$$
+xy + yz + zx \leq \sqrt{x^2 + y^2 + z^2}\sqrt{y^2 + z^2 + x^2} =
+x^2 + y^2 + z^2
+$$
+
+which is the desired inequality. The equality case occurs if
+$\mathbf{u}$ and $\mathbf{v}$ are parallel which happens only if
+\[
+\begin{aligned}
+\frac{x}{y} = \frac{y}{z} = \frac{z}{x}, &\quad (x,y,z \text{ all non-zero})
+\\
+(x,y,z) = (0,0,0), &\quad (\text{otherwise}).
+\end{aligned}
+\]
+with the second case being due to the following arguement. Suppose WLOG that
+$z=0$. Since the third component of $\mathbf{u}$ and $\mathbf{v}$ have to
+be in constant ratio we require $x = 0$. Since the second components
+have to be in constant ratio this forces $y=0$, and so all three variables
+must be 0. $\blacksquare$
+\\
+
+\textit{Remark: This is just a special case of the Re-arrangement
+inequality.}
+\\
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums, (after having read solutions):} I believe that my
+solution is completely correct, because actually, for $x,y,z$ all non-zero
+the following is true
+$$
+\frac{x}{y} = \frac{y}{z} = \frac{z}{x} \iff x=y=z
+$$
+like how it was presented in the official solutions.
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+Three circles touch each other and a line as shown. Prove that
+the radii $a,b,c$ where $c$ is the smallest, satisfy the equation
+$$
+\frac{1}{\sqrt{c}} = \frac{1}{\sqrt{a}} + \frac{1}{\sqrt{b}}
+$$
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(220);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0, xmax = 18.437582914563066, ymin = 0.42587666093528126, ymax = 11.202016393004262;  /* image dimensions */
+
+pair A = (6.,6.), B = (13.745966692414834,4.), C = (10.36895003862225,1.9526249034443734);
+/* draw figures */
+draw(circle(A, 5.));
+draw(circle(B, 3.));
+draw((xmin, 0.*xmin + 1.)--(xmax, 0.*xmax + 1.)); /* line */
+draw(circle(C, 0.9526249034443734));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (6.051974368450486,6.1159683804470415), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (13.795814691607672,4.122624147497062), NE * labelscalefactor);
+dot(C, dotstyle);
+label("$C$", (10.413169932662255,2.0447137955734465), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\end{problem}
+
+\begin{solution}{Solution}
+Let the circles have centres $A,B,C$ with radii $a,b,c$ respectively.
+The idea is to draw in the following lines,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(290);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.17988219283588813, xmax = 18.534193727248883, ymin = 0.05699551834098509, ymax = 12.997271270833753;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (6.,6.), B = (13.745966692414834,4.), C = (10.36895003862225,1.9526249034443734), D = (13.745966692414834,1.9526249034443734), F = (6.,1.), G = (13.745966692414834,1.);
+
+filldraw((6.512901162276427,1.)--(6.512901162276427,1.512901162276427)--(6.,1.5129011622764272)--F--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((13.745966692414834,1.5129011622764272)--(13.233065530138408,1.5129011622764272)--(13.233065530138408,1.)--G--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(circle(A, 5.));
+draw(circle(B, 3.));
+draw((xmin, 0.*xmin + 1.)--(xmax, 0.*xmax + 1.)); /* line */
+draw(circle(C, 0.9526249034443734));
+draw(C--B);
+draw(B--D);
+draw(C--D);
+draw(C--A);
+draw(C--(6.,1.9526249034443734));
+draw(A--(6.,1.9526249034443734));
+draw((6.,1.9526249034443734)--F,  linetype("4 4"));
+draw(D--G,  linetype("4 4"));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (6.058143113859035,6.149950469066279), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (13.804900122638314,4.147979556685111), NE * labelscalefactor);
+dot(C, dotstyle);
+label("$C$", (10.424760828545482,2.0734734663191183), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (13.804900122638314,2.0734734663191183), NE * labelscalefactor);
+dot((6.,1.9526249034443734), dotstyle);
+label("$E$", (6.058143113859035,2.0734734663191183), NE * labelscalefactor);
+dot(F, dotstyle);
+label("$F$", (6.058143113859035,1.116009116919429), NE * labelscalefactor);
+dot(G, dotstyle);
+label("$G$", (13.804900122638314,1.116009116919429), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+First look at $\triangle CBD$. Side $BC = b+c$ since the two circles
+are tangent to each other. Side
+$BD = BG - BD = b - c$. Thus by Pythagoras
+$CD = \sqrt{(b+c)^2 - (b-c)^2} = 2\sqrt{bc}$. \vspace{0.2cm}
+
+Similarly look at $\triangle CEA$. Side $AC = a+c$ since the two circles
+are tangent. Side $AE = AF - EF = a - c$. Thus by Pythagoras
+$CE = \sqrt{(a+c)^2 - (a-c)^2} = 2\sqrt{ac}$.
+So putting these two together, $FG = ED = 2\sqrt{bc} + 2\sqrt{ac}$.
+Now consider the following
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(290);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.17988219283588813, xmax = 18.337007966034857, ymin = 0.55699551834098509, ymax = 12.097271270833753;  /* image dimensions */
+pen qqwuqq = rgb(0.,0.39215686274509803,0.);
+pair A = (6.,6.), B = (13.745966692414834,4.), C = (10.36895003862225,1.9526249034443734), D = (13.745966692414834,1.9526249034443734), F = (6.,1.), G = (13.745966692414834,1.), H = (6.,4.);
+
+filldraw((6.512901162276427,1.)--(6.512901162276427,1.5129011622764272)--(6.,1.5129011622764272)--F--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+filldraw((13.745966692414834,1.5129011622764272)--(13.233065530138408,1.5129011622764272)--(13.233065530138408,1.)--G--cycle, qqwuqq + opacity(0.10000000149011612),  qqwuqq);
+/* draw figures */
+draw(circle(A, 5.));
+draw(circle(B, 3.));
+draw((xmin, 0.*xmin + 1.)--(xmax, 0.*xmax + 1.)); /* line */
+draw(circle(C, 0.9526249034443734));
+draw(B--D);
+draw(A--(6.,1.9526249034443734));
+draw((6.,1.9526249034443734)--F,  linetype("4 4"));
+draw(D--G,  linetype("4 4"));
+draw(A--B);
+draw(H--B);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (6.058143113859036,6.149950469066279), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (13.804900122638315,4.147979556685111), NE * labelscalefactor);
+dot(C, dotstyle);
+label("$C$", (10.192648258994044,2.0734734663191183), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (13.804900122638315,2.0734734663191183), NE * labelscalefactor);
+dot((6.,1.9526249034443734), dotstyle);
+label("$E$", (6.058143113859036,2.0734734663191183), NE * labelscalefactor);
+dot(F, dotstyle);
+label("$F$", (6.058143113859036,1.116009116919429), NE * labelscalefactor);
+dot(G, dotstyle);
+label("$G$", (13.804900122638315,1.116009116919429), NE * labelscalefactor);
+dot(H, dotstyle);
+label("$H$", (6.058143113859036,4.118965485491181), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Look at $\triangle AHB$. Side $AB = a+b$ since the two circles are tangent.
+Side $AH = AF - HF = a - b$. So by Pythagoras,
+$HB = \sqrt{(a+b)^2 - (a-b)^2} = 2\sqrt{ab}$. That is also equal to $FG$.
+So we deduce
+$$
+2\sqrt{ab} = 2\sqrt{bc} + 2\sqrt{ac}
+$$
+and dividing by $2\sqrt{abc}$ yields the desired result,
+$$
+\frac{1}{\sqrt{c}} = \frac{1}{\sqrt{a}} + \frac{1}{\sqrt{b}}. \ \blacksquare
+$$
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} A classical result that
+comes up fairly often usually in multiple choice type math contests.
+I have seen this idea before.
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 3}
+Find all quadruples $(a,b,c,d)$ of positive integers such that
+$a \leq b \leq c \leq d$ and
+$$
+a + b + c + d = ab + cd.
+$$
+\end{problem}
+
+\begin{solution}{Solution}
+Due to this ordering condition we notice that
+$$
+a+b+c+d \leq d+d+d+d = 4d.
+$$
+But since this sum is the same as $ab+cd$ we note that
+$ab+cd \leq 4d$. Now if $c \geq 4$ the quantity $ab+cd$ will be too large,
+so $c < 3$. \vspace{0.2cm}
+
+If $c = 3$, we have
+\[
+\begin{aligned}
+a + b + 3 + d &= 3d + ab \\
+a + b - ab + 3 &= 2d \\
+\end{aligned}
+\]
+If $b = 3$ then
+\[
+\begin{aligned}
+-2a + 6 &= 2d \\
+-a + 3 &= d \\
+\end{aligned}
+\]
+but this implies that $d < 3 = c$ which is a contradiction.
+\vspace{0.2cm}
+
+If $b = 2$ then
+\[
+\begin{aligned}
+-a + 5 &= 2d \\
+\frac{5-a}{2} &= d
+\end{aligned}
+\]
+but this implies that $d < 2.5 < c$, a contradiction.
+\vspace{0.2cm}
+
+If $b = 1$, then this forces $a=1$ due to the ordering condition.
+We have
+\[
+\begin{aligned}
+1 + 2 + 3 + d &= 2 + 3d \\
+4 &= 2d
+\end{aligned}
+\]
+so $d=2$. But $d < 3 = c$ is a contradiction.
+\vspace{0.2cm}
+
+If $c = 2$, we have
+\[
+\begin{aligned}
+a + b + 2 + d &= ab + 2d \\
+a + b - ab + 2 &= d
+\end{aligned}
+\]
+If $b = 2$ then
+$$
+-a + 4 = d
+$$
+If $a = 1$ then $d = 3$ which yields a solution
+$(a,b,c,d) = (1,2,2,3)$. \vspace{0.2cm}
+
+If $a = 2$ then $d = 2$ which yields a solution
+$(a,b,c,d) = (2,2,2,2)$. \vspace{0.2cm}
+
+If $a > 2$ then $d < 2 = c$ which is a contradiction.
+\vspace{0.2cm}
+
+If $c = 1$, we have $a=b=c=1$ due to the ordering condition. This gives
+$3 + d = 1 + d$ which clearly has no solutions. \vspace{0.2cm}
+
+Thus the only solutions are $(a,b,c,d) = (1,2,2,3), (2,2,2,2)$.
+$\blacksquare$
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} On this problem I simply
+just forgot the case if $c=2$ and $b=1$ and this yields the final solution
+$(1,1,2,3)$.
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 4}
+(a) How many different values is it possible to make using three different
+British coins? \vspace{0.2cm}
+
+(b) In how many ways can three numbers be chosen from the set
+$\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$ such that no two of them are
+consecutive? \vspace{0.2cm}
+
+(c) You should notice that these two numbers are the same. Why is this?
+\end{problem}
+
+\begin{hint}{Preliminaries}
+Preliminaries: Let $f : A \rightarrow B$ be a
+function. The set of inputs $A$ is the domain of $f$. The set of all
+outputs $B$ is the co-domain of $f$ or also known as the image of $f$. I
+may use both terminology. \\
+
+An injective function
+$f : A \rightarrow B$ is a function with the following property.
+$$
+f(x_1) = f(x_2) \iff x_1 = x_2
+$$
+Roughly speaking that means that exactly one unique input can
+map to a one unique output. For example $f(x) = \ln(x)$ is injective
+whilst $f(x) = x^2$ isn't. \\
+
+A surjective function is a function
+$f : A \rightarrow B$ is a function with the following property.
+$$
+\text{For every } b \in B, \text{ there exists some } a \in A
+\text{ such that } f(a) = b
+$$
+Roughly speaking that means that the function hits every element in the
+co-domain. For example $f(x) = 2x$ is surjective whilst $f(x) = e^x$
+isn't (if we assume the codomain is the entirety of $\mathbb{R}$). \\
+
+A bijective function is a function $f : A \rightarrow B$ which is both
+injective and surjective. Bijective functions are also known as "one to one"
+functions because every unique element in the domain $A$ is paired up
+with it's own unique element in the image $B$. I will skip out the
+formal definition here (because im lazy) but the following diagram gives
+us a good intuition for the idea of a bijective function.
+
+\begin{center}
+\begin{asy}
+import graph;
+size(150, 150);
+
+// Create the containers for the sets
+draw(ellipse((0,0), 0.8, 1.5), linewidth(1pt));
+draw(ellipse((4,0), 0.8, 1.5), linewidth(1pt));
+
+// Set Labels
+label("Set $A$", (0, 1.8), N);
+label("Set $B$", (4, 1.8), N);
+
+// Define coordinates for the points
+pair[] setA = {(0, 0.8), (0, 0), (0, -0.8)};
+pair[] setB = {(4, 0.8), (4, 0), (4, -0.8)};
+
+// Labels for elements
+string[] labelsA = {"$a_1$", "$a_2$", "$a_3$"};
+string[] labelsB = {"$b_1$", "$b_2$", "$b_3$"};
+
+// Draw dots and labels
+for(int i=0; i<3; ++i) {
+    dot(setA[i]);
+    label(labelsA[i], setA[i], W);
+    dot(setB[i]);
+    label(labelsB[i], setB[i], E);
+}
+
+// Draw the Bijective Mapping (One-to-One and Onto)
+// We'll scramble them slightly to show it doesn't have to be parallel lines
+draw(setA[0] -- setB[1], Arrow(HookHead));
+draw(setA[1] -- setB[0], Arrow(HookHead));
+draw(setA[2] -- setB[2], Arrow(HookHead));
+
+// Label the function
+label("$f$", (2, 0.6), N);
+\end{asy}
+\end{center}
+
+\end{hint}
+\newpage
+
+\begin{solution}{Solution}
+(a) The answer is just $\binom{8}{3} = 56$ since each triple of coins
+produces it's own unique sum. We prove this statement by showing that
+$f(x,y,z)$ is an injection, where $f$ is defined below. \vspace{0.2cm}
+
+The eight British coins have values: 1p, 2p, 5p, 10p, 20p, 50p, £1, £2.
+It is nicer to think about these values all in terms of pence. Define the
+sequence
+$$
+(a_n)_{n=1}^8 = (1, 2, 5, 10, 20, 50, 100, 200).
+$$
+
+For any triple of integers $(x,y,z)$ with $1 \leq x < y < z \leq 8$,
+define $f(x,y,z) = a_x + a_y + a_z$.
+\\
+
+\textit{Claim 1: Let $2 \leq n \leq 8$ be an integer. Then
+$
+a_1 + a_2 + \cdots + a_{n-1} < a_n.
+$
+}\vspace{0.2cm}
+
+\textit{Proof: } Check each case manually. $\square$ \\
+
+\textit{Claim 2: The function $f$ is injective.} \vspace{0.2cm}
+
+\textit{Proof: } Suppose FTSOC that $f$ is not injective. Then there exists
+some triple $(x,y,z)$ with the following property. There exists some
+different triple $(u,v,w)$ such that $f(x,y,z) = f(u,v,w)$. Now aiming for
+a contradiction we are going to show that $(x,y,z)$ and $(u,v,w)$ are in
+fact the same triple. \vspace{0.2cm}
+
+First we show that $w = z$, by showing that $w > z$ and $w < z$ both give
+contradictions. Note that $3\leq w,z \leq 8$ due to ordering conditions.
+\begin{itemize}
+\item Suppose that $w > z$. Because claim 1 tells us that any sum $S$ of distinct
+elements that come before $a_w$ in the sequence, satisfies $S < a_w$, we
+have $f(x,y,z) < a_w < f(u,v,w)$ a contradiction.
+
+\item
+Suppose that $w < z$. Similarly because claim 1 tells us that any sum $S$
+of distinct elements that come before $a_z$ in the sequence,
+satisfies $S < a_z$, we have $f(u,v,w) < a_z < f(x,y,z)$ a contradiction.
+
+\end{itemize}
+
+Thus the only possibility is that $w = z$. Now we are going to show that
+$v = y$ using the same strategy. Because $w=z$ our initial assumption
+reduces to $a_u + a_v = a_x + a_y$. Note that $2 \leq v,y \leq 7$ due to
+ordering conditions.
+
+\begin{itemize}
+\item Suppose that $v > y$. Because claim 1 tells us that any sum $S$ of
+distinct elements that come before $a_v$ in the sequence satisfies
+$S < a_v$, we have $a_x + a_y < a_v < a_u + a_v$ a contradiction.
+\item Suppose that $v < y$. Because claim 1 tells us that any sum $S$ of
+distinct elements that come before $a_y$ in the sequence, satisfies
+$S < a_y$, we have $a_u + a_v < a_y < a_x + a_y$ a contradiction.
+\end{itemize}
+
+Thus the only possibility is that $v = y$. So now our initial assumption
+reduces to $a_u = a_x$. Since there are no repeated values in $(a_n)$ it
+must be the case that $u = v$ and so in fact $(x,y,z)$ and $(u,v,w)$
+are the same exact triple, contradiction. $\square$
+\\
+
+Now due to claim 2, each selection of three distinct British coins
+produces a unique sum, so the number of different values one can make is
+just the number of unordered triples of three coins without repitition and
+that works out to be
+$$
+\binom{8}{3} = 56. \ \square
+$$
+\\
+
+(b) We will use complementary counting. Call an unordered triple $(c,b,a)$
+of integers $1 \leq c < b < a \leq 10$ \textit{nice}.
+\vspace{0.2cm}
+
+We want to count
+the number $N$ of nice triples that have at least one pair of consecutive
+numbers. For each pair $(n, n+1)$, $(1 \leq n \leq 9)$ there are 8 other
+numbers that we can put in the triple giving $9(8)$ such nice triples.
+However we have double counted all the nice triples of the form
+$(n, n+1, n+2)$, $(1 \leq n \leq 8)$ since they have two pairs of
+consecutive numbers. So in fact $N = 9(8) - 8 = 64$.
+\vspace{0.2cm}
+
+Thus the desired count works out as
+$$
+\binom{10}{3} - 64 = 56. \ \square
+$$
+\\
+
+(c) Call a nice triple \textit{super nice} if the triple has
+no pair of consecutive numbers. Call a nice triple $(x,y,z)$
+\textit{almost nice} if it satisfies $(2\leq x < y < z \leq 9)$. There
+are exactly $\binom{8}{3}$ almost nice triples. \vspace{0.2cm}
+
+I am going to show that
+there is a bijection (a "perfect" one to one correspondence)
+between super nice
+triples and almost nice triples, and this will force our conclusion
+"The number of super nice triples is the same as the number of almost nice
+triples. This is why there are $\binom{8}{3}$ super nice triples."
+\vspace{0.2cm}
+
+Let $f$ be the bijection. Precisely we have the following
+$$
+f : \{ \text{Super nice triples} \} \rightarrow
+\{ \text{Almost nice triples} \}.
+$$
+Now we will describe the map $f$. Consider some arbitrary super nice
+triple $(p,q,r)$. Note that $3\leq q\leq 8$ due to the ordering
+restrictions on super nice triples.
+We will map it to the almost nice triple $(x,q,z)$ with
+the following rules.
+\begin{itemize}
+\item If $p = 1$ then $x = q - 1$. Otherwise $x = p$.
+\item If $q = 10$ then $z = q + 1$. Otherwise $z = r$.
+\end{itemize}
+With the inequality $3\leq q \leq 8$ it can be checked that the output
+triple $(x,q,z)$ is indeed almost nice. Since we have found a bijection
+between super nice triples and almost nice triples, the number of triples
+of both forms is the exact same and this is why there are
+$\binom{8}{3} = 56$ super nice triples. $\blacksquare$
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} I believe that
+my solutions to (a) and (b) are correct and justified. The hard part is
+part (c), it's quite difficult I feel to communicate one's solution clearly
+for this one. \vspace{0.2cm}
+
+I hope that you can at least understand the gist of my solution, if I'm
+being perfectly honest I didn't really understand the official solution here
+I feel that it lacks a lot of rigour.}
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+An acute-angled triangle $ABC$ is inscribed inside a circle. The altitudes
+of the triangle $AD, BE, CF$ meet at $H$, the orthocentre of the triangle.
+\vspace{0.2cm}
+
+(a) If line $AD$ is extended to meet the circle at $P$, prove that
+$HD = DP$.
+\vspace{0.2cm}
+
+(b) Prove that $H$ is the incentre of triangle $DEF$.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Here's a diagram.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(230);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.3, xmax = 15.2, ymin = -3.2, ymax = 12.207635095338665;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen qqzzff = rgb(0.,0.6,1.);
+pair A = (1.,1.), B = (14.,1.), C = (3.,10.), D = (6.212871287128713,7.371287128712871), F = (3.,1.), H = (3.,3.4444444444444446), P = (9.425742574257425,11.298129812981298);
+
+filldraw(circle((7.5,4.277777777777778), 7.279685924577642), ttttff + opacity(0.05000000074505806),  ttttff);
+filldraw((5.584895176786731,7.885085764447219)--(5.071096541052382,7.257109654105238)--(5.699072651394364,6.74331101837089)--D--cycle, qqzzff + opacity(0.25),  qqzzff);
+filldraw((3.8113834070541017,1.)--(3.8113834070541017,1.8113834070541015)--(3.,1.8113834070541017)--F--cycle, qqzzff + opacity(0.25),  qqzzff);
+filldraw((2.403826688696536,3.5769274025118807)--(2.5798404626552434,4.3689893853260635)--(1.7877784798410605,4.5450031592847715)--(1.611764705882353,3.7529411764705882)--cycle, qqzzff + opacity(0.25),  qqzzff);
+filldraw(arc(C,1.1474694185404002,-102.52880770915152,-39.289406862500364)--(3.,10.)--cycle, black + opacity(0.0));
+filldraw(arc(P,1.1474694185404002,-129.28940686250036,-66.0500060158492)--(9.425742574257425,11.298129812981298)--cycle, black + opacity(0.0));
+filldraw(arc(A,1.1474694185404002,410.71059313749964,437.4711922908485)--(1.,1.)--cycle, black + opacity(0.0));
+filldraw(arc(B,1.1474694185404002,473.94999398415075,500.71059313749964)--(14.,1.)--cycle, black + opacity(0.0));
+filldraw(arc(H,1.1474694185404002,167.47119229084848,230.71059313749964)--(3.,3.4444444444444446)--cycle, black + opacity(0.0));
+filldraw(arc(H,1.1474694185404002,347.4711922908485,410.71059313749964)--(3.,3.4444444444444446)--cycle, black + opacity(0.0));
+filldraw(arc(B,1.3769633022484804,500.71059313749964,527.4711922908485)--(14.,1.)--cycle, black + opacity(0.0));
+/* draw figures */
+draw(C--B);
+draw(B--A);
+draw(C--A);
+draw(C--F);
+draw(A--D);
+draw(B--(1.611764705882353,3.7529411764705882));
+draw(D--P);
+draw(P--B,  linetype("4 4"));
+draw(arc(C,1.1474694185404002,-102.52880770915152,-39.289406862500364));
+draw(arc(C,0.9982983941301482,-102.52880770915152,-39.289406862500364));
+draw(arc(P,1.1474694185404002,-129.28940686250036,-66.0500060158492));
+draw(arc(P,0.9982983941301482,-129.28940686250036,-66.0500060158492));
+draw(arc(A,1.1474694185404002,410.71059313749964,437.4711922908485));
+draw(arc(A,0.9982983941301482,410.71059313749964,437.4711922908485));
+draw(arc(A,0.8491273697198962,410.71059313749964,437.4711922908485));
+draw(arc(B,1.1474694185404002,473.94999398415075,500.71059313749964));
+draw(arc(B,0.9982983941301482,473.94999398415075,500.71059313749964));
+draw(arc(B,0.8491273697198962,473.94999398415075,500.71059313749964));
+draw(arc(H,1.1474694185404002,167.47119229084848,230.71059313749964));
+draw(arc(H,0.9982983941301482,167.47119229084848,230.71059313749964));
+draw(arc(H,1.1474694185404002,347.4711922908485,410.71059313749964));
+draw(arc(H,0.9982983941301482,347.4711922908485,410.71059313749964));
+draw(arc(B,1.3769633022484804,500.71059313749964,527.4711922908485));
+draw(arc(B,1.2277922778382284,500.71059313749964,527.4711922908485));
+draw(arc(B,1.0786212534279764,500.71059313749964,527.4711922908485));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (1.1024440394066168,1.2352928484648533), NW * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (14.091797857283948,1.2352928484648533), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (3.0990408276669132,10.23145308982147), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (6.3119551995800345,7.546374650436969), NE * labelscalefactor);
+dot((1.611764705882353,3.7529411764705882), dotstyle);
+label("$E$", (1.699128137047625,3.943320676220161), NW * labelscalefactor);
+dot(F, dotstyle);
+label("$F$", (3.0990408276669132,1.189394071723238), NE * labelscalefactor);
+dot(H, dotstyle);
+label("$H$", (3.0990408276669132,3.6220292390288535), NW * labelscalefactor);
+dot(P, dotstyle);
+label("$P$", (9.524869571493156,11.470720061845086), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+First let's study $\triangle CDA$.
+Call $\angle DCA = \theta$. Then $\angle CAD = 90 - \theta$.
+Now let's look at $\triangle EHA$. We have $\angle EHA = \theta$ since
+$\angle HEA = 90$. Now due to vertically opposite angles $\angle DHB =
+\angle EHA = \theta$.
+\vspace{0.2cm}
+
+However due to the "Angles subtending the same segment are equal"
+theorem we also have $\angle APB = \angle ACB = \theta$ or equivalently
+$\angle ACD = \theta = \angle DPB$. Now notice that
+$\angle HDB = \angle PDB = 90$ due to vertically opposite angles +
+angles on a straight line sum to 180. Moreover observe that
+$\triangle DPB$ and $\triangle DBH$ share two pairs of equal angles, and
+since angles in a triangle sum to 180, their third angles are equal also.
+Thus the two triangles are similar by AAA criterion. \vspace{0.2cm}
+
+But since the two triangles share a side $DB$, they are actually
+congruent to each other by ASA criterion. This triangle congruence
+implies the desired result $DH = DP$. $\square$
+\\ \bigskip
+
+(b) Here's a diagram. I will show that $CF$ bisects $\angle EFD$, and
+then one can use a similar process to show the other bisections.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(250);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.8, xmax = 12., ymin = 0., ymax = 9.587;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen yqqqqq = rgb(0.5019607843137255,0.,0.); pen ffzzqq = rgb(1.,0.6,0.); pen qqzzff = rgb(0.,0.6,1.);
+pair A = (1.,1.), B = (11.,1.), C = (4.,9.), D = (6.663716814159292,5.95575221238938), F = (4.,1.), H = (4.,3.625);
+
+filldraw((4.489927763445923,1.)--(4.489927763445923,1.4899277634459227)--(4.,1.4899277634459227)--F--cycle, ttttff + opacity(0.25),  ttttff);
+filldraw((2.6916103721443294,4.115646110445876)--(2.863635494575165,4.574379770261438)--(2.404901834759603,4.746404892692274)--(2.232876712328767,4.287671232876712)--cycle, ttttff + opacity(0.25),  ttttff);
+filldraw((6.2950085973000265,5.633132522637523)--(6.617628287051883,5.264424305778257)--(6.986336503911149,5.587043995530115)--D--cycle, ttttff + opacity(0.25),  ttttff);
+filldraw((2.232876712328767,4.287671232876712)--D--F--cycle, yqqqqq + opacity(0.15000000596046448),  yqqqqq);
+filldraw(circle((2.5,5.), 4.272001872658766), ffzzqq + opacity(0.05000000074505806),  ffzzqq);
+filldraw(circle((2.5,2.3125), 1.9931523398877469), qqzzff + opacity(0.15000000596046448),  qqzzff);
+/* draw figures */
+draw(A--B);
+draw(B--C);
+draw(C--A);
+draw(C--F);
+draw(A--D);
+draw((2.232876712328767,4.287671232876712)--B);
+draw((2.232876712328767,4.287671232876712)--D);
+draw(D--F);
+draw(F--(2.232876712328767,4.287671232876712));
+draw((2.232876712328767,4.287671232876712)--D,  yqqqqq);
+draw(D--F,  yqqqqq);
+draw(F--(2.232876712328767,4.287671232876712),  yqqqqq);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (1.0574064859562335,1.1323965470536064), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", B, NE * labelscalefactor);
+//label("$B$", (9.3856135874893,-0.6551886710791148), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (4.050572432597069,9.141886904268436), NE * labelscalefactor);
+dot(D, dotstyle);
+label("$D$", (6.725021634919668,6.065577459109798), NE * labelscalefactor);
+dot((2.232876712328767,4.287671232876712), dotstyle);
+label("$E$", (2.2907017139702814,4.402707488753778), NE * labelscalefactor);
+dot(F, dotstyle);
+label("$F$", (4.050572432597069,1.1046820475476729), NE * labelscalefactor);
+dot(H, dotstyle);
+label("$H$", (4.050572432597069,3.7375595006113707), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\textit{Claim 1: $AFDC$ is cyclic.}
+\vspace{0.2cm}
+
+\textit{Proof:} Look at $\triangle BDA$. We have
+$\angle BDA = 180 - (90 + \angle B) = 90 - \angle B$. Look at
+$\triangle FCB$. We have
+$\angle FCB = 180 - (90 + \angle B) = 90 - \angle B$. Now since
+$\angle BDA = \angle FCB$ both subtend the segement $DF$, by the converse
+of the "Angles subtending the same segment are equal" theorem we know that
+$A,F,D,C$ are concyclic. $\square$ \\
+
+\textit{Claim 2: $AFHE$ is cyclic.} \vspace{0.2cm}
+
+\textit{Proof:} We have opposite angles summing to 180 since
+$\angle AEH = \angle AFH = 90$. These two summing to 180 forces the other
+pair of opposite angles to sum to 180 also, because angles in a
+quadrilateral sum to 360. Thus $AFHE$ is cyclic. $\square$ \\
+
+By angles subtending the same segment are equal on $AFDC$ we have
+$\angle CFD = \angle CAD$. By the same theorem on $AFHE$ we have
+$\angle EAH = \angle EFH$, or equivalently $\angle CAD = \angle EFH$.
+Now since $\angle CFD = \angle EFH$ the line $CF$
+has in fact bisected $\angle EFD$. $\blacksquare$
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendum (after having read solutions):} I think part (a) is fine
+here. For part (b) I only showed that $CF$ bisects $\angle EFD$ out
+of laziness, I kinda just hoped that the same method will work to show
+the two other bisections (I don't see any reason why it should work out
+that way).
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+(a) Suppose twelve $2 \times 1$ dominoes are placed on a $5 \times 5$
+chessboard such that each covers exactly two squares. Which squares can
+possibly be left uncovered? \vspace{0.2cm}
+
+(b) Suppose instead that eight $3 \times 1$ triominoes are used, each
+covering exactly three squares. Which squares can be left uncovered now?
+\vspace{0.2cm}
+
+(c) What if six $4 \times 1$ tetrominoes are used, with each covering
+four squares. Which squares can be left uncovered in that case?
+\end{problem}
+
+\begin{solution}{Solution}
+(a) There are two ways that a $5 \times 5$ chessboard could be coloured,
+with 12 black squares and 13 white squares or with 13 black squares
+and 12 white squares. WLOG let us assume the latter case,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(200);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -1.5154308812998338, xmax = 10.888679016798562, ymin = 0.23324824404005604, ymax = 6.780269563036372;  /* image dimensions */
+
+
+filldraw((1.,6.)--(2.,6.)--(2.,5.)--(1.,5.)--cycle, black + opacity(1.0));
+filldraw((3.,6.)--(4.,6.)--(4.,5.)--(3.,5.)--cycle, black + opacity(1.0));
+filldraw((5.,6.)--(6.,6.)--(6.,5.)--(5.,5.)--cycle, black + opacity(1.0));
+filldraw((2.,5.)--(3.,5.)--(3.,4.)--(2.,4.)--cycle, black + opacity(1.0));
+filldraw((4.,5.)--(5.,5.)--(5.,4.)--(4.,4.)--cycle, black + opacity(1.0));
+filldraw((1.,4.)--(2.,4.)--(2.,3.)--(1.,3.)--cycle, black + opacity(1.0));
+filldraw((3.,4.)--(4.,4.)--(4.,3.)--(3.,3.)--cycle, black + opacity(1.0));
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, black + opacity(1.0));
+filldraw((2.,3.)--(3.,3.)--(3.,2.)--(2.,2.)--cycle, black + opacity(1.0));
+filldraw((4.,3.)--(5.,3.)--(5.,2.)--(4.,2.)--cycle, black + opacity(1.0));
+filldraw((5.,2.)--(6.,2.)--(6.,1.)--(5.,1.)--cycle, black + opacity(1.0));
+filldraw((3.,2.)--(4.,2.)--(4.,1.)--(3.,1.)--cycle, black + opacity(1.0));
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, black + opacity(1.0));
+/* draw figures */
+draw((1.,6.)--(2.,6.));
+draw((2.,6.)--(2.,5.));
+draw((2.,5.)--(1.,5.));
+draw((1.,5.)--(1.,6.));
+draw((3.,6.)--(4.,6.));
+draw((4.,6.)--(4.,5.));
+draw((4.,5.)--(3.,5.));
+draw((3.,5.)--(3.,6.));
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,5.));
+draw((6.,5.)--(5.,5.));
+draw((5.,5.)--(5.,6.));
+draw((2.,5.)--(3.,5.));
+draw((3.,5.)--(3.,4.));
+draw((3.,4.)--(2.,4.));
+draw((2.,4.)--(2.,5.));
+draw((4.,5.)--(5.,5.));
+draw((5.,5.)--(5.,4.));
+draw((5.,4.)--(4.,4.));
+draw((4.,4.)--(4.,5.));
+draw((1.,4.)--(2.,4.));
+draw((2.,4.)--(2.,3.));
+draw((2.,3.)--(1.,3.));
+draw((1.,3.)--(1.,4.));
+draw((3.,4.)--(4.,4.));
+draw((4.,4.)--(4.,3.));
+draw((4.,3.)--(3.,3.));
+draw((3.,3.)--(3.,4.));
+draw((5.,4.)--(6.,4.));
+draw((6.,4.)--(6.,3.));
+draw((6.,3.)--(5.,3.));
+draw((5.,3.)--(5.,4.));
+draw((2.,3.)--(3.,3.));
+draw((3.,3.)--(3.,2.));
+draw((3.,2.)--(2.,2.));
+draw((2.,2.)--(2.,3.));
+draw((4.,3.)--(5.,3.));
+draw((5.,3.)--(5.,2.));
+draw((5.,2.)--(4.,2.));
+draw((4.,2.)--(4.,3.));
+draw((5.,2.)--(6.,2.));
+draw((6.,2.)--(6.,1.));
+draw((6.,1.)--(5.,1.));
+draw((5.,1.)--(5.,2.));
+draw((3.,2.)--(4.,2.));
+draw((4.,2.)--(4.,1.));
+draw((4.,1.)--(3.,1.));
+draw((3.,1.)--(3.,2.));
+draw((1.,2.)--(2.,2.));
+draw((2.,2.)--(2.,1.));
+draw((2.,1.)--(1.,1.));
+draw((1.,1.)--(1.,2.));
+draw((1.,6.)--(6.,6.));
+draw((6.,6.)--(6.,1.));
+draw((6.,1.)--(1.,1.));
+draw((1.,1.)--(1.,6.));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Each of the twelve $2 \times 1$ dominoes covers exactly one white square
+and one black square. All together they will cover 12 white squares and
+12 black squares. Thus the one square left uncovered must be black.
+Now we are going to show that any black square could be left uncovered.
+We show that there is an algorithm that allows us to always cover the board.
+\\
+
+\textit{Algorithm 1.}
+\vspace{0.2cm}
+
+We are going to tile a $5\times 5$ chessboard with one black square
+removed. We are going to dissect the shape into twelve $2 \times 1$ pieces.
+
+\begin{enumerate}
+\item Consider the topmost row of the board, now take the leftmost
+square on this row, call the square $s$.
+\item If there is a square just below $s$ then, remove both $s$ and this
+square from the board. Otherwise take the square to the right of $s$ and
+remove both $s$ and this square from the board.
+\item If the board still has squares left go back to step 1, otherwise
+terminate the algorithm here.
+\end{enumerate}
+\vspace{0.2cm}
+
+Now we are going to prove algorithm 1 always works to tile the board.
+\\
+
+\textit{Proof of correctness:} We need to show that the square below or
+to the right of $s$ always exists in step 2.
+Consider the square $s$ that we refer to in step 2.
+The following is a key lemma in our arguement, call it $(*)$.
+Observe that since we always take $s$ to be the topmost then the leftmost
+square available, the previously discarded squares were either above $s$
+or on the left of $s$.
+\vspace{0.2cm}
+
+\textit{Case 1: $s$ is black.}
+If $s$ is black, and if $s$ doesn't lie on the bottom row,
+the square below it $b$, is white. The square $b$ exists because it wasn't
+previously discarded due to $(*)$, and
+it isn't the one square that was removed from the chessboard, since we
+removed a black square from the board. \vspace{0.2cm}
+
+Now if $s$ does lie on the bottom row
+then $s$ has a square to the right of it unless $s$ happens to be the
+square in the very bottom right of the chessboard. But since $s$ is the
+topmost then the leftmost square available, this must
+mean that $s$ is the only square left on the entire chessboard at the
+moment. However since there were initially
+$24 \equiv 0 \ (\text{mod } 2)$ squares, and each time we
+are removing $2 \equiv 0 \ (\text{mod } 2)$ squares from the shape, the
+number of squares currently part of the shape $N$, satisfies the invariant
+$N \equiv 0 \ (\text{mod } 2)$. Thus $s$ cannot be the only square left,
+a contradiction.
+\vspace{0.2cm}
+
+\textit{Case 2: $s$ is white.}
+If $s$ is white, and not on the bottom row, then there is a black square
+below it $b$, only if $b$ was not the square we chose to remove from the
+board. Suppose that $b$ was in fact the square we chose to remove. If
+$s$ doesn't lie on the right most column then we can just pick the black
+square to the right of $s$. Suppose that $s$ actually lies on the right most
+column. Due to our diagram configuration $s$ doesn't lie on the topmost
+row, so there was a black $b'$ square above $s$ previously. Since $b'$
+lies on the rightmost column it must have been paired up with the square
+below it, $s$, but this means that $s$ doesn't exist a
+contradiction. \vspace{0.2cm}
+
+Now suppose $s$ does lie on the bottom row. Due to our diagram configuration
+there is always a black square $b$ to the right of $s$. The only issue
+occurs when this black square $b$ happens to be the one removed from the
+chessboard. If this is the case then there was a black square above $s$
+call it $b'$. At that point in time the square below $b'$ was available to
+take and since our algorithm first prioritises taking the square below
+$b'$ we would have removed $b'$ and $s$ previously. But this means that
+$s$ doesn't exist, a contradiction. $\square$
+\\ \bigskip
+
+(b) After experimenting we find that it seems to be that only the
+very middle square can be left uncovered. Let's prove our guess.
+\vspace{0.2cm}
+
+Suppose FTSOC that the middle square has been covered, by (WLOG) a
+horizontal $3\times 1$ triomino. The following claim will be useful to us.
+\vspace{0.2cm}
+
+\textit{Claim 1: For any row, at most one horizontal $3\times 1$ triomino
+can be placed there. Similarly for any column, at most one vertical
+$1\times 3$ triomino can be placed there.}
+\vspace{0.2cm}
+
+\textit{Proof:} We will show the first statement to be true, this also
+gives the second statement to be true since we can rotate the board by
+$90^\circ$. In a row there are 5 squares. Each $3\times 1$ triomino uses
+exactly 3 squares. If we could place $t \geq 2$ triominos on a row then
+we require
+$
+3t \leq 5
+$
+but since $t \geq 2$ this inequality is false. Thus $t \leq 1$ as desired.
+$\square$ \\
+
+The horizontal triomino that we have placed to cover the middle square also
+splits precisely 3 columns into $1\times 2$ rectangles that are above and
+below of our triomino. The diagram below illustrates the idea.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.2424095295677375, xmax = 6.664363890248977, ymin = 0.4060647819051748, ymax = 6.327145985906095;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.);
+
+filldraw((1.,6.)--(2.,6.)--(2.,5.)--(1.,5.)--cycle, black + opacity(1.0));
+filldraw((3.,6.)--(4.,6.)--(4.,5.)--(3.,5.)--cycle, black + opacity(1.0));
+filldraw((5.,6.)--(6.,6.)--(6.,5.)--(5.,5.)--cycle, black + opacity(1.0));
+filldraw((2.,5.)--(3.,5.)--(3.,4.)--(2.,4.)--cycle, black + opacity(1.0));
+filldraw((4.,5.)--(5.,5.)--(5.,4.)--(4.,4.)--cycle, black + opacity(1.0));
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, black + opacity(1.0));
+filldraw((1.,4.)--(2.,4.)--(2.,3.)--(1.,3.)--cycle, black + opacity(1.0));
+filldraw((3.,4.)--(4.,4.)--(4.,3.)--(3.,3.)--cycle, black + opacity(1.0));
+filldraw((4.,3.)--(5.,3.)--(5.,2.)--(4.,2.)--cycle, black + opacity(1.0));
+filldraw((2.,3.)--(3.,3.)--(3.,2.)--(2.,2.)--cycle, black + opacity(1.0));
+filldraw((5.,2.)--(6.,2.)--(6.,1.)--(5.,1.)--cycle, black + opacity(1.0));
+filldraw((3.,2.)--(4.,2.)--(4.,1.)--(3.,1.)--cycle, black + opacity(1.0));
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, black + opacity(1.0));
+filldraw(circle((2.5,3.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((3.5,3.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((4.5,3.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+/* draw figures */
+draw((1.,6.)--(2.,6.));
+draw((2.,6.)--(2.,5.), linewidth(3.0) + red);
+draw((2.,5.)--(1.,5.));
+draw((1.,5.)--(1.,6.));
+draw((3.,6.)--(4.,6.));
+draw((4.,6.)--(4.,5.));
+draw((4.,5.)--(3.,5.));
+draw((3.,5.)--(3.,6.), linewidth(3.0) + red);
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,5.));
+draw((6.,5.)--(5.,5.));
+draw((5.,5.)--(5.,6.));
+draw((2.,5.)--(3.,5.));
+draw((3.,5.)--(3.,4.), linewidth(3.0) + red);
+draw((3.,4.)--(2.,4.), linewidth(3.0) + red);
+draw((2.,4.)--(2.,5.), linewidth(3.0) + red);
+draw((4.,5.)--(5.,5.));
+draw((5.,5.)--(5.,4.));
+draw((5.,4.)--(4.,4.));
+draw((4.,4.)--(4.,5.));
+draw((5.,4.)--(6.,4.));
+draw((6.,4.)--(6.,3.));
+draw((6.,3.)--(5.,3.));
+draw((5.,3.)--(5.,4.));
+draw((1.,4.)--(2.,4.));
+draw((2.,4.)--(2.,3.));
+draw((2.,3.)--(1.,3.));
+draw((1.,3.)--(1.,4.));
+draw((3.,4.)--(4.,4.));
+draw((4.,4.)--(4.,3.));
+draw((4.,3.)--(3.,3.));
+draw((3.,3.)--(3.,4.));
+draw((4.,3.)--(5.,3.));
+draw((5.,3.)--(5.,2.));
+draw((5.,2.)--(4.,2.));
+draw((4.,2.)--(4.,3.));
+draw((2.,3.)--(3.,3.), linewidth(3.0) + red);
+draw((3.,3.)--(3.,2.), linewidth(3.0) + red);
+draw((3.,2.)--(2.,2.));
+draw((2.,2.)--(2.,3.), linewidth(3.0) + red);
+draw((5.,2.)--(6.,2.));
+draw((6.,2.)--(6.,1.));
+draw((6.,1.)--(5.,1.));
+draw((5.,1.)--(5.,2.));
+draw((3.,2.)--(4.,2.));
+draw((4.,2.)--(4.,1.));
+draw((4.,1.)--(3.,1.));
+draw((3.,1.)--(3.,2.), linewidth(3.0) + red);
+draw((1.,2.)--(2.,2.));
+draw((2.,2.)--(2.,1.), linewidth(3.0) + red);
+draw((2.,1.)--(1.,1.));
+draw((1.,1.)--(1.,2.));
+draw((6.,6.)--(6.,1.));
+draw((1.,1.)--(1.,6.));
+draw((2.,1.)--(3.,1.), linewidth(3.0) + red);
+draw((2.,6.)--(3.,6.), linewidth(3.0) + red);
+draw((4.,6.)--(5.,6.));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+This means for those three columns, there is no longer any way to place a
+vertical $1\times 3$ triomino. Now using claim 1,
+on the entire board we can have at most 5 horizontal triominos, and at most
+$5 - 3 = 2$ vertical triominos. In total we can place at most 7 triominos but we
+wanted to place 8 triominos, a contradiction. \vspace{0.2cm}
+
+Now we show a way to place the 8 triominoes with just the very middle
+uncovered. $\square$
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.4427549836330455, xmax = 6.556224887729826, ymin = 0.5053241563496622, ymax = 6.446328388249316;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen qqzzqq = rgb(0.,0.6,0.); pen ffdxqq = rgb(1.,0.8431372549019608,0.); pen ttzzqq = rgb(0.2,0.6,0.);
+
+filldraw((1.,6.)--(2.,6.)--(2.,5.)--(1.,5.)--cycle, black + opacity(1.0));
+filldraw((3.,6.)--(4.,6.)--(4.,5.)--(3.,5.)--cycle, black + opacity(1.0));
+filldraw((5.,6.)--(6.,6.)--(6.,5.)--(5.,5.)--cycle, black + opacity(1.0));
+filldraw((2.,5.)--(3.,5.)--(3.,4.)--(2.,4.)--cycle, black + opacity(1.0));
+filldraw((4.,5.)--(5.,5.)--(5.,4.)--(4.,4.)--cycle, black + opacity(1.0));
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, black + opacity(1.0));
+filldraw((1.,4.)--(2.,4.)--(2.,3.)--(1.,3.)--cycle, black + opacity(1.0));
+filldraw((3.,4.)--(4.,4.)--(4.,3.)--(3.,3.)--cycle, black + opacity(1.0));
+filldraw((4.,3.)--(5.,3.)--(5.,2.)--(4.,2.)--cycle, black + opacity(1.0));
+filldraw((2.,3.)--(3.,3.)--(3.,2.)--(2.,2.)--cycle, black + opacity(1.0));
+filldraw((5.,2.)--(6.,2.)--(6.,1.)--(5.,1.)--cycle, black + opacity(1.0));
+filldraw((3.,2.)--(4.,2.)--(4.,1.)--(3.,1.)--cycle, black + opacity(1.0));
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, black + opacity(1.0));
+filldraw(circle((2.5,1.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((3.5,1.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((1.5,1.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((1.5,2.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((2.5,2.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((3.5,2.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((1.5,3.5), 0.25), qqzzqq + opacity(1.0),  qqzzqq);
+filldraw(circle((1.5,4.5), 0.25), qqzzqq + opacity(1.0),  qqzzqq);
+filldraw(circle((1.5,5.5), 0.25), qqzzqq + opacity(1.0),  qqzzqq);
+filldraw(circle((2.5,3.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+filldraw(circle((2.5,4.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+filldraw(circle((2.5,5.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+filldraw(circle((3.5,4.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((4.5,4.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((5.5,4.5), 0.25), red + opacity(1.0),  red);
+filldraw(circle((3.5,5.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((4.5,5.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((5.5,5.5), 0.25), qqzzff + opacity(1.0),  qqzzff);
+filldraw(circle((4.5,3.5), 0.25), ttzzqq + opacity(1.0),  ttzzqq);
+filldraw(circle((4.5,2.5), 0.25), ttzzqq + opacity(1.0),  ttzzqq);
+filldraw(circle((4.5,1.5), 0.25), ttzzqq + opacity(1.0),  ttzzqq);
+filldraw(circle((5.5,3.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+filldraw(circle((5.5,2.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+filldraw(circle((5.5,1.5), 0.25), ffdxqq + opacity(1.0),  ffdxqq);
+/* draw figures */
+draw((1.,6.)--(2.,6.));
+draw((2.,6.)--(2.,5.));
+draw((2.,5.)--(1.,5.));
+draw((1.,5.)--(1.,6.));
+draw((3.,6.)--(4.,6.));
+draw((4.,6.)--(4.,5.));
+draw((4.,5.)--(3.,5.));
+draw((3.,5.)--(3.,6.));
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,5.));
+draw((6.,5.)--(5.,5.));
+draw((5.,5.)--(5.,6.));
+draw((2.,5.)--(3.,5.));
+draw((3.,5.)--(3.,4.));
+draw((3.,4.)--(2.,4.));
+draw((2.,4.)--(2.,5.));
+draw((4.,5.)--(5.,5.));
+draw((5.,5.)--(5.,4.));
+draw((5.,4.)--(4.,4.));
+draw((4.,4.)--(4.,5.));
+draw((5.,4.)--(6.,4.));
+draw((6.,4.)--(6.,3.));
+draw((6.,3.)--(5.,3.));
+draw((5.,3.)--(5.,4.));
+draw((1.,4.)--(2.,4.));
+draw((2.,4.)--(2.,3.));
+draw((2.,3.)--(1.,3.));
+draw((1.,3.)--(1.,4.));
+draw((3.,4.)--(4.,4.));
+draw((4.,4.)--(4.,3.));
+draw((4.,3.)--(3.,3.));
+draw((3.,3.)--(3.,4.));
+draw((4.,3.)--(5.,3.));
+draw((5.,3.)--(5.,2.));
+draw((5.,2.)--(4.,2.));
+draw((4.,2.)--(4.,3.));
+draw((2.,3.)--(3.,3.));
+draw((3.,3.)--(3.,2.));
+draw((3.,2.)--(2.,2.));
+draw((2.,2.)--(2.,3.));
+draw((5.,2.)--(6.,2.));
+draw((6.,2.)--(6.,1.));
+draw((6.,1.)--(5.,1.));
+draw((5.,1.)--(5.,2.));
+draw((3.,2.)--(4.,2.));
+draw((4.,2.)--(4.,1.));
+draw((4.,1.)--(3.,1.));
+draw((3.,1.)--(3.,2.));
+draw((1.,2.)--(2.,2.));
+draw((2.,2.)--(2.,1.));
+draw((2.,1.)--(1.,1.));
+draw((1.,1.)--(1.,2.));
+draw((6.,6.)--(6.,1.));
+draw((1.,1.)--(1.,6.));
+draw((2.,1.)--(3.,1.));
+draw((2.,6.)--(3.,6.));
+draw((4.,6.)--(5.,6.));
+draw((4.,1.)--(5.,1.));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+\bigskip
+(c) Again after experimenting we find that only the corners of the board
+can be left uncovered in this case. Let's prove our guess.
+\vspace{0.2cm}
+
+Similar to claim 1 (b), we can place at most 5 horizontal (or vertical)
+$4 \times 1$ tetrominoes on the board, because each row (or column)
+only has enough squares to accomodate for at most one
+$4 \times 1$ tetromino. Suppose we use $v$ vertical tetrominoes and
+$h$ horizontal tetrominoes. At least one of $v,h$ has to be $\geq 3$
+because otherwise
+$$
+6 = v + h < 3 + 3 = 6
+$$
+is a contradiction. Suppose WLOG that $v \geq 3$.
+\vspace{0.2cm}
+
+Each of those vertical pieces always covers the middle three squares of
+that column. A picture helps to illustrate.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.5180791366329588, xmax = 6.550211502796489, ymin = 0.5291618275609714, ymax = 6.539144568075509;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.);
+
+filldraw((1.,6.)--(2.,6.)--(2.,5.)--(1.,5.)--cycle, black + opacity(1.0));
+filldraw((3.,6.)--(4.,6.)--(4.,5.)--(3.,5.)--cycle, black + opacity(1.0));
+filldraw((5.,6.)--(6.,6.)--(6.,5.)--(5.,5.)--cycle, black + opacity(1.0));
+filldraw((2.,5.)--(3.,5.)--(3.,4.)--(2.,4.)--cycle, black + opacity(1.0));
+filldraw((4.,5.)--(5.,5.)--(5.,4.)--(4.,4.)--cycle, black + opacity(1.0));
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, black + opacity(1.0));
+filldraw((3.,4.)--(4.,4.)--(4.,3.)--(3.,3.)--cycle, black + opacity(1.0));
+filldraw((2.,4.)--(2.,3.)--(1.,3.)--(1.,4.)--cycle, black + opacity(1.0));
+filldraw((4.,3.)--(5.,3.)--(5.,2.)--(4.,2.)--cycle, black + opacity(1.0));
+filldraw((2.,3.)--(3.,3.)--(3.,2.)--(2.,2.)--cycle, black + opacity(1.0));
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, black + opacity(1.0));
+filldraw((3.,2.)--(4.,2.)--(4.,1.)--(3.,1.)--cycle, black + opacity(1.0));
+filldraw((5.,2.)--(6.,2.)--(6.,1.)--(5.,1.)--cycle, black + opacity(1.0));
+filldraw(circle((2.5,1.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((2.5,2.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((2.5,3.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((2.5,4.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((4.5,2.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((4.5,3.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((4.5,4.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((4.5,5.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((5.5,2.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((5.5,3.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((5.5,4.5), 0.25), ttttff + opacity(1.0),  ttttff);
+filldraw(circle((5.5,5.5), 0.25), ttttff + opacity(1.0),  ttttff);
+/* draw figures */
+draw((1.,6.)--(2.,6.));
+draw((2.,6.)--(2.,5.));
+draw((2.,5.)--(1.,5.));
+draw((1.,5.)--(1.,6.));
+draw((3.,6.)--(4.,6.));
+draw((4.,6.)--(4.,5.));
+draw((4.,5.)--(3.,5.));
+draw((3.,5.)--(3.,6.));
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,5.));
+draw((6.,5.)--(5.,5.), linewidth(2.8) + red);
+draw((5.,5.)--(5.,6.));
+draw((2.,5.)--(3.,5.), linewidth(2.8) + red);
+draw((3.,5.)--(3.,4.), linewidth(2.8) + red);
+draw((3.,4.)--(2.,4.));
+draw((2.,4.)--(2.,5.), linewidth(2.8) + red);
+draw((4.,5.)--(5.,5.), linewidth(2.8) + red);
+draw((5.,5.)--(5.,4.), linewidth(2.8) + red);
+draw((5.,4.)--(4.,4.));
+draw((4.,4.)--(4.,5.), linewidth(2.8) + red);
+draw((5.,4.)--(6.,4.));
+draw((6.,4.)--(6.,3.), linewidth(2.8) + red);
+draw((6.,3.)--(5.,3.));
+draw((5.,3.)--(5.,4.), linewidth(2.8) + red);
+draw((3.,4.)--(4.,4.));
+draw((4.,4.)--(4.,3.), linewidth(2.8) + red);
+draw((4.,3.)--(3.,3.));
+draw((3.,3.)--(3.,4.), linewidth(2.8) + red);
+draw((2.,4.)--(2.,3.), linewidth(2.8) + red);
+draw((2.,3.)--(1.,3.));
+draw((1.,3.)--(1.,4.));
+draw((1.,4.)--(2.,4.));
+draw((4.,3.)--(5.,3.));
+draw((5.,3.)--(5.,2.), linewidth(2.8) + red);
+draw((5.,2.)--(4.,2.), linewidth(2.8) + red);
+draw((4.,2.)--(4.,3.), linewidth(2.8) + red);
+draw((2.,3.)--(3.,3.));
+draw((3.,3.)--(3.,2.), linewidth(2.8) + red);
+draw((3.,2.)--(2.,2.), linewidth(2.8) + red);
+draw((2.,2.)--(2.,3.), linewidth(2.8) + red);
+draw((1.,2.)--(2.,2.));
+draw((2.,2.)--(2.,1.));
+draw((2.,1.)--(1.,1.));
+draw((1.,1.)--(1.,2.));
+draw((3.,2.)--(4.,2.));
+draw((4.,2.)--(4.,1.));
+draw((4.,1.)--(3.,1.));
+draw((3.,1.)--(3.,2.));
+draw((5.,2.)--(6.,2.), linewidth(2.8) + red);
+draw((6.,2.)--(6.,1.));
+draw((6.,1.)--(5.,1.));
+draw((5.,1.)--(5.,2.));
+draw((2.,6.)--(3.,6.));
+draw((4.,6.)--(5.,6.));
+draw((6.,5.)--(6.,4.), linewidth(2.8) + red);
+draw((6.,3.)--(6.,2.), linewidth(2.8) + red);
+draw((5.,1.)--(4.,1.));
+draw((3.,1.)--(2.,1.));
+draw((1.,2.)--(1.,3.));
+draw((1.,4.)--(1.,5.));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+So now we can no longer place horizontal tetrominos along those middle three
+rows because there are only two squares left uncovered whilst we need
+at least 4 to place our tetrominos. Thus we must place horizontal tetrominos
+along the top or the bottom of the board. \vspace{0.2cm}
+
+Actually we can place at most one of these horizontal tetrominos on the
+board since if we place two then we will be unable to place any vertical
+tetrominoes on the central three columns, by a similar arguement to the one
+above. Thus in order to place 6 tetrominos we must use 5 vertical
+tetrominoes and 1 horizontal tetromino. \vspace{-0.2cm}
+
+There must be a vertical tetromino in every column, since we have a
+$5\times 5$ board. Once we place the horizontal tetromino along the top or
+the bottom, in each of the columns that the horizontal tetromino passes
+through, there is now only one way to place the vertical tetromino for that
+column. The only degree of freedom we have is where we place the last
+vertical tetromino.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = 0.5029768588989332, xmax = 6.504391120413052, ymin = 0.5071424296121633, ymax = 6.500797522161037;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen ffdxqq = rgb(1.,0.8431372549019608,0.); pen bubtba = rgb(0.7058823529411765,0.7019607843137254,0.7294117647058823); pen rcrcrf = rgb(0.10980392156862745,0.10980392156862745,0.12156862745098039);
+
+filldraw((1.,6.)--(2.,6.)--(2.,5.)--(1.,5.)--cycle, black);
+filldraw((3.,6.)--(4.,6.)--(4.,5.)--(3.,5.)--cycle, black);
+filldraw((5.,6.)--(6.,6.)--(6.,5.)--(5.,5.)--cycle, black);
+filldraw((2.,5.)--(3.,5.)--(3.,4.)--(2.,4.)--cycle, black);
+filldraw((4.,5.)--(5.,5.)--(5.,4.)--(4.,4.)--cycle, black);
+filldraw((5.,4.)--(6.,4.)--(6.,3.)--(5.,3.)--cycle, black);
+filldraw((3.,4.)--(4.,4.)--(4.,3.)--(3.,3.)--cycle, black);
+filldraw((2.,4.)--(2.,3.)--(1.,3.)--(1.,4.)--cycle, black);
+filldraw((4.,3.)--(5.,3.)--(5.,2.)--(4.,2.)--cycle, black);
+filldraw((2.,3.)--(3.,3.)--(3.,2.)--(2.,2.)--cycle, black);
+filldraw((1.,2.)--(2.,2.)--(2.,1.)--(1.,1.)--cycle, black);
+filldraw((3.,2.)--(4.,2.)--(4.,1.)--(3.,1.)--cycle, black);
+filldraw((5.,2.)--(6.,2.)--(6.,1.)--(5.,1.)--cycle, black);
+filldraw(circle((4.5,2.5), 0.25), ttttff,  ttttff);
+filldraw(circle((4.5,3.5), 0.25), ttttff,  ttttff);
+filldraw(circle((4.5,4.5), 0.25), ttttff,  ttttff);
+filldraw(circle((4.5,5.5), 0.25), ttttff,  ttttff);
+filldraw(circle((3.5,2.5), 0.25), red,  red);
+filldraw(circle((3.5,3.5), 0.25), red,  red);
+filldraw(circle((3.5,4.5), 0.25), red,  red);
+filldraw(circle((3.5,5.5), 0.25), red,  red);
+filldraw(circle((2.5,2.5), 0.25), ttttff,  ttttff);
+filldraw(circle((2.5,3.5), 0.25), ttttff,  ttttff);
+filldraw(circle((2.5,4.5), 0.25), ttttff,  ttttff);
+filldraw(circle((2.5,5.5), 0.25), ttttff,  ttttff);
+filldraw(circle((1.5,2.5), 0.25), red,  red);
+filldraw(circle((1.5,3.5), 0.25), red,  red);
+filldraw(circle((1.5,4.5), 0.25), red,  red);
+filldraw(circle((1.5,5.5), 0.25), red,  red);
+filldraw(circle((1.5,1.5), 0.25), ffdxqq,  ffdxqq);
+filldraw(circle((2.5,1.5), 0.25), ffdxqq,  ffdxqq);
+filldraw(circle((3.5,1.5), 0.25), ffdxqq,  ffdxqq);
+filldraw(circle((4.5,1.5), 0.25), ffdxqq,  ffdxqq);
+
+/* draw figures */
+draw((1.,6.)--(2.,6.));
+draw((2.,6.)--(2.,5.));
+draw((2.,5.)--(1.,5.));
+draw((1.,5.)--(1.,6.));
+draw((3.,6.)--(4.,6.));
+draw((4.,6.)--(4.,5.));
+draw((4.,5.)--(3.,5.));
+draw((3.,5.)--(3.,6.));
+draw((5.,6.)--(6.,6.));
+draw((6.,6.)--(6.,5.));
+draw((6.,5.)--(5.,5.));
+draw((5.,5.)--(5.,6.));
+draw((2.,5.)--(3.,5.));
+draw((3.,5.)--(3.,4.));
+draw((3.,4.)--(2.,4.));
+draw((2.,4.)--(2.,5.));
+draw((4.,5.)--(5.,5.));
+draw((5.,5.)--(5.,4.));
+draw((5.,4.)--(4.,4.));
+draw((4.,4.)--(4.,5.));
+draw((5.,4.)--(6.,4.));
+draw((6.,4.)--(6.,3.));
+draw((6.,3.)--(5.,3.));
+draw((5.,3.)--(5.,4.));
+draw((3.,4.)--(4.,4.));
+draw((4.,4.)--(4.,3.));
+draw((4.,3.)--(3.,3.));
+draw((3.,3.)--(3.,4.));
+draw((2.,4.)--(2.,3.));
+draw((2.,3.)--(1.,3.));
+draw((1.,3.)--(1.,4.));
+draw((1.,4.)--(2.,4.));
+draw((4.,3.)--(5.,3.));
+draw((5.,3.)--(5.,2.));
+draw((5.,2.)--(4.,2.));
+draw((4.,2.)--(4.,3.));
+draw((2.,3.)--(3.,3.));
+draw((3.,3.)--(3.,2.));
+draw((3.,2.)--(2.,2.));
+draw((2.,2.)--(2.,3.));
+draw((1.,2.)--(2.,2.));
+draw((2.,2.)--(2.,1.));
+draw((2.,1.)--(1.,1.));
+draw((1.,1.)--(1.,2.));
+draw((3.,2.)--(4.,2.));
+draw((4.,2.)--(4.,1.));
+draw((4.,1.)--(3.,1.));
+draw((3.,1.)--(3.,2.));
+draw((5.,2.)--(6.,2.));
+draw((6.,2.)--(6.,1.));
+draw((6.,1.)--(5.,1.));
+draw((5.,1.)--(5.,2.));
+draw((2.,6.)--(3.,6.));
+draw((4.,6.)--(5.,6.));
+draw((6.,5.)--(6.,4.));
+draw((6.,3.)--(6.,2.));
+draw((5.,1.)--(4.,1.));
+draw((3.,1.)--(2.,1.));
+draw((1.,2.)--(1.,3.));
+draw((1.,4.)--(1.,5.));
+/* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+in any case wherever we place the last vertical tetromino the uncovered
+square will be in the corner. Finally it is easy to demonstrate by
+construction that every corner can in fact be left uncovered (I omit
+diagrams here because I'm tired of dealing with Geogebra by now. :p).
+$\blacksquare$
+\\
+
+\textit{Remarks: Interstingly enough, for me at least, part (c) was the
+easiest, then part (b), then part (a) was the hardest, whilst usually it's
+the reverse way round in terms of difficulties.}
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} This is a nice game-theory
+type problem. Each of my three solutions look really different to the
+official solutions so let's discuss them one by one. \vspace{0.2cm}
+
+For part (a), I remembered the last problems we did one chessboards like
+this and that it should be possible to just remove any black square from
+the board and then tile the subsequent board with $2\times 1$ dominoes.
+Playing around with the problem I found that there are many ways to do these
+tilings so I just guessed that a greedy solution might work. Then finally
+divising the algorithm and proving it's correctness feels like a standard
+codeforces problem. The case bashing in the official solutions is probably
+a much clearer solution. \vspace{0.2cm}
+
+For parts (b) and (c) my two solutions are pretty similar, somehow some
+configuration must be forced then we case bash to show the final result.
+The colouring certain tiles solution from the official sols here are
+particularly elegant.
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 7}
+Let us call a positive integer $n$ "mischievous" if both $n$ and $n+1$ are
+divisible by perfect cubes greater than 1. \vspace{0.2cm}
+
+Show that at least 1\% of positive integers are mischievous.
+\vspace{0.2cm}
+
+\textit{
+You might wonder how you can talk about 1\% of an infinite number of
+numbers. What is meant is that once you take sufficiently many numbers,
+at least 1\% are mischievous. Formally, you want to show that there is
+some $N$ such that any set of $N$ consectutive numbers, then 1\% of
+them are mischievous.
+}
+\end{problem}
+
+\begin{hint}{Initial thoughts and motivations}
+\textit{Motivations.}
+\textit{
+Let $p,q,n$ be positive integers. Employing
+some wishful thinking it would be nice if I could show that there
+is a family of solutions to}
+$$
+p^3 - nq^3 = 1
+$$
+\textit{
+because then I could set $n+1 = nq^3 + 1, n = nq^3$ and this way both of
+them are divisible by perfect cubes. Looking at this equation it looks
+similar to the usual Pell equation form but instead of squares we have
+cubes.} \vspace{0.2cm}
+
+\textit{Next I naturally thought about the identity}
+$$
+n^3 + 1 = (n+1)(n^2 - n + 1)
+$$
+\textit{
+since it looks similar to what I wanted above. Actually if I set
+$n+1 = t^3$ for some $t \in \mathbb{N}$ then this would be exactly what
+I wanted and I believe it actually works. Let's have a go.} \\
+
+Let $n \in \mathbb{N}$. Consider the following fact
+$$
+n^3 + 1 = (n + 1)(n^2 - n + 1)
+$$
+Let $k \in \mathbb{N}$. Set $n = k^3 - 1$. Now we have
+$$
+(k^3 - 1)^3 + 1 = k^3 \left[ (k^3 - 1)^2 - (k^3 - 1) + 1 \right].
+$$
+Thus since $(k^3 - 1)^3 + 1$ is divisible by a perfect cube, the number
+$(k^3 - 1)^3$ is mischievous. \\
+
+\textit{
+Unfortunately although this shows that there are infinitely many
+mischievous numbers, the gap between two consecutive numbers of this form
+shoots off to infinity for large enough $k$, so this approach won't work
+to show anything about the density of mischievous numbers. Circling back
+to the pell equation approach, we could consider the equation
+}
+$$
+x^6 - n y^6 = 1
+$$
+\textit{but analysing the density of these solutions seems more complicated
+than I'd hope, so I think it's better to look for something else.
+If I can factor the number $kn^3 + 1$ into (cube)(something), then
+this would be desirable. I wondered what if for that (cube) I just try and
+force $kn^3 + 1$ to be divisible by some small cube say 8. If you go down
+this path you can show, for instance, that the numbers
+$7^3, 15^3, 23^3, \ldots$ are
+all mischevious. These numbers are denser than the last family,
+this seems like progress. Now what if I replaced 8 with 27. Then you can
+show that the numbers $26^3, 53^3, 80^3, \ldots$ are all mischevious.
+Let's try and generalise. I conjecture that all numbers of the form
+}
+$$
+(k^3 - 1 + tk)^3, \quad (t = 0,1,2,\ldots)
+$$
+\textit{
+are all mischievous. Still though I think these numbers aren't dense enough.
+An equivalent formulation of my idea is to study the modular equation
+}
+\[
+\begin{aligned}
+kn^3 + 1 &\equiv 0 \ (\text{mod } p^3) \\
+kn^3 &\equiv -1 \ (\text{mod } p^3)
+\end{aligned}
+\]
+\textit{Let's restrict our analysis to say $p=2$. It might be helpful to
+employ Euler's theorem here, so we compute $\varphi(8) = 8(1 - 1/2) = 4$.
+Then for $\gcd(n, 8) = 1$ we can write,}
+\[
+\begin{aligned}
+kn^3 &\equiv -1 \ (\text{mod } 8) \\
+kn^4 &\equiv -n \ (\text{mod } 8) \\
+k &\equiv -n \ (\text{mod } 8) \\
+\end{aligned}
+\]
+\textit{So actually pairs of the form $(k, n) = (-n, n) \ \text{mod } 8$,
+$\gcd(n,8) = 1$ should always give us mischevious numbers. Numbers of this
+class still aren't dense enough so maybe lets try to generalise.
+We note that $\varphi(p^3) = p^3(1-1/p) = p^2(p-1)$.
+}
+\[
+\begin{aligned}
+kn^3 &\equiv -1 \ (\text{mod } p^3) \\
+kn^3\cdot n^{p^3 - p^2 - 3} &\equiv -n^{p^3 - p^2 - 3} \ (\text{mod } p^3)\\
+k &\equiv -n^{p^3 - p^2 - 3} \ (\text{mod } p^3)\\
+\end{aligned}
+\]
+\textit{Thus pairs of the form}
+$$
+(k,n) = (-n^{p^3 - p^2 - 3}, n) \ \text{mod } p^3
+$$
+\textit{always produce mischievous numbers for $\gcd(p,n)=1$. Modulo
+$p^3$ the number $kn^3 + 1$ then looks like}
+$$
+-n^{p^3 - p^2} + 1 \equiv n^{p^3 - p^2} - 1 \equiv 0
+$$
+\textit{and we can make the statement that numbers of the form}
+$$
+n^{p^3 - p^2} - 1, \quad (n = 1,2,\ldots,p-1)
+$$
+\textit{are always mischievous. There is the corollary that
+for instance numbers of the form $n^4 - 1$ are also always mischievous,
+for $\gcd(n, 8) = 1$. Roughly we can say that the gap between two
+consecutive numbers of the form $n^4 - 1$ grows like $\mathcal{O}(n^3)$.
+More generally the gap between two consecutive numbers of the form
+$n^{p^3 - p^2} - 1$, grows like $\mathcal{O}(n^{p^3 - p^2 -1})$. If I can
+improve this gap to even $\mathcal{O}(\text{some large constant})$
+this would be great. Actually I see a way to improve this gap to
+$\mathcal{O}(n^2)$. Here is the motivation.} \vspace{0.2cm}
+
+\textit{
+I seek to find some number $n = kp^3 - 1$ with the condition
+$v_q (kp^3 - 1) \geq 3$ for some prime $q$. If swap $k$ with $k^3$ I
+could envoke LTE here. In particular if I let $k, p$ be odd the following
+happens via LTE}
+$$
+\nu_2\left( k^3 p^3 - 1 \right) = \nu_2 (kp - 1)
+$$
+\textit{Now if I let $kp - 1 = 8x$ this guarentees $\nu_2(kp - 1) \geq 3$
+and thus numbers of the form $(8x + 1)^3 - 1$ are mischevious. Actually
+re-reading over this that statement is quite obviously true since
+reducing mod 8 gives $1 - 1 = 0$. Moreover it is indeed the case that the
+gap between two consecutive numbers of this form grows like
+$\mathcal{O}(x^2)$ which is an improvement! We can generalise this idea
+to get that numbers of the form $(p^3 x  + 1)^3 - 1$ are mischievous also,
+where $p$ is a fixed prime.
+}
+\vspace{0.2cm}
+
+\textit{From here it is natural to try and improve the gap to linear
+or constant. Another idea is to study the solutions to }
+$$
+27x + 8y = 1.
+$$
+\textit{We can find solutions by say using Bézout's theorem. After
+playing around with the equation we notice the following pattern}
+\[
+\begin{aligned}
+27(3) - 8(10) &= 1 \\
+27(3) - 8(10) - 27(8) + 27(8) &= 1\\
+27(11) - 8(37) &= 1 \\
+27(11) - 8(37) - 27(8) + 27(8) &= 1 \\
+27(19) - 8(64) &= 1 \\
+\cdots
+\end{aligned}
+\]
+\textit{and so we find that the numbers $8(10), 8(37), 8(64), \ldots$
+are all mischievous, since adding 1 gives a number divisible by 27.
+Now this is very promising since these numbers are
+much more dense than the numbers we were considering before. If this
+conjecture is true than we will get that all numbers of the form
+$8(10 + 27n)$ are mischievous. Now the gap between two consecutive numbers
+of this form is $27(8) = 216$, so I could use this to show that
+$1/216 \approx 0.46 \%$ of numbers are mischievous.
+We can use similar
+methods to show that all numbers of the form $27(37 + 125n)$ are
+mischievous, but this method seem to be giving us diminishing returns as
+it only gives that $1/3375 \approx 0.03 \%$ of numbers are
+mischievous. Similarly
+all numbers of the form $125(3 + 8n)$ are mischievous which gives
+$1/1000 = 0.1\%$ of numbers being mischevious.
+Indeed if I just spam this trick we will eventually get to
+above 1\% but it's definitely not the most practical solution.}
+\vspace{0.2cm}
+
+\textit{It's natural to think about how far I can push this trick, and
+whether or not I can do this trick generally. Actually since our initial
+discovery gave us roughly halfway progress, I wondered if I could
+"flip" the signs of that equation to get another $+ 0.5\%$ progress. More
+precisely, the linear diophantine equation $27x + 8y$ also admits the
+solution}
+$$
+27(-5) + 8(17) = 1.
+$$
+\textit{From this point we can use the same tricks as before to get that
+numbers of the form $27(5 + 8n)$ are mischievous. I was right this class
+of numbers gives another $1/216 \approx 0.46 \%$ to the density of
+mischievous numbers. Finally to get that final $\approx 0.08\%$ I can
+just use the numbers $125(3+8n)$. This should be the problem solved,
+I'll write everything up cleanly tomorrow.}
+\end{hint}
+\newpage
+
+\begin{solution}{Solution}
+We will show that there are certain arithmetic progressions such that
+every term in those progressions is mischievous. Then we will show that
+these numbers appear often enough to be able to guarentee that at least
+$\approx 1.02 \%$ of natural numbers are mischievous. \vspace{0.2cm}
+
+We begin with a couple of claims.
+\vspace{0.2cm}
+
+\textit{Claim 1: Every number of the form $8(-17 + 27n)$ is mischievous
+for $n \in \mathbb{N}$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $k_n = 8(-17 + 27n)$, since $8 \mid k_n$, $k_n$ is
+divisible by a perfect cube. $k_n + 1 = 216n - 135 = 27(8n - 5)$ and so
+$27 \mid (k_n + 1)$ and $(k_n + 1)$ is divisible by a perfect cube too.
+Thus $k_n$ is always mischievous. $\square$
+\\
+
+\textit{Claim 2: Every number of the form $27(-3 + 8n)$ is mischievous
+for $n \in \mathbb{N}$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $k_n = 27(-3 + 8n)$, since $27 \mid k_n$, $k_n$ is
+divisible by a perfect cube. $k_n + 1 = 216n - 80 = 8(27n - 10)$ and so
+$8 \mid (k_n + 1)$ and $(k_n + 1)$ is divisible by a perfect cube too.
+Thus $k_n$ is always mischievous. $\square$
+\\
+
+\textit{Claim 3: Every number of the form $125(-5 + 8n)$ is mischievous
+for $n \in \mathbb{N}$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Let $k_n = 125(-5 + 8n)$, since $125 \mid k_n$,
+$k_n$ is divisible by a perfect cube. $k_n + 1 = 1000n - 624 =
+8(125n - 78)$ and so $8 \mid (k_n + 1)$ and $(k_n + 1)$ is divisible
+by a perfect cube too. Hence $k_n$ is always mischievous. $\square$ \\
+
+\bigskip
+Define three sequences given by
+$$
+a_n = 8(-17 + 27n), \quad b_n = 27(-3 + 8n), \quad c_n = 125(-5 + 8n)
+$$
+\bigskip
+
+\textit{Claim 4: For any set $A$ of consecutive natural numbers of size
+$N \geq 27(8) = 216$, there must be at least one term from $a_n$ and
+at least one term from $b_n$ in the set $A$.} \vspace{0.2cm}
+
+\textit{Proof:} For both sequences it is easy to verify that
+$$
+a_{n+1} - a_n = 216, \quad b_{n+1} - b_n = 216.
+$$
+I will prove the following auxilliary fact. Let $x \in \mathbb{N}$.
+If $x \equiv 80 \ (\text{mod } 216)$ then $x$ is a part of $(a_n)$.
+Note that $x \equiv 80 - 216 \equiv -136 \ (\text{mod } 216)$. So we may
+write $x = 216n - 136 = 8(-17 + 27n)$, where $n \in \mathbb{N}$ because
+if $n < 1$ then this would imply that $x < 0$ which is impossible. Thus
+$x  = a_n$ is a part of the sequence $(a_n)$. \vspace{0.2cm}
+
+Now among a set of $k \geq 216$ consecutive numbers there must be all
+residues modulo 216. Thus there is a number $\equiv 80$ modulo 216
+and this number is a part of $(a_n)$. \vspace{0.2cm}
+
+We again prove an auxilliary result. Let $x \in \mathbb{N}$. If
+$x \equiv 135 \ (\text{mod } 216)$, then $x$ is a part of $(b_n)$. Observe
+that $x \equiv 135 - 216 \equiv -81 \ (\text{mod } 216)$. Thus we can write
+$x = 216n - 81 = 27(-3 + 8n)$ where $n \in \mathbb{N}$ because if $n < 1$
+then this would imply that $x < 0$ which isn't possible. Hence
+$x = b_n$ and is a part of the sequence $(b_n)$. \vspace{-0.2cm}
+
+Now again among a set of $k \geq 216$ consecutive numbers there must be
+all residues modulo 216. Thus there must be a number $\equiv 135$
+modulo 216 and this number is a part of $(b_n)$.
+$\square$ \\ \bigskip
+
+\textit{Claim 5: For any set $A$ of consecutive natural numbers of size
+$N \geq 125(8) = 1000$, there must be at least one term from $c_n$ in the
+set $A$.}
+\vspace{0.2cm}
+
+\textit{Proof:} Indeed one may check that
+$$
+c_{n+1} - c_n = 1000.
+$$
+Let's show the following auxilliary result. Let $x \in \mathbb{N}$. If
+$x \equiv 375 \ (\text{mod } 1000)$, then $x$ is a part of $(c_n)$. Observe
+that $x \equiv 375 - 1000 \equiv -625 \ (\text{mod } 1000)$. So we can write
+$x = 1000n - 625 = 125(-5 + 8n)$ for some $n \in \mathbb{N}$ because
+otherwise if $n < 1$ then $x < 0$ which is impossible. Thus $x = c_n$ and
+is part of the sequence $(c_n)$.
+\vspace{0.2cm}
+
+Now among a set of $k \geq 1000$ consecutive numbers there must be all
+residues modulo 1000. Thus there is a number that is $\equiv 375$ mod 1000,
+and this number is a part of $(c_n)$. $\square$ \\
+\bigskip
+
+\textit{Claim 6: The following is true,}
+\[
+\begin{aligned}
+\{a_1, a_2, \ldots \} \cap \{b_1, b_2, \ldots \} &= \emptyset\\
+\{a_1, a_2, \ldots \} \cap \{c_1, c_2, \ldots \} &= \emptyset\\
+\end{aligned}
+\]
+
+\textit{Proof:} A number cannot be part of both $(a_n)$ and $(b_n)$,
+since it would
+imply that the number is congruent to both 135, 80 modulo 216 which is
+impossible. Suppose some number $k$ is a part of both $(a_n)$ and $(c_n)$.
+Then $k = 1000m - 625$ for some $m \in \mathbb{N}$ and we require
+\[
+\begin{aligned}
+1000m - 625 &\equiv 80 \ (\text{mod } 216) \\
+136n &\equiv 57 \ (\text{mod } 216).
+\end{aligned}
+\]
+Now if there is a solution to this congruence then there must exist
+$x, y \in \mathbb{Z}$ such that $136x + 216y = 57$. Bézout's theorem tells
+us that a solution will only exist if $\gcd(136, 216) = 8$ divides 57 which
+isn't true. $\square$
+\\ \bigskip
+
+\textit{Claim 7: Let $k = 1000m - 625 = c_m, (m\in \mathbb{N})$ be a part of
+$(c_n)$. Then $k$ is a part of $(b_n)$ if and only if
+$$
+m \in \{ 10,37,64,91,118,145,172,199 \} \bmod 216.
+$$
+}
+
+\textit{Proof:} For $k$ to be a part of $(b_n)$ we need,
+\[
+\begin{aligned}
+1000m - 625 &\equiv 135 \ (\text{mod } 216) \\
+136m &\equiv 112 \ (\text{mod } 216) \\
+\end{aligned}
+\]
+It suffices to study the linear diophantine equation
+\[
+\begin{aligned}
+136m + 216y &= 112\\
+17m + 27y &= 14 \\
+\end{aligned}
+\]
+Now using whatever method you like, say Euclidean algorithm backtracking
+you can find that $17^{-1} \equiv 20 \ (\text{mod } 27)$ and thus
+$m \equiv 14 \cdot 20 \equiv 10 \ (\text{mod } 27)$. Now
+in mod 216 the only such $m$ are
+$$
+m \in \{ 10,37,64,91,118,145,172,199 \}. \ \square
+$$
+\\
+
+\textit{Claim 8: In any group of 27 consecutive terms from $(c_n)$
+there is exactly one term from $(b_n)$.} \vspace{0.2cm}
+
+\textit{Proof:} Terms from $(c_n)$ take on the form $1000n - 625$.
+With 27 consecutive terms, $n$ takes on all residues modulo 27 exactly once.
+Now due to claim 7, a number is a part of $(b_n)$ if $n \equiv 10
+\ (\text{mod } 27)$. Among these 27 consecutive terms exactly one
+has $n \equiv 10 \ (\text{mod } 27)$ so exactly one term is a part of
+$(b_n)$. $\square$
+\\ \bigskip
+
+Now let's take any set of $125(8)(27) = 27000$ consecutive natural numbers.
+\begin{itemize}
+\item In this set there are $\frac{27000}{216} = 125$ terms from $(a_n)$ and
+$\frac{27000}{216} = 125$ terms from $(b_n)$, due to claim 4.
+\item In this set there are $\frac{27000}{1000} = 27$ terms from $(c_n)$,
+due to claim 5.
+\end{itemize}
+The numbers from these three sequences are all mischievous by claims 1,2,3.
+We know that the only times that terms can be a part of multiple sequences
+is when a term is a part of both $(b_n)$ and $(c_n)$ due to claim 6.
+Due to claim 7, we know that among those 27 terms from $(c_n)$, there is
+exactly one that is also a part of $(b_n)$, so we must take this into
+account. \vspace{0.2cm}
+
+Thus in any set of 27000 consecutive natural numbers there are at least
+$125 + 125 + 27 - 1 = 276$ mischievous numbers.
+Hence among these 27000 consecutive natural
+numbers, at least
+$$
+\frac{276}{27000} = 1.0 \dot{2} \% > 1\%
+$$
+of the numbers are mischievous. $\blacksquare$
+\\
+
+\textit{Comments: Really enjoyed working through this one!}
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} Problem 7 was a really
+nice one. I guess this is an analysis problem? I essentially found the
+same solution as the official here, actually I think our constructions are
+almost exactly the same, the only thing is I didn't include numbers
+$\equiv 624 \ (\text{mod } 1000)$, I think that's why my final density
+ended up dangerously close to $1 \%$.
+
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 8}
+(a) Historically, it used to be possible to buy chicken McNuggets in boxes
+of 9 or 20. What was the largest number of chicken McNuggets that it was
+impossible to buy. \vspace{0.2cm}
+
+(b) If instead they were in boxes of size $r$ and size $s$, with
+$r$ and $s$ coprime, show that the largest number that it is impossible
+to buy is $rs - r - s$. \textit{This is actually called the Chicken
+McNugget Theorem!}
+\vspace{0.2cm}
+
+\textit{You might want to consider which numbers are possible for each
+value modulo $s$, if $s > r$.}
+\vspace{0.2cm}
+
+(c) \textit{(Extension)} Show that there are exactly
+$\frac12 (r-1)(s-1)$ positive integers that it is impossible to purchase.
+\end{problem}
+
+\begin{solution}{Solution}
+(a) Say that we can express a natural number $n$ \textit{nicely} if there
+exists a solution to $n = 9x + 20y$, for $x,y \in \mathbb{Z}_{\geq 0}$.
+
+Let $x,y$ be non-negative integers. It is possible to buy
+$9x + 20y$ chicken McNuggets. Bézout's theorem tells us that for
+$x, y \in \mathbb{Z}$ there is always a solution to
+$n = 9x + 20y$ since $\gcd(9, 20) = 1$. So for it to be "impossible" to
+buy some amount of chicken McNuggets, there must be some condition
+which forces one of $x, y < 0$. \vspace{0.2cm}
+
+\textit{Claim 1: Let $n = 9x + 20y$ be positive with $x,y \in \mathbb{Z}$.
+If $y \geq 9$ then we can always express $n$ nicely.} \vspace{0.2cm}
+
+\textit{Proof:} If $x \geq 0$ then there is nothing to prove so
+assume that $x < 0$. For convenience let us write $a = -x > 0$.
+We can induct on $y$. \vspace{0.2cm}
+
+For the base case, note that if $n = 20(9) - 9a$, then $a < 20$ since
+$n > 0$. Now $n = -9(a - 20) = 9(20-a)$, and since $20-a > 0$ the base
+case is true. \vspace{0.2cm}
+
+Now assume the result is true for $y = k \geq 9$. That means that if
+$n = 20k - 9a$, then we can write it as $n = 9x' + 20y'$ for some
+$x', y' \in \mathbb{Z}_{\geq 0}$. Now consider,
+\[
+\begin{aligned}
+m &= 20(k+1) - 9a \\
+&= (20k - 9a) + 20 \\
+&= (9x' + 20y') + 20 \\
+&= 9x' + 20(y' + 1)
+\end{aligned}
+\]
+and so the result is also true for $k+1$. Thus the proof is complete
+via induction. $\square$
+\\
+
+Suppose that $N = 9x + 20y$ is the largest number of nuggets that
+it's impossible to buy. Due to claim 1, we know that $y \leq 8$. Since we
+want to find the largest such $N$ we should just pick $y = 8$. Now we
+have $N = 20(8) + 9x$. Clearly if $x \geq 0$ then it is possible to buy
+$N$ nuggets so we must have $x < 0$. Again since we want to maximise $N$
+it is best to pick $x = -1$, thus $N = 20(8) - 9(1) = 151$. \vspace{0.2cm}
+
+To finish we need to show that it isn't possible to express $N$ nicely.
+Suppose $151 = 9x + 20y$ is written nicely. Taking mod 9 this becomes
+$2y \equiv 7 \ (\text{mod } 9)$ from which you can use, say Bézout's
+theorem to show that $y \equiv 8 \ (\text{mod } 9)$. If $y \geq 9$ then
+this forces $x < 0$, so this isn't possible. Also $y \geq 0$ by assumption
+so the only candidate for $y$ is $y = 8$, from which we can solve to get
+$x = -1$, a contradiction. $\square$ \\ \bigskip
+
+(b) The general case is similar. We have $s,r \in \mathbb{N}$ with
+$\gcd(r,s) = 1$. Let us assume $s > r$. \vspace{0.2cm}
+
+\textit{Claim 1: Let $n = sX + rY$ be positive with $X,Y \in \mathbb{Z}$.
+If $X \geq r$ then we can express $n$ nicely.} \vspace{0.2cm}
+
+\textit{Proof: } If $Y \geq 0$ then there is nothing to prove. So let us
+assume $Y < 0$. For convenience we will write $A = -Y > 0$.
+We are going to induct on $X$. \vspace{0.2cm}
+
+For the base case, we see that if $n = s(r) - rA$, then $A < s$ since
+$n$ is positive. Now $n = r(s - A)$ and since $(s - A) > 0$ the base
+case is indeed true. \vspace{0.2cm}
+
+Now assume the result holds for $X = k \geq r$. Thus if $n = sk - rA$ we
+can write it as $n = sX' + rY'$ for some $X', Y' \in \mathbb{Z}_{\geq 0}$.
+Consider,
+\[
+\begin{aligned}
+m &= s(k + 1) - rA \\
+&= (sk - rA) + s \\
+&= (sX' + rY') + s \\
+&= s(X' + 1) + rY'
+\end{aligned}
+\]
+and so the result is true for $X = k+1$ also. Thus the proof is complete
+via induction. $\square$ \\
+
+Suppose that $N = sX + rY$ is the largest number of nuggets that it's
+impossible to buy. Now due to claim 1, we must have $X < r$ and since we
+want to maximise $N$ we will just pick $X = r-1$. We have
+$N = s(r-1) + rY$. Obviously if $Y \geq 0$ then $N$ has been written nicely
+so $Y < 0$. Since we want to maximise $N$ we will pick $Y = -1$.
+So we have $N = s(r-1) - r = rs - s -r$. \vspace{0.2cm}
+
+To finish we need to show that it isn't possible to express $N$ nicely.
+Suppose FTSOC that
+$$
+N = rs - s - r = sX + rY
+$$
+has been written nicely. Taking mod $r$ we have
+\[
+\begin{aligned}
+-s &\equiv sX \ (\text{mod } r) \\
+-1 &\equiv X \ (\text{mod } r) && (*) \\
+\end{aligned}
+\]
+\textit{($*$ --- $s$ has a modular inverse mod $r$ because $\gcd(r,s) = 1$)}
+. If
+$X \geq r$ then the RHS will become too large and this will force $Y < 0$,
+so $X < r$. Also $X \geq 0$ since $N$ was written nicely. Since
+$X \equiv -1 \ (\text{mod } r)$, these two inequalities mean that the only
+candidate for $X$ is $X = r-1$. But now plugging this in and solving
+yields $Y = -1$, a contradiction. $\blacksquare$ \\
+
+\textit{Remark: The solution
+I found is much nicer to follow if you consider mod $r$ instead of mod $s$.}
+\vspace{0.2cm}
+
+\textit{
+I'll write a little more detail about $(*)$. Let $x$ be the modular
+inverse of $a$ mod $b$. Then $ax \equiv 1 \ (\text{mod } b)$. This means
+that we can find $x,y \in \mathbb{Z}$ such that $ax + by = 1$. From
+Bézout's theorem we know that solutions only exist if $\gcd(a,b) \mid 1$,
+that is $\gcd(a,b) = 1$.
+}
+
+\newpage
+(c) We'll take the same setup as in part (b). That is let
+$s,r \in \mathbb{N}$ with $\gcd(r,s) = 1$ and $s > r$.
+Similar to claim
+1, in part (b) it is natural to guess that the following result is also
+true. \\
+
+\textit{Claim 1: Let $n = sX + rY$ be positive with $X, Y \in \mathbb{Z}$.
+If $Y \geq s$ then we can express $n$ nicely.}
+\vspace{0.2cm}
+
+\textit{Proof:} If $X \geq 0$ there is nothing to prove, so assume
+$X < 0$. For convenience let $A = -X > 0$. We will induct on $Y$.
+\vspace{0.2cm}
+
+For the base case when $Y = s$, we have $n = r(s) - sA$ with $A < r$ since
+$n > 0$. Now $n = s(r - A)$ and since $r-A > 0$ the base case is true.
+\vspace{0.2cm}
+
+Now assume that the result holds for $Y = k \geq s$. So if
+$n = rk - sA$ we can write it as $n = sX' + rY'$ for some
+$X', Y' \in \mathbb{Z}_{\geq 0}$. Consider
+\[
+\begin{aligned}
+m &= r(k+1) - sA \\
+&= (rk - sA) + r \\
+&= (sX' + rY') + r \\
+&= sX' + r(Y' + 1)
+\end{aligned}
+\]
+and so the result is also true for $k+1$. The proof is finished via
+induction. $\square$ \\
+
+Let $n = sX + rY$ be positive and impossible to write nicely.
+Exactly one of $X, Y$ must be negative. This is because if they were both
+negative than this would mean that $n < 0$, and if they were both $\geq 0$
+then $n$ has been written nicely. \\
+
+\textit{Claim 2: For the $n$ described above, we can assume $Y < 0$.}
+\vspace{0.2cm}
+
+\textit{Proof:} We will show that any such $n$ with $X < 0$ can be
+re-written in such a way that $Y < 0$. Suppose indeed that $Y > 0, X < 0$,
+let $A = -X > 0$ for convenience. So we have $n = rY - sA$ being positive
+and impossible to write nicely. Due to claim 1 (c) we must have $Y < s$.
+Also since
+$$
+0 < n = rY - sA < rs - sA
+$$
+we have $sA < rs \Rightarrow A < r$.
+\[
+\begin{aligned}
+n &= rY - sA \\
+&= rY - sA + (rs - rs) \\
+&= r(Y - s) - s(A - r) \\
+&= s(r - A) + r(Y - s)
+\end{aligned}
+\]
+but thanks to the work above we know that $Y - s < 0$ and $r - A > 0$,
+so if we just let $X' = r-A$ and $Y' = Y-s$, we have written
+$n = sX' + rY'$ with $X' > 0, Y' < 0$. $\square$ \\
+
+Now thanks to claim 2, we safely assume $X > 0$ and $Y < 0$. Due to
+claim 1 (b) we have
+$$
+X \in \{ 1,2,\ldots,r-1 \}
+$$
+Let $B = -Y > 0$ for convenience. We want to find the set of values that
+$B$ can take on. Since $n > 0$,
+\[
+\begin{aligned}
+n = sX - rB &> 0 \\
+sX &> rB \\
+\frac{sX}{r} &> B \\
+B &\leq \floor{ \frac{sX}{r} }
+\end{aligned}
+\]
+where the last line is because $B \in \mathbb{Z}$. So for each selection
+of $X$ there are $\floor{sX/r}$ choices for $B$ or equivalently
+$$
+B \in \left\{ 1,2,\ldots, \floor{\frac{sX}{r}} \right\}.
+$$
+Thus putting this together there are precisely
+$$
+S = \sum_{X=1}^{r-1} \floor{ \frac{sX}{r} }
+$$
+integers that are impossible to write nicely. So now our goal is to
+evaluate $S$. Though it looks like a nasty sum, it is possible to
+evaluate it nicely. We need a key lemma. \\
+
+\textit{Claim 3: For $X = 1,2,\ldots, r-1$, the number $sX$ leaves
+all non-zero residues modulo $r$. Precisely that is
+$$
+\{ s(1), s(2),\ldots, s(r-1) \} = \{ 1, 2, \ldots, r-1 \}.
+$$
+where all those numbers are reduced modulo $r$.
+}
+\vspace{0.2cm}
+
+\textit{Proof:} Suppose FTSOC that there is some integer $1\leq q \leq r-1$,
+such that there does not exist $X = 1, 2,\ldots,r-1$ with
+$$
+sX \equiv q \ (\text{mod } r)
+$$
+Since $\gcd(s,r) = 1$ we can write
+$$
+X \equiv s^{-1} q \ (\text{mod } r)
+$$
+Now the only way that $X$ cannot exist in this scenario is if
+$s^{-1} q \equiv 0$. However $q > 0$ and the modular inverse of $s$ is
+obviously not 0, so we have reached a contradiction. $\square$ \\
+
+Now we can write
+\[
+\begin{aligned}
+S &= \sum_{X=1}^{r-1} \frac{sX}{r} - \left\{ \frac{sX}{r} \right\} \\
+&= \frac{s}{r} \frac{(r-1)r}{2} -
+\sum_{X=1}^{r-1} \left\{ \frac{sX}{r} \right\} \\
+&= \frac{s(r-1)}{2} -
+\sum_{X=1}^{r-1} \left\{ \frac{sX}{r} \right\} \\
+\end{aligned}
+\]
+Now thanks to claim 3, $sX$ leaves every non-zero residue mod $r$.
+Since the fractional part of $\frac{sX}{r}$ is just
+$\frac{sX \bmod r}{r}$ we can write
+\[
+\begin{aligned}
+&= \frac{s(r-1)}{2} -
+\sum_{k=1}^{r-1} \frac{k}{r} \\
+&= \frac{s(r-1)}{2} - \frac{1}{r} \frac{(r-1)r}{2} \\
+&= \frac{s(r-1)}{2} - \frac{(r-1)}{2} \\
+&= \frac12 (s-1)(r-1). \ \blacksquare
+\end{aligned}
+\]
+
+\textit{Comments: This one was really nice also, lots of moving parts here.
+Throughout that solution $\floor{\cdot}$ refers to the floor of a number,
+and $\{ \cdot \}$ refers to the fractional part of a number, (or the
+brackets enclose a set, it is dependent on context.)}
+\\
+
+\hline
+\vspace{0.2cm}
+
+\textit{Addendums (after having read solutions):} My solutions (once again)
+look very different to the official ones. It seems that the official
+solutions are much more succint and avoid using much technical language,
+which is understandable since I guess UKMT wants the solutions to be
+understandable even to those who have only the tools at GCSE maths level.
+I think a nice way to describe it is that the UKMT solutions
+are more "philosophical" as in they reason with pure logic why the answer
+should be something, whilst my solutions are more explicit or computational
+showing why an answer should be true with concrete calculations and
+theorems.
+\vspace{0.2cm}
+
+Though my solution is much longer, I particularly liked my solution to
+part (c) here. At first it seems really impossible to evaluate $S$
+as it doesn't look like any of the standard summations that we have learn't
+to deal with, but a nice solution does in fact exist using the floor and
+fractional part functions.
+\end{solution}
+
+\end{document}

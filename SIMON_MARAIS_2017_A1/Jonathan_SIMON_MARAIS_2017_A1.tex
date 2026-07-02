@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{../math_template}
+
+\author{Jonathan Kasongo}
+\title{Simon Marais 2017 --- A1}
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Simon Marais 2017 --- A1}
+The five sides and five diagonals of a regular pentagon are drawn on a piece of
+paper. Two people play a game, in which they take turns to colour one of these ten
+line segments. The first player colours line segments blue, while the second player
+colours line segments red. A player cannot colour a line segment that has already
+been coloured. A player wins if they are the first to create a triangle in their own
+colour, whose three vertices are also vertices of the regular pentagon. The game is
+declared a draw if all ten line segments have been coloured without a player winning.
+\vspace{0.2cm}
+
+Determine whether the first player, the second player, or neither player
+can force a win.
+\end{problem}
+
+\begin{solution}{Solution}
+The first player is indeed able to guarentee a win. \\
+
+Step 1. The first player is able to colour two touching segments that lie
+on the perimeter of the pentagon blue. Let us prove this statement.
+On the first move player 1 should paint any of the 5 perimter segments
+blue. Whatever player 2 does next, the segment that is painted blue has
+two neighbour segments that touch it and also lie on the perimeter, so
+at least one of them is left untouched after player 2's first move. Then
+player 1 can safely colour one of the aformentioned neighbour segments.
+\\
+
+Step 2. Player 1 is able to force a win. Let us prove
+this statement. Suppose player 2 has made their second move.
+Consider the two diagonals $D_1$ and $D_2$ that touch the
+vertex joining the two blue perimeter segments. \\
+
+\textit{Case 1:} If one of $D_1, D_2$ is untouched, colour this diagonal
+red. There are two mono-chromatic triangles that player 1 can make upon
+their next turn, so no matter where player 2 goes they will lose.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(160);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -0.8675827508198834, xmax = 10.169539784533136, ymin = 0.3158377906479499, ymax = 9.437377114012188;  /* image dimensions */
+pen qqccqq = rgb(0.,0.8,0.); pen ttttff = rgb(0.2,0.2,1.);
+pair A = (2.,1.), B = (7.,1.), C = (8.545084971874736,5.755282581475766), D = (4.5,8.694208842938131);
+/* draw figures */
+draw(D--A );
+draw(B--D,  qqccqq);
+draw((0.45491502812526363,5.755282581475768)--C,  red); //
+draw(A--C );
+draw(B--(0.45491502812526363,5.755282581475768),  ttttff);
+draw((0.45491502812526363,5.755282581475768)--D,  ttttff);
+draw(D--C );
+draw(C--B,  red); //
+draw(B--A,  qqccqq);
+draw(A--(0.45491502812526363,5.755282581475768),  ttttff);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (2.040978521720044,1.1079987964585742), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (7.0475859740501186,1.1079987964585742), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (8.585490056940747,5.867643549346353), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (4.544282247885081,8.808744788159084), NE * labelscalefactor);
+dot((0.45491502812526363,5.755282581475768),dotstyle);
+label("$E$", (0.5030744388294154,5.867643549346353), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+For example in this case, no matter what player 2 does next, player 1
+is able to colour one of the green segments red and win the game. \\
+
+\textit{Case 2:} If none of $D_1, D_2$ is untouched then player 1 can force
+a win immediately. For example (referring to the above labelling)
+if player 1 coloured $DE, AE$ blue and player 2 coloured $CE, BE$ red,
+player 1 can colour $AD$ red and win. $\blacksquare$
+
+\end{solution}
+
+\end{document}

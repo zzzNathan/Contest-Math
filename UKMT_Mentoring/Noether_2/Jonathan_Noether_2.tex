@@ -1,0 +1,764 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\author{Jonathan Kasongo}
+\title{Noether Sheet 2}
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 2. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+Let $\Gamma$ and $\Delta$ be two circles that intersect in two points,
+$P$ and $Q$. Suppose that $ST$ is tangent to $\Gamma$ at $S$ and
+$\Delta$ at $T$. Prove that the extension of $PQ$ bisects $ST$.
+\end{problem}
+
+\begin{solution}{Solution}
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(150);
+real labelscalefactor = 1.0; /* changes label-to-point distance */
+real xmin = -8.020421870644345, xmax = 9.993974178973335, ymin = -5.700867645591302, ymax = 6.76314691846839;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen ttttff = rgb(0.2,0.2,1.); pen ffqqtt = rgb(1.,0.,0.2);
+pair Q = (-1.1403008965047974,-1.4278995149108797), P = (-1.1403008965047974,1.42789951491088), T = (0.47700789900752283,3.0952999540571318), K = (-1.1403008965047974,2.289811351189327);
+
+filldraw(circle((-2.,0.), 1.6667272042038497), qqzzff + opacity(0.15000000596046448), qqzzff);
+filldraw(circle((2.,0.), 3.4496937176032834), ttttff + opacity(0.20000000298023224), ttttff);
+/* draw figures */
+draw((-2.7137189873216903,1.5061821869779506)--T, ffqqtt);
+draw(Q--P,  ffqqtt);
+draw(K--P, ffqqtt);
+/* dots and labels */
+label("$Q$", (-0.9815922172802164,-1.5137377529774978), NE * labelscalefactor);
+label("$P$", (-0.9955029478204617,1.4631585826349733), NE * labelscalefactor);
+//dot((-2.7137189873216903,1.5061821869779506),dotstyle);
+label("$S$", (-2.6647906126498992,1.6439980796581608), NE * labelscalefactor);
+label("$T$", (0.5346774116065228,3.229821361246113), NE * labelscalefactor);
+label("$K$", (-1.0789673310619337,2.3951775288314012), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Let $PQ$ and $ST$ intersect at the point $K$.
+By Power of a point, $SK^2 = QK\cdot PK$ and $TK^2 = QK\cdot PK$. Since
+both $SK>0$ and $TK>0$ we can conclude that $TK = SK$, and so the extension
+of $PQ$ does in fact bisect $ST$. $\blacksquare$ \\
+
+\textit{Comments: This is just a straight-forward application of
+Power of a point, I had definitely heard of the theorem in the past but
+now I know how to use it properly!}
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+\begin{enumerate}[label=(\alph*)]
+\item Show that $x^3 + y^3 = (x+y)(x^2-xy+y^2)$ and that
+$x^3 - y^3 = (x-y)(x^2+xy+y^2)$
+\item Find the prime factorisation of 1343.
+\item Find the prime factorisation of 7657.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a)} Expand.
+$$(x+y)(x^2-xy+y^2) = (x^3 - x^2y +xy^2)+(yx^2-xy^2+y^3) = x^3 + y^3$$
+$$(x-y)(x^2+xy+y^2) = (x^3 + x^2y + xy^2)-(yx^2+xy^2+y^3) = x^3 - y^3.
+\ \square$$
+\\
+\textbf{(b)} Notice that $1343 = 10^3 + 7^3$ so we can use that identity
+to write $1343 = (10+7)\cdot (10^2 - 7\cdot 10 + 7^2) = 17\cdot 79$. Now
+one can check all divisors from 2 to 8 to verify whether or not these
+numbers are prime. This is because to test whether a number $n$
+is prime we need only to check numbers up to $\floor{\sqrt{n}}$ because
+if a divisor $d$ of $n$ is greater than $\sqrt{n}$ then there exists another
+divisor of $n$ that is less than $\sqrt{n}$. Indeed
+$\frac{n}{d} < \sqrt{n} \iff \sqrt{n} < d$ which is true
+and so $\frac{n}{d}$ is
+a divisor of $n$ that is $< \sqrt{n}$.
+\vspace{0.1cm}
+\begin{center}
+\begin{tblr}{
+  colspec = {c c c},
+  vlines,
+}
+$n$ & $17 \bmod n$ & $79 \bmod n$ \\
+\hline
+2 & 1 & 1 \\
+3 & 2 & 1 \\
+4 & 1 & 3 \\
+5 & 2 & 4 \\
+6 & 5 & 1 \\
+7 & 3 & 2 \\
+8 & 1 & 7 \\
+\end{tblr}
+\end{center}
+and thus both 17 and 79 are prime so the prime factorisation of 1343 is
+$17\cdot 79$. $\square$\\
+
+\textbf{(c)} Notice that $7657 = 20^3 - 7^3 = (20-7)(20^2 + 20\cdot7 + 7^2)
+= 13 \cdot 589 = 13 \cdot 19 \cdot 31$. This time we only need to check
+divisors from 2 to 5. \vspace{0.1cm}
+
+\begin{center}
+\begin{tblr}{
+  colspec = {c c c c},
+  vlines,
+}
+$n$ & $13 \bmod n$ & $19 \bmod n$ & $31 \bmod n$ \\
+\hline
+2 & 1 & 1 & 1 \\
+3 & 1 & 1 & 1 \\
+4 & 1 & 3 & 3 \\
+5 & 3 & 4 & 1 \\
+\end{tblr}
+\end{center}
+so we have verified that 13,19 and 31 are all prime and so the desired
+prime factorisation is $13\cdot 19\cdot 31$. $\blacksquare$
+\end{solution}
+
+\newpage
+
+\begin{problem}{Problem 3}
+\begin{enumerate}[label=(\alph*)]
+  \item Derive the formula for $\binom{n}{r}$.
+  \item A frog is hopping along a line. Every minute, it hops either 10 cm
+  to the right or 10 cm to the left. After 10 minutes, the frog is back in
+  the same position as it started. In how many ways could this
+  be achieved?
+  \item A celebrity has 10 identical signed photographs to distribute
+  amongst five fans. (As the photographs are identical, the only thing that
+  matters is the number of photographs that each fan gets.)
+  \begin{enumerate}[label=\roman*.]
+    \item How many different ways are there of doing this if the celebrity
+    may decide to give no photographs to some of these fans?
+    \item How many different ways are there of doing this if the celebrity
+    gives at least one photograph to each fan?
+  \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a)} Let $A$ be a set of size $n$. Recall the definition for
+$\binom{n}{r}$, it is the number of ways to choose a subset
+$B \subset A$ such that $|B| = r$. It is important to remember that
+sets are unordered and that they don't contain repititions, by definition.
+\vspace{0.2cm}
+
+Notice that after selecting $k$ objects there remains $n-k$ objects to
+choose from, so the number of ways to choose an ordered $r$-tuple of
+distinct elements from $A$ without repitition is
+$n(n-1)\cdots(n-r+1)$. Combinations are the number of ways to choose an
+unordered $r$-tuple of distinct elements from $A$
+without repitition, and since each ordered $r$-tuple has $r!$ ways to
+permute we need to divide by $r!$. Thus
+
+$$
+\binom{n}{r} = \frac{n(n-1)\cdots(n-r+1)}{r!} = \frac{n!}{r!(n-r)!}. \
+\square
+$$
+\\
+\textbf{(b)} Suppose the frog hops left $l$ times and hops right $r$ times.
+Let the frog hop along the $x$-axis in the Cartesian plane such
+that 10 cm corresponds to a unit of length 1. If we let the frog start on
+the origin it's final position will be at $(r-l,0)$. Since the
+frog returns back to the origin it is the case that $r-l=0$ and so $r=l$.
+\vspace{0.2cm}
+
+Thus the frog jumps left 5 times, and jumps right 5 times. Let $L$
+represent a move to the left, and let $R$ represent a move to the right.
+We want to count the number of ordered $10$-tuples that consist of
+exactly 5 $L$'s and exactly 5 $R$'s. There are $\binom{10}{5}$ ways to
+place the $R$'s and the placement of the $R$'s uniquely determines the
+placement of the $L$'s so the final answer is $\binom{10}{5} = 252$.
+$\square$\\
+
+\textbf{(c) i.} Let's represent the 5 fans by
+$f_1, f_2, f_3, f_4, f_5 \in \mathbb{Z}_{\geq 0}$ where
+the $i$-th fan recieves $f_i$ photos. We observe that
+$$
+f_1 + f_2 + f_3 + f_4 + f_5 = 10.
+$$
+
+and so we can use Stars and bars to show that the answer is
+$\binom{14}{4}$. Imagine placing 10 stars and 4 bars in a line in some
+order, for instance
+$$
+\text{
+\Large
+$\mid$
+$\star$
+$\star$
+$\star$
+$\mid$
+$\star$
+$\star$
+$\star$
+$\mid$
+$\mid$
+$\star$
+$\star$
+$\star$
+$\star$
+}
+$$
+\normalsize
+
+The 4 bars separate the stars into 5 groups of $n\in \mathbb{Z}_{\geq 0}$
+stars and we can let each group
+represent a value of $f_i$. As an example the configuration above would
+represent $(f_1, f_2, \ldots, f_5)=(0,3,3,0,4)$. Now since there are
+$\binom{14}{4}$ ways to arrange the stars and bars our answer is
+$\binom{14}{4} = 1001$. $\square$ \\
+
+\textbf{(c) ii.} The solution for ii is similar to i. We use stars and
+bars, except this time it is not permissable to have two bars next to
+each other (as this would represent a group of size 0), neither can we have
+any bars at one of the two endpoints of the list (this would also create
+a group of size 0). We can instead write out all of the 10 stars in a row,
+and in the gap between each star there may or may not be exactly one bar.
+Here's an example
+
+$$
+\text{
+\Large
+$\star$
+$\star$
+$\mid$
+$\star$
+$\mid$
+$\star$
+$\mid$
+$\star$
+$\star$
+$\star$
+$\mid$
+$\star$
+$\star$
+$\star$
+}
+$$
+
+The 4 bars separate the stars into 5 groups of
+$n \in \mathbb{N}$ stars and so we can let each group represent a value of
+$f_i$.
+and this configuration would represent $(f_1,f_2,\ldots, f_5) =
+(2,1,1,3,3)$. There are 9 positions in which we could put the bars and 4
+total bars to place so the answer is $\binom{9}{4} = 126$. $\blacksquare$
+\\
+
+\textit{Comments: Recently I have been studying combinatorics in
+preparation for the TMUA, so I've had practise on these kinds of problems.}
+\end{solution}
+\newpage
+
+
+\begin{problem}{Problem 4}
+A triangle has side lengths $a, b$ and $c$.
+In terms of these variables, what is the height of the triangle
+(taking the base to be the side with length $c$)? \vspace{0.2cm}
+
+Hence derive Heron's formula.
+\end{problem}
+
+\begin{solution}{Solution}
+Consider,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(140);
+real labelscalefactor = 1.0; /* changes label-to-point distance */
+pen dotstyle = black; /* point style */
+real xmin = -4.374399355946519, xmax = 3.8826150852061123, ymin = -1.1598067106128818, ymax = 4.553154632454909;  /* image dimensions */
+pen zzwwff = rgb(0.8,0.2,0.1); pen qqccqq = rgb(0.2,0.,0.9);
+pair A = (-2.998686686773226,0.), B = (3.,0.), C = (-1.,4.), D = (-0.9991244578488174,0.);
+
+filldraw(A--C--B--cycle, qqccqq + opacity(0.10000000149011612), qqccqq);
+/* draw figures */
+draw(C--A);
+draw(C--B);
+draw(A--B);
+draw(C--D, linetype("4 4") + zzwwff);
+label("$x$",(-2.0598848832527707,0.032518926835418224),SE*labelscalefactor);
+label("$c-x$",(1.0197583407446964,0.05802321854554229),SE*labelscalefactor);
+draw(A--C, qqccqq);
+draw(C--B, qqccqq);
+draw(B--A, qqccqq);
+/* dots and labels */
+label("$A$", (-3.531065135077977,0.05164714561801127), NE * labelscalefactor);
+label("$B$", (2.85,0.06439929147307331), NE * labelscalefactor);
+label("$C$", (-0.9759524855725027,4.062197017035021), NE * labelscalefactor);
+label("$b$", (-2.5917652478904256,2.0473579719352193), NE * labelscalefactor);
+label("$a$", (0.9241172468317317,1.932588659239661), NE * labelscalefactor);
+label("$c$", (-4.1332766026157513e-4,-0.10137860464273311), NE * labelscalefactor);
+label("$D$", (-0.9759524855725027,0.06439929147307331), NE * labelscalefactor);
+label("$h$", (-1.1034739441231225,2.0027254614425023), NE * labelscalefactor,zzwwff);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+due to Pythagoras theorem we have
+\[
+\begin{aligned}
+b^2 - x^2 &= a^2 - (c-x)^2 \\
+b^2 &= a^2 - c^2 + 2cx \\
+x &= \frac{b^2 + c^2 - a^2}{2c} .\\
+\end{aligned}
+\]
+
+and so
+$$
+h = \sqrt{b^2 - \left(\frac{b^2 + c^2 - a^2}{2c}\right)^2}.
+$$
+
+Now the area of the triangle is
+\[
+\begin{aligned}
+&= \frac12 c \sqrt{b^2 - \left(\frac{b^2 + c^2 - a^2}{2c}\right)^2} \\
+&= \sqrt{\frac{b^2c^2}{4} - \frac14\left(\frac{b^2 + c^2 - a^2}{2}\right)^2} \\
+&= \sqrt{\left( \frac{bc}{2} \right)^2 - \left(\frac{b^2+c^2-a^2}{4}\right)^2} \\
+&= \sqrt{\left(\frac{bc}{2} - \frac{b^2+c^2-a^2}{4}\right)
+\left(\frac{bc}{2} + \frac{b^2+c^2-a^2}{4}\right)}\\
+&= \sqrt{\left(\frac{a^2-(b^2 - 2bc + c^2)}{4}\right)
+\left(\frac{(b^2 + 2bc + c^2) - a^2}{4}\right)}\\
+&= \sqrt{\left(\frac{a^2-(b-c)^2}{4}\right)
+\left(\frac{(b+c)^2 - a^2}{4}\right)}
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+&= \sqrt{\left(\frac{a-(b-c)}{2}\frac{a+(b-c)}{2}\right)
+\left(\frac{(b+c) - a}{2}\frac{(b+c)+a}{2}\right)}\\
+&= \sqrt{s(s-a)(s-b)(s-c)}
+\end{aligned}
+\]
+
+where $s = \frac{a+b+c}{2}$. $\blacksquare$
+
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+(a) Consider the following diagram in which the circle has radius 1.
+You should assume for this question that you know nothing about the value
+of $\pi$.
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(100);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dotstyle = black; /* point style */
+real xmin = -2.186177097582655, xmax = 2.4101468649566757, ymin = -1.5794981252782214, ymax = 1.6254094781733246;  /* image dimensions */
+pen qqqqtt = rgb(0.,0.,0.2); pen xdxdff = rgb(0.49019607843137253,0.49019607843137253,1.); pen qqzzff = rgb(0.,0.6,1.); pen zzffff = rgb(0.2,1.,0.8);
+pair A = (-1.,1.), B = (1.,1.), C = (1.,-1.), D = (-1.,-1.), H_6 = (-1.,0.), H_3 = (1.,0.), H_2 = (0.5,0.8660254037844386), H_1 = (-0.5,0.8660254037844386), H_4 = (0.5,-0.8660254037844386), H_5 = (-0.5,-0.8660254037844386);
+
+filldraw(circle((0.,0.), 1.), xdxdff + opacity(0.15000000596046448), xdxdff);
+filldraw(H_1--H_2--H_3--H_4--H_5--H_6--cycle, qqzzff + opacity(0.10000000149011612), qqzzff);
+filldraw(A--B--C--D--cycle, zzffff + opacity(0.10000000149011612), zzffff);
+/* draw figures */
+draw(A--B,  qqqqtt);
+draw(B--C );
+draw(C--D );
+draw(D--A );
+draw(H_1--H_2,  qqzzff);
+draw(H_2--H_3,  qqzzff);
+draw(H_3--H_4,  qqzzff);
+draw(H_4--H_5,  qqzzff);
+draw(H_5--H_6,  qqzzff);
+draw(H_6--H_1,  qqzzff);
+draw(H_1--H_2,  qqzzff);
+draw(H_2--H_3,  qqzzff);
+draw(H_3--H_4,  qqzzff);
+draw(H_4--H_5,  qqzzff);
+draw(H_5--H_6,  qqzzff);
+draw(H_6--H_1,  qqzzff);
+draw(A--B,  zzffff);
+draw(B--C,  zzffff);
+draw(C--D,  zzffff);
+draw(D--A,  zzffff);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-0.985409818030551,1.03808154459437), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (1.0172997435459241,1.03808154459437), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (1.0172997435459241,-0.9606934205939384), NE * labelscalefactor);
+dot(D,dotstyle);
+label("$D$", (-0.985409818030551,-0.9606934205939384), NE * labelscalefactor);
+dot(H_6,dotstyle);
+label("$H_6$", (-0.985409818030551,0.03082486922388395), NE * labelscalefactor);
+dot(H_3,dotstyle);
+label("$H_3$", (1.0172997435459241,0.03082486922388395), NE * labelscalefactor);
+dot(H_2,dotstyle);
+label("$H_2$", (0.5176060022488469,0.9043052673967273), NE * labelscalefactor);
+dot(H_1,dotstyle);
+label("$H_1$", (-0.4857160767334737,0.9043052673967273), NE * labelscalefactor);
+dot(H_4,dotstyle);
+label("$H_4$", (0.5176060022488469,-0.8269171433962956), NE * labelscalefactor);
+dot(H_5,dotstyle);
+label("$H_5$", (-0.4857160767334737,-0.8269171433962956), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+i\phantom{i}. Using areas, show that $\pi < 4$. \vspace{0.2cm}
+
+ii. Using perimeters, show that $\pi > 3$. \\
+
+(b) Show that $\frac75 < \sqrt{2} < \frac32$.\vspace{0.2cm}
+
+(c) Show that $\sqrt{2}^{\pi} < \pi^{\sqrt2}$.
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a) i.} Since the circle is contained within the square, the
+area of the square is more than the area of the circle. Thus
+$\pi < 2\cdot2=4$. $\square$\\
+
+\textbf{(a) ii.} Let $O$ be the centre of the circle, consider
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(2.296351105969781cm);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dotstyle = black; /* point style */
+real xmin = -1.1079994509181452, xmax = 1.1883516550516358, ymin = -0.3471644964790991, ymax = 1.229487297351494;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen ffwwqq = rgb(1.,0.4,0.); pen xdxdff = rgb(0.49019607843137253,0.49019607843137253,1.);
+pair H_2 = (0.5,0.8660254037844386), H_1 = (-0.5,0.8660254037844386), O = (0.,0.);
+
+filldraw(H_1--H_2--O--cycle, qqzzff + opacity(0.10000000149011612), qqzzff + opacity(0.10000000149011612));
+filldraw(arc(O,0.16557936119401293,420.,480.00000000000006)--(0.,0.)--cycle, ffwwqq + opacity(0.10000000149011612),  ffwwqq);
+/* draw figures */
+draw(H_1--H_2,  qqzzff);
+draw(H_1--O,  linetype("4 4") + ffwwqq);
+draw(H_2--O,  linetype("4 4") + ffwwqq);
+draw(H_1--H_2,  qqzzff);
+draw(shift(O)*xscale(1.)*yscale(1.)*arc((0,0),1,60.,120.), xdxdff);
+/* dots and labels */
+dot(H_2,dotstyle);
+label("$H_2$", (0.5073647753502528,0.8828350614311516), NE * labelscalefactor);
+dot(H_1,dotstyle);
+label("$H_1$", (-0.49211984395306974,0.8828350614311516), NE * labelscalefactor);
+dot(O,dotstyle);
+label("$O$", (0.00762246569859152,0.01356498760044514), NE * labelscalefactor);
+label("$\alpha = 60^\circ$", (-0.006454782460610205,0.1640370760581501), NE * labelscalefactor,ffwwqq);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+Notice that since $OH_1$ and $OH_2$ are both radii of the same circle,
+$\triangle OH_1H_2$ is isosceles which yields $\angle OH_1H_2 =
+\angle OH_2H_1 = \frac12(180 - 60)^{\circ} = 60^\circ$. So now we can
+conclude that $\triangle OH_1H_2$ is equilateral which gives
+$|H_1H_2| = 1$. \vspace{0.2cm}
+
+Since the shortest path from $H_1$ to $H_2$ is the length of the
+straight segment $H_1 H_2$ and the arc $\wideparen{OH_1H_2}$ is not equal
+to $H_1 H_2$, we have $1 < \frac16(2\pi) = \frac13 \pi \iff 3 < \pi$.
+$\square$\\
+
+\textbf{(b)} Squaring the inequality, we have
+$$
+\frac{49}{25} < 2 < \frac{9}{4}
+$$
+$$
+196 < 200 < 225
+$$
+which is true. $\square$
+\\
+
+\textbf{(c)} We present two solutions,
+
+\textit{Solution 1.}
+By (a) i. $\pi < 4$ so $\sqrt{2}^\pi < \sqrt{2}^4 = 4$. By (a) ii. $\pi > 3$
+and by (b) $\sqrt2 > \frac75$, and so $\pi^{\sqrt2} > 3^{\frac75}$.
+However now observe that
+\[
+\begin{aligned}
+4 &< 3^{\frac75}\\
+1024 = 4^5 &< 3^7 = 2187\\
+\end{aligned}
+\]
+which is true.
+So we can write $\sqrt{2}^{\pi} < 4 < 3^{\frac75} < \pi^{\sqrt2}$, giving
+the desired result.
+$\blacksquare$\\
+
+\textit{Solution 2.}
+Due to (a) i. $\pi < 4$ and so it suffices to show that
+$$
+\sqrt{2}^{\pi} < \sqrt{2}^4 = 4 < \pi^{\sqrt2}.
+$$
+Since $\pi^{\sqrt2} = e^{\sqrt2 \ln \pi}$ we can use the Taylor expansion,
+\[
+\begin{aligned}
+\pi^{\sqrt2} &= \sum_{k=0}^{\infty} \frac{(\sqrt2 \ln \pi)^k}{k!}\\
+&> \sum_{k=0}^{\infty} \frac{(\sqrt2)^k}{k!}\\
+&> 1 + \sqrt2 + \frac{(\sqrt2)^2}{2} + \frac{(\sqrt2)^3}{6} +
+\frac{(\sqrt2)^4}{24}\\
+&= \frac{13 + 8\sqrt2}{6}
+\end{aligned}
+\]
+where the second line is because $\pi > 3 > e \implies \ln \pi > 1$. But now note that
+\[
+\begin{aligned}
+\frac{13 + 8\sqrt2}{6} &> 4\\
+13 + 8\sqrt2 &> 24\\
+8\sqrt2 &> 11\\
+128 &> 121
+\end{aligned}
+\]
+and so we have shown that $\pi^{\sqrt2} > 4 > \sqrt2^\pi$, which gives
+the desired result. $\blacksquare$
+
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+Six non-overlapping squares of side length 2 are contained in a circle. Let
+$A$ be the least possible area of a circle allowing this. \vspace{0.2cm}
+
+Show that $A < 12\pi$.
+\end{problem}
+
+\begin{solution}{Solution}
+Consider the following construction,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(320);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -5.93818160963032, xmax = 5.93818160963032, ymin = -1.36921739284875, ymax = 7.84699256425158;  /* image dimensions */
+pen ttttff = rgb(0.2,0.2,1.); pen bubtba = rgb(0.7058823529411765,0.7019607843137254,0.7294117647058823); pen rcrcrf = rgb(0.10980392156862745,0.10980392156862745,0.12156862745098039);
+pair V_1 = (-2.,0.), V_5 = (-2.,2.), V_7 = (0.,2.), V_2 = (0.,0.), V_9 = (2.,2.), V_3 = (2.,0.), V_8 = (1.,2.), V_6 = (-1.,2.), V_4 = (-3.,2.), gamma  = (0.,2.755901167195395);
+
+filldraw(V_1--V_5--V_4--(-3.,4.)--(-1.,4.)--(-1.,6.)--(1.,6.)--(1.,4.)--(3.,4.)--(3.,2.)--V_9--V_3--cycle, ttttff + opacity(0.10000000149011612),  ttttff);
+/* draw grid of horizontal/vertical lines */
+pen gridstyle = linewidth(0.7) + bubtba; real gridx = 1., gridy = 1.; /* grid intervals */
+for(real i = ceil(xmin/gridx)*gridx; i <= floor(xmax/gridx)*gridx; i += gridx)
+draw((i,ymin)--(i,ymax), gridstyle);
+for(real i = ceil(ymin/gridy)*gridy; i <= floor(ymax/gridy)*gridy; i += gridy)
+draw((xmin,i)--(xmax,i), gridstyle);
+/* end grid */
+
+Label laxis; laxis.p = fontsize(10);
+xaxis(xmin, xmax,defaultpen+rcrcrf, Ticks(laxis, Step = 1., Size = 2, NoZero),EndArrow(6), above = true);
+yaxis(ymin, ymax,defaultpen+rcrcrf, Ticks(laxis, Step = 1., Size = 2, NoZero),EndArrow(6), above = true); /* draws axes; NoZero hides '0' label */
+/* draw figures */
+draw(V_1--V_5,  ttttff);
+draw(V_5--V_4,  ttttff);
+draw(V_4--(-3.,4.),  ttttff);
+draw((-3.,4.)--(-1.,4.),  ttttff);
+draw((-1.,4.)--(-1.,6.),  ttttff);
+draw((-1.,6.)--(1.,6.),  ttttff);
+draw((1.,6.)--(1.,4.),  ttttff);
+draw((1.,4.)--(3.,4.),  ttttff);
+draw((3.,4.)--(3.,2.),  ttttff);
+draw((3.,2.)--V_9,  ttttff);
+draw(V_9--V_3,  ttttff);
+draw(V_3--V_1,  ttttff);
+draw(V_6--(-1.,4.),  ttttff);
+draw((-1.,4.)--(1.,4.),  ttttff);
+draw((1.,4.)--V_8,  ttttff);
+draw(V_6--V_8,  ttttff);
+draw(V_5--V_6,  ttttff);
+draw(V_8--V_9,  ttttff);
+/* dots and labels */
+dot(V_1,dotstyle);
+label("$V_1$", (-1.9508523587818016,0.11642297617789425), NE * labelscalefactor);
+dot(V_5,dotstyle);
+label("$V_5$", (-1.9508523587818016,2.111776483424052), NE * labelscalefactor);
+dot(V_7,dotstyle);
+label("$V_7$", (0.044501148464345844,2.111776483424052), NE * labelscalefactor);
+dot(V_2,dotstyle);
+label("$V_2$", (0.044501148464345844,0.09361893609508101), NE * labelscalefactor);
+dot(V_9,dotstyle);
+label("$V_9$", (2.0512566757519,2.111776483424052), NE * labelscalefactor);
+dot(V_3,dotstyle);
+label("$V_3$", (2.0512566757519,0.11642297617789425), NE * labelscalefactor);
+dot((3.,2.),dotstyle);
+label("$V_{10}$", (3.0432324193542706,2.111776483424052), NE * labelscalefactor);
+dot((3.,4.),dotstyle);
+label("$V_{14}$", (3.0432324193542706,4.118532010711617), NE * labelscalefactor);
+dot((1.,4.),dotstyle);
+label("$V_{13}$", (1.047878912108123,4.118532010711617), NE * labelscalefactor);
+dot(V_8,dotstyle);
+label("$V_8$", (1.047878912108123,2.111776483424052), NE * labelscalefactor);
+dot(V_6,dotstyle);
+label("$V_6$", (-0.9588766151794312,2.111776483424052), NE * labelscalefactor);
+dot((-1.,4.),dotstyle);
+label("$V_{12}$", (-0.9588766151794312,4.118532010711617), NE * labelscalefactor);
+dot(V_4,dotstyle);
+label("$V_4$", (-2.954230122425579,2.111776483424052), NE * labelscalefactor);
+dot((-3.,4.),dotstyle);
+label("$V_{11}$", (-2.954230122425579,4.118532010711617), NE * labelscalefactor);
+dot((-1.,6.),dotstyle);
+label("$V_{15}$", (-0.9588766151794312,6.113885517957774), NE * labelscalefactor);
+dot((1.,6.),dotstyle);
+label("$V_{16}$", (1.047878912108123,6.113885517957774), NE * labelscalefactor);
+dot(gamma ,dotstyle);
+label("$\gamma$", (0.044501148464345844,2.864309806156889), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+
+\end{asy}
+\end{center}
+where $\gamma = \left(0, 3+\sqrt2 - \frac{\sqrt{11}}{2}\right)$.
+\vspace{0.2cm}
+
+The
+idea is that we want to place $\gamma$ such that the distance from each
+of the vertices is minimised. Since the shape is symmetrical about $x=0$,
+we can consider, say only the right side of the polygon. We want to minimise
+the distance between $\gamma$ and the outermost vertex that lies at each
+$y$ coordinate. For now let $\gamma = (0, k)$. In order to show that
+a circle with area less than $12 \pi$ can be constructed we just need to
+show that there exists a $k$ such that the maximum of the quantities below
+is less than $\sqrt{12}$. We can assume $k > 0$ because obviously we don't
+want to place the center below the polygon.
+\[
+\begin{aligned}
+\gamma V_{16} &= \sqrt{1 + (6-k)^2} < \sqrt{12} \implies k > 6-\sqrt{11} \\
+\gamma V_{14} &= \sqrt{9 + (4-k)^2} < \sqrt{12} \implies k > 4-\sqrt{3}\\
+\gamma V_{10} &= \sqrt{9 + (k-2)^2} < \sqrt{12} \implies k < 2+\sqrt{3}\\
+\gamma V_3 &= \sqrt{4 + k^2} < \sqrt{12} \implies k < 2\sqrt{2}
+\end{aligned}
+\]
+Putting together the most restrictive inequalities gives
+$6-\sqrt{11} < k < 2\sqrt{2}$. So for any $k$ in this interval a circle
+with radius less than $\sqrt{12}$ can be constructed such that it encloses
+all six squares. For example picking the midpoint of this interval
+$k = \frac12((6-\sqrt{11})+2\sqrt2) =
+3 + \sqrt{2} - \sqrt{11}/2$
+works. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 7}
+Find all primes $p$ such that $p^2 + 11$ has exactly 6 factors.
+\end{problem}
+
+\begin{solution}{Solution}
+Since 2 is the only even prime and $2^2 + 11=15$ has exactly 4 factors
+we can deduce that $p$ is an odd prime.
+By the Fundamental theorem of arithmetic we can write
+$$
+p^2 + 11 = p_1^{e_1}\cdot p_2^{e_2} \cdots p_n^{e_n}
+$$
+
+for some primes $p_1, \ldots, p_n$ and positive integers $e_1, \ldots,
+e_n$. Each factor of $p^2 + 11$ is a product of the primes
+$p_i^{k_i}$ for integers $1\leq i \leq n$ and $0 \leq k_i \leq e_i$.
+Since there are $e_i + 1$ choices for the exponent of $p_i$, we
+deduce that $p^2 + 11$ has exactly
+$(e_1 + 1)(e_2 + 1) \cdots (e_n + 1)$ factors. So we want to look for
+solutions to
+$$
+(e_1 + 1)(e_2 + 1) \cdots (e_n + 1) = 6.
+$$
+
+There are only 2 ways to factor $6 = 3\cdot 2 = 6\cdot 1$. So we must
+examine 2 cases.\vspace{0.2cm}
+
+\textit{Case 1.}
+If 6 was factored as $6\cdot 1$ then (WLOG) $e_1 = 5$ and all the other
+exponents are 0. So our problem reduces to
+$$
+p^2 + 11 = p_1^5.
+$$
+
+But since $p$ is odd, the LHS is even and thus $p_1$ must be even. The only
+even prime is 2 so we have $p^2 + 11 = 32$ which gives $p^2 = 21$ which
+has no integer solutions. \vspace{0.2cm}
+
+\textit{Case 2.}
+If 6 was factored as $3\cdot 2$ then (WLOG) $e_1=2, e_2=1$ and all the
+other exponents are 0. The problem becomes
+$$
+p^2 + 11 = p_1^{2}p_2.
+$$
+
+Again since the LHS is even one of those primes must be 2.\vspace{0.2cm}
+
+\textit{Case 2.1.} Suppose that
+$p_1 = 2$. Now if $p \neq 3$ then we can use Fermat's little theorem to
+show that
+$$
+p^2 + 11 \equiv 1 + 11 \equiv 0 \equiv 4p_2 \ \text{(mod } 3)
+$$
+
+which implies that $p_2 = 3$ since this is the only prime divisible by 3.
+So putting that together we have
+$p^2 + 11 = 12$ which gives $p = \pm 1$ but this isn't prime.
+Now if $p = 3$ then we have $9+11 = 20 = 4p_2$ which gives $p_2 = 5$, and
+it can be checked that $p = 3$ does in fact work.\vspace{0.2cm}
+
+\textit{Case 2.2.}
+Now suppose that $p_2 = 2$. Proceeding similarly if $p\neq 3$ then
+by Fermat's little theorem
+$$
+p^2 + 11 \equiv 1 + 11 \equiv 0 \equiv 2p_1^2 \ \text{(mod } 3)
+$$
+which implies that $p_1 = 3$. This gives $p^2 + 11 = 18$ which yields
+$p^2 = 7$ which has no integer solutions. Now if $p=3$ then we have
+already checked that this leads to a solution, so there is nothing left to
+explore.\vspace{0.2cm}
+
+Thus we conclude that the only solution is $p=3$. $\blacksquare$\\
+
+\textit{Comments: This problem looks scary but turns out to be very natural,
+in number theory a good number of problems can be solved by just taking
+random mods and in this case modulo 3 is enough to solve the problem.}
+\end{solution}
+
+
+\begin{problem}{Problem 8}
+\begin{enumerate}[label=(\alph*)]
+\item Express 50 in the form $p \pm n^3$ with $p$ prime and $n$ an integer.
+\item Find a positive integer that cannot be written in the form
+$p \pm n^3$ with $p$ prime and $n$ an integer.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a)} $50 = 23 + 3^3$.\\
+
+\textbf{(b)} Because $(-n)^3=-n^3$ we can drop the $\pm$ and just consider
+the expression $p + n^3$. Let $b$ be a positive integer such that
+$b^3 = p + n^3$. Observe that
+$$
+p = (b-n)(b^2 + nb + n^2).
+$$
+
+Now set $b=8$. Also notice that $b^3 = p + n^3 > n^3 \iff b > n$.
+\vspace{0.2cm}
+
+\textit{Case 1.} $b-n = 1$ and $b^2 + nb + n^2 = p$. Now substituting
+$b=8$ gives $n = 7$, and so $b^2+nb+n^2 = p = 13^2$. But $p$ is
+prime so this is a contradiction. \vspace{0.2cm}
+
+\textit{Case 2.} $b-n = p$ and $b^2 + nb + n^2 = 1$. Substituting $b=8$
+gives $n^2 + 8n + 63 = 0$. But since the discriminant
+$\Delta = 8^2 - 4(1)(63) = -188 < 0$
+there are no real solutions in $n$, contradiction.\vspace{0.2cm}
+
+Thus $8^3 = 512$ is a positive integer that can't be written in the
+form $p \pm n^3$. $\blacksquare$ \\
+
+\textit{Comments: Well it feels like there should be some sort of
+generalisation here, I'll come back to it later.
+}
+\end{solution}
+
+\end{document}

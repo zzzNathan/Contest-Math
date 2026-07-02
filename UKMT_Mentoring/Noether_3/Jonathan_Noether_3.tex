@@ -1,0 +1,535 @@
+\documentclass{article}
+\usepackage{../../math_template}
+
+\title{Noether Sheet 3}
+\author{Jonathan Kasongo}
+
+\begin{document}
+\maketitle
+\centerline{
+These were my solutions to the Noether Mentoring Scheme Sheet 3. Problem
+statements are abridged.
+}
+
+\begin{problem}{Problem 1}
+Suppose $a,b,c,d,e$ and $f$ are successive positive integers. What are the
+possible values of $a$ if
+
+\begin{enumerate}[label=(\alph*)]
+  \item $\frac{ef}{a}$ is an integer,
+  \item $\frac{ef}{ab}$ is an integer,
+  \item $\frac{bcd}{e}$ is an integer?
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+Write $a = n$ so that $b = (n+1), c=(n+2),\ldots$ and so on.
+\vspace{0.2cm}
+
+\textbf{(a)} We have
+$$
+\frac{ef}{a} = \frac{(n+4)(n+5)}{n} = n + 9 + \frac{20}{n} \in \mathbb{Z}.
+$$
+Thus $n$ must be a factor of 20. The possible values of $a$ are
+$\{1,2,4,5,10,20\}$. $\square$ \vspace{0.2cm}
+
+\textbf{(b)} We have
+$$
+\frac{ef}{ab} = \frac{(n+4)(n+5)}{n(n+1)} = 1 + \frac{8n+20}{n(n+1)} \in
+\mathbb{Z}.
+$$
+Since $n(n+1) \mid (8n+20)$ we must have $8n+20 \geq n(n+1)$. If one solves
+the quadratic inequality in $n$ and applies the fact that $n \in
+\mathbb{N}$ we get that $1 \leq n \leq 9$. Then by testing each value of
+$n$ we find that the only possible values of $a$ are
+$\{ 1,2,5 \}$. $\square$ \vspace{0.2cm}
+
+\textbf{(c)} We have
+\[
+\begin{aligned}
+\frac{bcd}{e} &= \frac{(n+1)(n+2)(n+3)}{n+4}\\
+&= (n+2)(n+3) - 3(n+4) + 9 - \frac{6}{n+4} \in \mathbb{Z}.
+\end{aligned}
+\]
+So $(n+4) \mid 6$. Thus $a = n = 2$ is the only possibility. $\blacksquare$
+\\
+
+\textit{Comments: This problem is just polynomial division, I've omitted
+the division steps, because I'm lazy. }
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 2}
+Anya is 2 m tall. She is jogging at 6 m/s away from a 5 m tall streetlight.
+\vspace{0.2cm}
+
+How fast is her shadow lengthening?
+\end{problem}
+
+\begin{solution}{Solution}
+Suppose at some point in time Anya is $x$ m away from the streetlight,
+and her shadow has length $s$ m.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(120);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.6011888879241005, xmax = 13.807588173855612, ymin = -4.180677759309802, ymax = 7.17242204559725;  /* image dimensions */
+pen ffqqtt = rgb(1.,0.,0.2);
+pair A = (0.,5.), B = (5.,2.), C = (8.333333333333334,0.), D = (5.,0.);
+/* draw figures */
+draw(A--C, linetype("4 4"));
+draw(B--D, ffqqtt);
+draw(A--(0.,0.));
+draw(C--(0,0));
+label("$x$",(2.4418174986305914,-0.1),SE*labelscalefactor);
+label("$s$",(6.496496000383107,-0.1),SE*labelscalefactor);
+/* dots and labels */
+dot(A,dotstyle);
+label("Lamp", (0.04702300853301163,5.132411924403013), NE * labelscalefactor);
+dot(B,dotstyle);
+label("Anya", (5.052016784133773,2.1294156590425546), NE * labelscalefactor);
+dot(C, dotstyle);
+//label("$C$", (8.384455677761622,0.10207640816629547), NE * labelscalefactor);
+dot(D,dotstyle);
+dot((0.,0.), dotstyle);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Due to similar triangles we have $x+s = \frac52 s \implies s = \frac23 x$.
+Since $x$ increases by $6$ m/s, the length of her shadow increases by
+$\frac23 (6) = 4$ m/s. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 3}
+Prove that for every integer $a > 1$, there is a prime $p$ such that
+$1 + a + a^2 + \cdots + a^{p-1}$ is composite.
+\end{problem}
+
+\begin{solution}{Solution}
+If $a$ is odd then $1 + a$ is an even number greater than 2, which means
+it must be composite. So for any odd $a$, we can just pick $p=2$. So in the
+rest of the solution, it is assumed we are talking about even $a \geq 2$.
+\vspace{0.2cm}
+
+\textit{Claim 1: Let $x \in \mathbb{N}$. Modulo 3 the following is true
+$$
+a^x \equiv \begin{cases}
+1 \quad \text{if } $x$ \text{ is even,}\\
+a \quad \text{if } $x$ \text{ is odd.}
+\end{cases}
+$$
+}
+
+\textit{Proof:} Due to Fermat's little theorem we have that $a^2 \equiv 1 \
+(\text{mod } 3)$, (note that $a\neq3$ because $a$ is even here).
+Now because of this fact we note that, for positive integer $n$,
+\[
+\begin{aligned}
+a^{2n} \equiv \left(a^n\right)^2 &\equiv 1 \ (\text{mod } 3)\\
+a^{2n + 1} \equiv a^{2n}\cdot a &\equiv a \ (\text{mod } 3).
+\end{aligned}
+\]
+which is the desired result. $\square$\vspace{0.2cm}
+
+Set $X_p := 1 + a + a^2 + \cdots + a^{p-1}$. In what proceeds take $p$ to
+be an odd prime. That means we can write $p = 2m + 1$ for some
+$m \in \mathbb{N}$. Now due to claim 1, reducing
+mod 3 yields,
+
+\[
+\begin{aligned}
+X_p &\equiv 1 + a + 1 + a + \cdots + a + 1\\
+&\equiv \frac{p+1}{2} + \frac{p-1}{2}a\\
+&\equiv (m+1) + (m)a.\\
+\end{aligned}
+\]
+
+Now we branch off into three cases. Firstly notice that
+$X_p\geq 1+2+2^2=7$. \vspace{0.2cm}
+
+\textit{Case 1: $a\equiv 0$} $(\text{mod } 3)$. Then $X_p \equiv m+1 \
+(\text{mod } 3)$. Now we can take $m=2 \implies p=5$. This gives that
+$3 \mid X_p$. But since $X_p \geq 7$ it is the case that $X_p \neq 3$ and
+so $X_p$ is composite.
+\vspace{0.3cm}
+
+\textit{Case 2: $a\equiv 1$} $(\text{mod } 3)$.
+Then $X_p \equiv 2m + 1 \equiv p \ (\text{mod } 3)$. So simply letting
+$p = 3$ gives us that $3 \mid X_p$. Moreover since $X_p \geq 7$ we
+deduce that $X_p \neq 3$ which means that $X_p$ must be composite.
+\vspace{0.3cm}
+
+\textit{Case 3: $a\equiv 2$} $(\text{mod } 3)$. Then we can write
+$a = 3k + 2$ for some $k \in \mathbb{Z}_{\geq0}$. However now notice that
+$X_2 = 1 + (3k + 2) = 3(k+1)$, and if $k \geq 1$ then $X_2$ is clearly
+composite. The only remaining case is when $k = 0 \implies a = 2$. To
+resolve this case notice
+that when $a=2$,
+$X_{11} = 1 + 2 + \cdots + 2^{10} = 2^{11} - 1 = 23\cdot 89$, which is
+composite. $\blacksquare$\\
+
+\textit{Comments: The motivation comes from trying to find some sort of
+telescope-esque trick on $X_p$ modulo something. Once I saw that mod 3
+gives an alternating pattern of 1's and $a$'s, I thought there must be
+some way to force the expression to be composite.}
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 4}
+In the tetrahedron with vertices $A, B, C$ and $O$ shown, the angles
+$\angle AOB, \angle BOC$ and $\angle COA$ are all right angles. Triangles
+$AOB$, $BOC$ and $COA$ have areas 6 cm$^2$, $\sqrt{39}$ cm$^2$ and
+5 cm$^2$ respectively.\vspace{0.2cm}
+
+What is the area of triangle $ABC$?
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(110);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -12.3, xmax = 13.4, ymin = -8.92, ymax = 9.;  /* image dimensions */
+
+pair A = (-2.04,-2.16), B = (4.74,-0.4), C = (1.,5.), O = (1.,0.);
+/* draw figures */
+draw(C--O,  linetype("4 4"));
+draw(O--A,  linetype("4 4"));
+draw(O--B,  linetype("4 4"));
+draw(C--A );
+draw(A--B );
+draw(B--C);
+/* dots and labels */
+//dot(A,dotstyle);
+label("$A$", (-1.96,-1.96), NE * labelscalefactor);
+//dot(B,dotstyle);
+label("$B$", (4.82,-0.2), NE * labelscalefactor);
+//dot(C,dotstyle);
+label("$C$", (1.08,5.2), NE * labelscalefactor);
+//dot(O,dotstyle);
+label("$O$", (1.08,0.2), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+\end{problem}
+
+\begin{solution}{Solution}
+We label the tetrahedron like so,
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(110);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -11.764263369988386, xmax = 9.475406051499204, ymin = -7.457461921999862, ymax = 7.352455433372036;  /* image dimensions */
+
+pair A = (-3.,-2.), B = (4.,0.), C = (0.,5.), O = (0.,0.);
+/* draw figures */
+draw(C--A);
+draw(A--B);
+draw(B--C);
+draw(C--O, linetype("4 4"));
+draw(O--B, linetype("4 4"));
+draw(O--A, linetype("4 4"));
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-2.9378170889966566,-1.8376272112560614), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (4.0704473738132565,0.16237278874393815), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (0.07044737381325894,5.170637251553854), NE * labelscalefactor);
+dot(O,dotstyle);
+label("$O$", (0.07044737381325894,0.16237278874393815), NE * labelscalefactor);
+label("$r$", (-1.877734444368558,1.6169182432893925), NE * labelscalefactor);
+label("$q$", (0.4463151424082999,-1.842585888942012), NE * labelscalefactor);
+label("$p$", (2.2026787787719355,2.674769482958814), NE * labelscalefactor);
+label("$v$", (0.1766600642032698,2.509480226760467), NE * labelscalefactor);
+label("$w$", (1.3978027457140843, 0.05085035175192955), NE * labelscalefactor);
+label("$u$", (-1.64856089064955,-0.7797759715866402), NE * labelscalefactor);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Due to the right angle condition we have the following system,
+\[
+\begin{aligned}
+\frac12 u w &= 6\\
+\frac12 v w &= \sqrt{39}\\
+\frac12 u v &= 5.\\
+\end{aligned}
+\]
+We solve to find
+$(u^2,v^2,w^2) =
+(\frac{20}{13}\alpha, \frac{5}{3}\alpha, \frac{12}{5}\alpha)$ where
+$\alpha = \sqrt{39}$. We apply Pythagoras,
+\[
+\begin{aligned}
+q^2 = u^2 + w^2 &= \frac{256}{65}\alpha\\
+r^2 = u^2 + v^2 &= \frac{125}{39}\alpha\\
+p^2 = v^2 + w^2 &= \frac{61}{15}\alpha.\\
+\end{aligned}
+\]
+Now we apply an alternate form of Heron's formula to evaluate
+$[\triangle ABC]$.\vspace{0.2cm}
+
+\textit{Claim 1: For a triangle with side lengths $a,b,c$ it's area is
+given by
+$$ \frac12 \sqrt{(bc)^2 - \left(\frac{b^2 + c^2 - a^2}{2}\right)^2} $$
+}
+
+\textit{Proof:} Refer to Noether Sheet 2, problem 4. $\square$
+\vspace{0.2cm}
+
+Let $q = a, r = b, p = c$ then $(bc)^2 = \frac{1525}{117}\alpha^2$. Also
+$$
+\frac{b^2 + c^2 - a^2}{2} = \frac12 \frac{10}{3}\alpha = \frac{5}{3} \alpha.
+$$
+Now using the formula
+$$
+[\triangle ABC] = \frac12
+\sqrt{\frac{1525}{117}\alpha^2 - \frac{25}{9}\alpha^2} =
+\frac12 \alpha \frac{20}{\sqrt{39}} = 10. \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 5}
+Let $p$ be a prime and let $a$ be an integer coprime to $p$.
+\begin{enumerate}[label=(\alph*)]
+  \item Show that $ax \equiv ay \ (\text{mod } p)$ implies that
+  $x\equiv y \ (\text{mod } p)$.
+  \item What can you say about the set of numbers
+  $\{a, 2a, 3a, \ldots, (p-1)a\}$ when working modulo $p$.
+  \item What is the value of $a^{p-1} \ (\text{mod } p)$?
+\end{enumerate}
+\end{problem}
+
+\begin{solution}{Solution}
+\textbf{(a)} By definition $a(x-y)$ is a multiple of $p$. But since
+$\gcd(a,p) = 1$ it must be the case that $p \mid (x-y)$ which
+is equivalent to the desired result. $\square$
+\vspace{0.2cm}
+
+\textbf{(b)} Now due to part (a) none of the numbers in that set are
+congruent mod $p$. So it is the case that when working mod $p$,
+$$
+\{a, 2a, 3a, \ldots, (p-1)a\} = \{1,2,3,\ldots, (p-1) \}.\  \square
+$$
+
+\textbf{(c)} Because those two sets are the same mod $p$, there products
+are the same mod $p$ also,
+$$
+a^{p-1} (p-1)! \equiv (p-1)! \ (\text{mod } p).
+$$
+Now due to (a) this implies that $a^{p-1} \equiv 1 \ (\text{mod } p)$.
+$\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 6}
+Suppose that $ABC$ is a triangle with circumradius $R$. Let the lines
+$BC, CA$ and $AB$ have lengths $a,b,c$ respecitvely. \vspace{0.2cm}
+
+Prove that
+$$
+\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R.
+$$
+where $A,B$ and $C$ refer to the three angles of the triangle $ABC$.
+\vspace{0.2cm}
+
+This is the \textit{extended sine rule}.
+\end{problem}
+
+\begin{solution}{Solution}
+Call $\angle A = \alpha$. It is a well-known fact that
+$\angle BOC = 2 \angle BAC = 2 \alpha$.
+
+\begin{center}
+\begin{asy}
+/* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; usepackage("amsmath"); size(130);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -11.344130684947654, xmax = 10.335984575238793, ymin = -5.002139934409503, ymax = 9.998156029395165;  /* image dimensions */
+pen qqzzff = rgb(0.,0.6,1.); pen ffttww = rgb(1.,0.2,0.4); pen ffqqtt = rgb(1.,0.,0.2); pen ttttff = rgb(0.2,0.2,1.);
+pair A = (-4.,0.), B = (3.,8.), C = (4.,-2.), O = (0.9358974358974359,2.7435897435897436);
+
+filldraw(circle(O, 5.6471557600999205), qqzzff + opacity(0.10000000149011612),  qqzzff);
+filldraw(arc(A,0.6696560698127088,345.96375653207355,408.81407483429035)--(-4.,0.)--cycle, ffqqtt + opacity(0.10000000149011612),  ffqqtt);
+filldraw(arc(O,0.6696560698127088,302.86027483528284,428.5609114397165)--(0.9358974358974359,2.7435897435897436)--cycle, ffqqtt + opacity(0.10000000149011612),  ffqqtt);
+filldraw(B--A--C--cycle, ttttff + opacity(0.10000000149011612),  ttttff);
+/* draw figures */
+draw(A--B );
+draw(C--B );
+draw(C--A );
+draw(O--B,  linetype("4 4") + ffttww);
+draw(O--C,  linetype("4 4") + ffttww);
+label("$\alpha$",(-3.2245508384685615,0.6397124537625686),SE*labelscalefactor);
+label("$2\alpha$",(1.6806798729095302,3.167664117305543),SE*labelscalefactor);
+draw(B--A,  ttttff);
+draw(A--C,  ttttff);
+draw(C--B,  ttttff);
+/* dots and labels */
+dot(A,dotstyle);
+label("$A$", (-4.627689711771906,0.17095320489367272), NE * labelscalefactor);
+dot(B,dotstyle);
+label("$B$", (3.070216217770901,8.173343239155537), NE * labelscalefactor);
+dot(C,dotstyle);
+label("$C$", (4.0747003224899645,-1.8380150045444525), NE * labelscalefactor);
+dot(O, dotstyle);
+label("$O$", (0.0110238030968215,2.883060287635142), NE * labelscalefactor);
+label("$R$", (2.2164047287596973,5.277080737215575), NE * labelscalefactor,ffttww);
+label("$R$", (2.2331461305050153,0.23791881187494354), NE * labelscalefactor,ffttww);
+label("$c$", (-0.7133405766709037,4.388889623769923), NE * labelscalefactor,ttttff);
+label("$b$", (-0.07716731034883029,-1.8920659434583326), NE * labelscalefactor,ttttff);
+label("$a$", (3.7566136893289275,3.033732903343001), NE * labelscalefactor,ttttff);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+/* end of picture */
+\end{asy}
+\end{center}
+
+Now by applying the cosine rule on $\triangle BOC$, followed by the double
+angle formula yields
+\[
+\begin{aligned}
+a^2 &= 2R^2 - 2R^2 \cos 2\alpha\\
+&= 2R^2 (1-(-1 + 2\cos^2 \alpha))\\
+&= 4R^2(1-\cos^2 \alpha)\\
+&= 4R^2 \sin^2 \alpha.
+\end{aligned}
+\]
+Notice that since $0^\circ < \alpha < 180^\circ$, $\sin \alpha > 0$ and
+$a > 0$ by definition.
+So we deduce that
+$$
+\frac{a}{\sin\alpha} = 2R.
+$$
+
+Then by a symmetrical arguement (or just by the normal sine rule) we get
+that
+$$\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R,$$
+as desired. $\blacksquare$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 7}
+Find the roots of $x^2 - 10^{10}x + 1$, accurate to 30 decimal places.
+\end{problem}
+
+\begin{solution}{Solution}
+By the quadratic formula the solutions look like
+$$
+x = \frac{10^{10}}{2} \pm \frac{1}{2} \left(10^{20} - 4\right)^{1/2}
+$$
+We just need to approximate the second term to 30 decimal places,
+since the first term is an integer. In what follows let $(x)_n$ denote the
+falling factorial.  That is $(x)_n = x(x-1)\cdots(x-n+1), n\geq 1$ and
+$(x)_0 = 1$.
+Define $\alpha := 10^{20}$. By the generalised binomial theorem,
+\[
+\begin{aligned}
+\frac{1}{2}\left(\alpha - 4\right)^{1/2} &=\frac12
+\sum_{r=0}^{\infty} \frac{(1/2)_r}{r!} \alpha^{1/2 - r} (-4)^r\\
+&= \frac{\sqrt \alpha}{2} \sum_{r=0}^{\infty} \frac{(1/2)_r}{r!}
+\left( \frac{-4}{\alpha} \right)^r\\
+&> \frac{\sqrt \alpha}{2} \left(\frac{1}{1}(1) +
+\frac{1/2}{1} \left(\frac{-4}{\alpha}\right) + \frac{(1/2)(-1/2)}{2}
+\left(\frac{-4}{\alpha}\right)^2  \right)\\
+\end{aligned}
+\]
+This approximation is sufficient since every other term will have magnitude
+less than roughly $\sim 1/\alpha^{2.5} = 10^{-50}$. We compute our
+approximation,
+$$
+\frac{10^{10}}{2} - \frac{1}{10^{10}} - \frac{1}{10^{30}}.
+$$
+So now putting that together the two roots (to 30 decimal places) are
+$$
+x = 10^{10} - \frac{1}{10^{10}} - \frac{1}{10^{30}}  \ \text{and }
+\frac{1}{10^{10}} + \frac{1}{10^{30}}. \ \blacksquare
+$$
+\end{solution}
+\newpage
+
+\begin{problem}{Problem 8}
+17:36 \ 29/05/84 is a \textit{pandigital} time and date as it uses each of
+the digits 0-9 exactly once.\vspace{0.2cm}
+
+The \textit{product} of a date and time is the product of the five
+two-digit numbers that make it up. For example, the product of the
+pandigital example above is $17 \times 36 \times 29 \times 05 \times 84$.
+\vspace{0.2cm}
+
+Find all pandigital dates and times for which the product is a perfect cube.
+\end{problem}
+
+\begin{solution}{Solution}
+I am of the opinion that problems like number 8 are far more amenable to
+informatics competitions, since the problem looks to be a very long case
+bashing problem. So instead of a mathematical solution I present one such
+programatic solution in Python, after all computer science is all just
+applied math!
+
+
+\begin{minted}[linenos]{python}
+# Noether Sheet 3 - Problem 8
+from itertools import permutations
+
+def Validate_Date_Time(h, minn, d, mon, y):
+    if not 1 <= h <= 23:    return False
+    if not 1 <= minn <= 59: return False
+    if not 1 <= d <= 31:    return False
+    if not 1 <= mon <= 12:  return False
+
+    if mon == 2:
+        if d > 28: return False
+
+    if mon in [4, 6, 9, 11]:
+        if d > 30: return False
+
+    return True
+
+def is_perfect_cube(n):
+    lo, hi = 0, int(n ** (1/3)) + 2
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        cube = mid ** 3
+
+        if cube == n:  return True
+        elif cube < n: lo = mid + 1
+        else:          hi = mid - 1
+
+    return False
+
+NUMBERS = "0123456789"
+for p in permutations(NUMBERS, 10):
+    hour   = int(p[0] + p[1])
+    minute = int(p[2] + p[3])
+    day    = int(p[4] + p[5])
+    month  = int(p[6] + p[7])
+    year   = int(p[8] + p[9])
+
+    if Validate_Date_Time(hour, minute, day, month, year):
+        product = hour * minute * day * month * year
+
+        if is_perfect_cube(product):
+            print(f"{hour}:{minute} {day}/{month}/{year}")
+\end{minted}
+
+After running the code, it takes around 5 seconds to run, the output is
+\texttt{13:54 26/9/78} only. $\blacksquare$
+\end{solution}
+
+\end{document}
